@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path
 
 from . import views as project_views
+from judge import views as judge_views
 
 urlpatterns = [
     path('', project_views.index),
+    path('judge/scoreboard', judge_views.scoreboard),
     path('credits', project_views.credits),
     path('admin/', admin.site.urls),
 ]
