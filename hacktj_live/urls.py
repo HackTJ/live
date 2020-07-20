@@ -20,5 +20,6 @@ from . import views as project_views
 
 urlpatterns = [
     path('', project_views.index),
+    path('credits', project_views.credits),
     path('admin/', admin.site.urls),
 ]
