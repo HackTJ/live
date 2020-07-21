@@ -4,7 +4,6 @@ from channels.generic.websocket import AsyncWebsocketConsumer
 
 class ScoreboardUpdateConsumer(AsyncWebsocketConsumer):
     async def connect(self):
-        self.room_name = self.scope['url_route']['kwargs']['room_name']
         await self.channel_layer.group_add(
             'scoreboard',
             self.channel_name
