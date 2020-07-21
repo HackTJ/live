@@ -2,7 +2,6 @@
   "name": "django_tailwind",
   "description": "",
   "scripts": {
-    "start": "yarn run dev",
     "build": "rimraf ../../static/css && tailwindcss build src/tailwind.scss | postcss -o ../../static/css/tailwind.min.css"
   },
   "keywords": [],
