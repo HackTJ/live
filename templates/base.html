@@ -12,17 +12,13 @@
 
   {% load static %}
 
-  <!-- Font Awesome if you need it
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
-  -->
   <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}">
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
-  <!-- Define your gradient here - use online tools to find a gradient matching your branding-->
   <style>
     .gradient {
-      background: linear-gradient(90deg, #d53369 0%, #daae51 100%);
+      background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
     }
   </style>
 
@@ -68,10 +64,12 @@
         <button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75">Sign Up/Register</button>
       </div>
     </div>
-    <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
   </nav>
 
-  {% block content %}{% endblock %}
+  <div class="pt-20">
+    <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+    {% block content %}{% endblock %}
+  </div>
 
   <!--Footer-->
   <footer class="bg-white bottom-0">
