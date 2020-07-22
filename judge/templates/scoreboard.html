@@ -59,7 +59,8 @@
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd" /></svg>
           </div>
           <div x-text="selectedRows.length + ' rows are selected'" class="text-teal-800 text-lg"></div>
-          <button :disabled="Boolean(selectedRows.length===0)" class="ml-auto bg-gray-300 hover:bg-red-700 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:opacity-50 disabled:cursor-not-allowed">DELETE</button>
+          <button :disabled="Boolean(selectedRows.length===0)"
+            class="ml-auto bg-gray-300 hover:bg-red-700 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-800 disabled:font-bold">DELETE</button>
           <button class="ml-6 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
@@ -112,13 +113,13 @@
       </div>
     </div>
 
-    <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative" style="height: 405px;">
+    <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
       <table id="scoreboard-table" class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
         <thead>
           <tr class="text-left">
             <th class="py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100">
               <label class="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
-                <input type="checkbox" class="form-checkbox focus:outline-none focus:shadow-outline" @click="selectAllCheckbox($event);">
+                <input id="selectAllCheckbox" type="checkbox" class="form-checkbox focus:outline-none focus:shadow-outline" @click="selectAllCheckboxes($event);">
               </label>
             </th>
             <template x-for="heading in headings">
@@ -127,30 +128,30 @@
           </tr>
         </thead>
         <tbody>
-          <template x-for="user in users" :key="user.userId">
+          <template x-for="project in projects" :key="project.projectId">
             <tr>
               <td class="border-dashed border-t border-gray-200 px-3">
                 <label class="text-teal-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
-                  <input type="checkbox" class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" :name="user.userId" @click="getRowDetail($event, user.userId)">
+                  <input type="checkbox" class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" :name="project.projectId" @click="getRowDetail($event, project.projectId)">
                 </label>
               </td>
-              <td class="border-dashed border-t border-gray-200 userId">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="user.userId"></span>
+              <td class="border-dashed border-t border-gray-200 projectId">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.projectId"></span>
               </td>
               <td class="border-dashed border-t border-gray-200 firstName">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="user.firstName"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.firstName"></span>
               </td>
               <td class="border-dashed border-t border-gray-200 lastName">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="user.lastName"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.lastName"></span>
               </td>
               <td class="border-dashed border-t border-gray-200 emailAddress">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="user.emailAddress"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.emailAddress"></span>
               </td>
               <td class="border-dashed border-t border-gray-200 gender">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="user.gender"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.gender"></span>
               </td>
               <td class="border-dashed border-t border-gray-200 phoneNumber">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="user.phoneNumber"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.phoneNumber"></span>
               </td>
             </tr>
           </template>
@@ -167,7 +168,7 @@
     function datatables() {
       return {
         headings: [{
-            'key': 'userId',
+            'key': 'projectId',
             'value': 'ID'
           },
           {
@@ -211,106 +212,106 @@
             'value': 'Active'
           }
         ],
-        users: [{
-          "userId": 1,
+        projects: [{
+          "projectId": 1,
           "firstName": "Cort",
           "lastName": "Tosh",
           "emailAddress": "ctosh0@github.com",
           "gender": "Male",
           "phoneNumber": "327-626-5542"
         }, {
-          "userId": 2,
+          "projectId": 2,
           "firstName": "Brianne",
           "lastName": "Dzeniskevich",
           "emailAddress": "bdzeniskevich1@hostgator.com",
           "gender": "Female",
           "phoneNumber": "144-190-8956"
         }, {
-          "userId": 3,
+          "projectId": 3,
           "firstName": "Isadore",
           "lastName": "Botler",
           "emailAddress": "ibotler2@gmpg.org",
           "gender": "Male",
           "phoneNumber": "350-937-0792"
         }, {
-          "userId": 4,
+          "projectId": 4,
           "firstName": "Janaya",
           "lastName": "Klosges",
           "emailAddress": "jklosges3@amazon.de",
           "gender": "Female",
           "phoneNumber": "502-438-7799"
         }, {
-          "userId": 5,
+          "projectId": 5,
           "firstName": "Freddi",
           "lastName": "Di Claudio",
           "emailAddress": "fdiclaudio4@phoca.cz",
           "gender": "Female",
           "phoneNumber": "265-448-9627"
         }, {
-          "userId": 6,
+          "projectId": 6,
           "firstName": "Oliy",
           "lastName": "Mairs",
           "emailAddress": "omairs5@fda.gov",
           "gender": "Female",
           "phoneNumber": "221-516-2295"
         }, {
-          "userId": 7,
+          "projectId": 7,
           "firstName": "Tabb",
           "lastName": "Wiseman",
           "emailAddress": "twiseman6@friendfeed.com",
           "gender": "Male",
           "phoneNumber": "171-817-5020"
         }, {
-          "userId": 8,
+          "projectId": 8,
           "firstName": "Joela",
           "lastName": "Betteriss",
           "emailAddress": "jbetteriss7@msu.edu",
           "gender": "Female",
           "phoneNumber": "481-100-9345"
         }, {
-          "userId": 9,
+          "projectId": 9,
           "firstName": "Alistair",
           "lastName": "Vasyagin",
           "emailAddress": "avasyagin8@gnu.org",
           "gender": "Male",
           "phoneNumber": "520-669-8364"
         }, {
-          "userId": 10,
+          "projectId": 10,
           "firstName": "Nealon",
           "lastName": "Ratray",
           "emailAddress": "nratray9@typepad.com",
           "gender": "Male",
           "phoneNumber": "993-654-9793"
         }, {
-          "userId": 11,
+          "projectId": 11,
           "firstName": "Annissa",
           "lastName": "Kissick",
           "emailAddress": "akissicka@deliciousdays.com",
           "gender": "Female",
           "phoneNumber": "283-425-2705"
         }, {
-          "userId": 12,
+          "projectId": 12,
           "firstName": "Nissie",
           "lastName": "Sidnell",
           "emailAddress": "nsidnellb@freewebs.com",
           "gender": "Female",
           "phoneNumber": "754-391-3116"
         }, {
-          "userId": 13,
+          "projectId": 13,
           "firstName": "Madalena",
           "lastName": "Fouch",
           "emailAddress": "mfouchc@mozilla.org",
           "gender": "Female",
           "phoneNumber": "584-300-9004"
         }, {
-          "userId": 14,
+          "projectId": 14,
           "firstName": "Rozina",
           "lastName": "Atkins",
           "emailAddress": "ratkinsd@japanpost.jp",
           "gender": "Female",
           "phoneNumber": "792-856-0845"
         }, {
-          "userId": 15,
+          "projectId": 15,
           "firstName": "Lorelle",
           "lastName": "Sandcroft",
           "emailAddress": "lsandcrofte@google.nl",
@@ -349,9 +350,13 @@
           } else {
             rows.push(id);
           }
+
+          if (this.selectedRows.length === this.projects.length) {
+            document.getElementById('selectAllCheckbox').checked = true;
+          }
         },
 
-        selectAllCheckbox($event) {
+        selectAllCheckboxes($event) {
           let columns = document.querySelectorAll('.rowCheckbox');
 
           this.selectedRows = [];
@@ -373,31 +378,33 @@
     // new Tablesort(document.getElementById('scoreboard-table'));
 
     const tableSocket = new WebSocket(
-        'ws://'
-        + window.location.host
-        + '/ws/judge/scoreboard/'
+      'ws://' +
+      window.location.host +
+      '/ws/judge/scoreboard/'
     );
     tableSocket.onmessage = function(e) {
-        // update datatables().users
+      // update datatables().projects
     };
 
     tableSocket.onclose = function(e) {
-        console.error('WebSocket closed unexpectedly.');
+      console.error('WebSocket closed unexpectedly.');
     };
 
     document.querySelectorAll('span[contenteditable]').forEach(editable => editable.addEventListener('change', (e) => {
       const changedCell = e.target;
-      const newCellValue = changedCell.value;  // string
+      const newCellValue = changedCell.value; // string
       // changedCell is span
       // changedCell.parentNode is td
       // changedCell.parentNode.parentNode is tr
       const changedCellId = changedCell.parentNode.parentNode.children;
       console.log(changedCellId);
-      // tableSocket.send(JSON.stringify({
-      //     'projectId': changedCellId,
-      //     'changedKey': changedKey,
-      //     'newValue': newCellValue
-      // }));
+      tableSocket.send(JSON.stringify(
+        {
+          'projectId': changedCellId,
+          'changedKey': changedKey,
+          'newValue': newCellValue
+        }
+      ));
     }));
   </script>
   {% endcompress %}
