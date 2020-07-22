@@ -398,13 +398,13 @@
       // changedCell.parentNode.parentNode is tr
       const changedCellId = changedCell.parentNode.parentNode.children;
       console.log(changedCellId);
-      tableSocket.send(JSON.stringify(
-        {
-          'projectId': changedCellId,
-          'changedKey': changedKey,
-          'newValue': newCellValue
-        }
-      ));
+      // tableSocket.send(JSON.stringify(
+      //   {
+      //     'projectId': changedCellId,
+      //     'changedKey': changedKey,
+      //     'newValue': newCellValue
+      //   }
+      // ));
     }));
   </script>
   {% endcompress %}

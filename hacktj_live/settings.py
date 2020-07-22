@@ -99,8 +99,12 @@ ASGI_APPLICATION = 'hacktj_live.routing.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hacktj_live',
+        'USER': 'live_admin',
+        'PASSWORD': '817m5da7fyleau^108yko2ib!&+*!0ba38gh%g8ps()56)=gsv',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
