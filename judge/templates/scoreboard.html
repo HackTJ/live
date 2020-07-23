@@ -135,23 +135,39 @@
                   <input type="checkbox" class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" :name="project.projectId" @click="getRowDetail($event, project.projectId)">
                 </label>
               </td>
-              <td class="border-dashed border-t border-gray-200 projectId">
+              <!-- TODO: would be nice to be able to x-for over project's attributes -->
+              <td class="border-dashed border-t border-gray-200">
                 <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.projectId"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200 firstName">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.firstName"></span>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.name"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200 lastName">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.lastName"></span>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.location"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200 emailAddress">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.emailAddress"></span>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.description"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200 gender">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.gender"></span>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.mean"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200 phoneNumber">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.phoneNumber"></span>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.variance"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.numberOfVotes"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.timesSeen"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.timesSkipped"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.prioritize"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200">
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.active"></span>
               </td>
             </tr>
           </template>
@@ -166,158 +182,259 @@
   <script src="{% static "js/tablesort/tablesort.number.min.js" %}"></script> -->
   <script>
     function datatables() {
+      var headings = [{
+          'key': 'projectId',
+          'value': 'ID'
+        },
+        {
+          'key': 'name',
+          'value': 'Name'
+        },
+        {
+          'key': 'location',
+          'value': 'Location'
+        },
+        {
+          'key': 'description',
+          'value': 'Description'
+        },
+        {
+          'key': 'mean',
+          'value': 'Mu'
+        },
+        {
+          'key': 'variance',
+          'value': 'Sigma Squared'
+        },
+        {
+          'key': 'numberOfVotes',
+          'value': 'Votes'
+        },
+        {
+          'key': 'timesSeen',
+          'value': 'Seen'
+        },
+        {
+          'key': 'timesSkipped',
+          'value': 'Skipped'
+        },
+        {
+          'key': 'prioritize',
+          'value': 'Prioritize'
+        },
+        {
+          'key': 'active',
+          'value': 'Active'
+        }
+      ];
+      var projects = [{
+        "projectId": 1,
+        "name": "verifEye",
+        "location": "Room 47",
+        "description": "A fast and lightweight utility to detect online identity theft and fake news using machine learning",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 2,
+        "name": "melon",
+        "location": "Room 47",
+        "description": "Can't pick the ripest watermelon without splitting it open? Fear not! \"melon\" uses a neural network to predict the quality of watermelons through data collected by sound sensor and impulse deliverer.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 3,
+        "name": "Biopath",
+        "location": "Room 47",
+        "description": "Automating the Assessment of Involuntary Hand Movement's Role in Neurodegenerative Disease",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 4,
+        "name": "CrowdReader",
+        "location": "Room 47",
+        "description": "Presentations will never be the same. In an instant, CrowdReader gives live feedback to the presenter on the reaction of the audience allowing them to adjust mid-speech and gain intel on the public.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 5,
+        "name": "Hummer",
+        "location": "Room 47",
+        "description": "A New Way to Share your Music with the World",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 6,
+        "name": "Dēmos",
+        "location": "Room 47",
+        "description": "Exercise your democratic power - secure voting and empowerment of citizens to make civic change",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 7,
+        "name": "CodeBlocks",
+        "location": "Room 47",
+        "description": "Making functions with real life code blocks.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 8,
+        "name": "IoTrespassing",
+        "location": "Room 47",
+        "description": "If you have a crazy ex, then you know that having a camera security system is very important. But what happens when you have multiple crazy exes? That's where IoTrespassing comes in.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 9,
+        "name": "Dealight",
+        "location": "Room 47",
+        "description": "Deals that Delight",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 10,
+        "name": "Pinpoint",
+        "location": "Room 47",
+        "description": "The new easy way to get around town!",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 11,
+        "name": "A Penny Saved",
+        "location": "Room 47",
+        "description": "financial solutions for the modern age",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 12,
+        "name": "Capital Connections",
+        "location": "Room 47",
+        "description": "Capital Connections is a recommendation engine that leverages predictive analytics to recommend partnerships to capitol one to further drive customer usage and loyalty.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 13,
+        "name": "Homemade Housing",
+        "location": "Room 47",
+        "description": "Calculates Average Housing Sales Based on a slew of Metrics",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 14,
+        "name": "Haven",
+        "location": "Room 47",
+        "description": "Connect. Collaborate. Community. Our lives are centered around and affected by where we choose to live and Haven strives to make the process of acquiring and living in a home safer and approachable.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 15,
+        "name": "GoVRnment",
+        "location": "Room 47",
+        "description": "A VR simulation based application that enables the user to become more informed about government and encourages them to become more involved in the political process.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 16,
+        "name": "CAPConnect",
+        "location": "Room 47",
+        "description": "Encouraging civic engagement by connecting potential volunteers to local campaigns or guiding them through the creation of their own campaign.",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }, {
+        "projectId": 17,
+        "name": "City Samaritans",
+        "location": "Room 47",
+        "description": "We connect the helpful to the poor and needy",
+        "mean": 3,
+        "variance": 2.3,
+        "numberOfVotes": 5,
+        "timesSeen": 9,
+        "timesSkipped": 1,
+        "prioritize": false,
+        "active": true,
+      }];
       return {
-        headings: [{
-            'key': 'projectId',
-            'value': 'ID'
-          },
-          {
-            'key': 'name',
-            'value': 'Name'
-          },
-          {
-            'key': 'location',
-            'value': 'Location'
-          },
-          {
-            'key': 'description',
-            'value': 'Description'
-          },
-          {
-            'key': 'mean',
-            'value': 'Mu'
-          },
-          {
-            'key': 'variance',
-            'value': 'Sigma Squared'
-          },
-          {
-            'key': 'numberOfVotes',
-            'value': 'Votes'
-          },
-          {
-            'key': 'timesSeen',
-            'value': 'Seen'
-          },
-          {
-            'key': 'timesSkipped',
-            'value': 'Skipped'
-          },
-          {
-            'key': 'prioritize',
-            'value': 'Prioritize'
-          },
-          {
-            'key': 'active',
-            'value': 'Active'
-          }
-        ],
-        projects: [{
-          "projectId": 1,
-          "firstName": "Cort",
-          "lastName": "Tosh",
-          "emailAddress": "ctosh0@github.com",
-          "gender": "Male",
-          "phoneNumber": "327-626-5542"
-        }, {
-          "projectId": 2,
-          "firstName": "Brianne",
-          "lastName": "Dzeniskevich",
-          "emailAddress": "bdzeniskevich1@hostgator.com",
-          "gender": "Female",
-          "phoneNumber": "144-190-8956"
-        }, {
-          "projectId": 3,
-          "firstName": "Isadore",
-          "lastName": "Botler",
-          "emailAddress": "ibotler2@gmpg.org",
-          "gender": "Male",
-          "phoneNumber": "350-937-0792"
-        }, {
-          "projectId": 4,
-          "firstName": "Janaya",
-          "lastName": "Klosges",
-          "emailAddress": "jklosges3@amazon.de",
-          "gender": "Female",
-          "phoneNumber": "502-438-7799"
-        }, {
-          "projectId": 5,
-          "firstName": "Freddi",
-          "lastName": "Di Claudio",
-          "emailAddress": "fdiclaudio4@phoca.cz",
-          "gender": "Female",
-          "phoneNumber": "265-448-9627"
-        }, {
-          "projectId": 6,
-          "firstName": "Oliy",
-          "lastName": "Mairs",
-          "emailAddress": "omairs5@fda.gov",
-          "gender": "Female",
-          "phoneNumber": "221-516-2295"
-        }, {
-          "projectId": 7,
-          "firstName": "Tabb",
-          "lastName": "Wiseman",
-          "emailAddress": "twiseman6@friendfeed.com",
-          "gender": "Male",
-          "phoneNumber": "171-817-5020"
-        }, {
-          "projectId": 8,
-          "firstName": "Joela",
-          "lastName": "Betteriss",
-          "emailAddress": "jbetteriss7@msu.edu",
-          "gender": "Female",
-          "phoneNumber": "481-100-9345"
-        }, {
-          "projectId": 9,
-          "firstName": "Alistair",
-          "lastName": "Vasyagin",
-          "emailAddress": "avasyagin8@gnu.org",
-          "gender": "Male",
-          "phoneNumber": "520-669-8364"
-        }, {
-          "projectId": 10,
-          "firstName": "Nealon",
-          "lastName": "Ratray",
-          "emailAddress": "nratray9@typepad.com",
-          "gender": "Male",
-          "phoneNumber": "993-654-9793"
-        }, {
-          "projectId": 11,
-          "firstName": "Annissa",
-          "lastName": "Kissick",
-          "emailAddress": "akissicka@deliciousdays.com",
-          "gender": "Female",
-          "phoneNumber": "283-425-2705"
-        }, {
-          "projectId": 12,
-          "firstName": "Nissie",
-          "lastName": "Sidnell",
-          "emailAddress": "nsidnellb@freewebs.com",
-          "gender": "Female",
-          "phoneNumber": "754-391-3116"
-        }, {
-          "projectId": 13,
-          "firstName": "Madalena",
-          "lastName": "Fouch",
-          "emailAddress": "mfouchc@mozilla.org",
-          "gender": "Female",
-          "phoneNumber": "584-300-9004"
-        }, {
-          "projectId": 14,
-          "firstName": "Rozina",
-          "lastName": "Atkins",
-          "emailAddress": "ratkinsd@japanpost.jp",
-          "gender": "Female",
-          "phoneNumber": "792-856-0845"
-        }, {
-          "projectId": 15,
-          "firstName": "Lorelle",
-          "lastName": "Sandcroft",
-          "emailAddress": "lsandcrofte@google.nl",
-          "gender": "Female",
-          "phoneNumber": "882-911-7241"
-        }],
+        headings: headings,
+        projects: projects,
         selectedRows: [],
 
         open: false,
