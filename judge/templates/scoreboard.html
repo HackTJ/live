@@ -60,7 +60,8 @@
           </div>
           <div x-text="selectedRows.length + ' rows are selected'" class="text-teal-800 text-lg"></div>
           <button :disabled="Boolean(selectedRows.length===0)"
-            class="ml-auto bg-gray-300 hover:bg-red-700 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-800 disabled:font-bold uppercase">Delete</button>
+            class="ml-auto bg-gray-300 hover:bg-red-700 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-800 disabled:font-bold uppercase"
+            @click="deleteSelectedRows">Delete</button>
           <button class="ml-6 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" @click="downloadTableAsCsv">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
@@ -136,38 +137,40 @@
                 </label>
               </td>
               <!-- TODO: would be nice to be able to x-for over project's attributes -->
+              <!-- TODO: currently we add the attribute name to classList for toggleColumn(key).
+                  this is a little unintuitive; we should try setting this as a custom attribute or as the ID-->
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.projectId"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center projectId" x-text="project.projectId"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.name"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center name" x-text="project.name"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.location"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center location" x-text="project.location"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.description"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center description" x-text="project.description"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.mean"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center mean" x-text="project.mean"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.variance"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center variance" x-text="project.variance"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.numberOfVotes"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center numberOfVotes" x-text="project.numberOfVotes"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.timesSeen"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center timesSeen" x-text="project.timesSeen"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.timesSkipped"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center timesSkipped" x-text="project.timesSkipped"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.prioritize"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center prioritize" x-text="project.prioritize"></span>
               </td>
               <td class="border-dashed border-t border-gray-200">
-                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center" x-text="project.active"></span>
+                <span contenteditable="true" class="text-gray-700 px-6 py-3 flex items-center active" x-text="project.active"></span>
               </td>
             </tr>
           </template>
@@ -185,6 +188,8 @@
   <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.3/StreamSaver.min.js"></script>
   <script>
     function datatables() {
+      // TODO: maybe make headings have type {key: value}
+      // (one dictionary with 15 keys/values rather than a list of dictionaries)
       var headings = [{
           'key': 'projectId',
           'value': 'ID'
@@ -435,6 +440,11 @@
         "prioritize": false,
         "active": true,
       }];
+
+      let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
+
+      let getSelectedColumns = () => Array.from(document.querySelectorAll('th:not(.hidden)')).map(thDomElement => thDomElement.innerText);
+
       return {
         headings: headings,
         projects: projects,
@@ -457,8 +467,11 @@
           }
         },
 
-        deleteSelectedColumns($event) {
-
+        deleteSelectedRows($event) {
+          this.selectedRows.forEach(selectedProjectId => tableSocket.send(JSON.stringify({
+            'command': 'delete_project',
+            'projectId': selectedProjectId,
+          })));
         },
 
         getRowDetail($event, id) {
@@ -512,8 +525,8 @@
           let allHeadingLabels = this.headings.map(heading => heading.value);
           let unselectedColumns = allHeadingLabels.filter(n => !selectedColumns.includes(n.toUpperCase()));
 
-          let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
           let headingIdsToRemove = unselectedColumns.map(getHeadingIdfromLabel).filter(el => el != null);
+
           function removeHeadings(selectedRowData) {
             selectedRowData = new Map(Object.entries(selectedRowData));
             headingIdsToRemove.forEach(function(headingId) {
@@ -529,7 +542,7 @@
           // convert JS object to CSV string
           // https://stackoverflow.com/a/31536517/7127932
           let fields = Object.keys(selectedData[0]);
-          let replacer = (key, value) => value === null ? '' : value;  // replace null values with ''
+          let replacer = (key, value) => value === null ? '' : value; // replace null values with ''
           var csv = selectedData.map(row => fields.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
           csv.unshift(fields.join(',')) // add header column
           let output = "\ufeff" + csv.join('\r\n');
@@ -567,8 +580,8 @@
         }
       }
     }
-    // new Tablesort(document.getElementById('scoreboard-table'));
 
+    // new Tablesort(document.getElementById('scoreboard-table'));
     const tableSocket = new WebSocket(
       'ws://' +
       window.location.host +
@@ -576,11 +589,14 @@
     );
     tableSocket.onmessage = function(e) {
       // update datatables().projects
+      console.log(e);
     };
 
     tableSocket.onclose = function(e) {
       console.error('WebSocket closed unexpectedly.');
     };
+
+    console.log(document.querySelectorAll('span[contenteditable=true]'));
 
     document.querySelectorAll('span[contenteditable]').forEach(editable => editable.addEventListener('change', (e) => {
       const changedCell = e.target;
@@ -590,17 +606,16 @@
       // changedCell.parentNode.parentNode is tr
       const changedCellId = changedCell.parentNode.parentNode.children;
       console.log(changedCellId);
-      // tableSocket.send(JSON.stringify(
-      //   {
-      //     'projectId': changedCellId,
-      //     'changedKey': changedKey,
-      //     'newValue': newCellValue
-      //   }
-      // ));
+      tableSocket.send(JSON.stringify({
+        'command': 'edit_project_metadata',
+        'projectId': changedCellId,
+        'changedKey': changedKey,
+        'newValue': newCellValue,
+      }));
     }));
   </script>
   {% endcompress %}
 </div>
-<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine.min.js" defer></script>
-<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.3.5/dist/alpine-ie11.min.js" defer></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.5.0/dist/alpine.min.js" defer></script>
+<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.5.0/dist/alpine-ie11.min.js" defer></script>
 {% endblock %}

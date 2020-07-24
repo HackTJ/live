@@ -1,5 +1,19 @@
+import logging
 import json
 from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.db import database_sync_to_async
+from .models import Project
+
+# Get an instance of a logger
+logger = logging.getLogger(__name__)
+
+
+@database_sync_to_async
+def get_project(project_id):
+    if Project.objects.filter(id=project_id).exists():
+        return Project.objects.get(id=project_id)
+    else:
+        logger.error(f'UNABLE TO GET PROJECT WITH ID {project_id}')
 
 
 class ScoreboardUpdateConsumer(AsyncWebsocketConsumer):
@@ -18,8 +32,45 @@ class ScoreboardUpdateConsumer(AsyncWebsocketConsumer):
 
     # Receive message from WebSocket
     async def receive(self, text_data):
-        text_data_json = json.loads(text_data)
+        data = json.loads(text_data)
+        command = data.pop('command')
+
+        # Send message to room group
         await self.channel_layer.group_send(
             'scoreboard',
-            text_data_json
+            {
+                'type': command,
+                'data': data,
+            }
         )
+
+    async def delete_project(self, event):
+        data = event['data']
+
+        project = await get_project(data['projectId'])
+        logger.info(f'DELETING PROJECT {project}')
+        if project:  # else, there was an error that should be logged
+            # TODO: depending on how we implement models, we may want to set
+            # keep_parents to False
+            project.delete(keep_parents=True)
+
+        self.send(text_data=json.dumps(data))
+
+    async def edit_project_metadata(self, data):
+        self.channel_layer.group_send(
+            'scoreboard',
+            {
+                'type': 'edit_project_metadata_',
+                'data': data,
+            }
+        )
+        project = await get_project(data['projectId'])
+        logger.info(
+            f"SETTING ATTRIBUTE {data['changedKey']} "
+            f"TO {data['newValue']}"
+            f"FOR PROJECT {project.name}"
+        )
+
+    async def edit_project_metadata_(self, event):
+        data = event['data']
+        self.send(text_data=json.dumps(data))
