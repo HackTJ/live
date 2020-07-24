@@ -60,11 +60,11 @@
           </div>
           <div x-text="selectedRows.length + ' rows are selected'" class="text-teal-800 text-lg"></div>
           <button :disabled="Boolean(selectedRows.length===0)"
-            class="ml-auto bg-gray-300 hover:bg-red-700 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-800 disabled:font-bold">DELETE</button>
-          <button class="ml-6 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+            class="ml-auto bg-gray-300 hover:bg-red-700 hover:text-white text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center disabled:cursor-not-allowed disabled:bg-gray-300 disabled:text-gray-800 disabled:font-bold uppercase">Delete</button>
+          <button class="ml-6 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" @click="downloadTableAsCsv">
             <svg class="fill-current w-4 h-4 mr-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
               <path d="M13 8V2H7v6H2l8 8 8-8h-5zM0 18h20v2H0v-2z" /></svg>
-            <span>DOWNLOAD CSV</span>
+            <span class="uppercase">Download CSV</span>
           </button>
         </div>
       </div>
@@ -180,6 +180,9 @@
   <!-- {% load static %}
   <script src="{% static "js/tablesort/tablesort.min.js" %}"></script>
   <script src="{% static "js/tablesort/tablesort.number.min.js" %}"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@2.0.2/dist/ponyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/eligrey/Blob.js/Blob.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.3/StreamSaver.min.js"></script>
   <script>
     function datatables() {
       var headings = [{
@@ -488,6 +491,78 @@
               column.checked = false
             });
             this.selectedRows = [];
+          }
+        },
+
+        downloadTableAsCsv($event) {
+          var selectedRowsData;
+          if (this.selectedRows.length === 0) {
+            selectedRowsData = projects;
+          } else {
+            selectedRowsData = projects.filter(project => this.selectedRows.includes(project.projectId));
+          }
+
+          // the first element of selectedColumns is '', because of the
+          // checkbox column.
+          // we don't want this, but it doesn't matter because of the filter
+          // during the assignment of selectedData.
+          // if we were using jQuery, we might be able to avoid the '' by
+          // changing the query to th:not(.hidden :has( > label)) (untested).
+          let selectedColumns = Array.from(document.querySelectorAll('th:not(.hidden)')).map(thDomElement => thDomElement.innerText);
+          let allHeadingLabels = this.headings.map(heading => heading.value);
+          let unselectedColumns = allHeadingLabels.filter(n => !selectedColumns.includes(n.toUpperCase()));
+
+          let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
+          let headingIdsToRemove = unselectedColumns.map(getHeadingIdfromLabel).filter(el => el != null);
+          function removeHeadings(selectedRowData) {
+            selectedRowData = new Map(Object.entries(selectedRowData));
+            headingIdsToRemove.forEach(function(headingId) {
+              selectedRowData.delete(headingId);
+              delete selectedRowData[headingId];
+              // selectedRowData[headingId] = undefined;
+              return selectedRowData;
+            });
+            return Object.fromEntries(selectedRowData);
+          }
+          let selectedData = selectedRowsData.map(removeHeadings);
+
+          // convert JS object to CSV string
+          // https://stackoverflow.com/a/31536517/7127932
+          let fields = Object.keys(selectedData[0]);
+          let replacer = (key, value) => value === null ? '' : value;  // replace null values with ''
+          var csv = selectedData.map(row => fields.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+          csv.unshift(fields.join(',')) // add header column
+          let output = "\ufeff" + csv.join('\r\n');
+
+          const blob = new Blob([output]); // includes extra columns
+          const fileName = 'export_' + new Date().toLocaleDateString() + '.csv';
+          const fileStream = streamSaver.createWriteStream(fileName, {
+            size: blob.size,
+            // writableStrategy: undefined, // (optional)
+            // readableStrategy: undefined  // (optional)
+          });
+          const readableStream = blob.stream();
+          // more optimized pipe version
+          // (Safari may have pipeTo but it's useless without the WritableStream)
+          if (window.WritableStream && readableStream.pipeTo) {
+            return readableStream.pipeTo(fileStream).then(() => console.log('done downloading CSV data'))
+          }
+
+          // Write (pipe) manually
+          window.writer = fileStream.getWriter();
+
+          const reader = readableStream.getReader();
+          const pump = () => reader.read()
+            .then(res => res.done ?
+              writer.close() :
+              writer.write(res.value).then(pump));
+          pump();
+
+          // abort so it dose not look stuck
+          window.onunload = () => {
+            writableStream.abort();
+            // also possible to call abort on the writer you got from `getWriter()`
+            writer.abort();
           }
         }
       }
