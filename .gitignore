@@ -1,5 +1,8 @@
 .DS_Store
 
+# django-dbbackup
+backup/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tailwind',
+    'dbbackup',  # django-dbbackup
 ]
 
 CHANNEL_LAYERS = {
@@ -50,6 +51,10 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
+DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'backup')}
+# TODO: https://django-dbbackup.readthedocs.io/en/master/configuration.html#encrypting-your-backups
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
