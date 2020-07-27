@@ -31,10 +31,8 @@
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
       <div class="pl-4 flex items-center">
         <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
-          <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
-            <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" />
-            <path class="plane-take-off"
-              d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z " />
+          <svg viewBox="0 0 20 20" class="h-8 fill-current inline">
+            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
           </svg>
           HackTJ Live
         </a>
@@ -42,9 +40,9 @@
 
       <div class="block lg:hidden pr-4">
         <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-900">
-          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
             <title>Menu</title>
-            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
           </svg>
         </button>
       </div>
@@ -62,9 +60,58 @@
           </li>
         </ul>
         {% if user.is_authenticated %}
-          <a id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75" href="/accounts/logout">Logout</a>
+        <a id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75" href="/accounts/logout">Logout</a>
         {% else %}
-          <a id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75" href="/accounts/login">Sign In/Register</a>
+        <button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 transition-all duration-300 ease-in-out" type="button" onclick="toggleModal('modal-id')">Sign
+          In/Register</button>
+        <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
+          <div class="relative w-auto my-6 mx-auto max-w-3xl">
+            <!--BEGIN MODAL-->
+            <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <!--BEGIN MODAL/HEADER-->
+              <div class="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
+                <h3 class="text-3xl font-semibold text-center">
+                  Sign In/Register
+                </h3>
+                <!--BEGIN MODAL/HEADER/CLOSE-->
+                <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
+                  <svg class="fill-current bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                      clip-rule="evenodd"></path>
+                  </svg>
+                </button>
+                <!--END MODAL/HEADER/CLOSE-->
+              </div>
+              <!--END MODAL/HEADER-->
+              <!--BEGIN MODAL/BODY-->
+              <div class="relative p-6 flex-auto">
+                <p class="mx-auto my-4 text-gray-600 text-lg leading-relaxed">
+                  I always felt like I could do anything. That’s the main
+                  thing people are controlled by! Thoughts- their perception
+                  of themselves! They're slowed down by their perception of
+                  themselves. If you're taught you can’t do anything, you
+                  won’t do anything. I was taught I could do everything.
+                </p>
+              </div>
+              <!--END MODAL/BODY-->
+              <!--BEGIN MODAL/FOOTER-->
+              <div class="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
+                <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 transition-all duration-300 ease-in-out" type="button" onclick="toggleModal('modal-id')">
+                  Close
+                </button>
+                <button class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-300 ease-in-out" type="button"
+                  onclick="toggleModal('modal-id')">
+                  Save Changes
+                </button>
+              </div>
+              <!--END MODAL/FOOTER-->
+            </div>
+            <!--END MODAL-->
+          </div>
+        </div>
+        <!-- BEGIN MODAL/OVERLAY -->
+        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop" onclick="toggleModal('modal-id')">&nbsp;</div>
+        <!-- END MODAL/OVERLAY -->
         {% endif %}
       </div>
     </div>
@@ -80,11 +127,9 @@
     <div class="container mx-auto px-8">
       <div class="w-full flex flex-col md:flex-row py-6">
         <div class="flex-1 mb-6 mr-12">
-          <a style="background: -webkit-linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="#">
-            <svg class="h-8 fill-current inline" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.005 512.005">
-              <rect fill="#2a2a31" x="16.539" y="425.626" width="479.767" height="50.502" transform="matrix(1,0,0,1,0,0)" fill="rgb(0,0,0)" />
-              <path class="plane-take-off"
-                d=" M 510.7 189.151 C 505.271 168.95 484.565 156.956 464.365 162.385 L 330.156 198.367 L 155.924 35.878 L 107.19 49.008 L 211.729 230.183 L 86.232 263.767 L 36.614 224.754 L 0 234.603 L 45.957 314.27 L 65.274 347.727 L 105.802 336.869 L 240.011 300.886 L 349.726 271.469 L 483.935 235.486 C 504.134 230.057 516.129 209.352 510.7 189.151 Z " />
+          <a style="background: -webkit-linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+            <svg viewBox="0 0 20 20" class="h-8 inline">
+              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
             </svg>
             HackTJ Live
           </a>
@@ -226,6 +271,16 @@
       return false;
     }
   </script>
+  <script type="text/javascript">
+    // for Sign In/Register button
+    function toggleModal(modalID) {
+      document.getElementById(modalID).classList.toggle("hidden");
+      document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
+      document.getElementById(modalID).classList.toggle("flex");
+      document.getElementById(modalID + "-backdrop").classList.toggle("flex");
+    }
+  </script>
   {% endcompress %}
 </body>
+
 </html>

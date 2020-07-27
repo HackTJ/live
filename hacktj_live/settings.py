@@ -110,7 +110,15 @@ DATABASES = {
         'PASSWORD': '817m5da7fyleau^108yko2ib!&+*!0ba38gh%g8ps()56)=gsv',
         'HOST': 'localhost',
         'PORT': '',
-    }
+    },
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.postgresql',
+    #     'NAME': 'site_hacktj-live-db',
+    #     'USER': 'site_hacktj-live-db',
+    #     'PASSWORD': 'nwFMEThNs6BPGcWZa7ZDw9Ah',
+    #     'HOST': 'postgres1.csl.tjhsst.edu',
+    #     'PORT': '5432',
+    # }
 }
 
 
@@ -133,6 +141,20 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Security
+# https://docs.djangoproject.com/en/3.0/topics/security/
+
+# SECURE_SSL_REDIRECT = True
+
+# SESSION_COOKIE_SECURE = True
+
+# CSRF_COOKIE_SECURE = True
+
+# SECURE_HSTS_SECONDS = 3600
+
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+
+
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
@@ -150,10 +172,13 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 STATIC_URL = '/static/'
+
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
 COMPRESS_OFFLINE = True
