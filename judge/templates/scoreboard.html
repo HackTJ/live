@@ -48,7 +48,7 @@
   </style>
   {% endcompress %}
 
-  <div class="container mx-auto py-6 px-4" x-data="datatables()" x-cloak>
+  <div class="container mx-auto py-6 px-4" x-data="datatable()" x-cloak>
     <h1 class="text-3xl py-4 border-b mb-10 text-blue-300">Live Rankings</h1>
 
     <div class="bg-teal-200 my-8 left-0 bottom-0 right-0 z-40 w-full shadow">
@@ -187,7 +187,7 @@
   <script src="https://cdn.jsdelivr.net/gh/eligrey/Blob.js/Blob.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.3/StreamSaver.min.js"></script>
   <script>
-    function datatables() {
+    function datatable() {
       // TODO: maybe make headings have type {key: value}
       // (one dictionary with 15 keys/values rather than a list of dictionaries)
       var headings = [{
@@ -588,7 +588,7 @@
       '/ws/judge/scoreboard/'
     );
     tableSocket.onmessage = function(e) {
-      // update datatables().projects
+      // update datatable().projects
       console.log(e);
     };
 
