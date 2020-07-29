@@ -47,7 +47,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
       ],
       [
         "tailwindcss",
-        "npm:1.5.1"
+        "npm:1.6.0"
       ]
     ],
     "locationBlacklistData": [
@@ -61,7 +61,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cssnano", "npm:4.1.10"],
             ["postcss-cli", "npm:7.1.1"],
             ["rimraf", "npm:3.0.2"],
-            ["tailwindcss", "npm:1.5.1"]
+            ["tailwindcss", "npm:1.6.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -115,7 +115,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tailwindcss/custom-forms", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:0.2.1"],
             ["lodash", "npm:4.17.19"],
             ["mini-svg-data-uri", "npm:1.2.3"],
-            ["tailwindcss", "npm:1.5.1"],
+            ["tailwindcss", "npm:1.6.0"],
             ["traverse", "npm:0.6.6"]
           ],
           "packagePeers": [
@@ -1005,7 +1005,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["cssnano", "npm:4.1.10"],
             ["postcss-cli", "npm:7.1.1"],
             ["rimraf", "npm:3.0.2"],
-            ["tailwindcss", "npm:1.5.1"]
+            ["tailwindcss", "npm:1.6.0"]
           ],
           "linkType": "SOFT",
         }]
@@ -3385,10 +3385,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["tailwindcss", [
-        ["npm:1.5.1", {
-          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.5.1-748981a67d-1432c0042f.zip/node_modules/tailwindcss/",
+        ["npm:1.6.0", {
+          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.6.0-0e19f2e049-2458f49147.zip/node_modules/tailwindcss/",
           "packageDependencies": [
-            ["tailwindcss", "npm:1.5.1"],
+            ["tailwindcss", "npm:1.6.0"],
             ["@fullhuman/postcss-purgecss", "npm:2.3.0"],
             ["autoprefixer", "npm:9.8.5"],
             ["browserslist", "npm:4.13.0"],

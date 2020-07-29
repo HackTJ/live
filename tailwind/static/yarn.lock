@@ -829,7 +829,7 @@ __metadata:
     cssnano: ^4.1.10
     postcss-cli: ^7.0.32
     rimraf: ^3.0.2
-    tailwindcss: ^1.5.1
+    tailwindcss: ^1.6.0
   languageName: unknown
   linkType: soft
 
@@ -2956,9 +2956,9 @@ resolve@^1.14.2:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^1.5.1":
-  version: 1.5.1
-  resolution: "tailwindcss@npm:1.5.1"
+"tailwindcss@npm:^1.6.0":
+  version: 1.6.0
+  resolution: "tailwindcss@npm:1.6.0"
   dependencies:
     "@fullhuman/postcss-purgecss": ^2.1.2
     autoprefixer: ^9.4.5
@@ -2982,7 +2982,7 @@ resolve@^1.14.2:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: 1432c0042fb04b4d34550184d1274b4a5661b60f1d25432bcdc8f22571455704c155a4bc76a34da9ac7b484325b078ea94f65ad408399fa7e03112e26ce354fe
+  checksum: 2458f491477ce74c1c801cb5b6e5d1de343b58f5f738eab7ebe2cfeb29586377d851955e9397e08a12d211da32f5a84c417dd03506c8d2474b8e341fded41a3e
   languageName: node
   linkType: hard
 
