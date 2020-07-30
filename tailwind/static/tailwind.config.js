@@ -1,11 +1,11 @@
 module.exports = {
-    purge: {
-        enabled: true,
-        content: [
-            '../../templates/**/*.html',
-            '../../**/templates/**/*.html'
-        ]
-    },
+  purge: {
+    enabled: true,
+    content: [
+      '../../templates/**/*.html',
+      '../../**/templates/**/*.html'
+    ]
+  },
   theme: {
     extend: {},
   },
