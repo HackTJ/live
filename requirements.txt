@@ -7,6 +7,7 @@ Automat==20.2.0
 cffi==1.14.0
 channels==2.4.0
 channels-redis==3.0.1
+click==7.1.2
 constantly==15.1.0
 cryptography==3.0
 daphne==2.5.0
@@ -14,7 +15,10 @@ Django==3.0.8
 django-appconf==1.0.4
 django-compressor==2.4
 django-dbbackup==3.3.0
+django-debug-toolbar==2.2
+h11==0.9.0
 hiredis==1.1.0
+httptools==0.1.1
 hyperlink==19.0.0
 idna==2.10
 incremental==17.5.0
@@ -34,4 +38,7 @@ six==1.15.0
 sqlparse==0.3.1
 Twisted==20.3.0
 txaio==20.4.1
+uvicorn==0.11.8
+uvloop==0.14.0
+websockets==8.1
 zope.interface==5.1.0

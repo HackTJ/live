@@ -27,6 +27,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+INTERNAL_IPS = [
+    'localhost',
+    '127.0.0.1',
+]
+
 
 # Application definition
 
@@ -41,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tailwind',
     'dbbackup',  # django-dbbackup
+    'debug_toolbar',
 ]
 
 CHANNEL_LAYERS = {
@@ -66,6 +72,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'hacktj_live.urls'
@@ -116,9 +123,9 @@ DATABASES = {
     #     'NAME': 'site_hacktj-live-db',
     #     'USER': 'site_hacktj-live-db',
     #     'PASSWORD': 'nwFMEThNs6BPGcWZa7ZDw9Ah',
-    #     'HOST': 'postgres1.csl.tjhsst.edu',
+    #     'HOST': '198.38.16.63',  # 'postgres1.csl.tjhsst.edu',
     #     'PORT': '5432',
-    # }
+    # },
 }
 
 
