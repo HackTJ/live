@@ -26,7 +26,10 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
+
+from django.conf import settings
 if settings.DEBUG:
+    from django.urls import include
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
