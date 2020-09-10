@@ -38,16 +38,21 @@ INTERNAL_IPS = [
 INSTALLED_APPS = [
     'channels', 'compressor',
     'judge', 'mentor',
-    'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'tailwind',
     'dbbackup',  # django-dbbackup
     'debug_toolbar',
+    'allauth', 'allauth.account', 'allauth.socialaccount',
+    # 'allauth.socialaccount.providers.slack',
 ]
+
+SITE_ID = 1
 
 CHANNEL_LAYERS = {
     "default": {
@@ -90,10 +95,29 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
 ]
+
+# auth
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_FORMS = {
+    'signup': 'hacktj_live.forms.VolunteerSignupForm'
+}
 
 CACHES = {
     'default': {
@@ -104,7 +128,6 @@ CACHES = {
 
 WSGI_APPLICATION = 'hacktj_live.wsgi.application'
 ASGI_APPLICATION = 'hacktj_live.routing.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
