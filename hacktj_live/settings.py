@@ -56,11 +56,14 @@ SITE_ID = 1
 
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("127.0.0.1", 6379)],
-        },
-    },
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+    # "default": {
+    #     "BACKEND": "channels_redis.core.RedisChannelLayer",
+    #     "CONFIG": {
+    #         "hosts": [("127.0.0.1", 6379)],
+    #     },
+    # },
 }
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
@@ -92,11 +95,8 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
-                'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
-                # `allauth` needs this from django
                 'django.template.context_processors.request',
             ],
         },
@@ -104,6 +104,8 @@ TEMPLATES = [
 ]
 
 # auth
+
+LOGIN_URL='/accounts/login'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -128,6 +130,7 @@ CACHES = {
 
 WSGI_APPLICATION = 'hacktj_live.wsgi.application'
 ASGI_APPLICATION = 'hacktj_live.routing.application'
+
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -212,3 +215,7 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_OFFLINE = True
+
+# content
+
+JUDGE_WELCOME_MESSAGE = "*Judge welcome message with judging directions*"

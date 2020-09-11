@@ -7,7 +7,11 @@ module.exports = {
     ]
   },
   theme: {
-    extend: {},
+    extend: {
+        colors: {
+            'bleh': '#abcabc',
+        }
+    },
   },
   variants: {
     cursor: ['responsive', 'disabled'],
@@ -18,4 +22,5 @@ module.exports = {
   plugins: [
     require('@tailwindcss/custom-forms')
   ],
+  important: true,
 }
