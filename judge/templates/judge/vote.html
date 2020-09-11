@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Vote</h1>
+<a href="/judge">Return to Judge Home</a>
+<div>
+    <h2>Previous</h2>
+    <h3>{{ prev.name }}</h3>
+    <p>{{ prev.description }}</p>
+</div>
+<div>
+    <h2>Current</h2>
+    <h3>{{ next.name }}</h3>
+    <p>{{ next.description }}</p>
+</div>
+<form action="/vote" method="POST">
+    <input class="text-black" name="action" type="submit" value="previous"/>
+    <input class="text-black" name="action" type="submit" value="current"/>
+    <input class="text-black" name="action" type="submit" value="skip"/>
+    <input type="hidden" name="prev_id" value="{{ prev.id }}">
+    <input type="hidden" name="next_id" value="{{ next.id }}">
+</form>
+{% endblock content %}

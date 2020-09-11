@@ -24,7 +24,11 @@ from allauth.account import views as auth_views
 
 urlpatterns = [
     path('', project_views.index),
+    path('judge', judge_views.home),
+    path('judge/welcome', judge_views.welcome),
     path('judge/scoreboard', judge_views.scoreboard),
+    path('judge/begin', judge_views.begin),
+    path('judge/vote', judge_views.vote),
     path('credits', project_views.credits),
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),

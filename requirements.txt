@@ -27,6 +27,7 @@ hyperlink==19.0.0
 idna==2.10
 incremental==17.5.0
 msgpack==1.0.0
+numpy==1.19.0
 oauthlib==3.1.0
 psycopg2==2.8.5
 pyasn1==0.4.8
@@ -44,6 +45,7 @@ rjsmin==1.1.0
 service-identity==18.1.0
 six==1.15.0
 sqlparse==0.3.1
+scipy==1.5.2
 Twisted==20.3.0
 txaio==20.4.1
 urllib3==1.25.10

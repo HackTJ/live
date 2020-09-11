@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Welcome to HackTJ Judging!</h1>
+<p>{{ welcome_message }}</p>
+<form action="/judge/welcome" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Begin Judging"/>
+</form>
+{% endblock content %}
