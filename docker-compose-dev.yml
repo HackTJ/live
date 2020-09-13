@@ -13,11 +13,8 @@ services:
     depends_on:
       - postgres
       - redis
-    environment:
-      # POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: live_admin
-      POSTGRES_DB: hacktj_live
+    env_file:
+      - .env.local
     volumes:
       - .:/app
     ports:
@@ -25,14 +22,12 @@ services:
 
   postgres:
     build: ./compose/postgres
+    restart: always
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
       - postgres_backup_dev:/backups
-    environment:
-      # POSTGRES_HOST_AUTH_METHOD: trust
-      POSTGRES_PASSWORD: password
-      POSTGRES_USER: live_admin
-      POSTGRES_DB: hacktj_live
+    env_file:
+      - .env.local
 
   redis:
     build: ./compose/redis
