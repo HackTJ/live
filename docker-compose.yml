@@ -1,10 +1,6 @@
 version: '3.8'
 
 volumes:
-  static:
-    driver: local
-  media:
-    driver: local
   postgres_data_dev:
   postgres_backup_dev:
 
@@ -12,25 +8,12 @@ services:
   django:
     build:
       context: .
-      dockerfile: ./compose/django/Dockerfile
+      dockerfile: ./compose/django/Dockerfile-dev
     restart: always
     command: /start.sh
-    expose:
-      - 8000
     depends_on:
       - postgres
       - redis
-    env_file:
-      - .env
-    volumes:
-      - static:/app/static
-      - media:/app/media
-    deploy:
-      resources:  # for Gunicorn
-        # https://github.com/benoitc/gunicorn/issues/1440#issuecomment-411785926
-        limits:
-          cpus: "0.1"
-          memory: "4G"
 
   postgres:
     build: ./compose/postgres
@@ -38,8 +21,6 @@ services:
     volumes:
       - postgres_data_dev:/var/lib/postgresql/data
       - postgres_backup_dev:/backups
-    env_file:
-      - .env
     shm_size: 256MB
 
   redis:
@@ -47,17 +28,3 @@ services:
     restart: always
     sysctls:
       net.core.somaxconn: '511'
-
-  nginx:
-    build:
-      context: .
-      dockerfile: ./compose/nginx/Dockerfile
-    restart: always
-    ports:
-      - "1379:80"
-    depends_on:
-      - django
-    volumes:
-      - static:/usr/share/nginx/html/static/
-      # - static:/data/static
-      - media:/data/media
