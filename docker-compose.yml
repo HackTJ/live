@@ -13,6 +13,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
+    restart: always
     command: /start.sh
     expose:
       - 8000
@@ -39,6 +40,7 @@ services:
       - postgres_backup_dev:/backups
     env_file:
       - .env
+    shm_size: 256MB
 
   redis:
     build: ./compose/redis
@@ -50,6 +52,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/nginx/Dockerfile
+    restart: always
     ports:
       - "1379:80"
     depends_on:
