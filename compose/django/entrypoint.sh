@@ -4,16 +4,23 @@ set -e
 cmd="$@"
 
 postgres_ready () {
-python << END
-import sys
-import psycopg2
+  python << END
+from sys import exit as sys_exit
+from psycopg2 import connect as connect_db, OperationalError
 
 
 try:
-    conn = psycopg2.connect(dbname="$POSTGRES_DB", user="$POSTGRES_USER", password="$POSTGRES_PASSWORD", host="postgres")
-except psycopg2.OperationalError:
-    sys.exit(-1)
-sys.exit(0)
+    _ = connect_db(
+        dbname="$POSTGRES_DB",
+        user="$POSTGRES_USER",
+        password="$POSTGRES_PASSWORD",
+        host="postgres",
+    )
+except OperationalError:
+    sys_exit(-1)
+else:
+    sys_exit(0)
+
 END
 }
 

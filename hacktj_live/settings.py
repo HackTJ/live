@@ -24,17 +24,25 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = str(os.environ.get('DEBUG', False)).upper() == 'TRUE'
 
 INTERNAL_IPS = [
     'localhost',
     '127.0.0.1',
+    '0.0.0.0',
 ]
 
 ALLOWED_HOSTS = [
     *INTERNAL_IPS,
-    'live.hacktj.org'
+    'django', 'nginx',  # docker compose
+    'live.hacktj.org',
 ]
+
+ADMINS = [
+    ('Sumanth Ratna', 'sumanth@hacktj.org'),
+]
+
+# MANAGERS
 
 # Application definition
 
@@ -139,7 +147,13 @@ ASGI_APPLICATION = 'hacktj_live.routing.application'
 
 
 DATABASES = {
-    'default': parse_db_url(os.environ['DATABASE_URL'], conn_max_age=600),
+    'default': parse_db_url(
+        os.environ.get(
+            'DATABASE_URL',
+            'postgres://live_admin:postgres-password@postgres:5432/hacktj_live',
+        ),
+        conn_max_age=600,
+    ),
 }
 
 

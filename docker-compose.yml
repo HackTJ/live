@@ -2,86 +2,59 @@ version: '3.8'
 
 volumes:
   static:
+    driver: local
   media:
+    driver: local
+  postgres_data_dev:
+  postgres_backup_dev:
 
 services:
-  django-a:
+  django:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    user: django
+    command: /start.sh
+    expose:
+      - 8000
     depends_on:
       - postgres
       - redis
+    env_file:
+      - .env
     volumes:
-      - static:/data/static
-      - media:/data/media
-    command: /start.sh
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "400m"
-        max-file: "5"
-        compress: "true"
-
-  django-b:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
-    user: django
-    depends_on:
-      - postgres
-      - redis
-    volumes:
-      - static:/data/static
-      - media:/data/media
-    command: /start.sh
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "400m"
-        max-file: "5"
-        compress: "true"
+      - static:/app/static
+      - media:/app/media
+    deploy:
+      resources:  # for Gunicorn
+        # https://github.com/benoitc/gunicorn/issues/1440#issuecomment-411785926
+        limits:
+          cpus: "0.1"
+          memory: "4G"
 
   postgres:
     build: ./compose/postgres
+    restart: always
     volumes:
-      - /data/hacktj_live/postgres:/var/lib/postgresql/data
-      - /data/hacktj_live/backups:/backups
-    environment:
-      - POSTGRES_PASSWORD='817m5da7fyleau^108yko2ib!&+*!0ba38gh%g8ps()56)=gsv'
-      - POSTGRES_USER=live_admin
-      - POSTGRES_DB=hacktj_live
-      - POSTGRES_PORT=5432
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "600m"
-        max-file: "5"
-        compress: "true"
-
-  nginx:
-    build: ./compose/nginx
-    depends_on:
-      # - django-a
-      # - django-b
-      - postgres
-    volumes:
-     - static:/data/static
-     - media:/data/media
-    ports:
-     - "1337:80"
-    # environment:
-    #  - NGINX_HOST=foobar.com
-    #  - NGINX_PORT=80
+      - postgres_data_dev:/var/lib/postgresql/data
+      - postgres_backup_dev:/backups
+    env_file:
+      - .env
 
   redis:
     build: ./compose/redis
+    restart: always
     sysctls:
       net.core.somaxconn: '511'
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "100m"
-        max-file: "5"
-        compress: "true"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./compose/nginx/Dockerfile
+    ports:
+      - "1379:80"
+    depends_on:
+      - django
+    volumes:
+      - static:/usr/share/nginx/html/static/
+      # - static:/data/static
+      - media:/data/media

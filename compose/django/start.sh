@@ -1,4 +1,9 @@
 #!/bin/sh
-python manage.py migrate
+
+python manage.py makemigrations --noinput
+python manage.py migrate --noinput
 python manage.py collectstatic --noinput
-gunicorn hacktj_live:asgi -w 4 -k uvicorn.workers.UvicornWorker
+python manage.py compress
+
+# uvicorn --host '0.0.0.0' --lifespan 'off' 'hacktj_live.asgi:application'
+gunicorn --config ./compose/django/gunicorn.conf.py 'hacktj_live.asgi:application'
