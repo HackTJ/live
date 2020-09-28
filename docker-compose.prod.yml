@@ -10,9 +10,6 @@ volumes:
 
 services:
   django:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile
     expose:
       - 8000
     volumes:

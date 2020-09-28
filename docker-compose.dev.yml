@@ -2,9 +2,6 @@ version: '3.8'
 
 services:
   django:
-    build:
-      context: .
-      dockerfile: ./compose/django/Dockerfile-dev
     volumes:
       - .:/app
     ports:

@@ -17,8 +17,7 @@ COPY . /app
 COPY ./compose/django/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 COPY ./compose/django/start.sh /start.sh
-RUN sed -i 's/\r//' /start.sh \
-    && chmod +x /start.sh
+RUN sed -i 's/\r//' /start.sh && chmod +x /start.sh
 
 WORKDIR /app
 
