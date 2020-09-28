@@ -5,7 +5,7 @@ ENV PYTHONUNBUFFERED 1
 # Requirements have to be pulled and installed here, otherwise caching won't work
 COPY ./requirements.txt /requirements.txt
 
-RUN apk add --no-cache libffi-dev build-base postgresql-dev openblas-dev && \
+RUN apk add --no-cache "libffi-dev=3.3-r2" "g++=9.3.0-r2" "make=4.3-r0" "postgresql-dev=12.4-r0" "openblas-dev=0.3.9-r2" && \
     python -m pip install --upgrade pip && \
     python -m pip install -r /requirements.txt
 
