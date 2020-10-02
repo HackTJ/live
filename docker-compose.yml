@@ -10,6 +10,8 @@ services:
       context: .
       dockerfile: ./compose/django/Dockerfile
     restart: always
+    sysctls:
+      net.core.somaxconn: 2048
     command: /start.sh
     depends_on:
       - postgres
