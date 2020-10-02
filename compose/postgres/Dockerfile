@@ -1,4 +1,4 @@
-FROM postgres:13-alpine
+FROM postgres:13.0-alpine
 
 # add backup scripts
 ADD backup.sh /usr/local/bin/backup
