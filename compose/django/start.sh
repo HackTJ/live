@@ -11,5 +11,6 @@ else
   python manage.py compress
 
   # uvicorn --host '0.0.0.0' --lifespan 'off' 'hacktj_live.asgi:application'
+  ulimit -n 2048
   gunicorn --config ./compose/django/gunicorn.conf.py 'hacktj_live.asgi:application'
 fi
