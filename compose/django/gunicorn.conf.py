@@ -29,3 +29,5 @@ threads = workers  # 2-4 x $(NUM_CORES)
 # timeout = 120
 # graceful_timeout = 120
 preload_app = True
+
+worker_tmp_dir = '/dev/shm'
