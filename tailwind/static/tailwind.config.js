@@ -23,4 +23,14 @@ module.exports = {
     require('@tailwindcss/custom-forms')
   ],
   important: true,
+  future: {
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true,
+  },
+  experimental: {
+    uniformColorPalette: true,
+    extendedSpacingScale: true,
+    defaultLineHeights: true,
+    extendedFontSizeScale: true,
+  },
 }
