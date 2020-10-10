@@ -44,7 +44,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.0.7"],
             ["postcss-cli", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:8.0.0"],
             ["rimraf", "npm:3.0.2"],
-            ["tailwindcss", "npm:1.8.12"]
+            ["tailwindcss", "npm:1.8.13"]
           ],
           "linkType": "SOFT",
         }]
@@ -99,7 +99,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@types/tailwindcss", null],
             ["lodash", "npm:4.17.20"],
             ["mini-svg-data-uri", "npm:1.2.3"],
-            ["tailwindcss", "npm:1.8.12"],
+            ["tailwindcss", "npm:1.8.13"],
             ["traverse", "npm:0.6.6"]
           ],
           "packagePeers": [
@@ -1016,7 +1016,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["postcss", "npm:8.0.7"],
             ["postcss-cli", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:8.0.0"],
             ["rimraf", "npm:3.0.2"],
-            ["tailwindcss", "npm:1.8.12"]
+            ["tailwindcss", "npm:1.8.13"]
           ],
           "linkType": "SOFT",
         }]
@@ -3474,10 +3474,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["tailwindcss", [
-        ["npm:1.8.12", {
-          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.8.12-b22c3716ba-628ef58b54.zip/node_modules/tailwindcss/",
+        ["npm:1.8.13", {
+          "packageLocation": "./.yarn/cache/tailwindcss-npm-1.8.13-cee3191bc8-eb1c0537a4.zip/node_modules/tailwindcss/",
           "packageDependencies": [
-            ["tailwindcss", "npm:1.8.12"],
+            ["tailwindcss", "npm:1.8.13"],
             ["@fullhuman/postcss-purgecss", "npm:2.3.0"],
             ["autoprefixer", "npm:9.8.5"],
             ["browserslist", "npm:4.14.3"],

@@ -7,11 +7,7 @@ module.exports = {
     ]
   },
   theme: {
-    extend: {
-        colors: {
-            'bleh': '#abcabc',
-        }
-    },
+    extend: {}
   },
   variants: {
     cursor: ['responsive', 'disabled'],
