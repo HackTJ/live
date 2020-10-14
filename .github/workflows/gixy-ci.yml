@@ -21,7 +21,9 @@ jobs:
 
       # Installs Gixy
       - name: Install Gixy
-        run: python3 -m pip install gixy
+        run: |
+          python3 -m pip install setuptools
+          python3 -m pip install gixy
 
       # Run Gixy
       - name: Run Gixy
