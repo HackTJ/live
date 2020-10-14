@@ -1,10 +1,10 @@
 name: Gixy CI
 
 on:
-  push:
-    paths: ./compose/nginx/nginx.conf
-  pull_request:
-    paths: ./compose/nginx/nginx.conf
+  push
+    # paths: ./compose/nginx/nginx.conf
+  pull_request
+    # paths: ./compose/nginx/nginx.conf
 
 jobs:
   gixy:
