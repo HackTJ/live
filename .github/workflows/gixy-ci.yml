@@ -19,8 +19,12 @@ jobs:
       #   with:
       #     python-version: ${{ matrix.python-version }}
 
-      - name: Install and run Gixy
+      # Installs Gixy
+      - name: Install Gixy
         run: |
           python3 -m pip install setuptools
           python3 -m pip install gixy
-          gixy ./compose/nginx/nginx.conf
+
+      # Run Gixy
+      - name: Run Gixy
+        run: gixy ./compose/nginx/nginx.conf
