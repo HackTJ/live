@@ -2,16 +2,17 @@ name: Gixy CI
 
 on:
   push:
-    # paths: ./compose/nginx/nginx.conf
+    paths:
+    - './compose/nginx/nginx.conf'
   pull_request:
-    # paths: ./compose/nginx/nginx.conf
+    paths:
+    - './compose/nginx/nginx.conf'
 
 jobs:
   gixy:
     runs-on: ubuntu-latest
 
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
       - name: Set up Python 3.7
@@ -19,12 +20,10 @@ jobs:
         with:
           python-version: '3.7'
 
-      # Installs Gixy
       - name: Install Gixy
         run: |
           python3 -m pip install setuptools
           python3 -m pip install gixy
 
-      # Run Gixy
       - name: Run Gixy
         run: gixy ./compose/nginx/nginx.conf
