@@ -1,9 +1,9 @@
 name: Gixy CI
 
 on:
-  push
+  push:
     # paths: ./compose/nginx/nginx.conf
-  pull_request
+  pull_request:
     # paths: ./compose/nginx/nginx.conf
 
 jobs:
