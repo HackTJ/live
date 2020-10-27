@@ -11,7 +11,7 @@ channels-redis==3.1.0
 chardet==3.0.4
 click==7.1.2
 constantly==15.1.0
-cryptography==3.1.1
+cryptography==3.2
 daphne==2.5.0
 defusedxml==0.6.0
 dj-database-url==0.5.0
