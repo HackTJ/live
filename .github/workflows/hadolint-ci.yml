@@ -1,0 +1,23 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Hadolint CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  hadolint:
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      - name: Run Hadolint
+        run: |
+          docker run --rm -i hadolint/hadolint < ./compose/django/Dockerfile
+          docker run --rm -i hadolint/hadolint < ./compose/nginx/Dockerfile
+          docker run --rm -i hadolint/hadolint < ./compose/postgres/Dockerfile
+          docker run --rm -i hadolint/hadolint < ./compose/redis/Dockerfile
