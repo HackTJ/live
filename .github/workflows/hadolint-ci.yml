@@ -12,18 +12,18 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Lint Django Dockerfile
-        uses: brpaz/hadolint-action
+        uses: brpaz/hadolint-action@v1.1.0
         with:
           dockerfile: "./compose/django/Dockerfile"
       - name: Lint Nginx Dockerfile
-        uses: brpaz/hadolint-action
+        uses: brpaz/hadolint-action@v1.1.0
         with:
           dockerfile: "./compose/nginx/Dockerfile"
       - name: Lint Postgres Dockerfile
-        uses: brpaz/hadolint-action
+        uses: brpaz/hadolint-action@v1.1.0
         with:
           dockerfile: "./compose/postgres/Dockerfile"
       - name: Lint Redis Dockerfile
-        uses: brpaz/hadolint-action
+        uses: brpaz/hadolint-action@v1.1.0
         with:
           dockerfile: "./compose/redis/Dockerfile"
