@@ -2,7 +2,11 @@ name: Hadolint CI
 
 on:
   push:
+    paths:
+    - './compose/**/Dockerfile'
   pull_request:
+    paths:
+    - './compose/**/Dockerfile'
 
 jobs:
   hadolint:
