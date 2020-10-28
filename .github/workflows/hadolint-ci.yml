@@ -11,9 +11,19 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Run Hadolint
-        run: |
-          docker run --rm -i hadolint/hadolint < ./compose/django/Dockerfile
-          docker run --rm -i hadolint/hadolint < ./compose/nginx/Dockerfile
-          docker run --rm -i hadolint/hadolint < ./compose/postgres/Dockerfile
-          docker run --rm -i hadolint/hadolint < ./compose/redis/Dockerfile
+      - name: Lint Django Dockerfile
+        uses: brpaz/hadolint-action
+        with:
+          dockerfile: "./compose/django/Dockerfile"
+      - name: Lint Nginx Dockerfile
+        uses: brpaz/hadolint-action
+        with:
+          dockerfile: "./compose/nginx/Dockerfile"
+      - name: Lint Postgres Dockerfile
+        uses: brpaz/hadolint-action
+        with:
+          dockerfile: "./compose/postgres/Dockerfile"
+      - name: Lint Redis Dockerfile
+        uses: brpaz/hadolint-action
+        with:
+          dockerfile: "./compose/redis/Dockerfile"
