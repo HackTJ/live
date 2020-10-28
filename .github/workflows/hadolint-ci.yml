@@ -11,23 +11,11 @@ on:
 jobs:
   hadolint:
     runs-on: ubuntu-latest
+    
+    container: hadolint/hadolint
 
     steps:
       - uses: actions/checkout@v2
-
-      - name: Lint Django Dockerfile
-        uses: brpaz/hadolint-action@v1.1.0
-        with:
-          dockerfile: "./compose/django/Dockerfile"
-      - name: Lint Nginx Dockerfile
-        uses: brpaz/hadolint-action@v1.1.0
-        with:
-          dockerfile: "./compose/nginx/Dockerfile"
-      - name: Lint Postgres Dockerfile
-        uses: brpaz/hadolint-action@v1.1.0
-        with:
-          dockerfile: "./compose/postgres/Dockerfile"
-      - name: Lint Redis Dockerfile
-        uses: brpaz/hadolint-action@v1.1.0
-        with:
-          dockerfile: "./compose/redis/Dockerfile"
+      
+      - name: Run hadolint
+        run: hadolint ./compose/**/Dockerfile
