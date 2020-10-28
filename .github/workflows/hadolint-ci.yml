@@ -4,9 +4,11 @@ on:
   push:
     paths:
     - './compose/**/Dockerfile'
+    - './.github/workflows/hadolint-ci.yml'
   pull_request:
     paths:
     - './compose/**/Dockerfile'
+    - './.github/workflows/hadolint-ci.yml'
 
 jobs:
   hadolint:
