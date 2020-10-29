@@ -7,7 +7,7 @@ class VolunteerSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super(VolunteerSignupForm, self).__init__(*args, **kwargs)
 
-        for fieldname, field in self.fields.items():
+        for field in self.fields.values():
             field.widget.attrs.update({
                 'class': 'text-black'
             })
@@ -17,17 +17,8 @@ class VolunteerSignupForm(SignupForm):
             choices=[('user_judge', 'Judge'), ('user_mentor', 'Mentor')]
         )
 
-        self.fields['first_name'] = forms.CharField(
+        self.fields['name'] = forms.CharField(
             max_length=150,
-            widget=forms.TextInput(
-                attrs={
-                    'class': 'text-black'
-                }
-            )
-        )
-
-        self.fields['last_name'] = forms.CharField(
-            max_length=149,
             widget=forms.TextInput(
                 attrs={
                     'class': 'text-black'
@@ -38,18 +29,22 @@ class VolunteerSignupForm(SignupForm):
     def save(self, request):
         user = super(VolunteerSignupForm, self).save(request)
 
-        user.first_name = self.cleaned_data["first_name"]
-        user.last_name = self.cleaned_data["last_name"]
+        user.name = self.cleaned_data["name"]
 
+        print('r', request.user.groups.values_list('name',flat = True))
+        print('g', list(Group.objects.all()))
         if self.cleaned_data["user_type"] == "user_judge":
-            judge_group = Group.objects.get(name='judge')
+            judge_group, _ = Group.objects.get_or_create(name='judge')
             user.groups.add(judge_group)
 
             annotator = Annotator(judge=user)
             annotator.save()
-        else:
-            mentor_group = Group.objects.get(name='mentor')
+        elif self.cleaned_data["user_type"] == "user_mentor":
+            mentor_group, _ = Group.objects.get_or_create(name='mentor')
             user.groups.add(mentor_group)
+        else:
+            # raise
+            pass
 
         user.save()
         
