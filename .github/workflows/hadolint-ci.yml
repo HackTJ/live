@@ -1,0 +1,23 @@
+name: Hadolint CI
+
+on:
+  push:
+    paths:
+    - './compose/**/Dockerfile'
+    - './.github/workflows/hadolint-ci.yml'
+  pull_request:
+    paths:
+    - './compose/**/Dockerfile'
+    - './.github/workflows/hadolint-ci.yml'
+
+jobs:
+  hadolint:
+    runs-on: ubuntu-latest
+    
+    container: hadolint/hadolint
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Run hadolint
+        run: hadolint ./compose/**/Dockerfile
