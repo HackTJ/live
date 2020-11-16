@@ -2,7 +2,7 @@
   "name": "django_tailwind",
   "description": "",
   "scripts": {
-    "build": "cross-env-shell NODE_ENV=production \"rimraf ../../static/css && tailwindcss build | postcss -o ../../static/css/tailwind.min.css\""
+    "build": "rimraf ../../static/css && tailwindcss build | postcss -o ../../static/css/tailwind.min.css"
   },
   "keywords": [],
   "author": "Sumanth Ratna <sumanth@hacktj.org>",
@@ -14,7 +14,7 @@
     "postcss": "^8.1.7",
     "postcss-cli": "^8.2.0",
     "rimraf": "^3.0.2",
-    "tailwindcss": "^2.0.0-alpha.17"
+    "tailwindcss": "^2.0.0-alpha.22"
   },
   "devDependencies": {
     "cross-env": "^7.0.2"

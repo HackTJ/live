@@ -3,7 +3,7 @@ module.exports = {
     '../../templates/**/*.html',
     '../../**/templates/**/*.html'
   ],
-  darkMode: false,
+  darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},
   },
