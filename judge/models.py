@@ -11,9 +11,9 @@ class Project(models.Model):
 
     mean = models.DecimalField(default=0., decimal_places=8, max_digits=12)
     variance = models.DecimalField(default=1., decimal_places=8, max_digits=12)
-    numberOfVotes = models.IntegerField()
-    timesSeen = models.IntegerField()
-    timesSkipped = models.IntegerField()
+    numberOfVotes = models.IntegerField(default=0)
+    timesSeen = models.IntegerField(default=0)
+    timesSkipped = models.IntegerField(default=0)
 
     prioritize = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
@@ -23,7 +23,9 @@ class Annotator(models.Model):
         User,
         on_delete=models.CASCADE,
     )
-    updated = models.DateTimeField()
+
+    updated = models.DateTimeField(blank=True, null=True)
+
     next = models.ForeignKey(
         Project,
         null=True,
