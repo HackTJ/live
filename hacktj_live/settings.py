@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+from dj_database_url import parse as parse_db_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,18 +21,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'zn(9pu5vy!6lw1$8g0+5zdws_sy19z%(p(myt7a)t@#1n0%b5@'
+SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
+DEBUG = str(os.environ.get('DEBUG', False)).upper() == 'TRUE'
 
 INTERNAL_IPS = [
     'localhost',
     '127.0.0.1',
+    '0.0.0.0',
 ]
 
+ALLOWED_HOSTS = [
+    *INTERNAL_IPS,
+    'django', 'nginx',  # docker compose
+    'live.hacktj.org',
+]
+
+ADMINS = [
+    ('Sumanth Ratna', 'sumanth@hacktj.org'),
+]
+
+# MANAGERS
 
 # Application definition
 
@@ -134,23 +145,15 @@ ASGI_APPLICATION = 'hacktj_live.routing.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hacktj_live',
-        'USER': 'live_admin',
-        'PASSWORD': '817m5da7fyleau^108yko2ib!&+*!0ba38gh%g8ps()56)=gsv',
-        'HOST': 'localhost',
-        'PORT': '',
-    },
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.postgresql',
-    #     'NAME': 'site_hacktj-live-db',
-    #     'USER': 'site_hacktj-live-db',
-    #     'PASSWORD': 'nwFMEThNs6BPGcWZa7ZDw9Ah',
-    #     'HOST': '198.38.16.63',  # 'postgres1.csl.tjhsst.edu',
-    #     'PORT': '5432',
-    # },
+    'default': parse_db_url(
+        os.environ.get(
+            'DATABASE_URL',
+            'postgres://live_admin:postgres-password@postgres:5432/hacktj_live',
+        ),
+        conn_max_age=600,
+    ),
 }
 
 

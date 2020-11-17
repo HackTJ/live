@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  django:
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.local
+    environment:
+      - DEBUG=true
+
+  postgres:
+    env_file:
+      - .env.local
+
+  redis:
+    build: ./compose/redis
+    restart: always
+    sysctls:
+      net.core.somaxconn: '511'
