@@ -4,9 +4,9 @@ import judge.routing
 
 application = ProtocolTypeRouter({
     # (http->django views is added by default)
-    'websocket': AuthMiddlewareStack(
-        URLRouter(
-            judge.routing.websocket_urlpatterns
-        )
-    ),
+    # 'websocket': AuthMiddlewareStack(
+    #     URLRouter(
+    #         judge.routing.websocket_urlpatterns
+    #     )
+    # ),
 })
