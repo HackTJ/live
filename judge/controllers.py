@@ -19,7 +19,7 @@ def preferred_items(annotator):
     items = prioritized_projects if prioritized_projects else available_projects
 
     annotators = Annotator.query.filter(
-        (Annotator.active == True) and (Annotator.next is not None) and (Annotator.updated is not None)
+        (Annotator.active == True) and (Annotator.next is not None)
     ).all()
 
     nonbusy = {a.next.id for a in annotators if (datetime.utcnow() - a.updated).total_seconds() >= settings.TIMEOUT * 60}
