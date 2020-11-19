@@ -99,6 +99,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'hacktj_live.middlewares.BetterExceptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'hacktj_live.urls'
