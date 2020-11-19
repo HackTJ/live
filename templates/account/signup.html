@@ -2,13 +2,13 @@
 
 {% load i18n %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
+{% block head_title %}{% translate "Signup" %}{% endblock %}
 
 {% block content %}
 
 <div class="w-2/3 content-center justify-center text-center mx-auto">
-    <h1 class="text-2xl text-center">{% trans "Sign Up" %}</h1>
-    <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+    <h1 class="text-2xl text-center">{% translate "Sign Up" %}</h1>
+    <p>{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}
     </p>
 
     <div class="w-full">
@@ -128,11 +128,11 @@
                 <button
                     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit">
-                    {% trans "Sign Up" %}
+                    {% translate "Sign Up" %}
                 </button>
                 <button
                     class="inline-block align-baseline text-sm font-bold py-2 px-4 rounded text-blue-500 hover:text-blue-800"
-                    type="reset">{% trans "Clear All Fields" %}</button>
+                    type="reset">{% translate "Clear All Fields" %}</button>
             </div>
         </form>
     </div>

@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% translate "Sign In" %}{% endblock %}
+
+{% block content %}
+
+<div class="w-2/3 content-center justify-center text-center mx-auto">
+    <h1 class="text-2xl text-center">{% translate "Sign In" %}</h1>
+    {% get_providers as socialaccount_providers %}
+
+    {% if socialaccount_providers %}
+    <p>{% blocktranslate with site.name as site_name %}Please sign in with one
+        of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+        for a {{ site_name }} account and sign in below:{% endblocktranslate %}</p>
+
+    <div class="socialaccount_ballot">
+
+        <ul class="socialaccount_providers">
+            {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+        </ul>
+
+        <div class="login-or">{% translate "or" %}</div>
+
+    </div>
+
+    {% include "socialaccount/snippets/login_extra.html" %}
+
+    {% else %}
+    <p>{% blocktranslate %}If you have not created an account yet, then please
+        <a href="{{ signup_url }}">sign up</a> first.{% endblocktranslate %}</p>
+    {% endif %}
+
+    <div class="w-full">
+        <form class="text-gray-700 bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4" method="POST"
+            action="{% url 'account_login' %}">
+            {% csrf_token %}
+            {% if form.non_field_errors %}
+            <ol>
+                {% for error in form.non_field_errors %}
+                <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+                {% endfor %}
+            </ol>
+            {% endif %}
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.login.id_for_label }}">
+                    {{ form.login.label }}
+                </label>
+                <input
+                    class="shadow appearance-none border {% if form.login.errors and form.login.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="{{ form.login.id_for_label }}" type="text"
+                    placeholder="{{ form.login.label }}"
+                    autocomplete="username"
+                    name="{{ form.login.name }}">
+                {% if form.login.errors %}
+                <ol>
+                    {% for error in form.login.errors %}
+                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="{{ form.password.id_for_label }}">
+                    {{ form.password.label }}
+                </label>
+                <input
+                    class="shadow appearance-none border {% if form.password.errors and form.password.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+                    id="{{ form.password.id_for_label }}" type="password" placeholder="******************"
+                    autocomplete="current-password" name="{{ form.password.name }}">
+                {% if form.password.errors %}
+                <ol>
+                    {% for error in form.password.errors %}
+                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+                    {% endfor %}
+                </ol>
+                {% endif %}
+            </div>
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+            {% endif %}
+            <div class="flex items-center justify-between">
+                <button
+                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    type="submit">
+                    {% translate "Sign In" %}
+                </button>
+                <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+                    href="{% url 'account_reset_password' %}">{% translate "Forgot Password?" %}</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

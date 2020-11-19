@@ -14,7 +14,7 @@
     "postcss": "^8.1.7",
     "postcss-cli": "^8.2.0",
     "rimraf": "^3.0.2",
-    "tailwindcss": "^2.0.0-alpha.25"
+    "tailwindcss": "^2.0.1"
   },
   "devDependencies": {
     "cross-env": "^7.0.2"
