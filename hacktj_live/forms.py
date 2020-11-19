@@ -32,6 +32,8 @@ class VolunteerSignupForm(SignupForm):
 
         user.name = self.cleaned_data["name"]
 
+        print('r', request.user.groups.values_list('name',flat = True))
+        print('g', list(Group.objects.all()))
         if self.cleaned_data["user_type"] == "user_judge":
             judge_group, _ = Group.objects.get_or_create(name='judge')
             user.groups.add(judge_group)

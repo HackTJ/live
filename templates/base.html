@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>HackTJ Live</title>
+  <title>{% block head_title %}HackTJ Live{% endblock %}</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
   <meta name="author" content="">
@@ -16,120 +16,87 @@
 
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
-  <style>
-    .gradient {
-      background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
-    }
-  </style>
-
 </head>
 
-<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
+<body
+  class="leading-normal tracking-normal text-white bg-gradient-to-r from-blue-500 to-green-400 font-sans antialiased flex flex-col min-h-screen"
+  style="font-family: 'Source Sans Pro', sans-serif;">
 
   <!--Nav-->
-  <nav id="header" class="fixed w-full z-30 top-0 text-white">
-    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+  <nav id="header" class="fixed w-full z-30 top-0 text-white lg:mt-0 pt-4 border-b">
+    <div class="w-full container mx-auto flex flex-wrap items-center justify-between mb-4">
       <div class="pl-4 flex items-center">
         <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
           <svg viewBox="0 0 20 20" class="h-8 fill-current inline">
-            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+            <path
+              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
+            </path>
           </svg>
           HackTJ Live
         </a>
       </div>
 
       <div class="block lg:hidden pr-4">
-        <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-900">
-          <svg class="fill-current h-6 w-6" viewBox="0 0 20 20">
+        <button id="nav-toggle" class="flex items-center p-1">
+          <svg class="fill-current h-6 w-6 text-white hover:text-gray-900 toggleColour" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
             <title>Menu</title>
-            <path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
 
-      <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20" id="nav-content">
-        <ul class="list-reset lg:flex justify-end flex-1 items-center">
-          <li class="mr-3">
-            <a class="inline-block py-2 px-4 text-black font-bold no-underline" href="/">Home</a>
+      <div
+        class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent p-4 lg:p-0 z-20"
+        id="nav-content">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black"> <!--toggleColour-->
+          <li>
+            <a class="inline py-2 px-4 font-bold no-underline" href="/">Home</a>
           </li>
-          <li class="mr-3">
-            <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/mentor">Mentor</a>
+          <!-- <li>
+            <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="/mentor">Mentor</a>
+          </li> -->
+          <li>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="/judge">Judge</a>
           </li>
-          <li class="mr-3">
-            <a class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/judge">Judge</a>
+          <span class="select-none hidden lg:block">|</span>
+          <hr class="w-1/3 lg:hidden" />
+          {% if user.is_authenticated %}
+          <li>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="{% url 'account_logout' %}">Logout</a>
           </li>
+          {% else %}
+          <li>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="{% url 'account_login' %}">Sign In</a>
+          </li>
+          <li>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="{% url 'account_signup' %}">Register</a>
+          </li>
+          {% endif %}
         </ul>
-        {% if user.is_authenticated %}
-        <a id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75" href="/accounts/logout">Logout</a>
-        {% else %}
-        <button id="navAction" class="mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full mt-4 lg:mt-0 py-4 px-8 shadow opacity-75 transition-all duration-300 ease-in-out" type="button" onclick="toggleModal('modal-id')">Sign
-          In/Register</button>
-        <div class="hidden overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none justify-center items-center" id="modal-id">
-          <div class="relative w-auto my-6 mx-auto max-w-3xl">
-            <!--BEGIN MODAL-->
-            <div class="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-              <!--BEGIN MODAL/HEADER-->
-              <div class="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                <h3 class="text-3xl font-semibold text-center">
-                  Sign In/Register
-                </h3>
-                <!--BEGIN MODAL/HEADER/CLOSE-->
-                <button class="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onclick="toggleModal('modal-id')">
-                  <svg class="fill-current bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                      clip-rule="evenodd"></path>
-                  </svg>
-                </button>
-                <!--END MODAL/HEADER/CLOSE-->
-              </div>
-              <!--END MODAL/HEADER-->
-              <!--BEGIN MODAL/BODY-->
-              <div class="relative p-6 flex-auto">
-                <p class="mx-auto my-4 text-gray-600 text-lg leading-relaxed">
-                  I always felt like I could do anything. That’s the main
-                  thing people are controlled by! Thoughts- their perception
-                  of themselves! They're slowed down by their perception of
-                  themselves. If you're taught you can’t do anything, you
-                  won’t do anything. I was taught I could do everything.
-                </p>
-              </div>
-              <!--END MODAL/BODY-->
-              <!--BEGIN MODAL/FOOTER-->
-              <div class="flex items-center justify-end p-6 border-t border-solid border-gray-300 rounded-b">
-                <button class="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 transition-all duration-300 ease-in-out" type="button" onclick="toggleModal('modal-id')">
-                  Close
-                </button>
-                <button class="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-300 ease-in-out" type="button"
-                  onclick="toggleModal('modal-id')">
-                  Save Changes
-                </button>
-              </div>
-              <!--END MODAL/FOOTER-->
-            </div>
-            <!--END MODAL-->
-          </div>
-        </div>
-        <!-- BEGIN MODAL/OVERLAY -->
-        <div class="hidden opacity-25 fixed inset-0 z-40 bg-black" id="modal-id-backdrop" onclick="toggleModal('modal-id')">&nbsp;</div>
-        <!-- END MODAL/OVERLAY -->
-        {% endif %}
       </div>
     </div>
   </nav>
-
-  <div class="pt-20">
-    <hr class="border-b border-gray-100 opacity-25 my-0 py-0" />
+  <hr class="border-b border-gray-100 opacity-25 my-0 py-0 mb-12" />
+  <main class="pt-8 mt-8">
     {% block content %}{% endblock %}
-  </div>
+  </main>
 
   <!--Footer-->
-  <footer class="bg-white bottom-0">
+  <footer class="bg-white bottom-0 w-full mt-auto">
     <div class="container mx-auto px-8">
       <div class="w-full flex flex-col md:flex-row py-6">
         <div class="flex-1 mb-6 mr-12">
-          <a style="background: -webkit-linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;" class="no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+          <a class="no-underline hover:no-underline font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 lg:text-4xl"
+            href="/">
             <svg viewBox="0 0 20 20" class="h-8 inline">
-              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"></path>
+              <path
+                d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
+              </path>
             </svg>
             HackTJ Live
           </a>
@@ -138,14 +105,14 @@
         <div class="flex-1">
           <p class="uppercase text-gray-500 md:mb-6">Links</p>
           <ul class="list-reset mb-6">
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+            <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">FAQ</a>
+            </li> -->
+            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="https://github.com/HackTJ/live" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Source Code</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Help</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Support</a>
+              <a href="https://github.com/HackTJ/live/issues" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Help</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a href="/credits" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Credits</a>
@@ -156,38 +123,31 @@
           <p class="uppercase text-gray-500 md:mb-6">Legal</p>
           <ul class="list-reset mb-6">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Terms</a>
+              <a href="https://github.com/HackTJ/live/blob/master/LICENSE" class="no-underline hover:underline text-gray-800 hover:text-orange-500">License</a>
             </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Privacy</a>
-            </li>
+            <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Terms and Privacy</a>
+            </li> -->
           </ul>
         </div>
         <div class="flex-1">
           <p class="uppercase text-gray-500 md:mb-6">Social</p>
           <ul class="list-reset mb-6">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.facebook.com/HackTJOfficial" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Facebook</a>
+              <a href="https://www.facebook.com/HackTJOfficial"
+                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Facebook</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.linkedin.com/company/hacktj/" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Linkedin</a>
+              <a href="https://www.linkedin.com/company/hacktj/"
+                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Linkedin</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://twitter.com/HackTJOfficial" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Twitter</a>
-            </li>
-          </ul>
-        </div>
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Company</p>
-          <ul class="list-reset mb-6">
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Official Blog</a>
+              <a href="https://twitter.com/HackTJOfficial"
+                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Twitter</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">About Us</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Contact</a>
+              <a href="https://www.instagram.com/hacktjofficial/"
+                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Instagram</a>
             </li>
           </ul>
         </div>
@@ -204,7 +164,7 @@
     var brandname = document.getElementById("brandname");
     var toToggle = document.querySelectorAll(".toggleColour");
 
-    document.addEventListener('scroll', function() {
+    document.addEventListener('scroll', function () {
 
       /*Apply classes for slide in bar*/
       scrollpos = window.scrollY;
@@ -240,11 +200,9 @@
     var navMenuDiv = document.getElementById("nav-content");
     var navMenu = document.getElementById("nav-toggle");
 
-    document.onclick = check;
-
-    function check(e) {
+    document.onclick = function (e) {
       var target = (e && e.target) || (event && event.srcElement);
-      //Nav Menu
+      // Nav Menu
       if (!checkParent(target, navMenuDiv)) {
         // click NOT on the menu
         if (checkParent(target, navMenu)) {
@@ -269,15 +227,6 @@
         t = t.parentNode;
       }
       return false;
-    }
-  </script>
-  <script type="text/javascript">
-    // for Sign In/Register button
-    function toggleModal(modalID) {
-      document.getElementById(modalID).classList.toggle("hidden");
-      document.getElementById(modalID + "-backdrop").classList.toggle("hidden");
-      document.getElementById(modalID).classList.toggle("flex");
-      document.getElementById(modalID + "-backdrop").classList.toggle("flex");
     }
   </script>
   {% endcompress %}

@@ -1,26 +1,21 @@
 module.exports = {
-  purge: {
-    enabled: true,
-    content: [
-      '../../templates/**/*.html',
-      '../../**/templates/**/*.html'
-    ]
-  },
+  purge: [
+    '../../templates/**/*.html',
+    '../../**/templates/**/*.html'
+  ],
+  darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {
-        colors: {
-            'bleh': '#abcabc',
-        }
-    },
+    extend: {},
   },
   variants: {
-    cursor: ['responsive', 'disabled'],
-    backgroundColor: ['responsive', 'hover', 'focus', 'disabled'],
-    fontWeight: ['responsive', 'hover', 'focus', 'disabled'],
-    textColor: ['responsive', 'hover', 'focus', 'disabled']
+    extend: {
+      cursor: ['responsive', 'disabled'],
+      backgroundColor: ['responsive', 'hover', 'focus', 'disabled'],
+      fontWeight: ['responsive', 'hover', 'focus', 'disabled'],
+      textColor: ['responsive', 'hover', 'focus', 'disabled']
+    },
   },
   plugins: [
-    require('@tailwindcss/custom-forms')
+    require('@tailwindcss/forms'),
   ],
-  important: true,
 }
