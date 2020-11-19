@@ -25,6 +25,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG', False)).upper() == 'TRUE'
+if "DIRECTOR_DATABASE_URL" in os.environ:
+    DEBUG = False
 
 INTERNAL_IPS = [
     'localhost',
@@ -67,6 +69,8 @@ SITE_ID = 1
 
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
 MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
+
+DEFAULT_FROM_EMAIL = "live@hacktj.org"
 
 CHANNEL_LAYERS = {
     "default": {
@@ -119,7 +123,7 @@ TEMPLATES = [
 
 # auth
 
-LOGIN_URL='/accounts/login'
+LOGIN_URL = '/accounts/login'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
@@ -147,17 +151,41 @@ ASGI_APPLICATION = 'hacktj_live.routing.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-
-DATABASES = {
-    'default': parse_db_url(
-        os.environ.get(
-            'DATABASE_URL',
-            'postgres://live_admin:postgres-password@postgres:5432/hacktj_live',
+if "DIRECTOR_DATABASE_URL" in os.environ:
+    try:
+        DATABASES = {
+            "default": {
+                "ENGINE": "django.db.backends.postgresql",
+                "NAME": os.environ["DIRECTOR_DATABASE_NAME"],
+                "USER": os.environ["DIRECTOR_DATABASE_USERNAME"],
+                "PASSWORD": os.environ["DIRECTOR_DATABASE_PASSWORD"],
+                "HOST": os.environ["DIRECTOR_DATABASE_HOST"],
+                "PORT": os.environ["DIRECTOR_DATABASE_PORT"],
+                "CONN_MAX_AGE": 600,
+                # "OPTIONS": {"sslmode": "require"},
+            },
+        }
+    except KeyError:
+        DATABASES = parse_db_url(
+            os.environ["DATABASE_URL"],
+            conn_max_age=600,
+            # ssl_require=True,
+        )
+else:
+    POSTGRES_USER = os.environ.get('POSTGRES_USER', 'live_admin')
+    POSTGRES_PASSWORD = os.environ.get(
+        'POSTGRES_PASSWORD', 'postgres-password')
+    POSTGRES_DB = os.environ.get('POSTGRES_DB', 'hacktj_live')
+    DATABASES = {
+        'default': parse_db_url(
+            os.environ.get(
+                'DATABASE_URL',
+                f"postgres://{POSTGRES_USER}:{POSTGRES_PASSWORD}@postgres:5432/{POSTGRES_DB}",
+            ),
+            conn_max_age=600,
+            # ssl_require=True,
         ),
-        conn_max_age=600,
-    ),
-}
+    }
 
 
 # Password validation
