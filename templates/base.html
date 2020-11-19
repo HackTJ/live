@@ -37,8 +37,8 @@
       </div>
 
       <div class="block lg:hidden pr-4">
-        <button id="nav-toggle" class="flex items-center p-1 text-orange-800 hover:text-gray-900">
-          <svg class="fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
+        <button id="nav-toggle" class="flex items-center p-1">
+          <svg class="fill-current h-6 w-6 text-white hover:text-gray-900 toggleColour" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
             <title>Menu</title>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
@@ -46,34 +46,34 @@
       </div>
 
       <div
-        class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent text-black p-4 lg:p-0 z-20"
+        class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent p-4 lg:p-0 z-20"
         id="nav-content">
-        <ul class="list-reset lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto">
+        <ul class="list-reset lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black"> <!--toggleColour-->
           <li>
-            <a class="inline py-2 px-4 text-black font-bold no-underline" href="/">Home</a>
+            <a class="inline py-2 px-4 font-bold no-underline" href="/">Home</a>
           </li>
           <!-- <li>
             <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
               href="/mentor">Mentor</a>
           </li> -->
           <li>
-            <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
               href="/judge">Judge</a>
           </li>
           <span class="select-none hidden lg:block">|</span>
           <hr class="w-1/3 lg:hidden" />
           {% if user.is_authenticated %}
           <li>
-            <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
               href="{% url 'account_logout' %}">Logout</a>
           </li>
           {% else %}
           <li>
-            <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
               href="{% url 'account_login' %}">Sign In</a>
           </li>
           <li>
-            <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
               href="{% url 'account_signup' %}">Register</a>
           </li>
           {% endif %}
