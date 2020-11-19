@@ -1,0 +1,1173 @@
+[
+    {
+        "model": "judge.project",
+        "pk": 1,
+        "fields": {
+            "name": "verifEye",
+            "location": "Room 47",
+            "description": "A fast and lightweight utility to detect online identity theft and fake news using machine learning",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 2,
+        "fields": {
+            "name": "melon",
+            "location": "Room 47",
+            "description": "Can't pick the ripest watermelon without splitting it open? Fear not! \\\"melon\\\" uses a neural network to predict the quality of watermelons through data collected by sound sensor and impulse deliverer.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 3,
+        "fields": {
+            "name": "Biopath",
+            "location": "Room 47",
+            "description": "Automating the Assessment of Involuntary Hand Movement's Role in Neurodegenerative Disease",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 4,
+        "fields": {
+            "name": "CrowdReader",
+            "location": "Room 47",
+            "description": "Presentations will never be the same. In an instant, CrowdReader gives live feedback to the presenter on the reaction of the audience allowing them to adjust mid-speech and gain intel on the public.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 5,
+        "fields": {
+            "name": "Hummer",
+            "location": "Room 47",
+            "description": "A New Way to Share your Music with the World",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 6,
+        "fields": {
+            "name": "Dēmos",
+            "location": "Room 47",
+            "description": "Exercise your democratic power - secure voting and empowerment of citizens to make civic change",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 7,
+        "fields": {
+            "name": "CodeBlocks",
+            "location": "Room 47",
+            "description": "Making functions with real life code blocks.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 8,
+        "fields": {
+            "name": "IoTrespassing",
+            "location": "Room 47",
+            "description": "If you have a crazy ex, then you know that having a camera security system is very important. But what happens when you have multiple crazy exes? That's where IoTrespassing comes in.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 9,
+        "fields": {
+            "name": "Dealight",
+            "location": "Room 47",
+            "description": "Deals that Delight",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 10,
+        "fields": {
+            "name": "Pinpoint",
+            "location": "Room 47",
+            "description": "The new easy way to get around town!",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 11,
+        "fields": {
+            "name": "A Penny Saved",
+            "location": "Room 47",
+            "description": "financial solutions for the modern age",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 12,
+        "fields": {
+            "name": "Capital Connections",
+            "location": "Room 47",
+            "description": "Capital Connections is a recommendation engine that leverages predictive analytics to recommend partnerships to capitol one to further drive customer usage and loyalty.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 13,
+        "fields": {
+            "name": "Homemade Housing",
+            "location": "Room 47",
+            "description": "Calculates Average Housing Sales Based on a slew of Metrics",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 14,
+        "fields": {
+            "name": "Haven",
+            "location": "Room 47",
+            "description": "Connect. Collaborate. Community. Our lives are centered around and affected by where we choose to live and Haven strives to make the process of acquiring and living in a home safer and approachable.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 15,
+        "fields": {
+            "name": "GoVRnment",
+            "location": "Room 47",
+            "description": "A VR simulation based application that enables the user to become more informed about government and encourages them to become more involved in the political process.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 16,
+        "fields": {
+            "name": "CAPConnect",
+            "location": "Room 47",
+            "description": "Encouraging civic engagement by connecting potential volunteers to local campaigns or guiding them through the creation of their own campaign.",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "judge.project",
+        "pk": 17,
+        "fields": {
+            "name": "City Samaritans",
+            "location": "Room 47",
+            "description": "We connect the helpful to the poor and needy",
+            "mean": "0E-8",
+            "variance": "1.00000000",
+            "numberOfVotes": 0,
+            "timesSeen": 0,
+            "timesSkipped": 0,
+            "prioritize": false,
+            "active": true
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 1,
+        "fields": {
+            "name": "Can add project",
+            "content_type": 1,
+            "codename": "add_project"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 2,
+        "fields": {
+            "name": "Can change project",
+            "content_type": 1,
+            "codename": "change_project"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 3,
+        "fields": {
+            "name": "Can delete project",
+            "content_type": 1,
+            "codename": "delete_project"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 4,
+        "fields": {
+            "name": "Can view project",
+            "content_type": 1,
+            "codename": "view_project"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 5,
+        "fields": {
+            "name": "Can add decision",
+            "content_type": 2,
+            "codename": "add_decision"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 6,
+        "fields": {
+            "name": "Can change decision",
+            "content_type": 2,
+            "codename": "change_decision"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 7,
+        "fields": {
+            "name": "Can delete decision",
+            "content_type": 2,
+            "codename": "delete_decision"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 8,
+        "fields": {
+            "name": "Can view decision",
+            "content_type": 2,
+            "codename": "view_decision"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 9,
+        "fields": {
+            "name": "Can add annotator",
+            "content_type": 3,
+            "codename": "add_annotator"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 10,
+        "fields": {
+            "name": "Can change annotator",
+            "content_type": 3,
+            "codename": "change_annotator"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 11,
+        "fields": {
+            "name": "Can delete annotator",
+            "content_type": 3,
+            "codename": "delete_annotator"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 12,
+        "fields": {
+            "name": "Can view annotator",
+            "content_type": 3,
+            "codename": "view_annotator"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 13,
+        "fields": {
+            "name": "Can add permission",
+            "content_type": 4,
+            "codename": "add_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 14,
+        "fields": {
+            "name": "Can change permission",
+            "content_type": 4,
+            "codename": "change_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 15,
+        "fields": {
+            "name": "Can delete permission",
+            "content_type": 4,
+            "codename": "delete_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 16,
+        "fields": {
+            "name": "Can view permission",
+            "content_type": 4,
+            "codename": "view_permission"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 17,
+        "fields": {
+            "name": "Can add group",
+            "content_type": 5,
+            "codename": "add_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 18,
+        "fields": {
+            "name": "Can change group",
+            "content_type": 5,
+            "codename": "change_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 19,
+        "fields": {
+            "name": "Can delete group",
+            "content_type": 5,
+            "codename": "delete_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 20,
+        "fields": {
+            "name": "Can view group",
+            "content_type": 5,
+            "codename": "view_group"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 21,
+        "fields": {
+            "name": "Can add user",
+            "content_type": 6,
+            "codename": "add_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 22,
+        "fields": {
+            "name": "Can change user",
+            "content_type": 6,
+            "codename": "change_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 23,
+        "fields": {
+            "name": "Can delete user",
+            "content_type": 6,
+            "codename": "delete_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 24,
+        "fields": {
+            "name": "Can view user",
+            "content_type": 6,
+            "codename": "view_user"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 25,
+        "fields": {
+            "name": "Can add log entry",
+            "content_type": 7,
+            "codename": "add_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 26,
+        "fields": {
+            "name": "Can change log entry",
+            "content_type": 7,
+            "codename": "change_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 27,
+        "fields": {
+            "name": "Can delete log entry",
+            "content_type": 7,
+            "codename": "delete_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 28,
+        "fields": {
+            "name": "Can view log entry",
+            "content_type": 7,
+            "codename": "view_logentry"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 29,
+        "fields": {
+            "name": "Can add content type",
+            "content_type": 8,
+            "codename": "add_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 30,
+        "fields": {
+            "name": "Can change content type",
+            "content_type": 8,
+            "codename": "change_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 31,
+        "fields": {
+            "name": "Can delete content type",
+            "content_type": 8,
+            "codename": "delete_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 32,
+        "fields": {
+            "name": "Can view content type",
+            "content_type": 8,
+            "codename": "view_contenttype"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 33,
+        "fields": {
+            "name": "Can add session",
+            "content_type": 9,
+            "codename": "add_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 34,
+        "fields": {
+            "name": "Can change session",
+            "content_type": 9,
+            "codename": "change_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 35,
+        "fields": {
+            "name": "Can delete session",
+            "content_type": 9,
+            "codename": "delete_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 36,
+        "fields": {
+            "name": "Can view session",
+            "content_type": 9,
+            "codename": "view_session"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 37,
+        "fields": {
+            "name": "Can add site",
+            "content_type": 10,
+            "codename": "add_site"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 38,
+        "fields": {
+            "name": "Can change site",
+            "content_type": 10,
+            "codename": "change_site"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 39,
+        "fields": {
+            "name": "Can delete site",
+            "content_type": 10,
+            "codename": "delete_site"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 40,
+        "fields": {
+            "name": "Can view site",
+            "content_type": 10,
+            "codename": "view_site"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 41,
+        "fields": {
+            "name": "Can add email address",
+            "content_type": 11,
+            "codename": "add_emailaddress"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 42,
+        "fields": {
+            "name": "Can change email address",
+            "content_type": 11,
+            "codename": "change_emailaddress"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 43,
+        "fields": {
+            "name": "Can delete email address",
+            "content_type": 11,
+            "codename": "delete_emailaddress"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 44,
+        "fields": {
+            "name": "Can view email address",
+            "content_type": 11,
+            "codename": "view_emailaddress"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 45,
+        "fields": {
+            "name": "Can add email confirmation",
+            "content_type": 12,
+            "codename": "add_emailconfirmation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 46,
+        "fields": {
+            "name": "Can change email confirmation",
+            "content_type": 12,
+            "codename": "change_emailconfirmation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 47,
+        "fields": {
+            "name": "Can delete email confirmation",
+            "content_type": 12,
+            "codename": "delete_emailconfirmation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 48,
+        "fields": {
+            "name": "Can view email confirmation",
+            "content_type": 12,
+            "codename": "view_emailconfirmation"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 49,
+        "fields": {
+            "name": "Can add social account",
+            "content_type": 13,
+            "codename": "add_socialaccount"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 50,
+        "fields": {
+            "name": "Can change social account",
+            "content_type": 13,
+            "codename": "change_socialaccount"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 51,
+        "fields": {
+            "name": "Can delete social account",
+            "content_type": 13,
+            "codename": "delete_socialaccount"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 52,
+        "fields": {
+            "name": "Can view social account",
+            "content_type": 13,
+            "codename": "view_socialaccount"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 53,
+        "fields": {
+            "name": "Can add social application",
+            "content_type": 14,
+            "codename": "add_socialapp"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 54,
+        "fields": {
+            "name": "Can change social application",
+            "content_type": 14,
+            "codename": "change_socialapp"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 55,
+        "fields": {
+            "name": "Can delete social application",
+            "content_type": 14,
+            "codename": "delete_socialapp"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 56,
+        "fields": {
+            "name": "Can view social application",
+            "content_type": 14,
+            "codename": "view_socialapp"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 57,
+        "fields": {
+            "name": "Can add social application token",
+            "content_type": 15,
+            "codename": "add_socialtoken"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 58,
+        "fields": {
+            "name": "Can change social application token",
+            "content_type": 15,
+            "codename": "change_socialtoken"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 59,
+        "fields": {
+            "name": "Can delete social application token",
+            "content_type": 15,
+            "codename": "delete_socialtoken"
+        }
+    },
+    {
+        "model": "auth.permission",
+        "pk": 60,
+        "fields": {
+            "name": "Can view social application token",
+            "content_type": 15,
+            "codename": "view_socialtoken"
+        }
+    },
+    {
+        "model": "auth.user",
+        "pk": 1,
+        "fields": {
+            "password": "pbkdf2_sha256$216000$F2KXEhKbM7Md$1wsrW2nWBcUt43ZTWMkDqWB29u+QSmRRy7FzyduqRXY=",
+            "last_login": "2020-11-16T21:32:28.644Z",
+            "is_superuser": true,
+            "username": "live_admin",
+            "first_name": "",
+            "last_name": "",
+            "email": "sumanth@hacktj.org",
+            "is_staff": true,
+            "is_active": true,
+            "date_joined": "2020-11-16T21:31:48.923Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 1,
+        "fields": {
+            "action_time": "2020-11-16T21:34:54.228Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "1",
+            "object_repr": "Project object (1)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 2,
+        "fields": {
+            "action_time": "2020-11-16T21:35:14.611Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "2",
+            "object_repr": "Project object (2)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 3,
+        "fields": {
+            "action_time": "2020-11-16T21:35:30.364Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "3",
+            "object_repr": "Project object (3)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 4,
+        "fields": {
+            "action_time": "2020-11-16T21:35:47.520Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "4",
+            "object_repr": "Project object (4)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 5,
+        "fields": {
+            "action_time": "2020-11-16T21:36:08.154Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "5",
+            "object_repr": "Project object (5)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 6,
+        "fields": {
+            "action_time": "2020-11-16T21:36:25.728Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "6",
+            "object_repr": "Project object (6)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 7,
+        "fields": {
+            "action_time": "2020-11-16T21:36:37.349Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "7",
+            "object_repr": "Project object (7)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 8,
+        "fields": {
+            "action_time": "2020-11-16T21:36:52.180Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "8",
+            "object_repr": "Project object (8)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 9,
+        "fields": {
+            "action_time": "2020-11-16T21:38:05.359Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "9",
+            "object_repr": "Project object (9)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 10,
+        "fields": {
+            "action_time": "2020-11-16T21:38:16.184Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "10",
+            "object_repr": "Project object (10)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 11,
+        "fields": {
+            "action_time": "2020-11-16T21:38:33.131Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "11",
+            "object_repr": "Project object (11)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 12,
+        "fields": {
+            "action_time": "2020-11-16T21:38:42.437Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "12",
+            "object_repr": "Project object (12)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 13,
+        "fields": {
+            "action_time": "2020-11-16T21:39:01.211Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "13",
+            "object_repr": "Project object (13)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 14,
+        "fields": {
+            "action_time": "2020-11-16T21:39:14.047Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "14",
+            "object_repr": "Project object (14)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 15,
+        "fields": {
+            "action_time": "2020-11-16T21:39:28.929Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "15",
+            "object_repr": "Project object (15)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 16,
+        "fields": {
+            "action_time": "2020-11-16T21:39:46.311Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "16",
+            "object_repr": "Project object (16)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "admin.logentry",
+        "pk": 17,
+        "fields": {
+            "action_time": "2020-11-16T21:40:01.117Z",
+            "user": 1,
+            "content_type": 1,
+            "object_id": "17",
+            "object_repr": "Project object (17)",
+            "action_flag": 1,
+            "change_message": "[{\"added\": {}}]"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 1,
+        "fields": {
+            "app_label": "judge",
+            "model": "project"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 2,
+        "fields": {
+            "app_label": "judge",
+            "model": "decision"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 3,
+        "fields": {
+            "app_label": "judge",
+            "model": "annotator"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 4,
+        "fields": {
+            "app_label": "auth",
+            "model": "permission"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 5,
+        "fields": {
+            "app_label": "auth",
+            "model": "group"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 6,
+        "fields": {
+            "app_label": "auth",
+            "model": "user"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 7,
+        "fields": {
+            "app_label": "admin",
+            "model": "logentry"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 8,
+        "fields": {
+            "app_label": "contenttypes",
+            "model": "contenttype"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 9,
+        "fields": {
+            "app_label": "sessions",
+            "model": "session"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 10,
+        "fields": {
+            "app_label": "sites",
+            "model": "site"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 11,
+        "fields": {
+            "app_label": "account",
+            "model": "emailaddress"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 12,
+        "fields": {
+            "app_label": "account",
+            "model": "emailconfirmation"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 13,
+        "fields": {
+            "app_label": "socialaccount",
+            "model": "socialaccount"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 14,
+        "fields": {
+            "app_label": "socialaccount",
+            "model": "socialapp"
+        }
+    },
+    {
+        "model": "contenttypes.contenttype",
+        "pk": 15,
+        "fields": {
+            "app_label": "socialaccount",
+            "model": "socialtoken"
+        }
+    }
+]
