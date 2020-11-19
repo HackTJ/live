@@ -65,6 +65,9 @@ INSTALLED_APPS = [
 
 SITE_ID = 1
 
+# https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
+MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
+
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
