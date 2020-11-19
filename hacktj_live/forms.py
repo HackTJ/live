@@ -3,6 +3,7 @@ from allauth.account.forms import SignupForm
 from django import forms
 from judge.models import Annotator
 
+
 class VolunteerSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
         super(VolunteerSignupForm, self).__init__(*args, **kwargs)
@@ -47,5 +48,5 @@ class VolunteerSignupForm(SignupForm):
             pass
 
         user.save()
-        
+
         return user

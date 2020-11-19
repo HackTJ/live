@@ -3,7 +3,7 @@ from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_http_methods
 from django.conf import settings
 from judge.controllers import perform_vote, choose_next, init_annotator
-from judge.models import Decision
+from judge.models import Decision, Project
 
 # redirect non-judge users to scoreboard
 def judge_required(function=None, login_url='/judge/scoreboard', redirect_field_name=None):
@@ -104,6 +104,8 @@ def vote(request):
             "prev": request.user.annotator.prev
         })
 
-
 def scoreboard(request):
-    return render(request, 'judge/scoreboard.html')
+    projects = [p for p in Project.objects.order_by('-mean').all() if (p.active and p.timesSeen > 0)]
+    return render(request, 'judge/scoreboard.html', {
+        'projects': projects
+    })

@@ -1,4 +1,5 @@
 .DS_Store
+projects6.json
 
 # django-dbbackup
 backup/

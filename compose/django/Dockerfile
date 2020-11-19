@@ -15,7 +15,7 @@ RUN apk add --no-cache \
     "openblas-dev=0.3.9-r2" \
     "postgresql-dev=12.4-r0" && \
     python -m pip install --upgrade pip && \
-    python -m pip install poetry && \
+    python -m pip install poetry --use-feature=2020-resolver && \
     poetry config virtualenvs.create false && \
     poetry install
 
