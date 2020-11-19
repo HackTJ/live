@@ -25,6 +25,7 @@ services:
       - .env
     environment:
       - DEBUG=false
+      - NODE_ENV=production
 
   postgres:
     env_file:
