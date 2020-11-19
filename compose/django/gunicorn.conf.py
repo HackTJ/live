@@ -1,11 +1,11 @@
 from multiprocessing import cpu_count
 from shutil import which
+from os.path import exists
 
 
 def trace_on_abort():
     from signal import signal, SIGABRT
     from traceback import format_stack
-
 
     def print_trace(_, frame):
         print(''.join(format_stack(frame)))
@@ -30,4 +30,9 @@ threads = workers  # 2-4 x $(NUM_CORES)
 # graceful_timeout = 120
 preload_app = True
 
-worker_tmp_dir = '/dev/shm'
+if exists('/dev/shm'):
+    worker_tmp_dir = '/dev/shm'
+else:
+    # if we try to set worker_tmp_dir to /dev/shm, we get:
+    # RuntimeError: /dev/shm doesn't exist. Can't create workertmp.
+    pass  # go with the default
