@@ -173,13 +173,11 @@
     </div>
   </div>
 
+  {% load static %}
+  <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@3.0.1/dist/ponyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/eligrey/Blob.js/Blob.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.5/StreamSaver.min.js"></script>
   {% compress js %}
-  <!-- {% load static %}
-  <script src="{% static "js/tablesort/tablesort.min.js" %}"></script>
-  <script src="{% static "js/tablesort/tablesort.number.min.js" %}"></script> -->
-  <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@2.0.2/dist/ponyfill.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/eligrey/Blob.js/Blob.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.3/StreamSaver.min.js"></script>
   <script>
     function datatable() {
       // TODO: maybe make headings have type {key: value}
@@ -610,6 +608,6 @@
   </script>
   {% endcompress %}
 </div>
-<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.5.0/dist/alpine.min.js" defer></script>
-<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.5.0/dist/alpine-ie11.min.js" defer></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine-ie11.min.js" defer></script>
 {% endblock %}
