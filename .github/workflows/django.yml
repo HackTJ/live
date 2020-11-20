@@ -43,7 +43,7 @@ jobs:
 
     - name: Run Tests
       run: |
-        python -Wa manage.py check
+        python -Wa manage.py check --deploy
         python -Wa manage.py test
       env:
         SECRET_KEY: -meg-45w(y_j*(stnzh=$92*6uo0*_9&%f(4f_8*s@6@z=1^s)
