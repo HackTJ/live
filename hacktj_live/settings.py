@@ -159,39 +159,32 @@ ASGI_APPLICATION = 'hacktj_live.routing.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 if "DIRECTOR_DATABASE_URL" in os.environ:
-    try:
-        DATABASES = {
-            "default": {
-                "ENGINE": "django.db.backends.postgresql",
-                "NAME": os.environ["DIRECTOR_DATABASE_NAME"],
-                "USER": os.environ["DIRECTOR_DATABASE_USERNAME"],
-                "PASSWORD": os.environ["DIRECTOR_DATABASE_PASSWORD"],
-                "HOST": os.environ["DIRECTOR_DATABASE_HOST"],
-                "PORT": os.environ["DIRECTOR_DATABASE_PORT"],
-                "CONN_MAX_AGE": 600,
-                # "OPTIONS": {"sslmode": "require"},
-            },
-        }
-    except KeyError:
-        DATABASES = parse_db_url(
-            os.environ["DATABASE_URL"],
-            conn_max_age=600,
-            # ssl_require=True,
-        )
-else:
-    POSTGRES_USER = os.environ.get('POSTGRES_USER', 'live_admin')
-    POSTGRES_PASSWORD = os.environ.get(
-        'POSTGRES_PASSWORD', 'postgres-password')
-    POSTGRES_DB = os.environ.get('POSTGRES_DB', 'hacktj_live')
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": os.environ["DIRECTOR_DATABASE_NAME"],
+            "USER": os.environ["DIRECTOR_DATABASE_USERNAME"],
+            "PASSWORD": os.environ["DIRECTOR_DATABASE_PASSWORD"],
+            "HOST": os.environ["DIRECTOR_DATABASE_HOST"],
+            "PORT": os.environ["DIRECTOR_DATABASE_PORT"],
+            "CONN_MAX_AGE": 600,
+            # "OPTIONS": {"sslmode": "require"},
+        },
+    }
+elif 'DATABASE_URL' in os.environ:
     DATABASES = {
         'default': parse_db_url(
-            os.environ.get(
-                'DATABASE_URL',
-                f"postgres://{POSTGRES_USER}:{POSTGRES_PASSWORD}@postgres:5432/{POSTGRES_DB}",
-            ),
+            os.environ['DATABASE_URL'],
             conn_max_age=600,
             # ssl_require=True,
         ),
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'hacktj_live',
+        }
     }
 
 
@@ -217,11 +210,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
 
-# SECURE_SSL_REDIRECT = True
+# CSRF_COOKIE_SECURE = True
 
 # SESSION_COOKIE_SECURE = True
 
-# CSRF_COOKIE_SECURE = True
+# SECURE_SSL_REDIRECT = True
 
 # SECURE_HSTS_SECONDS = 3600
 
