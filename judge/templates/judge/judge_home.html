@@ -1,8 +1,15 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1>Welcome Back!</h1>
-<a href="/judge/welcome">View judging instructions.</a>
-<a href="/judge/vote">Begin Judging</a>
+{% load i18n %}
 
+{% block content %}
+<div class="w-2/3 content-center justify-center text-center mx-auto space-y-4">
+  <h1 class="text-2xl text-center">{% translate "Welcome Back!" %}</h1>
+  <div>
+    <a href="/judge/welcome" class="text-indigo-700 hover:underline">{% translate "View judging instructions." %}</a>
+  </div>
+  <div>
+    <a href="/judge/vote" class="text-indigo-700 hover:underline">{% translate "Begin Judging" %}</a>
+  </div>
+</div>
 {% endblock %}

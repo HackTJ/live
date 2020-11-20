@@ -1,1 +1,4 @@
-!assets/hero.png
+admin/
+css/
+debug_toolbar/
+!./assets/hero.png

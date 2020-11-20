@@ -39,11 +39,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["@tailwindcss/forms", "npm:0.1.4"],
             ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.0.2"],
-            ["cross-env", "npm:7.0.2"],
             ["cssnano", "npm:4.1.10"],
             ["postcss", "npm:8.1.7"],
             ["postcss-cli", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:8.2.0"],
-            ["rimraf", "npm:3.0.2"],
             ["tailwindcss", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:2.0.1"]
           ],
           "linkType": "SOFT",
@@ -755,28 +753,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["cross-env", [
-        ["npm:7.0.2", {
-          "packageLocation": "./.yarn/cache/cross-env-npm-7.0.2-1e9c9fdbca-624d638db3.zip/node_modules/cross-env/",
-          "packageDependencies": [
-            ["cross-env", "npm:7.0.2"],
-            ["cross-spawn", "npm:7.0.3"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["cross-spawn", [
-        ["npm:7.0.3", {
-          "packageLocation": "./.yarn/cache/cross-spawn-npm-7.0.3-e4ff3e65b3-51f10036f5.zip/node_modules/cross-spawn/",
-          "packageDependencies": [
-            ["cross-spawn", "npm:7.0.3"],
-            ["path-key", "npm:3.1.1"],
-            ["shebang-command", "npm:2.0.0"],
-            ["which", "npm:2.0.2"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["css-color-names", [
         ["npm:0.0.4", {
           "packageLocation": "./.yarn/cache/css-color-names-npm-0.0.4-be9111e9bd-6842f38c3a.zip/node_modules/css-color-names/",
@@ -1059,11 +1035,9 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["django_tailwind", "workspace:."],
             ["@tailwindcss/forms", "npm:0.1.4"],
             ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.0.2"],
-            ["cross-env", "npm:7.0.2"],
             ["cssnano", "npm:4.1.10"],
             ["postcss", "npm:8.1.7"],
             ["postcss-cli", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:8.2.0"],
-            ["rimraf", "npm:3.0.2"],
             ["tailwindcss", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:2.0.1"]
           ],
           "linkType": "SOFT",
@@ -2522,15 +2496,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["path-key", [
-        ["npm:3.1.1", {
-          "packageLocation": "./.yarn/cache/path-key-npm-3.1.1-0e66ea8321-e44aa3ca9f.zip/node_modules/path-key/",
-          "packageDependencies": [
-            ["path-key", "npm:3.1.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
       ["path-parse", [
         ["npm:1.0.6", {
           "packageLocation": "./.yarn/cache/path-parse-npm-1.0.6-4a4c90546c-2eee4b93fb.zip/node_modules/path-parse/",
@@ -3321,14 +3286,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["glob", "npm:7.1.6"]
           ],
           "linkType": "HARD",
-        }],
-        ["npm:3.0.2", {
-          "packageLocation": "./.yarn/cache/rimraf-npm-3.0.2-2cb7dac69a-f0de3e4455.zip/node_modules/rimraf/",
-          "packageDependencies": [
-            ["rimraf", "npm:3.0.2"],
-            ["glob", "npm:7.1.6"]
-          ],
-          "linkType": "HARD",
         }]
       ]],
       ["run-parallel", [
@@ -3388,25 +3345,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/set-blocking-npm-2.0.0-49e2cffa24-0ac2403b0c.zip/node_modules/set-blocking/",
           "packageDependencies": [
             ["set-blocking", "npm:2.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["shebang-command", [
-        ["npm:2.0.0", {
-          "packageLocation": "./.yarn/cache/shebang-command-npm-2.0.0-eb2b01921d-85aa394d8c.zip/node_modules/shebang-command/",
-          "packageDependencies": [
-            ["shebang-command", "npm:2.0.0"],
-            ["shebang-regex", "npm:3.0.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["shebang-regex", [
-        ["npm:3.0.0", {
-          "packageLocation": "./.yarn/cache/shebang-regex-npm-3.0.0-899a0cd65e-ea18044ffa.zip/node_modules/shebang-regex/",
-          "packageDependencies": [
-            ["shebang-regex", "npm:3.0.0"]
           ],
           "linkType": "HARD",
         }]
