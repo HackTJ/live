@@ -28,11 +28,16 @@ worker_class = 'uvicorn.workers.UvicornWorker'
 forwarded_allow_ips = "nginx"
 proxy_allow_ips = "nginx"
 
-workers = cpu_count() * 2 + 1  # TODO: WORKER TIMEOUT when preload_app = False
+if 'WEB_CONCURRENCY' in environ:
+    workers = environ['WEB_CONCURRENCY']
+else:
+    # TODO: WORKER TIMEOUT when preload_app = False
+    workers = cpu_count() * 2 + 1
 threads = workers  # 2-4 x $(NUM_CORES)
-# timeout = 120
+timeout = 120
 # graceful_timeout = 120
 preload_app = True
+max_requests = 1200
 
 if exists('/dev/shm'):
     worker_tmp_dir = '/dev/shm'
