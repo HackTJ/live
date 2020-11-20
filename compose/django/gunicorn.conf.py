@@ -1,6 +1,10 @@
+from os import environ
 from multiprocessing import cpu_count
 from shutil import which
 from os.path import exists
+
+
+print('Loading gunicorn config.')
 
 
 def trace_on_abort():
@@ -13,13 +17,13 @@ def trace_on_abort():
     signal(SIGABRT, print_trace)
 
 
-print('Loading gunicorn config.')
+port = environ.get('PORT', 8000)
 if which('supervisord') is None:
-    bind = "0.0.0.0:8000"
+    bind = f"0.0.0.0:{port}"
 else:
     # bind = 'unix:/var/run/supervisor.sock'
     # bind = 'fd://0'
-    bind = "0.0.0.0:8000"
+    bind = f"0.0.0.0:{port}"
 worker_class = 'uvicorn.workers.UvicornWorker'
 forwarded_allow_ips = "nginx"
 proxy_allow_ips = "nginx"
