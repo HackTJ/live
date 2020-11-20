@@ -129,17 +129,18 @@ TEMPLATES = [
 # Auth
 
 LOGIN_URL = '/accounts/login'
+LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-ACCOUNT_EMAIL_REQUIRED = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_REQUIRED = False  # True
+ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
 
 DEFAULT_FROM_EMAIL = "live@hacktj.org"
-if DEBUG:
+if True:  # DEBUG
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # default
