@@ -11,10 +11,10 @@
     <h3>{{ next.name }}</h3>
     <p>{{ next.description }}</p>
   </div>
-  <form action="/vote" method="POST">
+  <form action="/vote" method="POST" class="text-black">
     {% csrf_token %}
-    <input class="text-black" name="action" type="submit" value="Done" />
-    <input class="text-black" name="action" type="submit" value="Skip" />
+    <input class="rounded px-4 py-2 cursor-pointer" name="action" type="submit" value="Done" />
+    <input class="rounded px-4 py-2 cursor-pointer" name="action" type="submit" value="Skip" />
     <input type="hidden" name="project_id" value="{{ next.id }}">
   </form>
 </div>
