@@ -32,12 +32,14 @@ INTERNAL_IPS = [
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
+    # '172.22.0.1',  # docker compose (request.META['REMOTE_ADDR'])
 ]
 
 ALLOWED_HOSTS = [
     *INTERNAL_IPS,
     'django', 'nginx',  # docker compose
     'live.hacktj.org',
+    'hacktj-live.herokuapp.com'
 ]
 
 ADMINS = [
