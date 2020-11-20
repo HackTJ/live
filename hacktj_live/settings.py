@@ -213,15 +213,20 @@ AUTH_PASSWORD_VALIDATORS = [
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
 
-# CSRF_COOKIE_SECURE = True
+if not DEBUG:
+    CSRF_COOKIE_SECURE = True
 
-# SESSION_COOKIE_SECURE = True
+    SESSION_COOKIE_SECURE = True
 
-# SECURE_SSL_REDIRECT = True
+    SECURE_BROWSER_XSS_FILTER = True
 
-# SECURE_HSTS_SECONDS = 3600
+    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # SECURE_HSTS_PRELOAD = True
+
+    # SECURE_HSTS_SECONDS = 3600
+
+    # SECURE_SSL_REDIRECT = True
 
 
 # Internationalization
