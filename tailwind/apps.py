@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class ThemeConfig(AppConfig):
-    name = 'theme'
+class TailwindConfig(AppConfig):
+    name = 'tailwind'

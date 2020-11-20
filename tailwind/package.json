@@ -2,7 +2,7 @@
   "name": "django_tailwind",
   "description": "",
   "scripts": {
-    "build": "rimraf ../../static/css && tailwindcss build | postcss -o ../../static/css/tailwind.min.css"
+    "build": "rimraf ../static/css && tailwindcss build | postcss -o ./static/css/tailwind.min.css"
   },
   "keywords": [],
   "author": "Sumanth Ratna <sumanth@hacktj.org>",

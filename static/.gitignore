@@ -1,4 +1,1 @@
-admin/
-debug_toolbar/
-CACHE/
-custom/
+!assets/hero.png
