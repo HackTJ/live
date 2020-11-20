@@ -213,7 +213,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
 
-if not DEBUG:
+in_docker = os.environ.get('DOCKER', 'false').upper() == 'TRUE'
+if not (DEBUG or in_docker):  # in production
     CSRF_COOKIE_SECURE = True
 
     SESSION_COOKIE_SECURE = True
