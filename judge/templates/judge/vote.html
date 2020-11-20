@@ -18,6 +18,7 @@
   </div>
   Which project is better?
   <form action="/judge/vote" method="POST" class="space-x-4 text-black">
+    {% csrf_token %}
     <input class="px-4 py-2 rounded cursor-pointer" name="action" type="submit" value="previous" />
     <input class="px-4 py-2 rounded cursor-pointer" name="action" type="submit" value="current" />
     <input class="px-4 py-2 rounded cursor-pointer" name="action" type="submit" value="skip" />

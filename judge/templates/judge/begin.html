@@ -12,6 +12,7 @@
     <p>{{ next.description }}</p>
   </div>
   <form action="/vote" method="POST">
+    {% csrf_token %}
     <input class="text-black" name="action" type="submit" value="Done" />
     <input class="text-black" name="action" type="submit" value="Skip" />
     <input type="hidden" name="project_id" value="{{ next.id }}">
