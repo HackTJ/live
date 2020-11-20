@@ -72,8 +72,6 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
 MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
 
-DEFAULT_FROM_EMAIL = "live@hacktj.org"
-
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
@@ -128,7 +126,7 @@ TEMPLATES = [
     },
 ]
 
-# auth
+# Auth
 
 LOGIN_URL = '/accounts/login'
 
@@ -140,7 +138,11 @@ AUTHENTICATION_BACKENDS = [
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = "live@hacktj.org"
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # default
 
 ACCOUNT_FORMS = {
     'signup': 'hacktj_live.forms.VolunteerSignupForm'
