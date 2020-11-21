@@ -72,7 +72,7 @@ def vote(request):
             if annotator.prev is None:
                 return render(request, 'judge/begin.html', {"next": annotator.next})
             else:
-                if annotator.next == None or annotator.next == annotator.prev:
+                if annotator.next == annotator.prev:
                     return render(request, 'judge/done.html')
                 else:
                     return render(request, 'judge/vote.html', {
@@ -109,6 +109,9 @@ def vote(request):
 
         annotator.update_next(choose_next(annotator))
         annotator.save()
+
+        if annotator.next == annotator.prev:
+            return render(request, 'judge/done.html')
 
         return render(request, 'judge/vote.html', {
             "next": request.user.annotator.next,

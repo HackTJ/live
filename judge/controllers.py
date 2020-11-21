@@ -13,8 +13,6 @@ def preferred_items(annotator):
         available_projects = Project.objects.filter(active=True).exclude(id__in=ignored_ids).all()
     else:
         available_projects = Project.objects.filter(active=True).all()
-
-    print(available_projects)
     
     prioritized_projects = [p for p in available_projects if p.prioritize]
     items = prioritized_projects if prioritized_projects else available_projects
