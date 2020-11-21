@@ -13,10 +13,10 @@
     <p class="text-gray-700">{{ next.description }}</p>
     <p class="text-gray-700"><b>Location: </b>{{ next.location }}</p>
   </div>
-  <form action="/judge/begin" method="POST">
+  <form action="/judge/begin" method="POST" class="text-black flex justify-center items-baseline flex-wrap text-black">
     {% csrf_token %}
-    <input class="rounded px-4 py-2 text-black cursor-pointer" name="action" type="submit" value="Done" />
-    <input class="rounded px-4 py-2 text-black cursor-pointer" name="action" type="submit" value="Skip" />
+    <input class="rounded-r-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white" name="action" type="submit" value="Done" />
+    <input class="rounded-l-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white" name="action" type="submit" value="Skip" />
     <input type="hidden" name="project_id" value="{{ next.id }}">
   </form>
 </div>
