@@ -214,18 +214,19 @@ AUTH_PASSWORD_VALIDATORS = [
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
 
-if not DEBUG:
+in_docker = os.environ.get('DOCKER', 'false').upper() == 'TRUE'
+if not (DEBUG or in_docker):  # in production
     CSRF_COOKIE_SECURE = True
 
     SESSION_COOKIE_SECURE = True
 
     SECURE_BROWSER_XSS_FILTER = True
 
-    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
-    # SECURE_HSTS_PRELOAD = True
+    SECURE_HSTS_PRELOAD = True
 
-    # SECURE_HSTS_SECONDS = 3600
+    SECURE_HSTS_SECONDS = 3600
 
     # SECURE_SSL_REDIRECT = True
 
@@ -259,9 +260,5 @@ STATICFILES_FINDERS = (
 COMPRESS_OFFLINE = True
 
 # content
-
-JUDGE_WELCOME_MESSAGE = "Welcome to HackTJ Judging! Thank you for taking time our of your busy schedule to judge our students projects. Before you get started, please read these instructions for using the Live judging system.\n \
-                         Our judging system is based off of HackMIT's Gavel and utilizes pairwise comparisons to rank our projects. You will perform multiple rounds of judging in which you are asked to compare two projects. Each round, you will select the project you feel is better in terms of ____________, and that project will be \"kept\" for the next round. Make your choice by selecting the \"Current\" and \"Previous\" buttons at the bottom of each juding round. You also have the option to skip a project, but we ask that you please try and refrain from using this option. \n \
-                         Once you have finished judging, you may look back at skipped projects on Devpost or visit the scoreboard, which is updated live as decision are made. Click the button below to start judging!"
 MIN_VIEWS = 3
 TIMEOUT = 0

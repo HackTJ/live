@@ -7,27 +7,25 @@ from judge.models import Decision, Project
 import pytz
 
 # redirect non-judge users to scoreboard
-def judge_required(function=None, login_url='/judge/scoreboard', redirect_field_name=None):
-    dec = user_passes_test(
+
+
+def judge_required(function=None, redirect_field_name='next', login_url=None):
+    actual_decorator = user_passes_test(
         lambda user: user.groups.filter(name="judge").exists(),
         login_url=login_url,
-        redirect_field_name=redirect_field_name
+        redirect_field_name=redirect_field_name,
     )
     if function:
-        return dec(function)
-    return dec
+        return actual_decorator(function)
+    return actual_decorator
 
 
 @login_required
 @judge_required
 def home(request):
     if not request.user.annotator.read_welcome:
-        print("home - not read welcome, redirecting...")
         return redirect('/judge/welcome')
-        
-    return render(request, 'judge/judge_home.html', {
-        'welcome_message': settings.JUDGE_WELCOME_MESSAGE
-    })
+    return render(request, 'judge/judge_home.html')
 
 
 @login_required
@@ -36,10 +34,8 @@ def welcome(request):
     if request.method == "POST":
         request.user.annotator.read_welcome = True
         request.user.annotator.save()
-        print('welcome - annotator read welcome = {}'.format(request.user.annotator.read_welcome))
         return redirect('/judge')
     else:
-        print('welcome - rendering welcome page')
         return render(request, 'judge/welcome.html', {
             'welcome_message': settings.JUDGE_WELCOME_MESSAGE
         })
@@ -64,6 +60,7 @@ def begin(request):
             annotator.next = None
         annotator.save()
     return redirect('/judge/vote')
+
 
 @login_required
 @judge_required
@@ -118,8 +115,11 @@ def vote(request):
             "prev": request.user.annotator.prev
         })
 
+
+@judge_required
 def scoreboard(request):
-    projects = [p for p in Project.objects.order_by('-mean').all() if (p.active and p.timesSeen > 0)]
+    projects = [p for p in Project.objects.order_by(
+        '-mean').all() if (p.active and p.timesSeen > 0)]
     return render(request, 'judge/scoreboard.html', {
         'projects': projects
     })

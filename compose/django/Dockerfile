@@ -1,6 +1,6 @@
 FROM python:3.9.0-alpine3.12
 
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONUNBUFFERED=1, DOCKER=true
 
 # Creates /app in container if it does not already exist
 WORKDIR /app
