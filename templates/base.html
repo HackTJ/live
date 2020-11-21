@@ -18,9 +18,7 @@
 
 </head>
 
-<body
-  class="leading-normal tracking-normal text-white bg-gradient-to-r from-blue-500 to-green-400 font-sans antialiased flex flex-col min-h-screen"
-  style="font-family: 'Source Sans Pro', sans-serif;">
+<body class="leading-normal tracking-normal text-white bg-gradient-to-r from-blue-500 to-green-400 font-sans antialiased flex flex-col min-h-screen" style="font-family: 'Source Sans Pro', sans-serif;">
 
   <!--Nav-->
   <nav id="header" class="fixed w-full z-30 top-0 text-white lg:mt-0 pt-4 border-b">
@@ -28,8 +26,7 @@
       <div class="pl-4 flex items-center">
         <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
           <svg viewBox="0 0 20 20" class="h-8 fill-current inline">
-            <path
-              d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
+            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
             </path>
           </svg>
           HackTJ Live
@@ -45,10 +42,9 @@
         </button>
       </div>
 
-      <div
-        class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent p-4 lg:p-0 z-20"
-        id="nav-content">
-        <ul class="list-reset lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black"> <!--toggleColour-->
+      <div class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent p-4 lg:p-0 z-20" id="nav-content">
+        <ul class="lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black">
+          <!--toggleColour-->
           <li>
             <a class="inline py-2 px-4 font-bold no-underline" href="/">Home</a>
           </li>
@@ -57,24 +53,20 @@
               href="/mentor">Mentor</a>
           </li> -->
           <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-              href="/judge">Judge</a>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/judge">Judge</a>
           </li>
           <span class="select-none hidden lg:block">|</span>
           <hr class="w-1/3 lg:hidden" />
           {% if user.is_authenticated %}
           <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-              href="{% url 'account_logout' %}">Logout</a>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_logout' %}">Logout</a>
           </li>
           {% else %}
           <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-              href="{% url 'account_login' %}">Sign In</a>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_login' %}">Sign In</a>
           </li>
           <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-              href="{% url 'account_signup' %}">Register</a>
+            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_signup' %}">Register</a>
           </li>
           {% endif %}
         </ul>
@@ -91,11 +83,9 @@
     <div class="container mx-auto px-8">
       <div class="w-full flex flex-col md:flex-row py-6">
         <div class="flex-1 mb-6 mr-12">
-          <a class="no-underline hover:no-underline font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 lg:text-4xl"
-            href="/">
+          <a class="no-underline hover:no-underline font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 lg:text-4xl" href="/">
             <svg viewBox="0 0 20 20" class="h-8 inline">
-              <path
-                d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
+              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
               </path>
             </svg>
             HackTJ Live
@@ -103,8 +93,8 @@
         </div>
 
         <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Links</p>
-          <ul class="list-reset mb-6">
+          <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Links</p>
+          <ul class="mb-6 inline">
             <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">FAQ</a>
             </li> -->
@@ -120,8 +110,8 @@
           </ul>
         </div>
         <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Legal</p>
-          <ul class="list-reset mb-6">
+          <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Legal</p>
+          <ul class="mb-6 inline">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
               <a href="https://github.com/HackTJ/live/blob/master/LICENSE" class="no-underline hover:underline text-gray-800 hover:text-orange-500">License</a>
             </li>
@@ -131,23 +121,19 @@
           </ul>
         </div>
         <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6">Social</p>
-          <ul class="list-reset mb-6">
+          <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Social</p>
+          <ul class="mb-6 inline">
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.facebook.com/HackTJOfficial"
-                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Facebook</a>
+              <a href="https://www.facebook.com/HackTJOfficial" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Facebook</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.linkedin.com/company/hacktj/"
-                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Linkedin</a>
+              <a href="https://www.linkedin.com/company/hacktj/" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Linkedin</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://twitter.com/HackTJOfficial"
-                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Twitter</a>
+              <a href="https://twitter.com/HackTJOfficial" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Twitter</a>
             </li>
             <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.instagram.com/hacktjofficial/"
-                class="no-underline hover:underline text-gray-800 hover:text-orange-500">Instagram</a>
+              <a href="https://www.instagram.com/hacktjofficial/" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Instagram</a>
             </li>
           </ul>
         </div>
@@ -164,7 +150,7 @@
     var brandname = document.getElementById("brandname");
     var toToggle = document.querySelectorAll(".toggleColour");
 
-    document.addEventListener('scroll', function () {
+    document.addEventListener('scroll', function() {
 
       /*Apply classes for slide in bar*/
       scrollpos = window.scrollY;
@@ -200,7 +186,7 @@
     var navMenuDiv = document.getElementById("nav-content");
     var navMenu = document.getElementById("nav-toggle");
 
-    document.onclick = function (e) {
+    document.onclick = function(e) {
       var target = (e && e.target) || (event && event.srcElement);
       // Nav Menu
       if (!checkParent(target, navMenuDiv)) {
