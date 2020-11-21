@@ -44,6 +44,7 @@ ALLOWED_HOSTS = [
 
 ADMINS = [
     ('Sumanth Ratna', 'sumanth@hacktj.org'),
+    ('Pranav Mathur', 'pranav@hacktj.org')
 ]
 
 # MANAGERS
@@ -259,4 +260,8 @@ COMPRESS_OFFLINE = True
 
 # content
 
-JUDGE_WELCOME_MESSAGE = "*Judge welcome message with judging directions*"
+JUDGE_WELCOME_MESSAGE = "Welcome to HackTJ Judging! Thank you for taking time our of your busy schedule to judge our students projects. Before you get started, please read these instructions for using the Live judging system.\n \
+                         Our judging system is based off of HackMIT's Gavel and utilizes pairwise comparisons to rank our projects. You will perform multiple rounds of judging in which you are asked to compare two projects. Each round, you will select the project you feel is better in terms of ____________, and that project will be \"kept\" for the next round. Make your choice by selecting the \"Current\" and \"Previous\" buttons at the bottom of each juding round. You also have the option to skip a project, but we ask that you please try and refrain from using this option. \n \
+                         Once you have finished judging, you may look back at skipped projects on Devpost or visit the scoreboard, which is updated live as decision are made. Click the button below to start judging!"
+MIN_VIEWS = 3
+TIMEOUT = 0
