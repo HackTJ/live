@@ -48,7 +48,7 @@
   </style>
   {% endcompress %}
 
-  <div class="container mx-auto py-6 px-4" x-data="datatable()" x-cloak>
+  <div class="container mx-auto py-6 px-4 mb-4" x-data="datatable()" x-cloak>
     <h1 class="text-3xl py-4 border-b mb-10 text-white">Live Rankings</h1>
 
     <div class="bg-blue-200 my-8 left-0 bottom-0 right-0 z-40 w-full shadow rounded">
@@ -117,7 +117,7 @@
           </tr>
         </thead>
         <tbody>
-          <template x-for="project in projects" :key="project.projectId">
+          <template x-for="project in projects" :key="project">
             <tr class="text-gray-700">
               <td class="border-dashed border-t border-gray-200 px-3">
                 <label class="text-blue-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
@@ -195,6 +195,14 @@
   <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@3.0.1/dist/ponyfill.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/eligrey/Blob.js/Blob.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.5/StreamSaver.min.js"></script>
+  <script>
+    const projects = JSON.parse("{{ projects|escapejs }}").map(project => {
+      let projectProperties = project.fields;
+      projectProperties.projectId = project.pk;
+      return projectProperties;
+    });
+    // const projects = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
+  </script>
   {% compress js %}
   <script>
     function datatable() {
@@ -245,8 +253,6 @@
           'value': 'Active'
         }
       ];
-      const projects = JSON.parse("{{ projects|escapejs }}").map(project => project.fields);
-      // var projects = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
 
       let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
 
