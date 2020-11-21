@@ -106,10 +106,12 @@ def vote(request):
         })
 
 
-@judge_required
+# @login_required
+# @judge_required
+@require_http_methods(["GET"])
 def scoreboard(request):
-    projects = [p for p in Project.objects.order_by(
-        '-mean').all() if (p.active and p.timesSeen > 0)]
+    from django.core import serializers
+    projects = serializers.serialize("json", Project.objects.order_by('-mean').all())
     return render(request, 'judge/scoreboard.html', {
         'projects': projects
     })
