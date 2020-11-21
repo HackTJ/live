@@ -61,8 +61,7 @@
                 </label>
                 <input
                     class="form-input shadow appearance-none border {% if form.email.errors and form.email.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" type="email" placeholder="Email"
-                    required="{{ form.email.required }}" aria-required="{{ form.email.required }}">
+                    name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" type="email" placeholder="Email">
                 {% if form.email.errors %}
                 <ol>
                     {% for error in form.email.errors %}
