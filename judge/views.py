@@ -36,9 +36,7 @@ def welcome(request):
         request.user.annotator.save()
         return redirect('/judge')
     else:
-        return render(request, 'judge/welcome.html', {
-            'welcome_message': settings.JUDGE_WELCOME_MESSAGE
-        })
+        return render(request, 'judge/welcome.html')
 
 
 @login_required
@@ -85,10 +83,10 @@ def vote(request):
         return render(request, 'judge/begin.html', {"next": annotator.next})
     else:
         annotator = request.user.annotator
-        if annotator.prev.id == int(request.POST['prev_id']) and annotator.next.id == int(request.POST['next_id']):
+        if annotator.prev_id == int(request.POST['prev_id']) and annotator.next_id == int(request.POST['next_id']):
             if request.POST['action'] == 'skip':
-                    annotator.next.timesSkipped += 1
-                    annotator.next.save()
+                annotator.next.timesSkipped += 1
+                annotator.next.save()
             elif annotator.prev.active and annotator.next.active:
                 annotator.viewed.add(annotator.next)
                 annotator.next.timesSeen += 1
@@ -96,11 +94,13 @@ def vote(request):
 
                 if request.POST['action'] == 'previous':
                     perform_vote(annotator, next_won=False)
-                    decision = Decision(annotator=annotator, winner=annotator.prev, loser=annotator.next)
+                    decision = Decision(
+                        annotator=annotator, winner=annotator.prev, loser=annotator.next)
                     decision.save()
                 elif request.POST['action'] == 'current':
                     perform_vote(annotator, next_won=True)
-                    decision = Decision(annotator=annotator, winner=annotator.next, loser=annotator.prev)
+                    decision = Decision(
+                        annotator=annotator, winner=annotator.next, loser=annotator.prev)
                     decision.save()
                     annotator.prev = annotator.next
 
@@ -121,7 +121,8 @@ def vote(request):
 @require_http_methods(["GET"])
 def scoreboard(request):
     from django.core import serializers
-    projects = serializers.serialize("json", Project.objects.order_by('-mean').all())
+    projects = serializers.serialize(
+        "json", Project.objects.order_by('-mean').all())
     return render(request, 'judge/scoreboard.html', {
         'projects': projects
     })
