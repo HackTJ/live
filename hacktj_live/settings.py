@@ -45,6 +45,7 @@ ALLOWED_HOSTS = [
 
 ADMINS = [
     ('Sumanth Ratna', 'sumanth@hacktj.org'),
+    ('Pranav Mathur', 'pranav@hacktj.org')
 ]
 
 # MANAGERS
@@ -274,3 +275,7 @@ STATICFILES_FINDERS = (
 
 COMPRESS_ENABLED = True
 COMPRESS_OFFLINE = True
+
+# content
+MIN_VIEWS = 3
+TIMEOUT = 0

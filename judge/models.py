@@ -13,7 +13,7 @@ class Project(models.Model):
     mean = models.DecimalField(default=0., decimal_places=8, max_digits=12)
     variance = models.DecimalField(default=1., decimal_places=8, max_digits=12)
     numberOfVotes = models.IntegerField(default=0)
-    timesSeen = models.IntegerField(default=0)
+    timesSeen = models.IntegerField(default=0) # decision made and not skipped
     timesSkipped = models.IntegerField(default=0)
 
     prioritize = models.BooleanField(default=False)
@@ -44,6 +44,11 @@ class Annotator(models.Model):
         Project,
         related_name="%(class)s_ignore"
     )
+    
+    viewed = models.ManyToManyField(
+        Project,
+        related_name="%(class)s_viewed"
+    )
 
     alpha = models.DecimalField(default=10, decimal_places=8, max_digits=12)
     beta = models.DecimalField(default=1, decimal_places=8, max_digits=12)
@@ -53,13 +58,8 @@ class Annotator(models.Model):
     def update_next(self, new_next):
         if new_next is not None:
             new_next.prioritized = False
-        self.next = new_next
-
-
-Project.viewed = models.ManyToManyField(
-    Annotator,
-    related_name="%(class)s_viewed"
-)
+            self.next = new_next
+            self.ignore.add(new_next)
 
 
 class Decision(models.Model):
