@@ -1,4 +1,5 @@
 admin/
 css/
 debug_toolbar/
+CACHE/
 !./assets/hero.png
