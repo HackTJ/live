@@ -7,134 +7,131 @@
 {% block content %}
 
 <div class="w-2/3 content-center justify-center text-center mx-auto">
-    <h1 class="text-2xl text-center">{% translate "Sign Up" %}</h1>
-    <p>{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}
-    </p>
+  <h1 class="text-2xl text-center">{% translate "Sign Up" %}</h1>
+  <p>{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}
+  </p>
 
-    <div class="w-full">
-        <form class="text-gray-700 bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4"
-            action="{% url 'account_signup' %}" method="post">
-            {% csrf_token %}
-            {% if form.non_field_errors %}
-            <ol>
-                {% for error in form.non_field_errors %}
-                <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                {% endfor %}
-            </ol>
-            {% endif %}
-            <div class="mb-4">
-                <label class="block text-sm font-bold mb-2" for="{{ form.name.id_for_label }}">
-                    {{ form.name.label }}
-                </label>
-                <input
-                    class="form-input shadow appearance-none border {% if form.name.errors and form.name.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="{{ form.name.name }}" id="{{ form.name.id_for_label }}" type="text" placeholder="Full Name"
-                    required="{{ form.name.required }}" aria-required="{{ form.name.required }}">
-                {% if form.name.errors %}
-                <ol>
-                    {% for error in form.name.errors %}
-                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-bold mb-2" for="{{ form.username.id_for_label }}">
-                    {{ form.username.label }}
-                </label>
-                <input
-                    class="form-input shadow appearance-none border {% if form.username.errors and form.username.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" type="text"
-                    placeholder="Username" required="{{ form.username.required }}"
-                    aria-required="{{ form.username.required }}" autocomplete="username">
-                {% if form.username.errors %}
-                <ol>
-                    {% for error in form.username.errors %}
-                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-            <div class="mb-4">
-                <label class="block text-sm font-bold mb-2" for="{{ form.email.id_for_label }}">
-                    {{ form.email.label }}
-                </label>
-                <input
-                    class="form-input shadow appearance-none border {% if form.email.errors and form.email.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" type="email" placeholder="Email">
-                {% if form.email.errors %}
-                <ol>
-                    {% for error in form.email.errors %}
-                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-            <div class="mb-6">
-                <label class="block text-sm font-bold mb-2" for="{{ form.user_type.id_for_label }}">
-                    {{ form.user_type.label }}
-                </label>
-                {% for user_type_option in form.user_type %}
-                {{user_type_option}}
-                {% endfor %}
+  <div class="w-full">
+    <form class="text-gray-700 bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4" action="{% url 'account_signup' %}" method="post">
+      {% csrf_token %}
+      {% if form.non_field_errors %}
+      <ol>
+        {% for error in form.non_field_errors %}
+        <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-2" for="{{ form.first_name.id_for_label }}">
+          {{ form.first_name.label }}
+        </label>
+        <input class="form-input shadow appearance-none border {% if form.first_name.errors and form.first_name.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          name="{{ form.first_name.name }}" id="{{ form.first_name.id_for_label }}" type="text" placeholder="{{ form.first_name.label }}" autocomplete="given-name">
+        {% if form.first_name.errors %}
+        <ol>
+          {% for error in form.first_name.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-2" for="{{ form.last_name.id_for_label }}">
+          {{ form.last_name.label }}
+        </label>
+        <input class="form-input shadow appearance-none border {% if form.last_name.errors and form.last_name.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}" type="text" placeholder="{{ form.last_name.label }}" autocomplete="family-name">
+        {% if form.last_name.errors %}
+        <ol>
+          {% for error in form.last_name.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-2" for="{{ form.username.id_for_label }}">
+          {{ form.username.label }}
+        </label>
+        <input class="form-input shadow appearance-none border {% if form.username.errors and form.username.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" type="text" placeholder="Username" required="{{ form.username.required }}" aria-required="{{ form.username.required }}" autocomplete="username">
+        {% if form.username.errors %}
+        <ol>
+          {% for error in form.username.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="mb-4">
+        <label class="block text-sm font-bold mb-2" for="{{ form.email.id_for_label }}">
+          {{ form.email.label }}
+        </label>
+        <input class="form-input shadow appearance-none border {% if form.email.errors and form.email.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
+          name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" type="email" placeholder="Email">
+        {% if form.email.errors %}
+        <ol>
+          {% for error in form.email.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-2" for="{{ form.user_type.id_for_label }}">
+          {{ form.user_type.label }}
+        </label>
+        {% for user_type_option in form.user_type %}
+        {{user_type_option}}
+        {% endfor %}
 
-                {% if form.user_type.errors %}
-                <ol>
-                    {% for error in form.user_type.errors %}
-                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-            <div class="mb-6">
-                <label class="block text-sm font-bold mb-2" for="{{ form.password1.id_for_label }}">
-                    {{ form.password1.label }}
-                </label>
-                <input
-                    class="form-input shadow appearance-none border {% if form.password1.errors and form.password1.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" type="password"
-                    placeholder="******************" required="{{ form.password2.required }}"
-                    aria-required="{{ form.password2.required }}" autocomplete="new-password">
-                {% if form.password1.errors %}
-                <ol>
-                    {% for error in form.password1.errors %}
-                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-            <div class="mb-6">
-                <label class="block text-sm font-bold mb-2" for="{{ form.password2.id_for_label }}">
-                    {{ form.password2.label }}
-                </label>
-                <input
-                    class="form-input shadow appearance-none border {% if form.password2.errors and form.password2.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                    name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" type="password"
-                    placeholder="******************" required="{{ form.password2.required }}"
-                    aria-required="{{ form.password2.required }}" autocomplete="new-password">
-                {% if form.password2.errors %}
-                <ol>
-                    {% for error in form.password2.errors %}
-                    <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
-                    {% endfor %}
-                </ol>
-                {% endif %}
-            </div>
-            <div class="flex items-center justify-between">
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                <button
-                    class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-                    type="submit">
-                    {% translate "Sign Up" %}
-                </button>
-                <button
-                    class="inline-block align-baseline text-sm font-bold py-2 px-4 rounded text-blue-500 hover:text-blue-800"
-                    type="reset">{% translate "Clear All Fields" %}</button>
-            </div>
-        </form>
-    </div>
+        {% if form.user_type.errors %}
+        <ol>
+          {% for error in form.user_type.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-2" for="{{ form.password1.id_for_label }}">
+          {{ form.password1.label }}
+        </label>
+        <input class="form-input shadow appearance-none border {% if form.password1.errors and form.password1.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" type="password" placeholder="******************" required="{{ form.password2.required }}" aria-required="{{ form.password2.required }}" autocomplete="new-password">
+        {% if form.password1.errors %}
+        <ol>
+          {% for error in form.password1.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="mb-6">
+        <label class="block text-sm font-bold mb-2" for="{{ form.password2.id_for_label }}">
+          {{ form.password2.label }}
+        </label>
+        <input class="form-input shadow appearance-none border {% if form.password2.errors and form.password2.errors.strip %}border-red-500{% endif %} rounded w-full py-2 px-3 mb-3 leading-tight focus:outline-none focus:shadow-outline"
+          name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" type="password" placeholder="******************" required="{{ form.password2.required }}" aria-required="{{ form.password2.required }}" autocomplete="new-password">
+        {% if form.password2.errors %}
+        <ol>
+          {% for error in form.password2.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
+      </div>
+      <div class="flex items-center justify-between">
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+          {% translate "Sign Up" %}
+        </button>
+        <button class="inline-block align-baseline text-sm font-bold py-2 px-4 rounded text-blue-500 hover:text-blue-800" type="reset">{% translate "Clear All Fields" %}</button>
+      </div>
+    </form>
+  </div>
 </div>
 
 {% endblock %}

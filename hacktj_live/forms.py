@@ -18,22 +18,15 @@ class VolunteerSignupForm(SignupForm):
             choices=[('user_judge', 'Judge'), ('user_mentor', 'Mentor')]
         )
 
-        self.fields['name'] = forms.CharField(
-            max_length=150,
-            widget=forms.TextInput(
-                attrs={
-                    'class': 'text-black'
-                }
-            )
-        )
+        self.fields['first_name'] = forms.CharField(max_length=150)
+        self.fields['last_name'] = forms.CharField(max_length=150)
 
     def save(self, request):
         user = super(VolunteerSignupForm, self).save(request)
 
-        user.name = self.cleaned_data["name"]
+        user.first_name = self.cleaned_data["first_name"]
+        user.last_name = self.cleaned_data["last_name"]
 
-        print('r', request.user.groups.values_list('name',flat = True))
-        print('g', list(Group.objects.all()))
         if self.cleaned_data["user_type"] == "user_judge":
             judge_group, _ = Group.objects.get_or_create(name='judge')
             user.groups.add(judge_group)
@@ -44,8 +37,7 @@ class VolunteerSignupForm(SignupForm):
             mentor_group, _ = Group.objects.get_or_create(name='mentor')
             user.groups.add(mentor_group)
         else:
-            # raise
-            pass
+            raise
 
         user.save()
 
