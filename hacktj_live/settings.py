@@ -257,7 +257,3 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_OFFLINE = True
-
-# content
-
-JUDGE_WELCOME_MESSAGE = "*Judge welcome message with judging directions*"

@@ -6,15 +6,17 @@ from judge.controllers import perform_vote, choose_next, init_annotator
 from judge.models import Decision, Project
 
 # redirect non-judge users to scoreboard
-def judge_required(function=None, login_url='/judge/scoreboard', redirect_field_name=None):
-    dec = user_passes_test(
+
+
+def judge_required(function=None, redirect_field_name='next', login_url=None):
+    actual_decorator = user_passes_test(
         lambda user: user.groups.filter(name="judge").exists(),
         login_url=login_url,
-        redirect_field_name=redirect_field_name
+        redirect_field_name=redirect_field_name,
     )
     if function:
-        return dec(function)
-    return dec
+        return actual_decorator(function)
+    return actual_decorator
 
 
 @login_required
@@ -22,10 +24,8 @@ def judge_required(function=None, login_url='/judge/scoreboard', redirect_field_
 def home(request):
     if not request.user.annotator.read_welcome:
         return redirect('/judge/welcome')
-        
-    return render(request, 'judge/judge_home.html', {
-        'welcome_message': settings.JUDGE_WELCOME_MESSAGE
-    })
+
+    return render(request, 'judge/judge_home.html')
 
 
 @login_required
@@ -35,10 +35,8 @@ def welcome(request):
         request.user.annotator.read_welcome = True
         request.user.annotator.save()
         return redirect('/judge')
-    else:    
-        return render(request, 'judge/welcome.html', {
-            'welcome_message': settings.JUDGE_WELCOME_MESSAGE
-        })
+    else:
+        return render(request, 'judge/welcome.html')
 
 
 @login_required
@@ -59,6 +57,7 @@ def begin(request):
         annotator.save()
     return redirect('/judge/vote')
 
+
 @login_required
 @judge_required
 @require_http_methods(["GET", "POST"])
@@ -73,11 +72,11 @@ def vote(request):
             else:
                 return render('/judge/vote', {
                     "prev": annotator.prev,
-                    "next": annotator.next
+                    "next": annotator.next,
                 })
         return render(request, 'judge/vote.html', {
             "next": annotator.next,
-            "prev": annotator.prev
+            "prev": annotator.prev,
         })
     else:
         annotator = request.user.annotator
@@ -88,24 +87,29 @@ def vote(request):
                 if annotator.prev.active and annotator.next.active:
                     if request.form['action'] == 'previous':
                         perform_vote(annotator, next_won=False)
-                        decision = Decision(annotator, winner=annotator.prev, loser=annotator.next)
+                        decision = Decision(
+                            annotator, winner=annotator.prev, loser=annotator.next)
                     elif request.form['action'] == 'current':
                         perform_vote(annotator, next_won=True)
-                        decision = Decision(annotator, winner=annotator.next, loser=annotator.prev)
+                        decision = Decision(
+                            annotator, winner=annotator.next, loser=annotator.prev)
                     decision.save()
             annotator.next.viewed.append(annotator)
             annotator.next.save()
             annotator.prev = annotator.next
             annotator.prev.save()
-        annotator.update_next(choose_next(annotator)) 
+        annotator.update_next(choose_next(annotator))
         annotator.save()
         return render(request, 'judge/vote.html', {
             "next": request.user.annotator.next,
             "prev": request.user.annotator.prev
         })
 
+
+@judge_required
 def scoreboard(request):
-    projects = [p for p in Project.objects.order_by('-mean').all() if (p.active and p.timesSeen > 0)]
+    projects = [p for p in Project.objects.order_by(
+        '-mean').all() if (p.active and p.timesSeen > 0)]
     return render(request, 'judge/scoreboard.html', {
         'projects': projects
     })
