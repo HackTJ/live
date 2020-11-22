@@ -7,7 +7,7 @@ from datetime import datetime
 
 def preferred_items(annotator):
     items = []
-    ignored_ids = {p.id for p in annotator.ignore.all()}
+    ignored_ids = [p.id for p in annotator.ignore.all()]
 
     if ignored_ids:
         available_projects = Project.objects.filter(active=True).exclude(id__in=ignored_ids).all()
@@ -20,7 +20,7 @@ def preferred_items(annotator):
     annotators = Annotator.objects.filter(next__isnull=False).all()
     annotators = [a for a in annotators if a.judge.is_active]
 
-    nonbusy = {a.next for a in annotators if (a.next in available_projects) and ((timezone.make_aware(datetime.utcnow()) - a.updated).total_seconds() >= settings.TIMEOUT * 60)}
+    nonbusy = list({a.next for a in annotators if (a.next in available_projects) and ((timezone.make_aware(datetime.utcnow()) - a.updated).total_seconds() >= settings.TIMEOUT * 60)})
     preferred = nonbusy if nonbusy else items
 
     less_seen = [p for p in preferred if p.timesSeen < settings.MIN_VIEWS]
