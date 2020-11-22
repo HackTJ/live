@@ -29,6 +29,8 @@ DEBUG = str(os.environ.get('DEBUG', False)).upper() == 'TRUE'
 if "DIRECTOR_DATABASE_URL" in os.environ:
     DEBUG = False
 
+in_docker = os.environ.get('DOCKER', 'false').upper() == 'TRUE'
+
 INTERNAL_IPS = [
     'localhost',
     '127.0.0.1',
@@ -74,32 +76,35 @@ SITE_ID = 1
 # https://docs.djangoproject.com/en/dev/ref/settings/#migration-modules
 MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
 
-redis_ping_compose = run_cmd(["nc", "-z", "redis", "6379"])
-redis_ping_local = run_cmd(["nc", "-z", "127.0.0.1", "6379"])
-if redis_ping_compose.returncode == 0:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [("redis", 6379)],
-            },
-        },
-    }
-elif redis_ping_local.returncode == 0:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [("127.0.0.1", 6379)],
-            },
-        },
-    }
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    },
+}
+try:
+    redis_ping_compose = run_cmd(["nc", "-z", "redis", "6379"])
+    redis_ping_local = run_cmd(["nc", "-z", "127.0.0.1", "6379"])
+except FileNotFoundError:
+    pass
 else:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels.layers.InMemoryChannelLayer"
-        },
-    }
+    if redis_ping_compose.returncode == 0:
+        CHANNEL_LAYERS = {
+            "default": {
+                "BACKEND": "channels_redis.core.RedisChannelLayer",
+                "CONFIG": {
+                    "hosts": [("redis", 6379)],
+                },
+            },
+        }
+    elif redis_ping_local.returncode == 0:
+        CHANNEL_LAYERS = {
+            "default": {
+                "BACKEND": "channels_redis.core.RedisChannelLayer",
+                "CONFIG": {
+                    "hosts": [("127.0.0.1", 6379)],
+                },
+            },
+        }
 
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'backup')}
@@ -230,7 +235,6 @@ AUTH_PASSWORD_VALIDATORS = [
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
 
-in_docker = os.environ.get('DOCKER', 'false').upper() == 'TRUE'
 if not (DEBUG or in_docker):  # in production
     CSRF_COOKIE_SECURE = True
 
@@ -274,8 +278,10 @@ STATICFILES_FINDERS = (
 )
 
 COMPRESS_ENABLED = True
+
 COMPRESS_OFFLINE = True
 
 # content
 MIN_VIEWS = 3
+
 TIMEOUT = 0

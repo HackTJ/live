@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 python manage.py makemigrations --noinput
 python manage.py migrate --noinput
