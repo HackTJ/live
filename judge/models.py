@@ -9,11 +9,12 @@ class Project(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
+    link = models.URLField(blank=True)
 
     mean = models.DecimalField(default=0., decimal_places=8, max_digits=12)
     variance = models.DecimalField(default=1., decimal_places=8, max_digits=12)
     numberOfVotes = models.IntegerField(default=0)
-    timesSeen = models.IntegerField(default=0) # decision made and not skipped
+    timesSeen = models.IntegerField(default=0)  # decision made and not skipped
     timesSkipped = models.IntegerField(default=0)
 
     prioritize = models.BooleanField(default=False)
@@ -44,7 +45,7 @@ class Annotator(models.Model):
         Project,
         related_name="%(class)s_ignore"
     )
-    
+
     viewed = models.ManyToManyField(
         Project,
         related_name="%(class)s_viewed"
