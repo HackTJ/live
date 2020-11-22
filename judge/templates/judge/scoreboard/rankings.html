@@ -1,0 +1,312 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section>
+  {% load compress %}
+  {% compress css %}
+  <style>
+    [x-cloak] {
+      display: none;
+    }
+
+    [type="checkbox"] {
+      box-sizing: border-box;
+      padding: 0;
+    }
+
+    .form-checkbox {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      -webkit-print-color-adjust: exact;
+      color-adjust: exact;
+      display: inline-block;
+      vertical-align: middle;
+      background-origin: border-box;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      flex-shrink: 0;
+      color: currentColor;
+      background-color: #fff;
+      border-color: #e2e8f0;
+      border-width: 1px;
+      border-radius: 0.25rem;
+      height: 1.2em;
+      width: 1.2em;
+    }
+
+    .form-checkbox:checked {
+      background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M5.707 7.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4a1 1 0 0 0-1.414-1.414L7 8.586 5.707 7.293z'/%3e%3c/svg%3e");
+      border-color: transparent;
+      background-color: currentColor;
+      background-size: 100% 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  </style>
+  {% endcompress %}
+
+  <div class="container mx-auto py-6 px-4 mb-4" x-data="datatable()" x-cloak>
+    <h1 class="text-3xl py-4 border-b mb-10 text-white">Live Rankings</h1>
+
+    <div class="bg-blue-200 my-8 left-0 bottom-0 right-0 z-40 w-full shadow rounded">
+      <div class="container mx-auto px-4 py-4">
+        <div class="flex md:items-center">
+          <div class="mr-4 flex-shrink-0">
+            <svg class="fill-current h-8 w-8 text-blue-600" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+            </svg>
+          </div>
+          <div x-text="selectedRows.length + ' rows are selected'" class="text-blue-800 text-lg mr-6"></div>
+          <button class="ml-auto bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" @click="downloadTableAsCsv">
+            <svg class="fill-current w-4 h-4 mr-2" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd">
+              </path>
+            </svg>
+            <span class="uppercase">Download CSV</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="mb-4 flex justify-between items-center">
+      <!-- TODO: search -->
+      <div>
+        <div class="shadow rounded-lg flex">
+          <div class="relative">
+            <button @click.prevent="open = !open" class="rounded-lg inline-flex items-center bg-white hover:text-blue-500 focus:outline-none focus:shadow-outline text-gray-500 font-semibold py-2 px-2 md:px-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 md:hidden" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="0" y="0" width="24" height="24" stroke="none"></rect>
+                <path d="M5.5 5h13a1 1 0 0 1 0.5 1.5L14 12L14 19L10 16L10 12L5 6.5a1 1 0 0 1 0.5 -1.5" />
+              </svg>
+              <span class="hidden md:block">Columns</span>
+              <svg class="fill-current w-5 h-5 ml-1" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+
+            <div x-show="open" @click.away="open = false" class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden">
+              <template x-for="heading in headings">
+                <label class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2">
+                  <div class="text-blue-600 mr-3">
+                    <input type="checkbox" class="form-checkbox focus:outline-none focus:shadow-outline" checked @click="toggleColumn(heading.key)">
+                  </div>
+                  <div class="select-none text-gray-700" x-text="heading.value"></div>
+                </label>
+              </template>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
+      <table id="scoreboard-table" class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
+        <thead class="sticky top-0">
+          <tr class="text-left">
+            <th class="sticky top-0 py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100">
+              <label class="text-blue-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
+                <input id="selectAllCheckbox" type="checkbox" class="form-checkbox focus:outline-none focus:shadow-outline" @click="selectAllCheckboxes($event);">
+              </label>
+            </th>
+            <template x-for="heading in headings">
+              <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center" x-text="heading.value" :x-ref="heading.key" :class="{ [heading.key]: true }"></th>
+            </template>
+          </tr>
+        </thead>
+        <tbody>
+          <template x-for="project in projects" :key="project">
+            <tr class="text-gray-700">
+              <td class="border-dashed border-t border-gray-200 px-3">
+                <label class="text-blue-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
+                  <input type="checkbox" class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" :name="project.projectId" @click="getRowDetail($event, project.projectId)">
+                </label>
+              </td>
+              <!-- TODO: would be nice to be able to x-for over project's attributes -->
+              <!-- TODO: currently we add the attribute name to classList for toggleColumn(key).
+                  this is a little unintuitive; we should try setting this as a custom attribute or as the ID-->
+              <td class="border-dashed border-t border-gray-200 projectId">
+                <span class="px-6 py-3 flex items-center" x-text="project.projectId"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200 name">
+                <span class="px-6 py-3 flex items-center" x-text="project.name"></span>
+              </td>
+              <td class="border-dashed border-t border-gray-200 description">
+                <span class="px-6 py-3 flex items-center" x-text="project.description"></span>
+              </td>
+            </tr>
+          </template>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  {% comment "TODO: this is safer than |escapejs" %}
+  {{ projects|json_script:"projects-data" }}
+  {% endcomment %}
+
+  {% load static %}
+  <script src="https://cdn.jsdelivr.net/npm/web-streams-polyfill@3.0.1/dist/ponyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/eligrey/Blob.js/Blob.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/streamsaver@2.0.5/StreamSaver.min.js"></script>
+  <script>
+    const projects = JSON.parse("{{ projects|escapejs }}").map(project => {
+      let projectProperties = project.fields;
+      projectProperties.projectId = project.pk;
+      return projectProperties;
+    });
+    // const projects = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
+  </script>
+  {% compress js %}
+  <script>
+    function datatable() {
+      // TODO: maybe make headings have type {key: value}
+      // (one dictionary with 15 keys/values rather than a list of dictionaries)
+      const headings = [
+        {
+          'key': 'projectId',
+          'value': 'ID'
+        },
+        {
+          'key': 'name',
+          'value': 'Name'
+        },
+        {
+          'key': 'description',
+          'value': 'Description'
+        },
+      ];
+
+      let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
+      let getHeadingFromKey = key => headings.find(heading => heading.key.toUpperCase() === key.toUpperCase());
+
+      // the first element of the output is '', because of the checkbox column:
+      let getSelectedColumns = () => Array.from(document.querySelectorAll('th:not(.hidden)')).map(thDomElement => thDomElement.innerText);
+
+      return {
+        headings: headings,
+        projects: projects,
+        selectedRows: [],
+
+        open: false,
+
+        toggleColumn(key) {
+          // Note: All td must have the same class name as the headings key!
+          let columns = document.querySelectorAll('.' + key);
+
+          if (this.$refs[key].classList.contains('hidden') && this.$refs[key].classList.contains(key)) {
+            columns.forEach(column => {
+              column.classList.remove('hidden');
+            });
+          } else {
+            columns.forEach(column => {
+              column.classList.add('hidden');
+            });
+          }
+        },
+
+        getRowDetail($event, id) {
+          let rows = this.selectedRows;
+
+          if (rows.includes(id)) {
+            let index = rows.indexOf(id);
+            rows.splice(index, 1);
+          } else {
+            rows.push(id);
+          }
+
+          if (this.selectedRows.length === this.projects.length) {
+            document.getElementById('selectAllCheckbox').checked = true;
+          }
+        },
+
+        selectAllCheckboxes($event) {
+          let columns = document.querySelectorAll('.rowCheckbox');
+
+          this.selectedRows = [];
+
+          if ($event.target.checked == true) {
+            columns.forEach(column => {
+              column.checked = true
+              this.selectedRows.push(parseInt(column.name))
+            });
+          } else {
+            columns.forEach(column => {
+              column.checked = false
+            });
+            this.selectedRows = [];
+          }
+        },
+
+        downloadTableAsCsv($event) {
+          // TODO: CSV export brings the footer up so you can see the gradient background at the bottom?
+
+          var selectedRowsData = projects;
+          if (this.selectedRows.length > 0) {
+            selectedRowsData = selectedRowsData.filter(project => this.selectedRows.includes(project.projectId));
+          }
+
+          let selectedColumns = getSelectedColumns();
+
+          let removeHeadings = (selectedRowData) => {
+            for (let key in selectedRowData) {
+              if (selectedRowData.hasOwnProperty(key)) {
+                if (!selectedColumns.includes(getHeadingFromKey(key)?.value.toUpperCase())) {
+                  selectedRowData[key] = undefined;
+                  delete selectedRowData[key];
+                }
+              }
+            }
+            return selectedRowData;
+          }
+          let selectedData = selectedRowsData.map(removeHeadings);
+
+          // convert JS object to CSV string
+          // https://stackoverflow.com/a/31536517/7127932
+          let fields = Object.keys(selectedData[0]);
+          let replacer = (key, value) => value === null ? '' : value; // replace null values with ''
+          var csv = selectedData.map(row => fields.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
+          csv.unshift(fields.join(',')) // add header column
+          let output = "\ufeff" + csv.join('\r\n');
+
+          const blob = new Blob([output]); // includes extra columns
+          const fileName = 'export_' + new Date().toLocaleDateString() + '.csv';
+          const fileStream = streamSaver.createWriteStream(fileName, {
+            size: blob.size,
+            // writableStrategy: undefined, // (optional)
+            // readableStrategy: undefined  // (optional)
+          });
+          const readableStream = blob.stream();
+          // more optimized pipe version
+          // (Safari may have pipeTo but it's useless without the WritableStream)
+          if (window.WritableStream && readableStream.pipeTo) {
+            return readableStream.pipeTo(fileStream).then(() => console.log('done downloading CSV data'))
+          }
+
+          // Write (pipe) manually
+          window.writer = fileStream.getWriter();
+
+          const reader = readableStream.getReader();
+          const pump = () => reader.read()
+            .then(res => res.done ?
+              writer.close() :
+              writer.write(res.value).then(pump));
+          pump();
+
+          // abort so it dose not look stuck
+          window.onunload = () => {
+            writableStream.abort();
+            // also possible to call abort on the writer you got from `getWriter()`
+            writer.abort();
+          }
+        }
+      }
+    }
+  </script>
+  {% endcompress %}
+</section>
+<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine-ie11.min.js" defer></script>
+{% endblock %}

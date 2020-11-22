@@ -59,8 +59,8 @@
               <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
             </svg>
           </div>
-          <div x-text="selectedRows.length + ' rows are selected'" class="text-blue-800 text-lg"></div>
-          <button class="ml-6 bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" @click="downloadTableAsCsv">
+          <div x-text="selectedRows.length + ' rows are selected'" class="text-blue-800 text-lg mr-6"></div>
+          <button class="ml-auto bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center" @click="downloadTableAsCsv">
             <svg class="fill-current w-4 h-4 mr-2" viewBox="0 0 20 20">
               <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd">
               </path>
@@ -112,7 +112,7 @@
               </label>
             </th>
             <template x-for="heading in headings">
-              <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs" x-text="heading.value" :x-ref="heading.key" :class="{ [heading.key]: true }"></th>
+              <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center" x-text="heading.value" :x-ref="heading.key" :class="{ [heading.key]: true }"></th>
             </template>
           </tr>
         </thead>
@@ -127,35 +127,35 @@
               <!-- TODO: would be nice to be able to x-for over project's attributes -->
               <!-- TODO: currently we add the attribute name to classList for toggleColumn(key).
                   this is a little unintuitive; we should try setting this as a custom attribute or as the ID-->
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center projectId" x-text="project.projectId"></span>
+              <td class="border-dashed border-t border-gray-200 projectId">
+                <span class="px-6 py-3 flex items-center" x-text="project.projectId"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center name" x-text="project.name"></span>
+              <td class="border-dashed border-t border-gray-200 name">
+                <span class="px-6 py-3 flex items-center" x-text="project.name"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center location" x-text="project.location"></span>
+              <td class="border-dashed border-t border-gray-200 location">
+                <span class="px-6 py-3 flex items-center" x-text="project.location"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center description" x-text="project.description"></span>
+              <td class="border-dashed border-t border-gray-200 description">
+                <span class="px-6 py-3 flex items-center" x-text="project.description"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center mean" x-text="project.mean"></span>
+              <td class="border-dashed border-t border-gray-200 mean">
+                <span class="px-6 py-3 flex items-center" x-text="project.mean"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center variance" x-text="project.variance"></span>
+              <td class="border-dashed border-t border-gray-200 variance">
+                <span class="px-6 py-3 flex items-center" x-text="project.variance"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center numberOfVotes" x-text="project.numberOfVotes"></span>
+              <td class="border-dashed border-t border-gray-200 numberOfVotes">
+                <span class="px-6 py-3 flex items-center" x-text="project.numberOfVotes"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center timesSeen" x-text="project.timesSeen"></span>
+              <td class="border-dashed border-t border-gray-200 timesSeen">
+                <span class="px-6 py-3 flex items-center" x-text="project.timesSeen"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <span class="px-6 py-3 flex items-center timesSkipped" x-text="project.timesSkipped"></span>
+              <td class="border-dashed border-t border-gray-200 timesSkipped">
+                <span class="px-6 py-3 flex items-center" x-text="project.timesSkipped"></span>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <!-- <span class="px-6 py-3 flex items-center prioritize" x-text="project.prioritize"></span> -->
+              <td class="border-dashed border-t border-gray-200 prioritize">
+                <!-- <span class="px-6 py-3 flex items-center" x-text="project.prioritize"></span> -->
                 <div x-show="project.prioritize">
                   <svg class="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -167,8 +167,8 @@
                   </svg>
                 </div>
               </td>
-              <td class="border-dashed border-t border-gray-200">
-                <!-- <span class="px-6 py-3 flex items-center active" x-text="project.active"></span> -->
+              <td class="border-dashed border-t border-gray-200 active">
+                <!-- <span class="px-6 py-3 flex items-center" x-text="project.active"></span> -->
                 <div x-show="project.active">
                   <svg class="w-6 h-6 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
@@ -208,7 +208,8 @@
     function datatable() {
       // TODO: maybe make headings have type {key: value}
       // (one dictionary with 15 keys/values rather than a list of dictionaries)
-      const headings = [{
+      const headings = [
+        {
           'key': 'projectId',
           'value': 'ID'
         },
@@ -255,7 +256,9 @@
       ];
 
       let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
+      let getHeadingFromKey = key => headings.find(heading => heading.key.toUpperCase() === key.toUpperCase());
 
+      // the first element of the output is '', because of the checkbox column:
       let getSelectedColumns = () => Array.from(document.querySelectorAll('th:not(.hidden)')).map(thDomElement => thDomElement.innerText);
 
       return {
@@ -314,34 +317,25 @@
         },
 
         downloadTableAsCsv($event) {
-          var selectedRowsData;
-          if (this.selectedRows.length === 0) {
-            selectedRowsData = projects;
-          } else {
-            selectedRowsData = projects.filter(project => this.selectedRows.includes(project.projectId));
+          // TODO: CSV export brings the footer up so you can see the gradient background at the bottom?
+
+          var selectedRowsData = projects;
+          if (this.selectedRows.length > 0) {
+            selectedRowsData = selectedRowsData.filter(project => this.selectedRows.includes(project.projectId));
           }
 
-          // the first element of selectedColumns is '', because of the
-          // checkbox column.
-          // we don't want this, but it doesn't matter because of the filter
-          // during the assignment of selectedData.
-          // if we were using jQuery, we might be able to avoid the '' by
-          // changing the query to th:not(.hidden :has( > label)) (untested).
-          let selectedColumns = Array.from(document.querySelectorAll('th:not(.hidden)')).map(thDomElement => thDomElement.innerText);
-          let allHeadingLabels = this.headings.map(heading => heading.value);
-          let unselectedColumns = allHeadingLabels.filter(n => !selectedColumns.includes(n.toUpperCase()));
+          let selectedColumns = getSelectedColumns();
 
-          let headingIdsToRemove = unselectedColumns.map(getHeadingIdfromLabel).filter(el => el != null);
-
-          function removeHeadings(selectedRowData) {
-            selectedRowData = new Map(Object.entries(selectedRowData));
-            headingIdsToRemove.forEach(function(headingId) {
-              selectedRowData.delete(headingId);
-              delete selectedRowData[headingId];
-              // selectedRowData[headingId] = undefined;
-              return selectedRowData;
-            });
-            return Object.fromEntries(selectedRowData);
+          let removeHeadings = (selectedRowData) => {
+            for (let key in selectedRowData) {
+              if (selectedRowData.hasOwnProperty(key)) {
+                if (!selectedColumns.includes(getHeadingFromKey(key)?.value.toUpperCase())) {
+                  selectedRowData[key] = undefined;
+                  delete selectedRowData[key];
+                }
+              }
+            }
+            return selectedRowData;
           }
           let selectedData = selectedRowsData.map(removeHeadings);
 

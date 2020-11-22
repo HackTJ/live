@@ -1,13 +1,19 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required, user_passes_test
-from django.views.decorators.http import require_http_methods
+from django.views.decorators.http import (
+    require_http_methods,
+    require_GET,
+    require_POST,
+)
 from django.conf import settings
 from judge.controllers import perform_vote, choose_next, init_annotator
 from judge.models import Decision, Project
-import pytz
 
-# redirect non-judge users to scoreboard
 
+# TODO: superuser gets infinite redirects when visiting /judge because
+# superuser doesn't have the judge group, so there's a redirect from /judge to
+# /accounts/login...but superuser is already logged in so it redirects back to
+# the next GET arg, which is set to /judge
 
 def judge_required(function=None, redirect_field_name='next', login_url=None):
     actual_decorator = user_passes_test(
@@ -41,7 +47,7 @@ def welcome(request):
 
 @login_required
 @judge_required
-@require_http_methods(["POST"])
+@require_POST
 def begin(request):
     annotator = request.user.annotator
     if annotator.next.id == int(request.POST['project_id']):
@@ -119,13 +125,19 @@ def vote(request):
         })
 
 
-# @login_required
-# @judge_required
-@require_http_methods(["GET"])
+@require_GET
 def scoreboard(request):
-    from django.core import serializers
-    projects = serializers.serialize(
-        "json", Project.objects.order_by('-mean').all())
-    return render(request, 'judge/scoreboard.html', {
-        'projects': projects
-    })
+    from django.core.serializers import serialize
+    if request.user.is_authenticated and (request.user.is_staff or request.user.groups.filter(name="judge").exists()):
+        # only show statistics to those authorized: the organizing team and the judges
+        projects = serialize("json", Project.objects.order_by('-mean').all())
+        return render(request, 'judge/scoreboard/stats.html', {
+            'projects': projects,
+        })
+    else:
+        # participants are only allowed to see rankings, not numerical statistics
+        projects = serialize("json", Project.objects.order_by(
+            '-mean').all(), fields=('name', 'description'))
+        return render(request, 'judge/scoreboard/rankings.html', {
+            'projects': projects,
+        })
