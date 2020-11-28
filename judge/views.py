@@ -5,10 +5,10 @@ from django.views.decorators.http import (
     require_GET,
     require_POST,
 )
-from django.conf import settings
+from django.core.serializers import serialize
+from django.contrib.auth.models import User
 from judge.controllers import perform_vote, choose_next, init_annotator
-from judge.models import Decision, Project
-
+from judge.models import Decision, Project, Annotator
 
 # TODO: superuser gets infinite redirects when visiting /judge because
 # superuser doesn't have the judge group, so there's a redirect from /judge to
@@ -126,8 +126,8 @@ def vote(request):
 
 
 @require_GET
+# @login_required
 def scoreboard(request):
-    from django.core.serializers import serialize
     if request.user.is_authenticated and (request.user.is_staff or request.user.groups.filter(name="judge").exists()):
         # only show statistics to those authorized: the organizing team and the judges
         projects = serialize("json", Project.objects.order_by('-mean').all())
@@ -141,3 +141,19 @@ def scoreboard(request):
         return render(request, 'judge/scoreboard/rankings.html', {
             'projects': projects,
         })
+
+
+@require_GET
+@login_required
+def queue(request):
+    return render(request, 'judge/queue.html', {
+        'queue': serialize(
+            "json",
+            [*Annotator.objects.all(), *User.objects.filter(groups__name='judge'), *Project.objects.all()],
+            fields=(
+                'judge', 'next',  # Annotator
+                'username', 'first_name', 'last_name',  # User
+                'name', 'description', # Project
+            ),
+        ),
+    })
