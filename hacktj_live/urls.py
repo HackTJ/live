@@ -27,6 +27,7 @@ urlpatterns = [
     path('judge', judge_views.home),
     path('judge/welcome', judge_views.welcome),
     path('judge/scoreboard', judge_views.scoreboard),
+    path('judge/queue', judge_views.queue),
     path('judge/begin', judge_views.begin),
     path('judge/vote', judge_views.vote),
     path('credits', project_views.credits),
