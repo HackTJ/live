@@ -21,15 +21,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', '')
+SECRET_KEY = os.getenv('SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = str(os.environ.get('DEBUG', False)).upper() == 'TRUE'
+DEBUG = os.getenv('DEBUG', 'false').upper() == 'TRUE'
 if "DIRECTOR_DATABASE_URL" in os.environ:
     DEBUG = False
 
-in_docker = os.environ.get('DOCKER', 'false').upper() == 'TRUE'
+in_docker = os.getenv('DOCKER', 'false').upper() == 'TRUE'
 
 INTERNAL_IPS = [
     'localhost',
@@ -47,7 +46,7 @@ ALLOWED_HOSTS = [
 
 ADMINS = [
     ('Sumanth Ratna', 'sumanth@hacktj.org'),
-    ('Pranav Mathur', 'pranav@hacktj.org')
+    ('Pranav Mathur', 'pranav@hacktj.org'),
 ]
 
 # MANAGERS
@@ -162,10 +161,15 @@ ACCOUNT_EMAIL_REQUIRED = False  # True
 ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
 
 DEFAULT_FROM_EMAIL = "live@hacktj.org"
-if True:  # DEBUG
+if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # default
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
+    EMAIL_HOST_USER = 'apikey'
+    EMAIL_PORT = 587
+    EMAIL_USE_TLS = True
 
 ACCOUNT_FORMS = {
     'signup': 'hacktj_live.forms.VolunteerSignupForm'
@@ -218,10 +222,10 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -271,11 +275,11 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 STATIC_URL = '/static/'
 
-STATICFILES_FINDERS = (
+STATICFILES_FINDERS = [
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
-)
+]
 
 COMPRESS_ENABLED = True
 
