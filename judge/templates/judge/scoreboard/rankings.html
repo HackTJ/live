@@ -127,15 +127,9 @@
               <!-- TODO: would be nice to be able to x-for over project's attributes -->
               <!-- TODO: currently we add the attribute name to classList for toggleColumn(key).
                   this is a little unintuitive; we should try setting this as a custom attribute or as the ID-->
-              <td class="border-dashed border-t border-gray-200 projectId">
-                <span class="px-6 py-3 flex items-center" x-text="project.projectId"></span>
-              </td>
-              <td class="border-dashed border-t border-gray-200 name">
-                <span class="px-6 py-3 flex items-center" x-text="project.name"></span>
-              </td>
-              <td class="border-dashed border-t border-gray-200 description">
-                <span class="px-6 py-3 flex items-center" x-text="project.description"></span>
-              </td>
+              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center projectId" x-text="project.projectId"></td>
+              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center name" x-text="project.name"></td>
+              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center description" x-text="project.description"></td>
             </tr>
           </template>
         </tbody>
