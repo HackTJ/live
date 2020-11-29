@@ -9,8 +9,8 @@ class Project(models.Model):
     description = models.CharField(max_length=255)
     link = models.URLField(blank=True)
 
-    mean = models.DecimalField(default=0., decimal_places=8, max_digits=12)
-    variance = models.DecimalField(default=1., decimal_places=8, max_digits=12)
+    mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    variance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
     numberOfVotes = models.IntegerField(default=0)
     timesSeen = models.IntegerField(default=0)  # decision made and not skipped
     timesSkipped = models.IntegerField(default=0)
@@ -70,11 +70,11 @@ class Decision(models.Model):
     winner = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,
-        related_name="%(class)s_winner"
+        related_name="%(class)s_winner",
     )
     loser = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,
-        related_name="%(class)s_loser"
+        related_name="%(class)s_loser",
     )
     time = models.DateTimeField(auto_now_add=True)

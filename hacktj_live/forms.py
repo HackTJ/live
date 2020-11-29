@@ -9,17 +9,15 @@ class VolunteerSignupForm(SignupForm):
         super(VolunteerSignupForm, self).__init__(*args, **kwargs)
 
         for field in self.fields.values():
-            field.widget.attrs.update({
-                'class': 'text-black'
-            })
+            field.widget.attrs.update({"class": "text-black"})
 
-        self.fields['user_type'] = forms.ChoiceField(
+        self.fields["user_type"] = forms.ChoiceField(
             widget=forms.RadioSelect,
-            choices=[('user_judge', 'Judge'), ('user_mentor', 'Mentor')]
+            choices=[("user_judge", "Judge"), ("user_mentor", "Mentor")],
         )
 
-        self.fields['first_name'] = forms.CharField(max_length=150)
-        self.fields['last_name'] = forms.CharField(max_length=150)
+        self.fields["first_name"] = forms.CharField(max_length=150)
+        self.fields["last_name"] = forms.CharField(max_length=150)
 
     def save(self, request):
         user = super(VolunteerSignupForm, self).save(request)
@@ -28,13 +26,13 @@ class VolunteerSignupForm(SignupForm):
         user.last_name = self.cleaned_data["last_name"]
 
         if self.cleaned_data["user_type"] == "user_judge":
-            judge_group, _ = Group.objects.get_or_create(name='judge')
+            judge_group, _ = Group.objects.get_or_create(name="judge")
             user.groups.add(judge_group)
 
             annotator = Annotator(judge=user)
             annotator.save()
         elif self.cleaned_data["user_type"] == "user_mentor":
-            mentor_group, _ = Group.objects.get_or_create(name='mentor')
+            mentor_group, _ = Group.objects.get_or_create(name="mentor")
             user.groups.add(mentor_group)
         else:
             raise

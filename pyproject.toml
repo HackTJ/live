@@ -25,7 +25,29 @@ better-exceptions = "^0.2.2"
 whitenoise = { extras = ["brotli"], version = "^5.2.0" }
 
 [tool.poetry.dev-dependencies]
+black = "^20.8b1"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+exclude = '''
+(
+  /(
+      \.eggs         # exclude a few common directories in the
+    | \.git          # root of the project
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | \.yarn
+    | _build
+    | buck-out
+    | build
+    | dist
+    | migrations
+    | static
+  )/
+)
+'''

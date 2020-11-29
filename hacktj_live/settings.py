@@ -21,32 +21,33 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-SECRET_KEY = os.getenv('SECRET_KEY', '')
+SECRET_KEY = os.getenv("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.getenv('DEBUG', 'false').upper() == 'TRUE'
+DEBUG = os.getenv("DEBUG", "false").upper() == "TRUE"
 if "DIRECTOR_DATABASE_URL" in os.environ:
     DEBUG = False
 
-in_docker = os.getenv('DOCKER', 'false').upper() == 'TRUE'
+in_docker = os.getenv("DOCKER", "false").upper() == "TRUE"
 
 INTERNAL_IPS = [
-    'localhost',
-    '127.0.0.1',
-    '0.0.0.0',
+    "localhost",
+    "127.0.0.1",
+    "0.0.0.0",
     # '172.22.0.1',  # docker compose (request.META['REMOTE_ADDR'])
 ]
 
 ALLOWED_HOSTS = [
     *INTERNAL_IPS,
-    'django', 'nginx',  # docker compose
-    'live.hacktj.org',
-    'hacktj-live.herokuapp.com',
+    "django",
+    "nginx",  # docker compose
+    "live.hacktj.org",
+    "hacktj-live.herokuapp.com",
 ]
 
 ADMINS = [
-    ('Sumanth Ratna', 'sumanth@hacktj.org'),
-    ('Pranav Mathur', 'pranav@hacktj.org'),
+    ("Sumanth Ratna", "sumanth@hacktj.org"),
+    ("Pranav Mathur", "pranav@hacktj.org"),
 ]
 
 # MANAGERS
@@ -54,19 +55,23 @@ ADMINS = [
 # Application definition
 
 INSTALLED_APPS = [
-    'channels', 'compressor',
-    'judge', 'mentor',
-    'django.contrib.auth',
-    'django.contrib.admin',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.messages',
-    'django.contrib.staticfiles',
-    'django.contrib.sites',
-    'tailwind',
-    'dbbackup',  # django-dbbackup
-    'debug_toolbar',
-    'allauth', 'allauth.account', 'allauth.socialaccount',
+    "channels",
+    "compressor",
+    "judge",
+    "mentor",
+    "django.contrib.auth",
+    "django.contrib.admin",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
+    "django.contrib.sites",
+    "tailwind",
+    "dbbackup",  # django-dbbackup
+    "debug_toolbar",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
     # 'allauth.socialaccount.providers.slack',
 ]
 
@@ -76,9 +81,7 @@ SITE_ID = 1
 MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
 
 CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    },
+    "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
 }
 if which("nc"):
     if run_cmd(["nc", "-z", "redis", "6379"]).returncode == 0:
@@ -100,43 +103,43 @@ if which("nc"):
             },
         }
 
-DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
-DBBACKUP_STORAGE_OPTIONS = {'location': os.path.join(BASE_DIR, 'backup')}
+DBBACKUP_STORAGE = "django.core.files.storage.FileSystemStorage"
+DBBACKUP_STORAGE_OPTIONS = {"location": os.path.join(BASE_DIR, "backup")}
 # TODO: https://django-dbbackup.readthedocs.io/en/master/configuration.html#encrypting-your-backups
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'hacktj_live.middlewares.BetterExceptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "django.middleware.cache.UpdateCacheMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.cache.FetchFromCacheMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
+    "hacktj_live.middlewares.BetterExceptionsMiddleware",
 ]
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
-ROOT_URLCONF = 'hacktj_live.urls'
+ROOT_URLCONF = "hacktj_live.urls"
 
-TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
 
 TEMPLATES = [
     {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_DIR],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-                'django.template.context_processors.request',
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [TEMPLATE_DIR],
+        "APP_DIRS": True,
+        "OPTIONS": {
+            "context_processors": [
+                "django.template.context_processors.debug",
+                "django.contrib.auth.context_processors.auth",
+                "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.request",
             ],
         },
     },
@@ -144,11 +147,11 @@ TEMPLATES = [
 
 # Auth
 
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = "/"
 
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
 ACCOUNT_EMAIL_REQUIRED = False  # True
@@ -156,28 +159,26 @@ ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
 
 DEFAULT_FROM_EMAIL = "live@hacktj.org"
 if DEBUG or in_docker:
-    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 else:
-    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = 'smtp.sendgrid.net'
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = "smtp.sendgrid.net"
     EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
-    EMAIL_HOST_USER = 'apikey'
+    EMAIL_HOST_USER = "apikey"
     EMAIL_PORT = 587
     EMAIL_USE_TLS = True
 
-ACCOUNT_FORMS = {
-    'signup': 'hacktj_live.forms.VolunteerSignupForm'
-}
+ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
 
 CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
-        'LOCATION': '127.0.0.1:11211',
+    "default": {
+        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+        "LOCATION": "127.0.0.1:11211",
     }
 }
 
-WSGI_APPLICATION = 'hacktj_live.wsgi.application'
-ASGI_APPLICATION = 'hacktj_live.routing.application'
+WSGI_APPLICATION = "hacktj_live.wsgi.application"
+ASGI_APPLICATION = "hacktj_live.routing.application"
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -194,19 +195,19 @@ if "DIRECTOR_DATABASE_URL" in os.environ:
             # "OPTIONS": {"sslmode": "require"},
         },
     }
-elif 'DATABASE_URL' in os.environ:
+elif "DATABASE_URL" in os.environ:
     DATABASES = {
-        'default': parse_db_url(
-            os.environ['DATABASE_URL'],
+        "default": parse_db_url(
+            os.environ["DATABASE_URL"],
             conn_max_age=600,
             # ssl_require=True,
         ),
     }
 else:
     DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'hacktj_live',
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": "hacktj_live",
         }
     }
 
@@ -216,16 +217,16 @@ else:
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
 
@@ -252,9 +253,9 @@ if not (DEBUG or in_docker):  # in production
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = "UTC"
 
 USE_I18N = True
 
@@ -267,12 +268,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-STATIC_URL = '/static/'
+STATIC_URL = "/static/"
 
 STATICFILES_FINDERS = [
-    'django.contrib.staticfiles.finders.FileSystemFinder',
-    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-    'compressor.finders.CompressorFinder',
+    "django.contrib.staticfiles.finders.FileSystemFinder",
+    "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+    "compressor.finders.CompressorFinder",
 ]
 
 COMPRESS_OFFLINE = True

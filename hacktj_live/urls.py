@@ -23,22 +23,23 @@ from judge import views as judge_views
 from allauth.account import views as auth_views
 
 urlpatterns = [
-    path('', project_views.index),
-    path('judge', judge_views.home),
-    path('judge/welcome', judge_views.welcome),
-    path('judge/scoreboard', judge_views.scoreboard),
-    path('judge/queue', judge_views.queue),
-    path('judge/begin', judge_views.begin),
-    path('judge/vote', judge_views.vote),
-    path('credits', project_views.credits),
-    path('admin/', admin.site.urls),
-    path('accounts/', include('allauth.urls')),
-    path('accounts/volunteer_signup/', auth_views.signup)
+    path("", project_views.index),
+    path("judge", judge_views.home),
+    path("judge/welcome", judge_views.welcome),
+    path("judge/scoreboard", judge_views.scoreboard),
+    path("judge/queue", judge_views.queue),
+    path("judge/begin", judge_views.begin),
+    path("judge/vote", judge_views.vote),
+    path("credits", project_views.credits),
+    path("admin/", admin.site.urls),
+    path("accounts/", include("allauth.urls")),
+    path("accounts/volunteer_signup/", auth_views.signup),
 ]
 
 
 from django.conf import settings
+
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns.append(path('__debug__/', include(debug_toolbar.urls)))
 
+    urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))
