@@ -9,7 +9,6 @@ then
   python manage.py loaddata 'winners-60'
 
   python manage.py collectstatic --noinput --link
-  python manage.py compress  # django-compressor
 
   python manage.py runserver 0.0.0.0:8000
 else

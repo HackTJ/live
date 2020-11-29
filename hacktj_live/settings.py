@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from shutil import which
 from subprocess import run as run_cmd
 import os
 from dj_database_url import parse as parse_db_url
@@ -18,7 +19,6 @@ from dj_database_url import parse as parse_db_url
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-# Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 SECRET_KEY = os.getenv('SECRET_KEY', '')
@@ -41,7 +41,7 @@ ALLOWED_HOSTS = [
     *INTERNAL_IPS,
     'django', 'nginx',  # docker compose
     'live.hacktj.org',
-    'hacktj-live.herokuapp.com'
+    'hacktj-live.herokuapp.com',
 ]
 
 ADMINS = [
@@ -80,13 +80,8 @@ CHANNEL_LAYERS = {
         "BACKEND": "channels.layers.InMemoryChannelLayer"
     },
 }
-try:
-    redis_ping_compose = run_cmd(["nc", "-z", "redis", "6379"])
-    redis_ping_local = run_cmd(["nc", "-z", "127.0.0.1", "6379"])
-except FileNotFoundError:
-    pass
-else:
-    if redis_ping_compose.returncode == 0:
+if which("nc"):
+    if run_cmd(["nc", "-z", "redis", "6379"]).returncode == 0:
         CHANNEL_LAYERS = {
             "default": {
                 "BACKEND": "channels_redis.core.RedisChannelLayer",
@@ -95,7 +90,7 @@ else:
                 },
             },
         }
-    elif redis_ping_local.returncode == 0:
+    elif run_cmd(["nc", "-z", "127.0.0.1", "6379"]).returncode == 0:
         CHANNEL_LAYERS = {
             "default": {
                 "BACKEND": "channels_redis.core.RedisChannelLayer",
@@ -149,7 +144,6 @@ TEMPLATES = [
 
 # Auth
 
-LOGIN_URL = '/accounts/login'
 LOGIN_REDIRECT_URL = '/'
 
 AUTHENTICATION_BACKENDS = [
@@ -161,7 +155,7 @@ ACCOUNT_EMAIL_REQUIRED = False  # True
 ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
 
 DEFAULT_FROM_EMAIL = "live@hacktj.org"
-if DEBUG:
+if DEBUG or in_docker:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
