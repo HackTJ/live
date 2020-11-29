@@ -3,36 +3,39 @@ from django.utils import timezone
 from judge.models import Project, Annotator
 import judge.crowd_bt as crowd_bt
 from numpy.random import shuffle, random, choice
-from datetime import datetime
+from datetime import datetime, timedelta
+
 
 def preferred_items(annotator):
-    items = []
-    ignored_ids = [p.id for p in annotator.ignore.all()]
+    ignored_ids = annotator.ignore.values_list('id', flat=True)
 
+    available_projects = Project.objects.filter(active=True)
     if ignored_ids:
-        available_projects = Project.objects.filter(active=True).exclude(id__in=ignored_ids).all()
-    else:
-        available_projects = Project.objects.filter(active=True).all()
+        available_projects = available_projects.exclude(id__in=ignored_ids)
 
-    prioritized_projects = [p for p in available_projects if p.prioritize]
+    prioritized_projects = available_projects.filter(prioritize=True)
     items = prioritized_projects if prioritized_projects else available_projects
 
-    annotators = Annotator.objects.filter(current__isnull=False).all()
-    annotators = [a for a in annotators if a.judge.is_active]
+    annotators = Annotator.objects.filter(
+        current__isnull=False, judge__is_active=True)
 
-    nonbusy = list({a.current for a in annotators if (a.current in available_projects) and ((timezone.make_aware(datetime.utcnow()) - a.updated).total_seconds() >= settings.TIMEOUT * 60)})
+    nonbusy = available_projects.filter(annotator_current__updated__gte=timezone.make_aware(
+        datetime.utcnow()) + timedelta(seconds=settings.LIVE_JUDGE_TIMEOUT * 60))
     preferred = nonbusy if nonbusy else items
 
-    less_seen = [p for p in preferred if p.timesSeen < settings.MIN_VIEWS]
+    less_seen = preferred.filter(timesSeen__lt=settings.LIVE_JUDGE_MIN_VIEWS)
 
-    return less_seen if less_seen else preferred
+    out = less_seen if less_seen else preferred
+    return list(out.distinct())
+
 
 def init_annotator(annotator):
-    if annotator.current is None:
+    if not annotator.current:
         items = preferred_items(annotator)
         if items:
             annotator.update_current(choice(items))
             annotator.save()
+
 
 def choose_next(annotator):
     items = preferred_items(annotator)
@@ -49,8 +52,6 @@ def choose_next(annotator):
                 float(annotator.prev.variance),
                 float(i.mean),
                 float(i.variance)), items)
-    else:
-        return None
 
 
 def perform_vote(annotator, current_won):

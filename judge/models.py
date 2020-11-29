@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.conf import settings
 from datetime import datetime
 
 
@@ -21,32 +21,33 @@ class Project(models.Model):
 
 class Annotator(models.Model):
     judge = models.OneToOneField(
-        User,
+        settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        primary_key=True,
     )
     updated = models.DateTimeField(auto_now=True)
-    current = models.ForeignKey(
+    current = models.OneToOneField(
         Project,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name="%(class)s_current"
+        related_name="%(class)s_current",
     )
-    prev = models.ForeignKey(
+    prev = models.OneToOneField(
         Project,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name="%(class)s_prev"
+        related_name="%(class)s_prev",
     )
     ignore = models.ManyToManyField(
         Project,
-        related_name="%(class)s_ignore"
+        related_name="%(class)s_ignore",
     )
 
     viewed = models.ManyToManyField(
         Project,
-        related_name="%(class)s_viewed"
+        related_name="%(class)s_viewed",
     )
 
     alpha = models.DecimalField(default=10, decimal_places=8, max_digits=12)

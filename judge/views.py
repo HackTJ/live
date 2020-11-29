@@ -6,7 +6,7 @@ from django.views.decorators.http import (
     require_POST,
 )
 from django.core.serializers import serialize
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db.models import F
 from judge.controllers import perform_vote, choose_next, init_annotator
 from judge.models import Decision, Project, Annotator
@@ -15,6 +15,7 @@ from judge.models import Decision, Project, Annotator
 # superuser doesn't have the judge group, so there's a redirect from /judge to
 # /accounts/login...but superuser is already logged in so it redirects back to
 # the next GET arg, which is set to /judge
+
 
 def judge_required(function=None, redirect_field_name='next', login_url=None):
     actual_decorator = user_passes_test(
@@ -75,8 +76,8 @@ def vote(request):
         annotator = request.user.annotator
         if not annotator.read_welcome:
             return redirect('/judge/welcome')
-        if annotator.current is not None:
-            if annotator.prev is None:
+        if annotator.current:
+            if not annotator.prev:
                 return render(request, 'judge/begin.html', {"current": annotator.current})
             else:
                 if annotator.current == annotator.prev:
@@ -111,7 +112,7 @@ def vote(request):
                     decision.save()
                     annotator.prev = annotator.current
 
-                annotator.prev.numberOfVotes += 1
+                annotator.prev.numberOfVotes = F('numberOfVotes') + 1
                 annotator.prev.save()
 
         annotator.update_current(choose_next(annotator))
@@ -122,7 +123,7 @@ def vote(request):
 
         return render(request, 'judge/vote.html', {
             "current": request.user.annotator.current,
-            "prev": request.user.annotator.prev
+            "prev": request.user.annotator.prev,
         })
 
 
@@ -150,11 +151,15 @@ def queue(request):
     return render(request, 'judge/queue.html', {
         'queue': serialize(
             "json",
-            [*Annotator.objects.all(), *User.objects.filter(groups__name='judge'), *Project.objects.all()],
+            [
+                *Annotator.objects.all(),
+                *get_user_model().objects.filter(groups__name='judge'),
+                *Project.objects.all(),
+            ],
             fields=(
                 'judge', 'current',  # Annotator
                 'username', 'first_name', 'last_name',  # User
-                'name', 'description', # Project
+                'name', 'description',  # Project
             ),
         ),
     })
