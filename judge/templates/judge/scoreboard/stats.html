@@ -112,7 +112,7 @@
               </label>
             </th>
             <template x-for="heading in headings">
-              <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center" x-text="heading.value" :x-ref="heading.key" :class="{ [heading.key]: true }"></th>
+              <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center" x-text="heading.value" :x-ref="heading.key" :heading="heading.key"></th>
             </template>
           </tr>
         </thead>
@@ -124,40 +124,22 @@
                   <input type="checkbox" class="form-checkbox rowCheckbox focus:outline-none focus:shadow-outline" :name="project.projectId" @click="getRowDetail($event, project.projectId)">
                 </label>
               </td>
-              <!-- TODO: would be nice to be able to x-for over project's attributes -->
-              <!-- TODO: currently we add the attribute name to classList for toggleColumn(key).
-                  this is a little unintuitive; we should try setting this as a custom attribute or as the ID-->
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center projectId" x-text="project.projectId"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center name" x-text="project.name"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center location" x-text="project.location"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center description" x-text="project.description"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center mean" x-text="project.mean"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center variance" x-text="project.variance"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center numberOfVotes" x-text="project.numberOfVotes"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center timesSeen" x-text="project.timesSeen"></td>
-              <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center timesSkipped" x-text="project.timesSkipped"></td>
-              <td class="border-dashed border-t border-gray-200 prioritize">
-                <!-- <span class="px-6 py-3 flex items-center" x-text="project.prioritize"></span> -->
-                <svg class="w-6 h-6 mx-auto" x-show="project.prioritize" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <!-- heroicon: check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <svg class="w-6 h-6 mx-auto" x-show="!project.prioritize" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <!-- heroicon: x -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </td>
-              <td class="border-dashed border-t border-gray-200 active">
-                <!-- <span class="px-6 py-3 flex items-center" x-text="project.active"></span> -->
-                <svg class="w-6 h-6 mx-auto" x-show="project.active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <!-- heroicon: check -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <svg class="w-6 h-6 mx-auto" x-show="!project.active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <!-- heroicon: x -->
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </td>
+              <template x-for="heading in headings" :key="heading">
+                <!-- <span>
+                  <td x-show="typeof project[heading.key] === 'boolean'" class="border-dashed border-t border-gray-200" :heading="heading.key">
+                    <svg class="w-6 h-6 mx-auto" x-show="project[heading.key]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      heroicon: check
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                    </svg>
+                    <svg class="w-6 h-6 mx-auto" x-show="!project[heading.key]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      heroicon: x
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                  </td>
+                  <td x-show="typeof project[heading.key] !== 'boolean'" class="border-dashed border-t border-gray-200 px-6 py-3 items-center" x-text="project[heading.key]" :heading="heading.key"></td>
+                </span> -->
+                <td class="border-dashed border-t border-gray-200 px-6 py-3 items-center" x-text="project[heading.key]" :heading="heading.key"></td>
+              </template>
             </tr>
           </template>
         </tbody>
@@ -186,7 +168,8 @@
     function datatable() {
       // TODO: maybe make headings have type {key: value}
       // (one dictionary with 15 keys/values rather than a list of dictionaries)
-      const headings = [{
+      const headings = [
+        {
           'key': 'projectId',
           'value': 'ID'
         },
@@ -246,16 +229,14 @@
         open: false,
 
         toggleColumn(key) {
-          // Note: All td must have the same class name as the headings key!
-          let columns = document.querySelectorAll('.' + key);
-
-          if (this.$refs[key].classList.contains('hidden') && this.$refs[key].classList.contains(key)) {
-            columns.forEach(column => {
-              column.classList.remove('hidden');
+          let rows = document.querySelectorAll('[heading="' + key + '"]');
+          if (this.$refs[key].classList.contains('hidden')) {
+            rows.forEach(row => {
+              row.classList.remove('hidden');
             });
           } else {
-            columns.forEach(column => {
-              column.classList.add('hidden');
+            rows.forEach(row => {
+              row.classList.add('hidden');
             });
           }
         },
