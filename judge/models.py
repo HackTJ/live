@@ -4,8 +4,6 @@ from datetime import datetime
 
 
 class Project(models.Model):
-    # id is automatically created:
-    # https://docs.djangoproject.com/en/3.0/topics/db/models/#automatic-primary-key-fields
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
@@ -27,12 +25,12 @@ class Annotator(models.Model):
         on_delete=models.CASCADE,
     )
     updated = models.DateTimeField(auto_now=True)
-    next = models.ForeignKey(
+    current = models.ForeignKey(
         Project,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name="%(class)s_next"
+        related_name="%(class)s_current"
     )
     prev = models.ForeignKey(
         Project,
@@ -56,11 +54,11 @@ class Annotator(models.Model):
 
     read_welcome = models.BooleanField(default=False)
 
-    def update_next(self, new_next):
-        if new_next is not None:
-            new_next.prioritized = False
-            self.next = new_next
-            self.ignore.add(new_next)
+    def update_current(self, new_current):
+        if new_current:
+            new_current.prioritized = False  # TODO: not necessary? default arg
+            self.current = new_current
+            self.ignore.add(new_current)
 
 
 class Decision(models.Model):

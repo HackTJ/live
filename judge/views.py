@@ -7,6 +7,7 @@ from django.views.decorators.http import (
 )
 from django.core.serializers import serialize
 from django.contrib.auth.models import User
+from django.db.models import F
 from judge.controllers import perform_vote, choose_next, init_annotator
 from judge.models import Decision, Project, Annotator
 
@@ -50,18 +51,18 @@ def welcome(request):
 @require_POST
 def begin(request):
     annotator = request.user.annotator
-    if annotator.next.id == int(request.POST['project_id']):
+    if annotator.current.id == int(request.POST['project_id']):
         if request.POST['action'] == 'Done':
-            annotator.viewed.add(annotator.next)
-            annotator.next.timesSeen += 1
-            annotator.next.save()
-            annotator.prev = annotator.next
+            annotator.viewed.add(annotator.current)
+            annotator.current.timesSeen = F('timesSeen') + 1
+            annotator.current.save()
+            annotator.prev = annotator.current
             annotator.prev.save()
-            annotator.update_next(choose_next(annotator))
+            annotator.update_current(choose_next(annotator))
         elif request.POST['action'] == 'Skip':
-            annotator.next.timesSkipped += 1
-            annotator.next.save()
-            annotator.next = None
+            annotator.current.timesSkipped = F('timesSkipped') + 1
+            annotator.current.save()
+            annotator.current = None
         annotator.save()
     return redirect('/judge/vote')
 
@@ -74,53 +75,53 @@ def vote(request):
         annotator = request.user.annotator
         if not annotator.read_welcome:
             return redirect('/judge/welcome')
-        if annotator.next is not None:
+        if annotator.current is not None:
             if annotator.prev is None:
-                return render(request, 'judge/begin.html', {"next": annotator.next})
+                return render(request, 'judge/begin.html', {"current": annotator.current})
             else:
-                if annotator.next == annotator.prev:
+                if annotator.current == annotator.prev:
                     return render(request, 'judge/done.html')
                 else:
                     return render(request, 'judge/vote.html', {
                         "prev": annotator.prev,
-                        "next": annotator.next
+                        "current": annotator.current,
                     })
         init_annotator(annotator)
-        return render(request, 'judge/begin.html', {"next": annotator.next})
+        return render(request, 'judge/begin.html', {"current": annotator.current})
     else:
         annotator = request.user.annotator
-        if annotator.prev_id == int(request.POST['prev_id']) and annotator.next_id == int(request.POST['next_id']):
+        if annotator.prev_id == int(request.POST['prev_id']) and annotator.current_id == int(request.POST['current_id']):
             if request.POST['action'] == 'skip':
-                annotator.next.timesSkipped += 1
-                annotator.next.save()
-            elif annotator.prev.active and annotator.next.active:
-                annotator.viewed.add(annotator.next)
-                annotator.next.timesSeen += 1
-                annotator.next.save()
+                annotator.current.timesSkipped = F('timesSkipped') + 1
+                annotator.current.save()
+            elif annotator.prev.active and annotator.current.active:
+                annotator.viewed.add(annotator.current)
+                annotator.current.timesSeen = F('timesSeen') + 1
+                annotator.current.save()
 
                 if request.POST['action'] == 'previous':
-                    perform_vote(annotator, next_won=False)
+                    perform_vote(annotator, current_won=False)
                     decision = Decision(
-                        annotator=annotator, winner=annotator.prev, loser=annotator.next)
+                        annotator=annotator, winner=annotator.prev, loser=annotator.current)
                     decision.save()
                 elif request.POST['action'] == 'current':
-                    perform_vote(annotator, next_won=True)
+                    perform_vote(annotator, current_won=True)
                     decision = Decision(
-                        annotator=annotator, winner=annotator.next, loser=annotator.prev)
+                        annotator=annotator, winner=annotator.current, loser=annotator.prev)
                     decision.save()
-                    annotator.prev = annotator.next
+                    annotator.prev = annotator.current
 
                 annotator.prev.numberOfVotes += 1
                 annotator.prev.save()
 
-        annotator.update_next(choose_next(annotator))
+        annotator.update_current(choose_next(annotator))
         annotator.save()
 
-        if annotator.next == annotator.prev:
+        if annotator.current == annotator.prev:
             return render(request, 'judge/done.html')
 
         return render(request, 'judge/vote.html', {
-            "next": request.user.annotator.next,
+            "current": request.user.annotator.current,
             "prev": request.user.annotator.prev
         })
 
@@ -151,7 +152,7 @@ def queue(request):
             "json",
             [*Annotator.objects.all(), *User.objects.filter(groups__name='judge'), *Project.objects.all()],
             fields=(
-                'judge', 'next',  # Annotator
+                'judge', 'current',  # Annotator
                 'username', 'first_name', 'last_name',  # User
                 'name', 'description', # Project
             ),

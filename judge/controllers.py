@@ -13,14 +13,14 @@ def preferred_items(annotator):
         available_projects = Project.objects.filter(active=True).exclude(id__in=ignored_ids).all()
     else:
         available_projects = Project.objects.filter(active=True).all()
-    
+
     prioritized_projects = [p for p in available_projects if p.prioritize]
     items = prioritized_projects if prioritized_projects else available_projects
 
-    annotators = Annotator.objects.filter(next__isnull=False).all()
+    annotators = Annotator.objects.filter(current__isnull=False).all()
     annotators = [a for a in annotators if a.judge.is_active]
 
-    nonbusy = list({a.next for a in annotators if (a.next in available_projects) and ((timezone.make_aware(datetime.utcnow()) - a.updated).total_seconds() >= settings.TIMEOUT * 60)})
+    nonbusy = list({a.current for a in annotators if (a.current in available_projects) and ((timezone.make_aware(datetime.utcnow()) - a.updated).total_seconds() >= settings.TIMEOUT * 60)})
     preferred = nonbusy if nonbusy else items
 
     less_seen = [p for p in preferred if p.timesSeen < settings.MIN_VIEWS]
@@ -28,10 +28,10 @@ def preferred_items(annotator):
     return less_seen if less_seen else preferred
 
 def init_annotator(annotator):
-    if annotator.next is None:
+    if annotator.current is None:
         items = preferred_items(annotator)
         if items:
-            annotator.update_next(choice(items))
+            annotator.update_current(choice(items))
             annotator.save()
 
 def choose_next(annotator):
@@ -53,13 +53,13 @@ def choose_next(annotator):
         return None
 
 
-def perform_vote(annotator, next_won):
-    if next_won:
-        winner = annotator.next
+def perform_vote(annotator, current_won):
+    if current_won:
+        winner = annotator.current
         loser = annotator.prev
     else:
         winner = annotator.prev
-        loser = annotator.next
+        loser = annotator.current
     u_alpha, u_beta, u_winner_mean, u_winner_variance, u_loser_mean, u_loser_variance = crowd_bt.update(
         float(annotator.alpha),
         float(annotator.beta),

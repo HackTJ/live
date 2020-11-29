@@ -185,7 +185,7 @@
         let judgeModel = getJudgeModelById(model.fields.judge);
         judge.username = judgeModel.fields.username;
         judge.fullName = judgeModel.fields.first_name + " " + judgeModel.fields.last_name;
-        let projectModel = getProjectModelById(model.fields.next);
+        let projectModel = getProjectModelById(model.fields.current);
         judge.projectName = projectModel?.fields.name || "";
         judge.projectDescription = projectModel?.fields.description || "";
         return judge;
