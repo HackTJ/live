@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from datetime import datetime
 from shutil import which
 from subprocess import run as run_cmd
 import os
@@ -278,7 +279,15 @@ STATICFILES_FINDERS = [
 
 COMPRESS_OFFLINE = True
 
-# content
+# HackTJ Live settings
 LIVE_JUDGE_MIN_VIEWS = 3
 
 LIVE_JUDGE_TIMEOUT = 0
+
+# December 13, 2020 at 5:30 p.m.
+LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=17, minute=30)
+# LIVE_JUDGE_START_TIME = None
+
+# December 13, 2020 at 7:30 p.m.
+LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
+# LIVE_JUDGE_END_TIME = None

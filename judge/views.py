@@ -10,6 +10,9 @@ from django.contrib.auth import get_user_model
 from django.db.models import F
 from judge.controllers import perform_vote, choose_next, init_annotator
 from judge.models import Decision, Project, Annotator
+from django.conf import settings
+from django.utils import timezone
+from datetime import datetime
 
 # TODO: superuser gets infinite redirects when visiting /judge because
 # superuser doesn't have the judge group, so there's a redirect from /judge to
@@ -148,11 +151,8 @@ def vote(request):
 @require_GET
 # @login_required
 def scoreboard(request):
-    if request.user.is_authenticated and (
-        request.user.is_staff or request.user.groups.filter(name="judge").exists()
-    ):
-        # only show statistics to those authorized: the organizing team and the judges
-        projects = serialize("json", Project.objects.order_by("-mean").all())
+    def render_stats():
+        projects = serialize("json", Project.objects.order_by("-mean"))
         return render(
             request,
             "judge/scoreboard/stats.html",
@@ -160,11 +160,11 @@ def scoreboard(request):
                 "projects": projects,
             },
         )
-    else:
-        # participants are only allowed to see rankings, not numerical statistics
+
+    def render_rankings():
         projects = serialize(
             "json",
-            Project.objects.order_by("-mean").all(),
+            Project.objects.order_by("-mean"),
             fields=("name", "description"),
         )
         return render(
@@ -174,6 +174,63 @@ def scoreboard(request):
                 "projects": projects,
             },
         )
+
+    # if both LIVE_JUDGE_START_TIME and LIVE_JUDGE_END_TIME are None, the
+    # event times have no effect on scoreboard viewability.
+
+    # if LIVE_JUDGE_START_TIME is None and LIVE_JUDGE_END_TIME is not, the
+    # scoreboard can only be viewed after the event.
+
+    # if LIVE_JUDGE_START_TIME is not None and LIVE_JUDGE_END_TIME is, the
+    # event times have no effect on scoreboard viewability.
+
+    # if both LIVE_JUDGE_START_TIME and LIVE_JUDGE_END_TIME are not None, the
+    # scoreboard can only be viewed after the event.
+
+    # note: LIVE_JUDGE_START_TIME is still useful, because when it's set,
+    # it renders more useful templates. for example, setting it renders three
+    # different templates:
+    #     - not-started (before the event judging has started)
+    #     - unavailable (during the event judging)
+    #     - {stats,rankings} (after the event)
+
+    # the goal of this is to ensure that judges cannot view results during the
+    # event (to be sure that their judging is completely objective)
+
+    if request.user.is_authenticated and request.user.is_staff:
+        # event organizers can view statistics at any time
+        return render_stats()
+
+    now = timezone.make_aware(datetime.utcnow())
+    if getattr(settings, "LIVE_JUDGE_END_TIME"):
+        event_end_time = timezone.make_aware(settings.LIVE_JUDGE_END_TIME)
+
+        if getattr(settings, "LIVE_JUDGE_START_TIME"):
+            event_start_time = timezone.make_aware(settings.LIVE_JUDGE_START_TIME)
+        else:
+            event_start_time = None
+
+        if now < event_end_time:
+            # event has not ended
+            if event_start_time and event_start_time < now:
+                # event has started but not ended
+                return render(request, "judge/scoreboard/unavailable.html")
+            elif event_start_time and now < event_start_time:
+                # event has not started or ended
+                return render(request, "judge/scoreboard/not-started.html")
+            else:  # event_start_time is None
+                return render(request, "judge/scoreboard/unavailable.html")
+
+    if request.user.is_authenticated and (
+        request.user.is_staff or request.user.groups.filter(name="judge").exists()
+    ):
+        # only show statistics to those authorized:
+        # the organizing team and the judges
+        return render_stats()
+    else:
+        # participants are only allowed to see rankings,
+        # not numerical statistics
+        return render_rankings()
 
 
 @require_GET
