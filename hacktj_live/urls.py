@@ -21,6 +21,7 @@ from django.urls import include, path
 from . import views as project_views
 from judge import views as judge_views
 from allauth.account import views as auth_views
+import debug_toolbar
 
 urlpatterns = [
     path("", project_views.index),
@@ -34,12 +35,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("accounts/", include("allauth.urls")),
     path("accounts/volunteer_signup/", auth_views.signup),
+    path("__debug__/", include(debug_toolbar.urls)),
 ]
-
-
-from django.conf import settings
-
-if settings.DEBUG:
-    import debug_toolbar
-
-    urlpatterns.append(path("__debug__/", include(debug_toolbar.urls)))

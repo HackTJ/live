@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
+from socket import gethostbyname, gethostname
 from datetime import datetime
 from shutil import which
 from subprocess import run as run_cmd
@@ -31,11 +32,14 @@ if "DIRECTOR_DATABASE_URL" in os.environ:
 
 in_docker = os.getenv("DOCKER", "false").upper() == "TRUE"
 is_netcat_available = bool(which("nc"))
+current_ip = gethostbyname(gethostname())
+
 
 INTERNAL_IPS = [
     "localhost",
     "127.0.0.1",
     "0.0.0.0",
+    f"{current_ip[:-1]}1",
     # '172.22.0.1',  # docker compose (request.META['REMOTE_ADDR'])
 ]
 
@@ -113,6 +117,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    # "django.contrib.sessions.middleware.ConditionalGetMiddleware",
     "django.middleware.cache.UpdateCacheMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.cache.FetchFromCacheMiddleware",
