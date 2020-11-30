@@ -30,6 +30,7 @@ if "DIRECTOR_DATABASE_URL" in os.environ:
     DEBUG = False
 
 in_docker = os.getenv("DOCKER", "false").upper() == "TRUE"
+is_netcat_available = bool(which("nc"))
 
 INTERNAL_IPS = [
     "localhost",
@@ -84,7 +85,7 @@ MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
 CHANNEL_LAYERS = {
     "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
 }
-if which("nc"):
+if is_netcat_available:
     if run_cmd(["nc", "-z", "redis", "6379"]).returncode == 0:
         CHANNEL_LAYERS = {
             "default": {
@@ -173,10 +174,25 @@ ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
 
 CACHES = {
     "default": {
-        "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-        "LOCATION": "127.0.0.1:11211",
+        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     }
 }
+if is_netcat_available:
+    if run_cmd(["nc", "-z", "memcached", "11211"]).returncode == 0:
+        CACHES = {
+            "default": {
+                "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+                "LOCATION": "memcached:11211",
+            }
+        }
+    elif run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
+        CACHES = {
+            "default": {
+                "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+                "LOCATION": "127.0.0.1:11211",
+            }
+        }
+
 
 WSGI_APPLICATION = "hacktj_live.wsgi.application"
 ASGI_APPLICATION = "hacktj_live.routing.application"

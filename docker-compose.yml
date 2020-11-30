@@ -16,6 +16,7 @@ services:
     depends_on:
       - postgres
       - redis
+      - memcached
 
   postgres:
     build: ./compose/postgres
@@ -30,3 +31,7 @@ services:
     restart: always
     sysctls:
       net.core.somaxconn: '511'
+
+  memcached:
+    build: ./compose/memcached
+    restart: always
