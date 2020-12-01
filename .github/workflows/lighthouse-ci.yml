@@ -26,9 +26,10 @@ jobs:
         #   2. install Poetry
         #   3. install dependencies
         # instead, we copy the example debug config file to save CI resources
-        run: |
-          cp .env.local .env
-          docker-compose -f docker-compose.yml -f docker-compose.dev.yml build --parallel
+        run: cp .env.local .env
+        
+      - name: Build Docker images
+        run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml build --parallel
 
       - name: Run Lighthouse CI
         run: |
