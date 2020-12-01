@@ -2,7 +2,7 @@ module.exports = {
   ci: {
     collect: {
       url: ['http://localhost:8000/'],
-      startServerCommand: 'DEBUG=FALSE SECRET_KEY=bad_secret gunicorn --config ./compose/django/gunicorn.conf.py --bind localhost:8000 hacktj_live.asgi:application',
+      startServerCommand: 'docker-compose -f docker-compose.yml -f docker-compose.prod.yml up',
     },
     upload: {
       target: 'temporary-public-storage',
