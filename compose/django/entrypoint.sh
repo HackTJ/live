@@ -31,5 +31,4 @@ done
 
 >&2 echo "Postgres is up - continuing..."
 
-export DATABASE_URL=postgres://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres:5432/$POSTGRES_DB
 exec $cmd

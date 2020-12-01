@@ -10,12 +10,12 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-from socket import gethostbyname, gethostname, gaierror
+
 from datetime import datetime
-from shutil import which
 from subprocess import run as run_cmd
 import os
 from dj_database_url import parse as parse_db_url
+from utils.environment import is_in_docker, is_netcat_available, get_current_ip
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -30,25 +30,9 @@ DEBUG = os.getenv("DEBUG", "false").upper() == "TRUE"
 if "DIRECTOR_DATABASE_URL" in os.environ:
     DEBUG = False
 
-in_docker = os.getenv("DOCKER", "false").upper() == "TRUE"
-is_netcat_available = bool(which("nc"))
-try:
-    # gethostbyname() requires that the return value
-    # of gethostname() is in /etc/hosts
-    current_ip = gethostbyname(gethostname())
-except gaierror:
-    # requires machine to have an internet connection
-    from socket import socket, AF_INET, SOCK_DGRAM, timeout
-
-    s = socket(AF_INET, SOCK_DGRAM)
-    try:
-        s.connect(("8.8.8.8", 80))
-    except timeout:
-        current_ip = "127.0.0.1"
-    else:
-        current_ip = s.getsockname()[0]
-    finally:
-        s.close()
+in_docker = is_in_docker()
+is_nc_available = is_netcat_available()
+current_ip = get_current_ip()
 
 INTERNAL_IPS = [
     "localhost",
@@ -78,6 +62,7 @@ ADMINS = [
 INSTALLED_APPS = [
     "channels",
     "compressor",
+    "utils",
     "judge",
     "mentor",
     "django.contrib.auth",
@@ -104,25 +89,24 @@ MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
 CHANNEL_LAYERS = {
     "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
 }
-if is_netcat_available:
-    if run_cmd(["nc", "-z", "redis", "6379"]).returncode == 0:
-        CHANNEL_LAYERS = {
-            "default": {
-                "BACKEND": "channels_redis.core.RedisChannelLayer",
-                "CONFIG": {
-                    "hosts": [("redis", 6379)],
-                },
+if is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "6379"]).returncode == 0:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [("127.0.0.1", 6379)],
             },
-        }
-    elif run_cmd(["nc", "-z", "127.0.0.1", "6379"]).returncode == 0:
-        CHANNEL_LAYERS = {
-            "default": {
-                "BACKEND": "channels_redis.core.RedisChannelLayer",
-                "CONFIG": {
-                    "hosts": [("127.0.0.1", 6379)],
-                },
+        },
+    }
+if in_docker:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [("redis", 6379)],
             },
-        }
+        },
+    }
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -193,21 +177,20 @@ CACHES = {
         "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
     }
 }
-if is_netcat_available:
-    if run_cmd(["nc", "-z", "memcached", "11211"]).returncode == 0:
-        CACHES = {
-            "default": {
-                "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-                "LOCATION": "memcached:11211",
-            }
+if is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "LOCATION": "127.0.0.1:11211",
         }
-    elif run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
-        CACHES = {
-            "default": {
-                "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-                "LOCATION": "127.0.0.1:11211",
-            }
+    }
+if in_docker:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "LOCATION": "memcached:11211",
         }
+    }
 
 
 WSGI_APPLICATION = "hacktj_live.wsgi.application"

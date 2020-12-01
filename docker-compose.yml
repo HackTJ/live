@@ -9,6 +9,8 @@ services:
     sysctls:
       net.core.somaxconn: 2048
     command: /start.sh
+    environment:
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
     depends_on:
       - postgres
       - redis
