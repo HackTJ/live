@@ -109,10 +109,6 @@ if is_netcat_available:
             },
         }
 
-DBBACKUP_STORAGE = "django.core.files.storage.FileSystemStorage"
-DBBACKUP_STORAGE_OPTIONS = {"location": os.path.join(BASE_DIR, "backup")}
-# TODO: https://django-dbbackup.readthedocs.io/en/master/configuration.html#encrypting-your-backups
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -232,6 +228,15 @@ else:
             "NAME": "hacktj_live",
         }
     }
+
+
+DBBACKUP_STORAGE = "django.core.files.storage.FileSystemStorage"
+
+DBBACKUP_STORAGE_OPTIONS = {"location": os.path.join(BASE_DIR, "backup")}
+
+DBBACKUP_CONNECTOR_MAPPING = {
+    "django.db.backends.postgresql": "dbbackup.db.postgresql.PgDumpBinaryConnector",
+}
 
 
 # Password validation

@@ -331,11 +331,17 @@ description = "Management commands to help backup and restore a project database
 category = "main"
 optional = false
 python-versions = "*"
+develop = false
 
 [package.dependencies]
 Django = ">=1.5"
 pytz = "*"
-six = "*"
+
+[package.source]
+type = "git"
+url = "https://github.com/django-dbbackup/django-dbbackup.git"
+reference = "master"
+resolved_reference = "f38626e92969b6220738f9d6115ab231c356ba43"
 
 [[package]]
 name = "django-debug-toolbar"
@@ -856,7 +862,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "96594ddbd653b8b7535d94a10ae88fd41e380ab45d96f870d4047be0244e50c6"
+content-hash = "31c291ab0f8ce531cc0babc5a376de55eaf1b81389bdc8de028048886d6c5f55"
 
 [metadata.files]
 aioredis = [
@@ -1040,9 +1046,7 @@ django-compressor = [
     {file = "django_compressor-2.4-py2.py3-none-any.whl", hash = "sha256:57ac0a696d061e5fc6fbc55381d2050f353b973fb97eee5593f39247bc0f30af"},
     {file = "django_compressor-2.4.tar.gz", hash = "sha256:d2ed1c6137ddaac5536233ec0a819e14009553fee0a869bea65d03e5285ba74f"},
 ]
-django-dbbackup = [
-    {file = "django-dbbackup-3.3.0.tar.gz", hash = "sha256:bb109735cae98b64ad084e5b461b7aca2d7b39992f10c9ed9435e3ebb6fb76c8"},
-]
+django-dbbackup = []
 django-debug-toolbar = [
     {file = "django-debug-toolbar-3.1.1.tar.gz", hash = "sha256:c97921a9cd421d392e7860dc4b464db8e06c8628df4dc58fedab012888c293c6"},
     {file = "django_debug_toolbar-3.1.1-py3-none-any.whl", hash = "sha256:a1ce0665f7ef47d27b8df4b5d1058748e1f08500a01421a30d35164f38aaaf4c"},

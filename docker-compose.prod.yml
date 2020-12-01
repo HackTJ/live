@@ -2,11 +2,7 @@ version: '3.8'
 
 volumes:
   static:
-    driver: local
-  media:
-    driver: local
-  postgres_data_dev:
-  postgres_backup_dev:
+  backups:
 
 services:
   django:
@@ -14,7 +10,7 @@ services:
       - 8000
     volumes:
       - static:/app/static
-      - media:/app/media
+      - backups:/app/backup
     deploy:
       resources:  # for Gunicorn
         # https://github.com/benoitc/gunicorn/issues/1440#issuecomment-411785926
@@ -42,5 +38,3 @@ services:
       - django
     volumes:
       - static:/usr/share/nginx/html/static/
-      # - static:/data/static
-      - media:/data/media
