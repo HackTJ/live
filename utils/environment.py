@@ -20,13 +20,13 @@ def get_current_ip():
         # requires machine to have an internet connection
         from socket import socket, AF_INET, SOCK_DGRAM, timeout
 
-        s = socket(AF_INET, SOCK_DGRAM)
+        google_test_socket = socket(AF_INET, SOCK_DGRAM)
         try:
-            s.connect(("8.8.8.8", 80))
+            google_test_socket.connect(("8.8.8.8", 80))
         except timeout:
             current_ip = "127.0.0.1"
         else:
             current_ip = s.getsockname()[0]
         finally:
-            s.close()
+            google_test_socket.close()
     return current_ip
