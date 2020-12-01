@@ -18,6 +18,15 @@ jobs:
         uses: actions/setup-node@v2-beta
         with:
           node-version: '14'
+          
+      - name: Prepare secrets
+        # we could use poetry run python manage.py createsecrets -o .env
+        # but this would require us to:
+        #   1. set up Python
+        #   2. install Poetry
+        #   3. install dependencies
+        # instead, we copy the example debug config file to save CI resources
+        run: cp .env.local .env
 
       - name: Run Lighthouse CI
         run: |
