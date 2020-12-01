@@ -19,7 +19,6 @@ from django.contrib import admin
 from django.urls import include, path
 
 from . import views as project_views
-from allauth.account import views as auth_views
 import debug_toolbar
 
 urlpatterns = [
@@ -27,7 +26,6 @@ urlpatterns = [
     path("credits", project_views.credits),
     path("judge/", include("judge.urls")),
     path("accounts/", include("allauth.urls")),
-    # path("accounts/volunteer_signup/", auth_views.signup),
     path("admin/", admin.site.urls),
     path("__debug__/", include(debug_toolbar.urls)),
 ]
