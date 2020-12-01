@@ -210,13 +210,11 @@
         },
 
         getRowDetail($event, id) {
-          let rows = this.selectedRows;
-
-          if (rows.includes(id)) {
-            let index = rows.indexOf(id);
-            rows.splice(index, 1);
+          if (this.selectedRows.includes(id)) {
+            let index = this.selectedRows.indexOf(id);
+            this.selectedRows.splice(index, 1); // removes this.selectedRows[index]
           } else {
-            rows.push(id);
+            this.selectedRows.push(id);
           }
 
           if (this.selectedRows.length === this.projects.length) {
