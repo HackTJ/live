@@ -33,7 +33,7 @@ def judge_required(function=None, redirect_field_name="next", login_url=None):
 
 @login_required
 @judge_required
-def home(request):
+def index(request):
     if not request.user.annotator.read_welcome:
         return redirect("/judge/welcome")
     return render(request, "judge/judge_home.html")
