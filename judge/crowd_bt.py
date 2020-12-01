@@ -1,11 +1,5 @@
-from numpy import (
-    exp,
-    log,
-)
-from scipy.special import (
-    betaln,
-    psi,
-)
+from numpy import exp, log
+from scipy.special import betaln, psi
 
 # See this paper for more information:
 # http://people.stern.nyu.edu/xchen3/images/crowd_pairwise.pdf
@@ -91,7 +85,6 @@ def expected_information_gain(alpha, beta, mu_a, sigma_sq_a, mu_b, sigma_sq_b):
     )
 
 
-# returns (updated mu of winner, updated mu of loser)
 def _updated_mus(alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser):
     mult = (alpha * exp(mu_winner)) / (
         alpha * exp(mu_winner) + beta * exp(mu_loser)
@@ -102,7 +95,6 @@ def _updated_mus(alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_los
     return (updated_mu_winner, updated_mu_loser)
 
 
-# returns (updated sigma squared of winner, updated sigma squared of loser)
 def _updated_sigma_sqs(
     alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser
 ):
@@ -116,7 +108,6 @@ def _updated_sigma_sqs(
     return (updated_sigma_sq_winner, updated_sigma_sq_loser)
 
 
-# returns (updated alpha, updated beta, pr i >k j which is c)
 def _updated_annotator(
     alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser
 ):
@@ -126,7 +117,7 @@ def _updated_annotator(
         (exp(mu_winner) + exp(mu_loser)) ** 3
     )
     c_2 = 1 - c_1
-    c = (c_1 * alpha + c_2 * beta) / (alpha + beta)
+    c = (c_1 * alpha + c_2 * beta) / (alpha + beta)  # pr i >k j
 
     expt = (c_1 * (alpha + 1) * alpha + c_2 * alpha * beta) / (
         c * (alpha + beta + 1) * (alpha + beta)

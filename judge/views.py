@@ -248,13 +248,13 @@ def queue(request):
                     *Project.objects.all(),
                 ],
                 fields=(
-                    "judge",
-                    "current",  # Annotator
-                    "username",
-                    "first_name",
-                    "last_name",  # User
-                    "name",
-                    "description",  # Project
+                    "judge",  # Annotator.judge
+                    "current",  # Annotator.current
+                    "username",  # User.username
+                    "first_name",  # User.first_name
+                    "last_name",  # User.last_name
+                    "name",  # Project.name
+                    "description",  # Project.description
                 ),
             ),
         },

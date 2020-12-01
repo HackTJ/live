@@ -75,8 +75,7 @@ class ScoreboardUpdateConsumer(AsyncWebsocketConsumer):
         project = await get_project(data["projectId"])
         logger.info(
             f"SETTING ATTRIBUTE {data['changedKey']} "
-            f"TO {data['newValue']}"
-            f"FOR PROJECT {project.name}"
+            f"TO {data['newValue']} FOR PROJECT {project.name}"
         )
 
     async def edit_project_metadata_(self, event):

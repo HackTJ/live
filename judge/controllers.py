@@ -1,9 +1,9 @@
+from datetime import datetime, timedelta
+from numpy.random import shuffle, random, choice
 from django.conf import settings
 from django.utils import timezone
-from judge.models import Project, Annotator
+from judge.models import Project
 import judge.crowd_bt as crowd_bt
-from numpy.random import shuffle, random, choice
-from datetime import datetime, timedelta
 
 
 def preferred_items(annotator):
@@ -15,8 +15,6 @@ def preferred_items(annotator):
 
     prioritized_projects = available_projects.filter(prioritize=True)
     items = prioritized_projects if prioritized_projects else available_projects
-
-    annotators = Annotator.objects.filter(current__isnull=False, judge__is_active=True)
 
     nonbusy = available_projects.filter(
         annotator_current__updated__gte=timezone.make_aware(datetime.utcnow())
@@ -45,18 +43,17 @@ def choose_next(annotator):
     if items:
         if random() < crowd_bt.EPSILON:
             return items[0]
-        else:
-            return crowd_bt.argmax(
-                lambda i: crowd_bt.expected_information_gain(
-                    float(annotator.alpha),
-                    float(annotator.beta),
-                    float(annotator.prev.mean),
-                    float(annotator.prev.variance),
-                    float(i.mean),
-                    float(i.variance),
-                ),
-                items,
-            )
+        return crowd_bt.argmax(
+            lambda i: crowd_bt.expected_information_gain(
+                float(annotator.alpha),
+                float(annotator.beta),
+                float(annotator.prev.mean),
+                float(annotator.prev.variance),
+                float(i.mean),
+                float(i.variance),
+            ),
+            items,
+        )
 
 
 def perform_vote(annotator, current_won):
