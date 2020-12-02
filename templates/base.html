@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>{% block head_title %}HackTJ Live{% endblock %}</title>
-  <meta name="description" content="">
-  <meta name="keywords" content="">
-  <meta name="author" content="">
+  <meta name="description" content="A massively scalable application for realtime hackathon judging and mentoring.">
+  <meta name="keywords" content="hackathon,judging,mentoring">
+  <meta name="author" content="HackTJ Team">
 
   {% load static %}
 
@@ -55,7 +55,7 @@
           <li>
             <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="/judge">Judge</a>
           </li>
-          <span class="select-none hidden lg:block">|</span>
+          <li class="select-none hidden lg:block">|</li>
           <hr class="w-1/3 lg:hidden" />
           {% if user.is_authenticated %}
           <li>
