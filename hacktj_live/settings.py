@@ -169,6 +169,7 @@ else:
     EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
     EMAIL_HOST_USER = "apikey"
     EMAIL_PORT = 587
+    EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
     EMAIL_USE_TLS = True
 
 ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
@@ -256,6 +257,14 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.Argon2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
+    "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
+    "django.contrib.auth.hashers.BCryptPasswordHasher",
+]
+
 
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
@@ -274,6 +283,9 @@ if not (DEBUG or in_docker):  # in production
     SECURE_HSTS_SECONDS = 3600
 
     # SECURE_SSL_REDIRECT = True
+else:
+    # trust X-Forwarded-For when testing
+    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
 
 
 # Internationalization
