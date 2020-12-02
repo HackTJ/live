@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-cmd="$@"
+cmd="$@"  # provided in docker-compose.yml: services.django.command
 
 postgres_ready () {
   python << END
@@ -31,4 +31,5 @@ done
 
 >&2 echo "Postgres is up - continuing..."
 
+chmod +x $cmd
 exec $cmd

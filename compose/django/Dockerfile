@@ -6,7 +6,7 @@ ENV PYTHONUNBUFFERED=1, DOCKER=true
 WORKDIR /app
 
 # Requirements have to be pulled and installed here, otherwise caching won't work
-COPY pyproject.toml poetry.lock ./
+COPY ./pyproject.toml ./poetry.lock ./
 
 RUN \
     DEBIAN_FRONTEND=noninteractive apt-get -y update && \
@@ -27,15 +27,11 @@ RUN \
     poetry config virtualenvs.create false && \
     poetry install
 
-COPY ./compose/django/entrypoint.sh /entrypoint.sh
-RUN sed -i 's/\r//' /entrypoint.sh && chmod +x /entrypoint.sh
-
 COPY . .
 
-COPY ./compose/django/start.sh /start.sh
-RUN sed -i 's/\r//' /start.sh && chmod +x /start.sh
-
-RUN mkdir /data /data/static /data/media
+RUN \
+    sed -i 's/\r//' ./compose/django/entrypoint.sh && chmod +x ./compose/django/entrypoint.sh && \
+    sed -i 's/\r//' ./compose/django/start.sh      && chmod +x ./compose/django/start.sh
 
 EXPOSE 8000
-ENTRYPOINT ["/bin/sh", "/entrypoint.sh"]
+ENTRYPOINT ["/bin/sh", "./compose/django/entrypoint.sh"]

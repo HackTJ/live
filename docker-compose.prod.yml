@@ -28,9 +28,7 @@ services:
       - .env
 
   nginx:
-    build:
-      context: .
-      dockerfile: ./compose/nginx/Dockerfile
+    build: ./compose/nginx
     restart: always
     ports:
       - "1379:80"
