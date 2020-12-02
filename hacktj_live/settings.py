@@ -47,6 +47,7 @@ ALLOWED_HOSTS = [
     "django",
     "nginx",  # docker compose
     "live.hacktj.org",
+    "live.hacktj.org.private",
     "hacktj-live.herokuapp.com",
 ]
 
