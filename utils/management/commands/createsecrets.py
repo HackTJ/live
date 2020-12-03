@@ -13,7 +13,7 @@ class Command(BaseCommand):
             default=[],
             help="A group of environment variables to exclude "
             "(use multiple --exclude to exclude multiple group). "
-            "Must be one of: ['secret', 'superuser', 'postgres'].",
+            "Must be one of: ['secret', 'superuser', 'sendgrid', 'postgres'].",
         )
         parser.add_argument(
             "-o", "--output", help="Specifies file to which the output is written."
@@ -26,19 +26,19 @@ class Command(BaseCommand):
         if "secret" not in exclude:
             SECRET_KEY = get_random_secret_key()
             secrets.append(f"SECRET_KEY='{SECRET_KEY}'")
-            secrets.append("\n")
+            secrets.append("")
         if "superuser" not in exclude:
             DJANGO_SUPERUSER_USERNAME = "live_admin"
             DJANGO_SUPERUSER_PASSWORD = "admin-secret"
             DJANGO_SUPERUSER_EMAIL = "sumanth@hacktj.org"
-            secrets.append(f"DJANGO_SUPERUSER_USERNAME={DJANGO_SUPERUSER_USERNAME}")
-            secrets.append(f"DJANGO_SUPERUSER_PASSWORD={DJANGO_SUPERUSER_PASSWORD}")
-            secrets.append(f"DJANGO_SUPERUSER_EMAIL={DJANGO_SUPERUSER_EMAIL}")
-            secrets.append("\n")
+            secrets.append(f"DJANGO_SUPERUSER_USERNAME='{DJANGO_SUPERUSER_USERNAME}'")
+            secrets.append(f"DJANGO_SUPERUSER_PASSWORD='{DJANGO_SUPERUSER_PASSWORD}'")
+            secrets.append(f"DJANGO_SUPERUSER_EMAIL='{DJANGO_SUPERUSER_EMAIL}'")
+            secrets.append("")
         if "sendgrid" not in exclude:
             SENDGRID_API_KEY = "SG.KEY"
-            secrets.append(f"SENDGRID_API_KEY={SENDGRID_API_KEY}")
-            secrets.append("\n")
+            secrets.append(f"SENDGRID_API_KEY='{SENDGRID_API_KEY}'")
+            secrets.append("")
         if "postgres" not in exclude:
             POSTGRES_PASSWORD = get_random_secret_key()
             POSTGRES_USER = "live_admin"
@@ -48,14 +48,14 @@ class Command(BaseCommand):
                 "--data-checksums"
             )
             POSTGRES_HOST_AUTH_METHOD = "scram-sha-256"
-            secrets.append(f"POSTGRES_PASSWORD={POSTGRES_PASSWORD}")
-            secrets.append(f"POSTGRES_USER={POSTGRES_USER}")
-            secrets.append(f"POSTGRES_DB={POSTGRES_DB}")
-            secrets.append(f"POSTGRES_INITDB_ARGS={POSTGRES_INITDB_ARGS}")
-            secrets.append(f"POSTGRES_HOST_AUTH_METHOD={POSTGRES_HOST_AUTH_METHOD}")
-            secrets.append("\n")
+            secrets.append(f"POSTGRES_PASSWORD='{POSTGRES_PASSWORD}'")
+            secrets.append(f"POSTGRES_USER='{POSTGRES_USER}'")
+            secrets.append(f"POSTGRES_DB='{POSTGRES_DB}'")
+            secrets.append(f"POSTGRES_INITDB_ARGS='{POSTGRES_INITDB_ARGS}'")
+            secrets.append(f"POSTGRES_HOST_AUTH_METHOD='{POSTGRES_HOST_AUTH_METHOD}'")
+            secrets.append("")
 
-        secrets_data = "\n".join(secrets)
+        secrets_data = "\n".join(secrets).rstrip()
 
         if options.get("output"):
             with open(options["output"], "wt") as output_file:
