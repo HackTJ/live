@@ -6,8 +6,10 @@ volumes:
 
 services:
   django:
-    expose:
-      - 8000
+    ports:
+      - '80:8000'
+    # expose:
+    #   - 8000
     volumes:
       - static:/app/static
       - backups:/app/backup
@@ -27,16 +29,16 @@ services:
     env_file:
       - .env
 
-  https-portal:
-    image: steveltn/https-portal:1.15.0
-    restart: always
-    ports:
-      - '80:80'
-      - '443:443'
-    environment:
-      DOMAINS: 'live.hacktj.org.private -> http://django:8000'
-      STAGE: 'local'  # {'local', 'staging', 'production'}  # can't use staging or production because TLD has to be public
-      WEBSOCKET: 'true'
-      LISTEN_IPV6: 'true'
-      ERROR_LOG: stdout
-      ACCESS_LOG: stderr
+  # https-portal:
+  #   image: steveltn/https-portal:1.15.0
+  #   restart: always
+  #   ports:
+  #     - '80:80'
+  #     - '443:443'
+  #   environment:
+  #     DOMAINS: 'live.hacktj.org.private -> http://django:8000'
+  #     STAGE: 'local'  # {'local', 'staging', 'production'}  # can't use staging or production because TLD has to be public
+  #     WEBSOCKET: 'true'
+  #     LISTEN_IPV6: 'true'
+  #     ERROR_LOG: stdout
+  #     ACCESS_LOG: stderr

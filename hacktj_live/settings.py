@@ -283,9 +283,11 @@ if not (DEBUG or in_docker):  # in production
     SECURE_HSTS_SECONDS = 3600
 
     # SECURE_SSL_REDIRECT = True
-else:
-    # trust X-Forwarded-For when testing
-    SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTOCOL", "https")
+
+SECURE_PROXY_SSL_HEADER = (
+    "HTTP_X_FORWARDED_PROTOCOL",
+    "https",
+)  # trust X-Forwarded-For
 
 
 # Internationalization
