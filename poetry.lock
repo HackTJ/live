@@ -166,7 +166,7 @@ python-versions = "*"
 
 [[package]]
 name = "certifi"
-version = "2020.11.8"
+version = "2020.12.5"
 description = "Python package for providing Mozilla's CA Bundle."
 category = "main"
 optional = false
@@ -185,19 +185,19 @@ pycparser = "*"
 
 [[package]]
 name = "channels"
-version = "2.4.0"
+version = "3.0.2"
 description = "Brings async, event-driven capabilities to Django. Django 2.2 and up only."
 category = "main"
 optional = false
-python-versions = ">=3.5"
+python-versions = ">=3.6"
 
 [package.dependencies]
-asgiref = ">=3.2,<4.0"
-daphne = ">=2.3,<3.0"
+asgiref = ">=3.2.10,<4"
+daphne = ">=3.0,<4"
 Django = ">=2.2"
 
 [package.extras]
-tests = ["pytest (>=4.4,<5.0)", "pytest-django (>=3.4,<4.0)", "pytest-asyncio (>=0.10,<1.0)", "async-generator (>=1.10,<2.0)", "async-timeout (>=3.0,<4.0)", "coverage (>=4.5,<5.0)"]
+tests = ["pytest", "pytest-django", "pytest-asyncio", "async-generator", "async-timeout", "coverage (>=4.5,<5.0)"]
 
 [[package]]
 name = "channels-redis"
@@ -270,14 +270,14 @@ test = ["pytest (>=3.6.0,!=3.9.0,!=3.9.1,!=3.9.2)", "pretend", "iso8601", "pytz"
 
 [[package]]
 name = "daphne"
-version = "2.5.0"
+version = "3.0.1"
 description = "Django ASGI (HTTP/WebSocket) server"
 category = "main"
 optional = false
-python-versions = "*"
+python-versions = ">=3.6"
 
 [package.dependencies]
-asgiref = ">=3.2,<4.0"
+asgiref = ">=3.2.10,<4"
 autobahn = ">=0.18"
 twisted = {version = ">=18.7", extras = ["tls"]}
 
@@ -321,7 +321,7 @@ bcrypt = ["bcrypt"]
 
 [[package]]
 name = "django-allauth"
-version = "0.43.0"
+version = "0.44.0"
 description = "Integrated set of Django applications addressing authentication, registration, account management as well as 3rd party (social) account authentication."
 category = "main"
 optional = false
@@ -935,7 +935,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "f04ab77bb1b480854210b147c435d75fa85af6d944b9cbef615e5c39cc78b0c5"
+content-hash = "81806147d58bfcae275d8799df7e97a04e87a68a5bc7b230382125031b03e092"
 
 [metadata.files]
 aioredis = [
@@ -1035,8 +1035,8 @@ brotli = [
     {file = "Brotli-1.0.9.zip", hash = "sha256:4d1b810aa0ed773f81dceda2cc7b403d01057458730e309856356d4ef4188438"},
 ]
 certifi = [
-    {file = "certifi-2020.11.8-py2.py3-none-any.whl", hash = "sha256:1f422849db327d534e3d0c5f02a263458c3955ec0aae4ff09b95f195c59f4edd"},
-    {file = "certifi-2020.11.8.tar.gz", hash = "sha256:f05def092c44fbf25834a51509ef6e631dc19765ab8a57b4e7ab85531f0a9cf4"},
+    {file = "certifi-2020.12.5-py2.py3-none-any.whl", hash = "sha256:719a74fb9e33b9bd44cc7f3a8d94bc35e4049deebe19ba7d8e108280cfd59830"},
+    {file = "certifi-2020.12.5.tar.gz", hash = "sha256:1a4995114262bffbc2413b159f2a1a480c969de6e6eb13ee966d470af86af59c"},
 ]
 cffi = [
     {file = "cffi-1.14.4-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:ebb253464a5d0482b191274f1c8bf00e33f7e0b9c66405fbffc61ed2c839c775"},
@@ -1075,8 +1075,8 @@ cffi = [
     {file = "cffi-1.14.4.tar.gz", hash = "sha256:1a465cbe98a7fd391d47dce4b8f7e5b921e6cd805ef421d04f5f66ba8f06086c"},
 ]
 channels = [
-    {file = "channels-2.4.0-py2.py3-none-any.whl", hash = "sha256:80a5ad1962ae039a3dcc0a5cb5212413e66e2f11ad9e9db8004834436daf3400"},
-    {file = "channels-2.4.0.tar.gz", hash = "sha256:08e756406d7165cb32f6fc3090c0643f41ca9f7e0f7fada0b31194662f20f414"},
+    {file = "channels-3.0.2-py3-none-any.whl", hash = "sha256:74db79c9eca616be69d38013b22083ab5d3f9ccda1ab5e69096b1bb7da2d9b18"},
+    {file = "channels-3.0.2.tar.gz", hash = "sha256:f50a6e79757a64c1e45e95e144a2ac5f1e99ee44a0718ab182c501f5e5abd268"},
 ]
 channels-redis = [
     {file = "channels_redis-3.2.0-py2.py3-none-any.whl", hash = "sha256:18d63f6462a58011740dc8eeb57ea4b31ec220eb551cb71b27de9c6779a549de"},
@@ -1122,8 +1122,8 @@ cryptography = [
     {file = "cryptography-3.2.1.tar.gz", hash = "sha256:d3d5e10be0cf2a12214ddee45c6bd203dab435e3d83b4560c03066eda600bfe3"},
 ]
 daphne = [
-    {file = "daphne-2.5.0-py2.py3-none-any.whl", hash = "sha256:aa64840015709bbc9daa3c4464a4a4d437937d6cda10a9b51e913eb319272553"},
-    {file = "daphne-2.5.0.tar.gz", hash = "sha256:1ca46d7419103958bbc9576fb7ba3b25b053006e22058bc97084ee1a7d44f4ba"},
+    {file = "daphne-3.0.1-py3-none-any.whl", hash = "sha256:0052c9887600c57054a5867d4b0240159fa009faa3bcf6a1627271d9cdcb005a"},
+    {file = "daphne-3.0.1.tar.gz", hash = "sha256:c22b692707f514de9013651ecb687f2abe4f35cf6fe292ece634e9f1737bc7e3"},
 ]
 defusedxml = [
     {file = "defusedxml-0.6.0-py2.py3-none-any.whl", hash = "sha256:6687150770438374ab581bb7a1b327a847dd9c5749e396102de3fad4e8a3ef93"},
@@ -1138,7 +1138,7 @@ django = [
     {file = "Django-3.1.4.tar.gz", hash = "sha256:edb10b5c45e7e9c0fb1dc00b76ec7449aca258a39ffd613dbd078c51d19c9f03"},
 ]
 django-allauth = [
-    {file = "django-allauth-0.43.0.tar.gz", hash = "sha256:0bfb975fe46e8bff67effb3fa46dea5acd7c66140cb78b5ed92c533f639898e2"},
+    {file = "django-allauth-0.44.0.tar.gz", hash = "sha256:e51af457466022f52154d74c8523ac69375120fad2acce6e239635d85e610b25"},
 ]
 django-appconf = [
     {file = "django-appconf-1.0.4.tar.gz", hash = "sha256:be58deb54a43d77d2e1621fe59f787681376d3cd0b8bd8e4758ef6c3a6453380"},
