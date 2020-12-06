@@ -26,7 +26,7 @@ def get_current_ip():
         except timeout:
             current_ip = "127.0.0.1"
         else:
-            current_ip = s.getsockname()[0]
+            current_ip = google_test_socket.getsockname()[0]
         finally:
             google_test_socket.close()
     return current_ip
