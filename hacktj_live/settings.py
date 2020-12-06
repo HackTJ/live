@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 
+from collections import OrderedDict
 from datetime import datetime
 from subprocess import run as run_cmd
 import os
@@ -318,20 +319,37 @@ STATICFILES_FINDERS = [
 
 COMPRESS_OFFLINE = True
 
-# HackTJ Live settings
-LIVE_JUDGE_MIN_VIEWS = 3
 
-LIVE_JUDGE_TIMEOUT = 0
+# HackTJ Live settings
+
+# this is the minimum number of times each item needs to be seen before
+# switching to more sophisticated item selection strategies.
+LIVE_JUDGE_MIN_VIEWS = 2
+
+# this is the maximum amount of time (in minutes) a judge will have a project
+# to themselves before other judges can also be assigned to the same project.
+LIVE_JUDGE_TIMEOUT = 10.0
 
 # December 13, 2020 at 5:30 p.m.
-LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=17, minute=30)
+LIVE_JUDGE_START_TIME = datetime(
+    year=2020, month=12, day=13, hour=17, minute=30)
 # LIVE_JUDGE_START_TIME = None
 
 # December 13, 2020 at 7:30 p.m.
 LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
 # LIVE_JUDGE_END_TIME = None
 
-# Judging criteria options
-# First criterion is the "primary" criterion and determines judging assignments
-LIVE_JUDGE_NUM_CRITERIA = 4
-LIVE_JUDGE_CRITERIA_NAMES = ["Overall", "UI/UX", "Social Impact", "Realisticness"]
+# key is criteria ID, value is human-readable label
+# {
+#     'overall': "Overall",
+#     'design': "UI/UX",
+#     'social_impact': "Social Impact",
+#     'feasibility': "Feasibility",
+# }
+# must have an "overall" key (used for assigning judges)
+LIVE_JUDGE_CRITERIAS = OrderedDict(
+    overall="Overall",
+    design="UI/UX",
+    social_impact="Social Impact",
+    feasibility="Feasibility",
+)

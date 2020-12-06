@@ -3,6 +3,8 @@ from django.db import models
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 
+num_criteria = len(settings.LIVE_JUDGE_CRITERIAS)
+
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
@@ -12,11 +14,13 @@ class Project(models.Model):
 
     means = ArrayField(
         models.DecimalField(default=0.0, decimal_places=8, max_digits=12),
-        size=settings.LIVE_JUDGE_NUM_CRITERIA,
+        # default=lambda: [0.0, ] * num_criteria,
+        size=num_criteria,
     )
     variances = ArrayField(
         models.DecimalField(default=1.0, decimal_places=8, max_digits=12),
-        size=settings.LIVE_JUDGE_NUM_CRITERIA,
+        # default=lambda: [0.0, ] * num_criteria,
+        size=num_criteria,
     )
     numberOfVotes = models.IntegerField(default=0)
     timesSeen = models.IntegerField(default=0)  # decision made and not skipped

@@ -11,9 +11,7 @@ def preferred_items(annotator):
 
     available_projects = Project.objects.filter(
         active=True, annotator_current__isnull=True
-    )
-    if ignored_ids:
-        available_projects = available_projects.exclude(id__in=ignored_ids)
+    ).exclude(id__in=ignored_ids)
 
     prioritized_projects = available_projects.filter(prioritize=True)
     items = prioritized_projects if prioritized_projects else available_projects
@@ -38,6 +36,11 @@ def init_annotator(annotator):
             annotator.update_current(choice(items))
             annotator.current.save()
             annotator.save()
+        else:
+            import logging
+
+            logger = logging.getLogger(__name__)
+            logger.debug("preferred_items() returned no projects")
 
 
 def choose_next(annotator):
@@ -60,32 +63,32 @@ def choose_next(annotator):
         )
 
 
-def perform_vote(annotator, criterion, current_won):
-        if current_won:
-            winner = annotator.current
-            loser = annotator.prev
-        else:
-            winner = annotator.prev
-            loser = annotator.current
+def perform_vote(annotator, current_won, criterion_index=0):
+    if current_won:
+        winner = annotator.current
+        loser = annotator.prev
+    else:
+        winner = annotator.prev
+        loser = annotator.current
 
-        (
-            u_alpha,
-            u_beta,
-            u_winner_mean,
-            u_winner_variance,
-            u_loser_mean,
-            u_loser_variance,
-        ) = crowd_bt.update(
-            float(annotator.alpha),
-            float(annotator.beta),
-            float(winner.means[criterion]),
-            float(winner.variance[criterion]),
-            float(loser.means[criterion]),
-            float(loser.variances[criterion]),
-        )
-        annotator.alpha = u_alpha
-        annotator.beta = u_beta
-        winner.means[criterion] = u_winner_mean
-        winner.variances[criterion] = u_winner_variance
-        loser.means[criterion] = u_loser_mean
-        loser.variances[criterion] = u_loser_variance
+    (
+        u_alpha,
+        u_beta,
+        u_winner_mean,
+        u_winner_variance,
+        u_loser_mean,
+        u_loser_variance,
+    ) = crowd_bt.update(
+        float(annotator.alpha),
+        float(annotator.beta),
+        float(winner.means[criterion_index]),
+        float(winner.variances[criterion_index]),
+        float(loser.means[criterion_index]),
+        float(loser.variances[criterion_index]),
+    )
+    annotator.alpha = u_alpha
+    annotator.beta = u_beta
+    winner.means[criterion_index] = u_winner_mean
+    winner.variances[criterion_index] = u_winner_variance
+    loser.means[criterion_index] = u_loser_mean
+    loser.variances[criterion_index] = u_loser_variance

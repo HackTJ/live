@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.views.decorators.cache import never_cache
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import (
     require_http_methods,
@@ -68,7 +69,7 @@ def begin(request):
                 annotator.prev.save()
                 annotator.update_current(choose_next(annotator))
                 annotator.current.save()
-                request.user.annotator.save()
+                annotator.save()
                 # request.user.save()
             elif request.POST["action"] == "Skip":
                 annotator.current.timesSkipped = F("timesSkipped") + 1
@@ -81,6 +82,7 @@ def begin(request):
 
 @login_required
 @judge_required
+@never_cache
 @require_http_methods(["GET", "POST"])
 def vote(request):
     annotator = request.user.annotator
@@ -96,60 +98,64 @@ def vote(request):
                 {
                     "prev": annotator.prev,
                     "current": annotator.current,
-                    "criteria": settings.LIVE_JUDGE_CRITERIA_NAMES,
+                    "criteria": settings.LIVE_JUDGE_CRITERIAS,
                 },
             )
+        return redirect("judge:begin")  # current is not set yet
     elif request.method == "POST":
         if annotator.prev_id == int(
             request.POST["prev_id"]
         ) and annotator.current_id == int(request.POST["current_id"]):
-            if request.POST["action"] == "skip":
-                annotator.current.timesSkipped = F("timesSkipped") + 1
-                annotator.current.save()
-            elif annotator.prev.active and annotator.current.active:
-                annotator.viewed.add(annotator.current)
-                annotator.current.timesSeen = F("timesSeen") + 1
-                annotator.current.save()
+            annotator.viewed.add(annotator.current)
+            annotator.current.timesSeen = F("timesSeen") + 1
+            annotator.current.save()
+            for criterion_index, criterion_id in enumerate(
+                settings.LIVE_JUDGE_CRITERIAS
+            ):
+                criteria_winner = request.POST[f"criterion_{criterion_id}"]
+                assert isinstance(criteria_winner, str)
+                if criteria_winner == "previous":
+                    perform_vote(
+                        annotator,
+                        current_won=False,
+                        criterion_index=criterion_index,
+                    )
+                    decision = Decision(
+                        annotator=annotator,
+                        criterion=criterion_index,
+                        winner=annotator.prev,
+                        loser=annotator.current,
+                    )
+                    decision.save()
+                elif criteria_winner == "current":
+                    perform_vote(
+                        annotator,
+                        current_won=True,
+                        criterion_index=criterion_index,
+                    )
+                    decision = Decision(
+                        annotator=annotator,
+                        criterion=criterion_index,
+                        winner=annotator.current,
+                        loser=annotator.prev,
+                    )
+                    decision.save()
 
-                for i in range(settings.LIVE_JUDGE_NUM_CRITERIA):
-                    if request.POST["c{}".format(i)] == "previous":
-                        perform_vote(annotator, criterion=i, current_won=False)
-                        decision = Decision(
-                            annotator=annotator,
-                            criterion=i,
-                            winner=annotator.prev,
-                            loser=annotator.current,
-                        )
-                        decision.save()
-                    elif request.POST["c{}".format(i)] == "current":
-                        perform_vote(annotator, criterion=i, current_won=True)
-                        decision = Decision(
-                            annotator=annotator,
-                            criterion=i,
-                            winner=annotator.current,
-                            loser=annotator.prev,
-                        )
-                        decision.save()
-                        if i == 0:  # primary criterion
-                            annotator.prev = annotator.current
+            annotator.prev.numberOfVotes = F("numberOfVotes") + 1
+            annotator.prev.save()
 
-                annotator.prev.numberOfVotes = F("numberOfVotes") + 1
-                annotator.prev.save()
-
+        if request.POST["criterion_overall"] == "current":
+            # if the current project won overall, shift it to prev
+            annotator.prev = annotator.current
+            annotator.prev.save()
         annotator.update_current(choose_next(annotator))
+        annotator.current.save()
         annotator.save()
 
         if annotator.current == annotator.prev:
             return render(request, "judge/done.html")
 
-        return render(
-            request,
-            "judge/vote.html",
-            {
-                "current": request.user.annotator.current,
-                "prev": request.user.annotator.prev,
-            },
-        )
+        return redirect("judge:vote")
 
 
 @require_GET
