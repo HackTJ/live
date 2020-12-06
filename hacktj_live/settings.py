@@ -91,21 +91,21 @@ MIGRATION_MODULES = {"sites": "hacktj_live.contrib.sites.migrations"}
 CHANNEL_LAYERS = {
     "default": {"BACKEND": "channels.layers.InMemoryChannelLayer"},
 }
-if is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "6379"]).returncode == 0:
-    CHANNEL_LAYERS = {
-        "default": {
-            "BACKEND": "channels_redis.core.RedisChannelLayer",
-            "CONFIG": {
-                "hosts": [("127.0.0.1", 6379)],
-            },
-        },
-    }
 if in_docker:
     CHANNEL_LAYERS = {
         "default": {
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
                 "hosts": [("redis", 6379)],
+            },
+        },
+    }
+elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "6379"]).returncode == 0:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [("127.0.0.1", 6379)],
             },
         },
     }
@@ -125,9 +125,6 @@ MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
     "utils.middlewares.BetterExceptionsMiddleware",
 ]
-
-# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 ROOT_URLCONF = "hacktj_live.urls"
 
@@ -159,39 +156,42 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 ACCOUNT_EMAIL_REQUIRED = False  # True
-ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
 
-DEFAULT_FROM_EMAIL = "live@hacktj.org"
-if DEBUG or in_docker:
-    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
-else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-    EMAIL_HOST = "smtp.sendgrid.net"
-    EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
-    EMAIL_HOST_USER = "apikey"
-    EMAIL_PORT = 587
-    EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
-    EMAIL_USE_TLS = True
+ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
 
 ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
 
-CACHES = {
-    "default": {
-        "BACKEND": "django.core.cache.backends.locmem.LocMemCache",
-    }
-}
-if is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
-    CACHES = {
-        "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
-            "LOCATION": "127.0.0.1:11211",
-        }
-    }
+DEFAULT_FROM_EMAIL = "live@hacktj.org"
+
+if DEBUG:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+    EMAIL_HOST = "smtp.sendgrid.net"
+
+    EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
+
+    EMAIL_HOST_USER = "apikey"
+
+    EMAIL_PORT = 587
+
+    EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
+
+    EMAIL_USE_TLS = True
+
 if in_docker:
     CACHES = {
         "default": {
             "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
             "LOCATION": "memcached:11211",
+        }
+    }
+elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
+    CACHES = {
+        "default": {
+            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "LOCATION": "127.0.0.1:11211",
         }
     }
 
@@ -221,6 +221,20 @@ elif "DATABASE_URL" in os.environ:
             conn_max_age=600,
             # ssl_require=True,
         ),
+    }
+elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "5432"]).returncode == 0:
+    # TODO: load these from vars, don't hard-code. see the .env.local file
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": "hacktj_live",
+            "USER": "live_admin",
+            "PASSWORD": "817m5da7fyleau^108yko2ib!&+*!0ba38gh%g8ps()56)=gsv",
+            "HOST": "127.0.0.1",
+            "PORT": "5432",
+            "CONN_MAX_AGE": 600,
+            # "OPTIONS": {"sslmode": "require"},
+        },
     }
 else:
     DATABASES = {
@@ -270,11 +284,11 @@ PASSWORD_HASHERS = [
 # Security
 # https://docs.djangoproject.com/en/3.0/topics/security/
 
-if not (DEBUG or in_docker):  # in production
-    CSRF_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
-    SESSION_COOKIE_SECURE = True
+SESSION_COOKIE_SECURE = True
 
+if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
 
     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
@@ -317,7 +331,24 @@ STATICFILES_FINDERS = [
     "compressor.finders.CompressorFinder",
 ]
 
-COMPRESS_OFFLINE = True
+COMPRESS_OFFLINE = True  # for Whitenoise
+
+COMPRESS_FILTERS = {
+    "css": [
+        "compressor.filters.css_default.CssAbsoluteFilter",
+        "compressor.filters.cssmin.rCSSMinFilter",
+    ],
+    "js": [
+        "compressor.filters.jsmin.JSMinFilter",
+    ],
+}
+
+STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
+# STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+# COMPRESS_STORAGE = "compressor.storage.CompressorFileStorage"
+# COMPRESS_STORAGE = "compressor.storage.GzipCompressorFileStorage"
+COMPRESS_STORAGE = "compressor.storage.BrotliCompressorFileStorage"
 
 
 # HackTJ Live settings
@@ -331,8 +362,7 @@ LIVE_JUDGE_MIN_VIEWS = 2
 LIVE_JUDGE_TIMEOUT = 10.0
 
 # December 13, 2020 at 5:30 p.m.
-LIVE_JUDGE_START_TIME = datetime(
-    year=2020, month=12, day=13, hour=17, minute=30)
+LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=17, minute=30)
 # LIVE_JUDGE_START_TIME = None
 
 # December 13, 2020 at 7:30 p.m.
