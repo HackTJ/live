@@ -1,5 +1,5 @@
 from numpy import exp, log
-from scipy.special import betaln, psi
+from scipy.special import beta, psi
 
 # See this paper for more information:
 # http://people.stern.nyu.edu/xchen3/images/crowd_pairwise.pdf
@@ -19,24 +19,22 @@ def argmax(f, xs):
     return max(xs, key=f)
 
 
-# via https://en.wikipedia.org/wiki/Normal_distribution
 def divergence_gaussian(mu_1, sigma_sq_1, mu_2, sigma_sq_2):
+    # https://en.wikipedia.org/wiki/Normal_distribution#cite_ref-40:~:text=The%20Kullback%E2%80%93Leibler%20divergence%20of%20one%20normal,_%7B1%7D%5E%7B2%7D%7D%7B%5Csigma%20_%7B2%7D%5E%7B2%7D%7D%7D%2D1%2D%5Cln%20%7B%5Cfrac%20%7B%5Csigma%20_%7B1%7D%5E%7B2%7D%7D%7B%5Csigma%20_%7B2%7D%5E%7B2%7D%7D%7D%5Cright)%7D
     ratio = sigma_sq_1 / sigma_sq_2
-    return (mu_1 - mu_2) ** 2 / (2 * sigma_sq_2) + (ratio - 1 - log(ratio)) / 2
+    return (mu_1 - mu_2) ** 2 / (2.0 * sigma_sq_2) + (ratio - 1.0 - log(ratio)) / 2.0
 
 
-# via https://en.wikipedia.org/wiki/Beta_distribution
 def divergence_beta(alpha_1, beta_1, alpha_2, beta_2):
+    # https://en.wikipedia.org/wiki/Beta_distribution#cite_ref-Cover_and_Thomas_30-1:~:text=The%20relative%20entropy%2C%20or%20Kullback%E2%80%93Leibler%20divergence,or%20Kullback%E2%80%93Leibler%20divergence%2C%20is%20always%20non%2Dnegative.
     return (
-        betaln(alpha_2, beta_2)
-        - betaln(alpha_1, beta_1)
+        log(beta(alpha_2, beta_2) / beta(alpha_1, beta_1))
         + (alpha_1 - alpha_2) * psi(alpha_1)
         + (beta_1 - beta_2) * psi(beta_1)
         + (alpha_2 - alpha_1 + beta_2 - beta_1) * psi(alpha_1 + beta_1)
     )
 
 
-# returns new (alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser)
 def update(alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser):
     (updated_alpha, updated_beta, _) = _updated_annotator(
         alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser
