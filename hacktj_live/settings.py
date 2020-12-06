@@ -369,7 +369,7 @@ LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=17, minute=30
 LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
 # LIVE_JUDGE_END_TIME = None
 
-# key is criteria ID, value is human-readable label
+# key is criterion ID, value is human-readable label
 # {
 #     'overall': "Overall",
 #     'design': "UI/UX",
@@ -377,7 +377,7 @@ LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
 #     'feasibility': "Feasibility",
 # }
 # must have an "overall" key (used for assigning judges)
-LIVE_JUDGE_CRITERIAS = OrderedDict(
+LIVE_JUDGE_CRITERIA = OrderedDict(
     overall="Overall",
     design="UI/UX",
     social_impact="Social Impact",

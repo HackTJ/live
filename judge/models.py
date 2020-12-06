@@ -3,7 +3,7 @@ from django.db import models
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 
-num_criteria = len(settings.LIVE_JUDGE_CRITERIAS)
+num_criteria = len(settings.LIVE_JUDGE_CRITERIA)
 
 
 class Project(models.Model):
@@ -19,7 +19,7 @@ class Project(models.Model):
     )
     variances = ArrayField(
         models.DecimalField(default=1.0, decimal_places=8, max_digits=12),
-        # default=lambda: [0.0, ] * num_criteria,
+        # default=lambda: [1.0, ] * num_criteria,
         size=num_criteria,
     )
     numberOfVotes = models.IntegerField(default=0)

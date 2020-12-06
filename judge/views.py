@@ -98,7 +98,7 @@ def vote(request):
                 {
                     "prev": annotator.prev,
                     "current": annotator.current,
-                    "criteria": settings.LIVE_JUDGE_CRITERIAS,
+                    "criteria": settings.LIVE_JUDGE_CRITERIA,
                 },
             )
         return redirect("judge:begin")  # current is not set yet
@@ -110,11 +110,11 @@ def vote(request):
             annotator.current.timesSeen = F("timesSeen") + 1
             annotator.current.save()
             for criterion_index, criterion_id in enumerate(
-                settings.LIVE_JUDGE_CRITERIAS
+                settings.LIVE_JUDGE_CRITERIA
             ):
-                criteria_winner = request.POST[f"criterion_{criterion_id}"]
-                assert isinstance(criteria_winner, str)
-                if criteria_winner == "previous":
+                criterion_winner = request.POST[f"criterion_{criterion_id}"]
+                assert isinstance(criterion_winner, str)
+                if criterion_winner == "previous":
                     perform_vote(
                         annotator,
                         current_won=False,
@@ -127,7 +127,7 @@ def vote(request):
                         loser=annotator.current,
                     )
                     decision.save()
-                elif criteria_winner == "current":
+                elif criterion_winner == "current":
                     perform_vote(
                         annotator,
                         current_won=True,
