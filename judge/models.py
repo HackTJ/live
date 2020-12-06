@@ -10,7 +10,7 @@ class Project(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    tags = ArrayField(models.CharField(max_length=255))
+    tags = ArrayField(models.CharField(max_length=255), default=list)
     link = models.URLField(blank=True)
 
     means = ArrayField(
