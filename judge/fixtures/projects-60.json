@@ -1,0 +1,5276 @@
+[
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HackTJ 2019 Submission Instructions",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117542-hacktj-2019-submission-instructions",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dealight",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117726-dealight",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dealight",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117726-dealight",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dealight",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117726-dealight",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "2020Vision - Team 53",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117727-2020vision-team-53",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "2020Vision - Team 53",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117727-2020vision-team-53",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "2020Vision - Team 53",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117727-2020vision-team-53",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HackTJ 2019",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117728-hacktj-2019",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "WaterSpotter",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117729-waterspotter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Team 116 Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best IoT Hack Using a Qualcomm Device\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117730-team-116-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Team 116 Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117730-team-116-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Team 116 Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117730-team-116-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "judabsahyziz",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117731-judabsahyziz",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "judabsahyziz",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117731-judabsahyziz",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "judabsahyziz",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117731-judabsahyziz",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "judabsahyziz",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117731-judabsahyziz",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Array Sorter",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117732-array-sorter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Mobile App Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117733-mobile-app-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Mobile App Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117733-mobile-app-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Mobile App Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117733-mobile-app-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SumApp",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117734-sumapp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SumApp",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117734-sumapp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SumApp",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117734-sumapp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "High School Scheduling",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117735-high-school-scheduling",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "High School Scheduling",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117735-high-school-scheduling",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "High School Scheduling",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117736-high-school-scheduling",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "High School Scheduling",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117736-high-school-scheduling",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Vet Connect",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117737-vet-connect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Vet Connect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117737-vet-connect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Vet Connect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117737-vet-connect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Vet Connect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117737-vet-connect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Vet Connect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117737-vet-connect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Vet Connect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117737-vet-connect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "High School Schedule",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117738-high-school-schedule",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "High School Schedule",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117738-high-school-schedule",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Make It Rain",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117739-make-it-rain",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "FlaskStuffs - Table 104",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117740-flaskstuffs-table-104",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "FlaskStuffs - Table 104",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117740-flaskstuffs-table-104",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Something (not sure of title yet), Team 11",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117741-something-not-sure-of-title-yet-team-11",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Course Selector",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117742-course-selector",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Course Selector",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117742-course-selector",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hackybois",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117743-hackybois",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hackybois",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117743-hackybois",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hackybois",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117743-hackybois",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hackybois",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117743-hackybois",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hackybois",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117743-hackybois",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "airpods",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117744-airpods",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Map of Opportunities",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117745-map-of-opportunities",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Map of Opportunities",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117745-map-of-opportunities",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Realtor World",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117746-realtor-world",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Realtor World",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117746-realtor-world",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Realtor World",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117746-realtor-world",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Realtor World",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117746-realtor-world",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD-Team 24",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117747-tbd-team-24",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "FindMyRepresentative",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117748-findmyrepresentative",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "FindMyRepresentative",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117748-findmyrepresentative",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Chariot",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117749-chariot",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Chariot",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117749-chariot",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Injury Detector",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117750-injury-detector",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Injury Detector",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117750-injury-detector",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Injury Detector",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117750-injury-detector",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politwitter",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117751-politwitter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politwitter",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117751-politwitter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politwitter",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117751-politwitter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politwitter",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117751-politwitter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politwitter",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117751-politwitter",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Fortis",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117752-fortis",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "LikeBot",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117753-likebot",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "ConnectLA",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117754-connectla",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "AClassicalSearch",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117755-aclassicalsearch",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Hack TJ 2019",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117756-hack-tj-2019",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CAPConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117757-capconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CAPConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117757-capconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CAPConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117757-capconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CAPConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117757-capconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Historical Fiction",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117758-historical-fiction",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Historical Fiction",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117758-historical-fiction",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Historical Fiction",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117758-historical-fiction",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Historical Fiction",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117758-historical-fiction",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SpeechSavvy",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117759-speechsavvy",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SpeechSavvy",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117759-speechsavvy",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SpeechSavvy",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117759-speechsavvy",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politech",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117760-politech",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politech",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117760-politech",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politech",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117760-politech",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CodeBlocks",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117761-codeblocks",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "MyMoneyPal",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117762-mymoneypal",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "MyMoneyPal",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117762-mymoneypal",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "MoneyTree",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117763-moneytree",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "MoneyTree",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117763-moneytree",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "something we don't know yet",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117764-something-we-don-t-know-yet",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PeerChat",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117765-peerchat",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PeerChat",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117765-peerchat",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "name",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117766-name",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "WhosYourRep",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117767-whosyourrep",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "WhosYourRep",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117767-whosyourrep",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Freddie, Hudson, Jeb, and Josh's project (Table 41)",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117768-freddie-hudson-jeb-and-josh-s-project-table-41",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Freddie, Hudson, Jeb, and Josh's project (Table 41)",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117768-freddie-hudson-jeb-and-josh-s-project-table-41",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Freddie, Hudson, Jeb, and Josh's project (Table 41)",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117768-freddie-hudson-jeb-and-josh-s-project-table-41",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Legichat",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117769-legichat",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Legichat",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117769-legichat",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Legichat",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117769-legichat",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Legichat",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117769-legichat",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Old Project- Disregard",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117770-old-project-disregard",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Kandy Land ",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117771-kandy-land",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Project Dummy",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117772-project-dummy",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Free Mac and Cheese",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117773-free-mac-and-cheese",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Free Mac and Cheese",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117773-free-mac-and-cheese",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Free Mac and Cheese",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117773-free-mac-and-cheese",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "NameTBD",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117774-nametbd",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "NameTBD",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117774-nametbd",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "NameTBD",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117774-nametbd",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Picture Docs",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117775-picture-docs",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Picture Docs",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117775-picture-docs",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Restaurant table manager",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117776-restaurant-table-manager",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Pichu",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117777-pichu",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Future Of Tomorrow",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117778-future-of-tomorrow",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "DiamondFinance",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117779-diamondfinance",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "DiamondFinance",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117779-diamondfinance",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "DiamondFinance",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117779-diamondfinance",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "aaware",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117780-aaware",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "aaware",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117780-aaware",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "aaware",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117780-aaware",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "aaware",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117780-aaware",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "template",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117781-template",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "B.L.O.S.H.",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117782-b-l-o-s-h",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Project MJC",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117783-project-mjc",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Escape from Stalin",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117784-escape-from-stalin",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Escape from Stalin",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117784-escape-from-stalin",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "im so confused",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117785-im-so-confused",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Something",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117786-something",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PMABABAG",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117787-pmababag",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PMABABAG",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117787-pmababag",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PMABABAG",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117787-pmababag",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "UniqueFont",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117788-uniquefont",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Soar Through Music Theory",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117789-soar-through-music-theory",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Soar Through Music Theory",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117789-soar-through-music-theory",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SmartCitizen",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117790-smartcitizen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SmartCitizen",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117790-smartcitizen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SmartCitizen",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117790-smartcitizen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SmartCitizen",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117790-smartcitizen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SmartCitizen",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117790-smartcitizen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "NEVERMIND",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117791-nevermind",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Biopath",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117792-biopath",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Biopath",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117792-biopath",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Biopath",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117792-biopath",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dēmos",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Blockstack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117793-demos",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dēmos",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117793-demos",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dēmos",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117793-demos",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dēmos",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117793-demos",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dēmos",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117793-demos",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HackTJ: Idle Banking",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117794-hacktj-idle-banking",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Project Protection",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117795-project-protection",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Hack TJ 6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117796-hack-tj-6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Hack TJ 6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117796-hack-tj-6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Hack TJ 6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117796-hack-tj-6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Hack TJ 6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117796-hack-tj-6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "GeoDash",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117797-geodash",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "GeoDash",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117797-geodash",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Temporary",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117798-temporary",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CrowdReader",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117799-crowdreader",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CrowdReader",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117799-crowdreader",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CrowdReader",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117799-crowdreader",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CrowdReader",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117799-crowdreader",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CrowdReader",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117799-crowdreader",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "MoodSynth",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117800-moodsynth",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "MoodSynth",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best IoT Hack Using a Qualcomm Device\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117800-moodsynth",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "IoToaster",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117801-iotoaster",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "IoToaster",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best IoT Hack Using a Qualcomm Device\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117801-iotoaster",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Isotope",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117802-isotope",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Placeholder HackTJ 2019",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117803-placeholder-hacktj-2019",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "En Route",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117804-en-route",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politi-Call Out",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117805-politi-call-out",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politi-Call Out",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117805-politi-call-out",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politi-Call Out",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117805-politi-call-out",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Politi-Call Out",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117805-politi-call-out",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "temp",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117806-temp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Fannie Mae x Google Maps",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117807-fannie-mae-x-google-maps",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Fannie Mae x Google Maps",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117807-fannie-mae-x-google-maps",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Fannie Mae x Google Maps",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117807-fannie-mae-x-google-maps",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Fannie Mae x Google Maps",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117807-fannie-mae-x-google-maps",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Team5",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117808-team5",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Maze",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117809-maze",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Temp",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117810-temp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hacktj6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117811-hacktj6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hacktj6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117811-hacktj6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hacktj6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117811-hacktj6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hacktj6.0",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117811-hacktj6-0",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Localicy",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117812-localicy",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Localicy",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117812-localicy",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Pong Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117813-pong-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Burghal",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117814-burghal",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HackTJ2019",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117815-hacktj2019",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Dennis, Henry, and James's Project",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117816-dennis-henry-and-james-s-project",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Costco Bears",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117817-costco-bears",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best IoT Hack Using a Qualcomm Device\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "City Samaritans",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117818-city-samaritans",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Homemade Housing",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117819-homemade-housing",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Homemade Housing",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117819-homemade-housing",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Homemade Housing",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117819-homemade-housing",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Homemade Housing",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117819-homemade-housing",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Homemade Housing",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117819-homemade-housing",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Homemade Housing",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117819-homemade-housing",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CollegeTools",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117820-collegetools",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "CollegeTools",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117820-collegetools",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Learning Aid",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117821-learning-aid",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Learning Aid",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117821-learning-aid",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Learning Aid",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117821-learning-aid",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "TBD_HackTJ",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117822-tbd_hacktj",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Not yet known",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117823-not-yet-known",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "LoopedIn",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117824-loopedin",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "LoopedIn",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117824-loopedin",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "LoopedIn",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117824-loopedin",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "LoopedIn",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117824-loopedin",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SaveGreen",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117825-savegreen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "SaveGreen",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117825-savegreen",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "JackRyanDavid",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117826-jackryandavid",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Poggers",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117827-poggers",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Poggers",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117827-poggers",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Poggers",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117827-poggers",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Poggers",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117827-poggers",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "UnBoard",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117828-unboard",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PingMe",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117829-pingme",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PingMe",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117829-pingme",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "PingMe",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117829-pingme",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "cool project stay tuned",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117830-cool-project-stay-tuned",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Demographics Website ",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117831-demographics-website",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Cultivate the World",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117833-cultivate-the-world",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Cultivate the World",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117833-cultivate-the-world",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best IoT Hack Using a Qualcomm Device\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Snap Kit\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Use of Blockstack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "hmu w ur oculus",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117834-hmu-w-ur-oculus",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Pinfo",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117835-pinfo",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Podstream",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117836-podstream",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Podstream",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117836-podstream",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "directConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Capital One\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117838-directconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "directConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117838-directconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "directConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117838-directconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "directConnect",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117838-directconnect",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HackTJ Mystery App",
+    "location": "",
+    "description": "",
+    "tags": "[\"Fannie Mae\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117839-hacktj-mystery-app",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HackTJ Mystery App",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117839-hacktj-mystery-app",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Agil",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117848-agil",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HelpingHand",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117849-helpinghand",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HelpingHand",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117849-helpinghand",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HelpingHand",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117849-helpinghand",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "HelpingHand",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117849-helpinghand",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "I'm not a robot",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117851-i-m-not-a-robot",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "I'm not a robot",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117851-i-m-not-a-robot",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "RIRI",
+    "location": "",
+    "description": "",
+    "tags": "[\"Yext: Best Use of Search\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117852-riri",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "RIRI",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117852-riri",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "RIRI",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117852-riri",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Capital Credit Wise (Table 73)",
+    "location": "",
+    "description": "",
+    "tags": "[\"\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117853-capital-credit-wise-table-73",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Campaign Terrain",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Web App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117854-campaign-terrain",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Campaign Terrain",
+    "location": "",
+    "description": "",
+    "tags": "[\"MLH: Best Domain Name Registered with Domain.com\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117854-campaign-terrain",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Campaign Terrain",
+    "location": "",
+    "description": "",
+    "tags": "[\"Phone2Action Civic Technology, Politics and Digital Advocacy Prize\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117854-campaign-terrain",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Temp",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Hardware or Other Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117855-temp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Temp",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Beginner Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117855-temp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Temp",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117855-temp",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Pic Match",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Mobile App\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117856-pic-match",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+},
+{
+  "model": "judge.project",
+  "pk": null,
+  "fields": {
+    "name": "Pic Match",
+    "location": "",
+    "description": "",
+    "tags": "[\"Best Social Impact Hack\"]",
+    "link": "https://hacktj2019.devpost.com/submissions/117856-pic-match",
+    "means": null,
+    "variances": null,
+    "numberOfVotes": 0,
+    "timesSeen": 0,
+    "timesSkipped": 0,
+    "prioritize": false,
+    "active": true
+  }
+}
+]

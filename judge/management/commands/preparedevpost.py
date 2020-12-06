@@ -1,0 +1,76 @@
+from django.core.management.base import BaseCommand
+from django.apps import apps as django_apps
+from csv import DictReader as CsvDictReader
+from django.core import serializers
+
+
+class Command(BaseCommand):
+    help = "Converts a Devpost CSV export to a HackTJ Live fixture"
+    missing_args_message = (
+        "No Devpost CSV specified. Please provide the path of at least "
+        "one CSV in the command line."
+    )
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "args", metavar="devpost", nargs="+", help="Devpost CSV filepaths."
+        )
+        parser.add_argument(
+            "--format",
+            default="json",  # serializers.serialize
+            help="Specifies the output serialization format for fixtures.",
+        )
+        parser.add_argument(
+            "--indent",
+            type=int,
+            help="Specifies the indent level to use when pretty-printing output.",
+        )
+        parser.add_argument(
+            "-o", "--output", help="Specifies file to which the output is written."
+        )
+
+    def handle(self, *devpost_files, **options):
+        format = options["format"]
+        indent = options["indent"]
+        output = options["output"]
+
+        Project = django_apps.get_model("judge", "project")
+        projects = []
+        for filepath in devpost_files:
+            with open(filepath, "rt", newline="") as file:
+                reader = CsvDictReader(file)
+                for row in reader:
+                    prizes = (
+                        [
+                            row["Opt-in prize"],
+                        ]
+                        if "Opt-in prize" in row
+                        else []
+                    ) + row.get("Desired Prizes", [])
+                    projects.append(
+                        Project(
+                            name=row["Submission Title"],
+                            # location='',
+                            # description=row['Plain Description'],  # no one-line description :(
+                            tags=prizes,
+                            link=row["Submission Url"],
+                        )
+                    )
+
+        self.stdout.ending = None
+        progress_output = None
+        object_count = 0
+        # If outputting to stdout, there is no way to display progress
+        if output and self.stdout.isatty():
+            progress_output = self.stdout
+            object_count = len(projects)
+        stream = open(output, "w") if output else None
+
+        serializers.serialize(
+            format,
+            projects,
+            indent=indent,
+            stream=stream or self.stdout,
+            progress_output=progress_output,
+            object_count=object_count,
+        )
