@@ -11,6 +11,11 @@
     <h2 class="bg-blue-400 text-xl rounded-t px-4">Current</h2>
     <h3 class="text-lg text-black px-4">{{ current.name }}</h3>
     <p class="text-gray-700 px-4">{{ current.description }}</p>
+    <p>
+        {% for tag in current.tags %}
+        <span>{{ tag }}</span>
+        {% endfor %}
+    </p>
     <p class="text-gray-700 px-4"><b>Location: </b>{{ current.location }}</p>
   </div>
   <form action="{% url 'judge:begin' %}" method="POST" class="text-black flex flex-col sm:flex-row justify-center items-center sm:items-baseline flex-wrap text-black space-x-4 space-y-4 sm:space-x-0">
