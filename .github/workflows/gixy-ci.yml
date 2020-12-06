@@ -1,12 +1,14 @@
-name: Gixy CI
+name: Gixy
 
 on:
   push:
     paths:
     - './compose/nginx/nginx.conf'
+    - './.github/workflows/gixy-ci.yml'
   pull_request:
     paths:
     - './compose/nginx/nginx.conf'
+    - './.github/workflows/gixy-ci.yml'
   workflow_dispatch:
 
 jobs:

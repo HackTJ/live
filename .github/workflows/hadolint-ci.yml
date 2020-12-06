@@ -1,4 +1,4 @@
-name: Hadolint CI
+name: Hadolint
 
 on:
   push:
