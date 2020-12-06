@@ -1,6 +1,6 @@
 import logging
 import json
-from channels.generic.websocket import AsyncWebsocketConsumer
+from channels.generic.websocket import AsyncWebsocketConsumer, JsonWebsocketConsumer
 from channels.db import database_sync_to_async
 from judge.models import Project
 
@@ -81,3 +81,11 @@ class ScoreboardUpdateConsumer(AsyncWebsocketConsumer):
     async def edit_project_metadata_(self, event):
         data = event["data"]
         self.send(text_data=json.dumps(data))
+
+
+class QueueUpdateConsumer(JsonWebsocketConsumer):
+    def receive(self, text_data=None, bytes_data=None):
+        # Called with either text_data or bytes_data for each frame
+
+        # see judge.views.queue
+        self.send_json({"queue": []})
