@@ -56,8 +56,9 @@ class Annotator(models.Model):
     read_welcome = models.BooleanField(default=False)
 
     def update_current(self, new_current):
-        if new_current:
-            new_current.prioritized = False  # TODO: not necessary? default arg
+        if new_current:  # comparison was not skipped
+            # the project jas been assigned, so cancel the prioritization:
+            new_current.prioritized = False
             self.current = new_current
             self.ignore.add(new_current)
 

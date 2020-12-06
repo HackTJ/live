@@ -35,7 +35,7 @@ def judge_required(function=None, redirect_field_name="next", login_url=None):
 @judge_required
 def index(request):
     if not request.user.annotator.read_welcome:
-        return redirect("/judge/welcome")
+        return redirect("judge:welcome")
     return render(request, "judge/judge_home.html")
 
 
@@ -45,61 +45,60 @@ def welcome(request):
     if request.method == "POST":
         request.user.annotator.read_welcome = True
         request.user.annotator.save()
-        return redirect("/judge")
-    else:
-        return render(request, "judge/welcome.html")
+        return redirect("judge:begin")
+    return render(request, "judge/welcome.html")
 
 
 @login_required
 @judge_required
-@require_POST
+@require_http_methods(["GET", "POST"])
 def begin(request):
     annotator = request.user.annotator
-    if annotator.current.id == int(request.POST["project_id"]):
-        if request.POST["action"] == "Done":
-            annotator.viewed.add(annotator.current)
-            annotator.current.timesSeen = F("timesSeen") + 1
-            annotator.current.save()
-            annotator.prev = annotator.current
-            annotator.prev.save()
-            annotator.update_current(choose_next(annotator))
-        elif request.POST["action"] == "Skip":
-            annotator.current.timesSkipped = F("timesSkipped") + 1
-            annotator.current.save()
-            annotator.current = None
-        annotator.save()
-    return redirect("/judge/vote")
+    if request.method == "GET":
+        if not annotator.current:
+            init_annotator(annotator)
+            return render(request, "judge/begin.html", {"current": annotator.current})
+    elif request.method == "POST":
+        if annotator.current_id == int(request.POST["project_id"]):
+            if request.POST["action"] == "Done":
+                annotator.viewed.add(annotator.current)
+                annotator.current.timesSeen = F("timesSeen") + 1
+                annotator.current.save()
+                annotator.prev = annotator.current
+                annotator.prev.save()
+                annotator.update_current(choose_next(annotator))
+                annotator.current.save()
+                request.user.annotator.save()
+                # request.user.save()
+            elif request.POST["action"] == "Skip":
+                annotator.current.timesSkipped = F("timesSkipped") + 1
+                annotator.current.save()
+                annotator.current = None
+                annotator.save()
+                return redirect("judge:begin")
+    return redirect("judge:vote")
 
 
 @login_required
 @judge_required
 @require_http_methods(["GET", "POST"])
 def vote(request):
+    annotator = request.user.annotator
     if request.method == "GET":
-        annotator = request.user.annotator
         if not annotator.read_welcome:
-            return redirect("/judge/welcome")
+            return redirect("judge:welcome")
         if annotator.current:
-            if not annotator.prev:
-                return render(
-                    request, "judge/begin.html", {"current": annotator.current}
-                )
-            else:
-                if annotator.current == annotator.prev:
-                    return render(request, "judge/done.html")
-                else:
-                    return render(
-                        request,
-                        "judge/vote.html",
-                        {
-                            "prev": annotator.prev,
-                            "current": annotator.current,
-                        },
-                    )
-        init_annotator(annotator)
-        return render(request, "judge/begin.html", {"current": annotator.current})
-    else:
-        annotator = request.user.annotator
+            if annotator.current == annotator.prev:
+                return render(request, "judge/done.html")
+            return render(
+                request,
+                "judge/vote.html",
+                {
+                    "prev": annotator.prev,
+                    "current": annotator.current,
+                },
+            )
+    elif request.method == "POST":
         if annotator.prev_id == int(
             request.POST["prev_id"]
         ) and annotator.current_id == int(request.POST["current_id"]):

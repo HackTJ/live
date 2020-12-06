@@ -9,7 +9,9 @@ import judge.crowd_bt as crowd_bt
 def preferred_items(annotator):
     ignored_ids = annotator.ignore.values_list("id", flat=True)
 
-    available_projects = Project.objects.filter(active=True)
+    available_projects = Project.objects.filter(
+        active=True, annotator_current__isnull=True
+    )
     if ignored_ids:
         available_projects = available_projects.exclude(id__in=ignored_ids)
 
@@ -18,7 +20,7 @@ def preferred_items(annotator):
 
     nonbusy = available_projects.filter(
         annotator_current__updated__gte=timezone.make_aware(datetime.utcnow())
-        + timedelta(seconds=settings.LIVE_JUDGE_TIMEOUT * 60)
+        + timedelta(minutes=settings.LIVE_JUDGE_TIMEOUT)
     )
     preferred = nonbusy if nonbusy else items
 
@@ -32,7 +34,9 @@ def init_annotator(annotator):
     if not annotator.current:
         items = preferred_items(annotator)
         if items:
+            # assert not any(hasattr(project, "annotator_current") for project in items)
             annotator.update_current(choice(items))
+            annotator.current.save()
             annotator.save()
 
 
@@ -44,13 +48,13 @@ def choose_next(annotator):
         if random() < crowd_bt.EPSILON:
             return items[0]
         return crowd_bt.argmax(
-            lambda i: crowd_bt.expected_information_gain(
+            lambda project: crowd_bt.expected_information_gain(
                 float(annotator.alpha),
                 float(annotator.beta),
                 float(annotator.prev.mean),
                 float(annotator.prev.variance),
-                float(i.mean),
-                float(i.variance),
+                float(project.mean),
+                float(project.variance),
             ),
             items,
         )
