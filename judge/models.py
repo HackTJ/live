@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.db import models
 from django.conf import settings
+from django.contrib.postgres.fields import ArrayField
 
 
 class Project(models.Model):
@@ -9,8 +10,14 @@ class Project(models.Model):
     description = models.CharField(max_length=255)
     link = models.URLField(blank=True)
 
-    mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    variance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+    means = ArrayField(
+        models.DecimalField(default=0.0, decimal_places=8, max_digits=12),
+        size=settings.LIVE_JUDGE_NUM_CRITERIA,
+    )
+    variances = ArrayField(
+        models.DecimalField(default=1.0, decimal_places=8, max_digits=12),
+        size=settings.LIVE_JUDGE_NUM_CRITERIA,
+    )
     numberOfVotes = models.IntegerField(default=0)
     timesSeen = models.IntegerField(default=0)  # decision made and not skipped
     timesSkipped = models.IntegerField(default=0)
@@ -68,6 +75,7 @@ class Decision(models.Model):
         Annotator,
         on_delete=models.CASCADE,
     )
+    criterion = models.IntegerField(default=0)
     winner = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,

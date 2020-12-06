@@ -51,40 +51,41 @@ def choose_next(annotator):
             lambda project: crowd_bt.expected_information_gain(
                 float(annotator.alpha),
                 float(annotator.beta),
-                float(annotator.prev.mean),
-                float(annotator.prev.variance),
-                float(project.mean),
-                float(project.variance),
+                float(annotator.prev.means[0]),
+                float(annotator.prev.variances[0]),
+                float(project.means[0]),
+                float(project.variances[0]),
             ),
             items,
         )
 
 
-def perform_vote(annotator, current_won):
-    if current_won:
-        winner = annotator.current
-        loser = annotator.prev
-    else:
-        winner = annotator.prev
-        loser = annotator.current
-    (
-        u_alpha,
-        u_beta,
-        u_winner_mean,
-        u_winner_variance,
-        u_loser_mean,
-        u_loser_variance,
-    ) = crowd_bt.update(
-        float(annotator.alpha),
-        float(annotator.beta),
-        float(winner.mean),
-        float(winner.variance),
-        float(loser.mean),
-        float(loser.variance),
-    )
-    annotator.alpha = u_alpha
-    annotator.beta = u_beta
-    winner.mean = u_winner_mean
-    winner.variance = u_winner_variance
-    loser.mean = u_loser_mean
-    loser.variance = u_loser_variance
+def perform_vote(annotator, criterion, current_won):
+        if current_won:
+            winner = annotator.current
+            loser = annotator.prev
+        else:
+            winner = annotator.prev
+            loser = annotator.current
+
+        (
+            u_alpha,
+            u_beta,
+            u_winner_mean,
+            u_winner_variance,
+            u_loser_mean,
+            u_loser_variance,
+        ) = crowd_bt.update(
+            float(annotator.alpha),
+            float(annotator.beta),
+            float(winner.means[criterion]),
+            float(winner.variance[criterion]),
+            float(loser.means[criterion]),
+            float(loser.variances[criterion]),
+        )
+        annotator.alpha = u_alpha
+        annotator.beta = u_beta
+        winner.means[criterion] = u_winner_mean
+        winner.variances[criterion] = u_winner_variance
+        loser.means[criterion] = u_loser_mean
+        loser.variances[criterion] = u_loser_variance
