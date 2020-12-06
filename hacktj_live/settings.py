@@ -330,3 +330,8 @@ LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=17, minute=30
 # December 13, 2020 at 7:30 p.m.
 LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
 # LIVE_JUDGE_END_TIME = None
+
+# Judging criteria options
+# First criterion is the "primary" criterion and determines judging assignments
+LIVE_JUDGE_NUM_CRITERIA = 4
+LIVE_JUDGE_CRITERIA_NAMES = ['Overall', 'UI/UX', 'Social Impact', 'Realisticness']

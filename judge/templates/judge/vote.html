@@ -20,16 +20,28 @@
       <p class="text-gray-700 px-4"><b>Location: </b>{{ current.location }}</p>
     </div>
   </div>
-  <p>Which project is better?</p>
   <form action="/judge/vote" method="POST" class="text-black flex flex-col sm:flex-row justify-center items-center sm:items-baseline flex-wrap text-black space-x-4 space-y-4 sm:space-x-0">
     {% csrf_token %}
-    <input class="mx-auto sm:mx-0 sm:rounded-r-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white" name="action" type="submit"
-      value="previous">
+
+    {% for criterion_name in criteria[1:] %}
+    <div>
+        <p>Which project is better in terms of {{ criterion_name }}</p>
+        <input class="mx-auto sm:mx-0 sm:rounded-r-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+        name= "c{{ forloop.counter }}" type="radio" value="previous"/>
+        <input class="mx-auto sm:mx-0 sm:rounded-l-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+        name="c{{ forloop.counter }}" type="radio" value="current"/>
+    </div>
+    {% endfor %}
+
+    <p>Which project is better overall?</p>
+    <input class="mx-auto sm:mx-0 sm:rounded-r-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+      name="c0" type="submit" value="previous"/>
     <input
       class="mx-auto sm:mx-0 sm:rounded-l-none sm:rounded-r-none border-l-0 border-r-0 flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
-      name="action" type="submit" value="skip" onclick="return confirm('Are you sure? Please don\'t skip unless absolutely necessary.');">
-    <input class="mx-auto sm:mx-0 sm:rounded-l-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white" name="action" type="submit"
-      value="current">
+      name="c0" type="submit" value="skip" onclick="return confirm('Are you sure? Please don\'t skip unless absolutely necessary.');"/>
+    <input class="mx-auto sm:mx-0 sm:rounded-l-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+      name="c0" type="submit" value="current"/>
+
     <input type="hidden" name="prev_id" value="{{ prev.id }}">
     <input type="hidden" name="current_id" value="{{ current.id }}">
   </form>

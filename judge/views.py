@@ -94,15 +94,14 @@ def vote(request):
                         {
                             "prev": annotator.prev,
                             "current": annotator.current,
+                            "criteria": settings.LIVE_JUDGE_CRITERIA_NAMES,
                         },
                     )
         init_annotator(annotator)
         return render(request, "judge/begin.html", {"current": annotator.current})
     else:
         annotator = request.user.annotator
-        if annotator.prev_id == int(
-            request.POST["prev_id"]
-        ) and annotator.current_id == int(request.POST["current_id"]):
+        if annotator.prev_id == int(request.POST["prev_id"]) and annotator.current_id == int(request.POST["current_id"]):
             if request.POST["action"] == "skip":
                 annotator.current.timesSkipped = F("timesSkipped") + 1
                 annotator.current.save()
@@ -111,23 +110,27 @@ def vote(request):
                 annotator.current.timesSeen = F("timesSeen") + 1
                 annotator.current.save()
 
-                if request.POST["action"] == "previous":
-                    perform_vote(annotator, current_won=False)
-                    decision = Decision(
-                        annotator=annotator,
-                        winner=annotator.prev,
-                        loser=annotator.current,
-                    )
-                    decision.save()
-                elif request.POST["action"] == "current":
-                    perform_vote(annotator, current_won=True)
-                    decision = Decision(
-                        annotator=annotator,
-                        winner=annotator.current,
-                        loser=annotator.prev,
-                    )
-                    decision.save()
-                    annotator.prev = annotator.current
+                for i in range(settings.LIVE_JUDGE_NUM_CRITERIA):
+                    if request.POST["c{}".format(i)] == "previous":
+                        perform_vote(annotator, criterion=i, current_won=False)
+                        decision = Decision(
+                            annotator=annotator,
+                            criterion=i,
+                            winner=annotator.prev,
+                            loser=annotator.current,
+                        )
+                        decision.save()
+                    elif request.POST["c{}".format(i)] == "current":
+                        perform_vote(annotator, criterion=i, current_won=True)
+                        decision = Decision(
+                            annotator=annotator,
+                            criterion=i,
+                            winner=annotator.current,
+                            loser=annotator.prev,
+                        )
+                        decision.save()
+                        if i == 0: # primary criterion
+                            annotator.prev = annotator.current
 
                 annotator.prev.numberOfVotes = F("numberOfVotes") + 1
                 annotator.prev.save()
