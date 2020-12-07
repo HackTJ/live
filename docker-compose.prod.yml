@@ -8,7 +8,8 @@ volumes:
 services:
   django:
     ports:
-      - '80:8000'
+      # - '80:8000'
+      - '8000:8000'
     # expose:
     #   - 8000
     volumes:

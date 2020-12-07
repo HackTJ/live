@@ -25,6 +25,8 @@ django-appconf==1.0.4
 django-compressor==2.4
 django-dbbackup @ git+https://github.com/django-dbbackup/django-dbbackup.git@master
 django-debug-toolbar==3.2; python_version >= "3.6"
+django-ranged-response==0.2.0
+django-simple-captcha==0.5.13
 django==3.1.4; python_version >= "3.6"
 gunicorn==20.0.4; python_version >= "3.4"
 h11==0.11.0
@@ -39,6 +41,7 @@ incremental==17.5.0; python_version >= "3.6" and python_full_version < "3.0.0" o
 msgpack==1.0.0; python_version >= "3.6"
 numpy==1.19.4; python_version >= "3.6"
 oauthlib==3.1.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
+pillow==8.0.1; python_version >= "3.6"
 priority==1.3.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 psycopg2==2.8.6; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.4.0")
 pyasn1-modules==0.2.8; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
