@@ -16,7 +16,7 @@
           <span>{{ tag }}</span>
         {% endfor %}
       </p>
-      <p class="text-gray-700 px-4"><b>Link: </b>{{ prev.link }}</p>
+      <p class="text-gray-700 px-4"><b>Link: </b><a href="{{ prev.link }}">Devpost</a></p>
     </div>
     <div class="bg-blue-200 lg:w-1/3 mx-auto my-3 pb-2 rounded">
       <h2 class="bg-blue-400 text-xl rounded-t px-4">Current</h2>
@@ -27,7 +27,7 @@
           <span>{{ tag }}</span>
         {% endfor %}
       </p>
-      <p class="text-gray-700 px-4"><b>Link: </b>{{ current.link }}</p>
+      <p class="text-gray-700 px-4"><b>Link: </b><a href="{{ current.link }}">Devpost</a></p>
     </div>
   </div>
   <form action="{% url 'judge:vote' %}" method="POST" class="space-x-4 space-y-4 sm:space-x-0">
