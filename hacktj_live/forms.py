@@ -1,7 +1,8 @@
+from django import forms
 from django.contrib.auth.models import Group
 from allauth.account.forms import SignupForm
-from django import forms
 from judge.models import Annotator
+from captcha.fields import CaptchaField
 
 
 class VolunteerSignupForm(SignupForm):
@@ -27,6 +28,8 @@ class VolunteerSignupForm(SignupForm):
         # https://docs.djangoproject.com/en/3.1/ref/contrib/auth/#django.contrib.auth.models.User.first_name:~:text=first_name%C2%B6,Optional%20(blank%3DTrue).%20150%20characters%20or%20fewer.
         self.fields["first_name"] = forms.CharField(max_length=150)
         self.fields["last_name"] = forms.CharField(max_length=150)
+
+        self.fields["captcha"] = CaptchaField()
 
     def clean_user_type(self):
         user_type = self.cleaned_data["user_type"]

@@ -28,4 +28,5 @@ urlpatterns = [
     path("accounts/", include("allauth.urls")),
     path("admin/", admin.site.urls),
     path("__debug__/", include(debug_toolbar.urls)),
+    path("captcha/", include("captcha.urls"))
 ]
