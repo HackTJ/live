@@ -48,8 +48,7 @@ class VolunteerSignupForm(SignupForm):
             judge_group, _ = Group.objects.get_or_create(name="judge")
             user.groups.add(judge_group)
 
-            annotator = Annotator(judge=user)
-            annotator.save()
+            annotator = Annotator.objects.create(judge=user)
         if "user_mentor" in self.cleaned_data["user_type"]:
             mentor_group, _ = Group.objects.get_or_create(name="mentor")
             user.groups.add(mentor_group)

@@ -174,6 +174,8 @@ else:
 
     EMAIL_USE_TLS = True
 
+ACCOUNT_ADAPTER = "utils.adapters.LiveAccountAdapter"
+
 if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
     ACCOUNT_EMAIL_REQUIRED = True
 
@@ -358,6 +360,8 @@ COMPRESS_STORAGE = "compressor.storage.BrotliCompressorFileStorage"
 
 
 # HackTJ Live settings
+
+LIVE_ADMIN_VERIFICATION = True
 
 # this is the minimum number of times each item needs to be seen before
 # switching to more sophisticated item selection strategies.
