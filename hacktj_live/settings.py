@@ -155,12 +155,6 @@ AUTHENTICATION_BACKENDS = [
     "allauth.account.auth_backends.AuthenticationBackend",
 ]
 
-ACCOUNT_EMAIL_REQUIRED = False  # True
-
-ACCOUNT_EMAIL_VERIFICATION = "none"  # "mandatory"
-
-ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
-
 DEFAULT_FROM_EMAIL = "live@hacktj.org"
 
 if DEBUG:
@@ -179,6 +173,18 @@ else:
     EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
 
     EMAIL_USE_TLS = True
+
+if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
+    ACCOUNT_EMAIL_REQUIRED = True
+
+    ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+else:
+    ACCOUNT_EMAIL_REQUIRED = False
+
+    ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
+
 
 if in_docker:
     CACHES = {
