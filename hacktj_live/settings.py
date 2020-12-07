@@ -326,6 +326,32 @@ USE_L10N = True
 
 USE_TZ = True
 
+# Logging
+# https://docs.djangoproject.com/en/3.1/topics/logging/
+
+# TODO: logs to console twice in dev mode
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "level": "DEBUG",
+            "class": "logging.StreamHandler",
+        },
+        "file": {
+            "level": "INFO",
+            "class": "logging.FileHandler",
+            "filename": os.path.join(
+                BASE_DIR, "logs", "debug" if DEBUG else "production", "django.log"
+            ),
+        },
+    },
+    "root": {
+        "handlers": ["console", "file"],
+        "propagate": True,
+    },
+}
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
