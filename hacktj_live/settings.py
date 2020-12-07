@@ -77,6 +77,7 @@ INSTALLED_APPS = [
     "tailwind",
     "dbbackup",  # django-dbbackup
     "debug_toolbar",
+    "captcha",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",

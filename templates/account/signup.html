@@ -118,6 +118,9 @@
           {% endif %}
         </label>
       </div>
+      <div class="mb-6">
+        {{ form.captcha }}
+      </div>
       <div class="flex items-center justify-between">
         {% if redirect_field_value %}
         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />

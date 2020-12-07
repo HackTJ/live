@@ -11,4 +11,4 @@ class LiveAccountAdapter(DefaultAccountAdapter):
             user = get_user_model()(is_active=False)
             return user
         else:
-            super().new_user(request)
+            return super().new_user(request)
