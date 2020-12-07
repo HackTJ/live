@@ -10,16 +10,11 @@
 
     {% url 'account_email' as email_url %}
 
-    <p>{% translate "This part of the site requires us to verify that
-        you are who you claim to be. For this purpose, we require that you
-        verify ownership of your e-mail address." %}</p>
+    <p>{% translate "This part of the site requires us to verify that you are who you claim to be. For this purpose, we require that you verify ownership of your e-mail address." %}</p>
 
-    <p>{% translate "We have sent an e-mail to you for
-        verification. Please click on the link inside this e-mail. Please
-        contact us if you do not receive it within a few minutes." %}</p>
+    <p>{% translate "We have sent an e-mail to you for verification. Please click on the link inside this e-mail. Please contact us if you do not receive it within a few minutes." %}</p>
 
-    <p>{% blocktranslate %}<strong>Note:</strong> you can still <a href="{{ email_url }}">change your e-mail
-            address</a>.{% endblocktranslate %}</p>
+    <p>{% blocktranslate %}<b>Note:</b> you can still <a href="{{ email_url }}">change your e-mail address</a>.{% endblocktranslate %}</p>
 </div>
 
 
