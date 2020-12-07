@@ -387,7 +387,7 @@ COMPRESS_STORAGE = "compressor.storage.BrotliCompressorFileStorage"
 
 # HackTJ Live settings
 
-LIVE_ADMIN_VERIFICATION = True
+LIVE_ADMIN_VERIFICATION = not DEBUG
 
 # this is the minimum number of times each item needs to be seen before
 # switching to more sophisticated item selection strategies.
