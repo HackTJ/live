@@ -258,21 +258,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"autoprefixer@npm:^10.0.4":
-  version: 10.0.4
-  resolution: "autoprefixer@npm:10.0.4"
+"autoprefixer@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "autoprefixer@npm:10.1.0"
   dependencies:
-    browserslist: ^4.14.7
-    caniuse-lite: ^1.0.30001161
+    browserslist: ^4.15.0
+    caniuse-lite: ^1.0.30001165
     colorette: ^1.2.1
+    fraction.js: ^4.0.12
     normalize-range: ^0.1.2
-    num2fraction: ^1.2.2
     postcss-value-parser: ^4.1.0
   peerDependencies:
     postcss: ^8.1.0
   bin:
     autoprefixer: bin/autoprefixer
-  checksum: ccc391565a51b4d2d5f5cf5f600f6e3b56b867f476d4ee24e60c98bc01bd6c66e818f2d3e989453721a8e91a931f1334f6965c61a35c7c836087400b0886c5c4
+  checksum: a0d9ccd6059f024e5fda4334019c5306b4a15a3fa2067bf5aea8eafe00fc1e79e0bc1d563998abdb3de6131a0718de80e8506534c404b21aefec75d2a56f966f
   languageName: node
   linkType: hard
 
@@ -356,18 +356,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"browserslist@npm:^4.0.0, browserslist@npm:^4.12.0, browserslist@npm:^4.14.7":
-  version: 4.14.7
-  resolution: "browserslist@npm:4.14.7"
+"browserslist@npm:^4.0.0, browserslist@npm:^4.12.0, browserslist@npm:^4.15.0":
+  version: 4.15.0
+  resolution: "browserslist@npm:4.15.0"
   dependencies:
-    caniuse-lite: ^1.0.30001157
+    caniuse-lite: ^1.0.30001164
     colorette: ^1.2.1
-    electron-to-chromium: ^1.3.591
+    electron-to-chromium: ^1.3.612
     escalade: ^3.1.1
-    node-releases: ^1.1.66
+    node-releases: ^1.1.67
   bin:
     browserslist: cli.js
-  checksum: 62b671a69a8d5636d848383ef2cdb64299a436149a889e08c6b91bf0d595bee6c1d358edf1f3dcde72b5fb803f138015b9c1de75566b19330d071ab76f3d1339
+  checksum: d8c222ad064cc3911e5cbff6e3feae53e87dc7b1b2ba347ff9b6a5bda76d7d29a230993f56457a4a0b83849d163ae07946bfe0389175998817aaefed428fab68
   languageName: node
   linkType: hard
 
@@ -429,10 +429,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001157, caniuse-lite@npm:^1.0.30001161":
-  version: 1.0.30001161
-  resolution: "caniuse-lite@npm:1.0.30001161"
-  checksum: 4d3f2d199242f45708e513f9e5ccbb7e42995cfd3d6b09a21015a453c07bc8be71cb32fe4b4a1be851513d0a2444587c6f2f613d34cc39e915ac5fb772d67b4f
+"caniuse-lite@npm:^1.0.0, caniuse-lite@npm:^1.0.30001109, caniuse-lite@npm:^1.0.30001164, caniuse-lite@npm:^1.0.30001165":
+  version: 1.0.30001165
+  resolution: "caniuse-lite@npm:1.0.30001165"
+  checksum: f01ea7f22389b403feb86790b4815437b816aeab685a177ab20297aa7f4447c8d9242ed544738003c7a6f03e302f7dde808171ccd0940659fd62c34f53452cbd
   languageName: node
   linkType: hard
 
@@ -902,10 +902,10 @@ __metadata:
   resolution: "django_tailwind@workspace:."
   dependencies:
     "@tailwindcss/forms": ^0.2.1
-    autoprefixer: ^10.0.4
+    autoprefixer: ^10.1.0
     cssnano: ^4.1.10
     cssnano-preset-advanced: ^4.0.7
-    postcss: ^8.1.10
+    postcss: ^8.2.0
     postcss-cli: ^8.3.0
     tailwindcss: ^2.0.1
   languageName: unknown
@@ -964,10 +964,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron-to-chromium@npm:^1.3.591":
-  version: 1.3.595
-  resolution: "electron-to-chromium@npm:1.3.595"
-  checksum: 5fb65f0071e9aa48ff23263d63a1fd4fb469fb1d066effb2d834729b6542f1cb5179a9bd2ed41d9ab802cf90d07b4b12fd037f6d7f3c0c572625422ee03314f0
+"electron-to-chromium@npm:^1.3.612":
+  version: 1.3.619
+  resolution: "electron-to-chromium@npm:1.3.619"
+  checksum: 0799020f515a5c9f4330456c04fdb1b7fabb4d3b8ab396ed36956a61cc200c96af3528975efc5389145e8cd997e65a16309cf2ed1cc967d6091be16302afca6f
   languageName: node
   linkType: hard
 
@@ -1130,6 +1130,13 @@ __metadata:
     combined-stream: ^1.0.6
     mime-types: ^2.1.12
   checksum: 862e686b105634222db77138d5f5ae08ba85f88c04925de5be86b2b9d03cf671d86566ad10f1dd5217634c0f1634069dfc1a663a1cc13e8fbac0ce8f670ad070
+  languageName: node
+  linkType: hard
+
+"fraction.js@npm:^4.0.12":
+  version: 4.0.12
+  resolution: "fraction.js@npm:4.0.12"
+  checksum: 8cb75f050813859fc2e82e5d3c87c6cf03ee253887a45f1c88ef697727dd2b18c5df59ecf1d23b5c82f21f9a41d9430a6ecb0e3e0aa62f8e2caf54deee463402
   languageName: node
   linkType: hard
 
@@ -1901,12 +1908,12 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.1.18":
-  version: 3.1.18
-  resolution: "nanoid@npm:3.1.18"
+"nanoid@npm:^3.1.20":
+  version: 3.1.20
+  resolution: "nanoid@npm:3.1.20"
   bin:
     nanoid: bin/nanoid.cjs
-  checksum: ae87f7a2542cb9cb546410dee7327a1eece71bd4bb6ef62aab30275342947554add78713bed50c9e012e5d45392cc948087c5bfbbae14ee126defb0926c4afd8
+  checksum: 4788d36edcfec7bb32ddf33ed8f1f46df2867f70e9b1993bb131f7677e04ead2b621e5d614d2736308be18db1d54208d8ab207b4586bd5b052f71fb9d4c0ebea
   languageName: node
   linkType: hard
 
@@ -1939,10 +1946,10 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"node-releases@npm:^1.1.66":
-  version: 1.1.66
-  resolution: "node-releases@npm:1.1.66"
-  checksum: 342621a8bdbd28860e8321687df6fbd5db540daee4279eb1aa330a4b01c0b8e401fb7e405bd60c72de31a911087bd88633cb685832640d5142b1db7d418f257a
+"node-releases@npm:^1.1.67":
+  version: 1.1.67
+  resolution: "node-releases@npm:1.1.67"
+  checksum: 19a76af9498421b28bbc0123effc870a2ebe68a6364a4eb6547c5f871d6c2d8095fb66cc582a2378af8fbb6124ef8360207ef29d7a5a507e27691c53a85e9df4
   languageName: node
   linkType: hard
 
@@ -2688,15 +2695,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.10, postcss@npm:^8.1.6":
-  version: 8.1.10
-  resolution: "postcss@npm:8.1.10"
+"postcss@npm:^8.1.6, postcss@npm:^8.2.0":
+  version: 8.2.0
+  resolution: "postcss@npm:8.2.0"
   dependencies:
     colorette: ^1.2.1
-    nanoid: ^3.1.18
+    nanoid: ^3.1.20
     source-map: ^0.6.1
-    vfile-location: ^3.2.0
-  checksum: e8b8258b26d1f3350e9e1df4b78057d984de1704823463ecb130025425aaa39f895e0d2892ffeb26376b2e6362e919ff01cd1d34ac67bab6f57d76e430fc9587
+  checksum: 9d1b5b76144fdbf7eb17c4e12acb8302ab56806895ab320e55cd48c564b7df47a0a7655ca019d94e12a9464812c7112a7df6ab086a68f53c7c6af15e986a0c08
   languageName: node
   linkType: hard
 
@@ -3323,13 +3329,6 @@ resolve@^1.19.0:
     core-util-is: 1.0.2
     extsprintf: ^1.2.0
   checksum: 38ea80312cb42e5e8b4ac562d108d675b2354a79f8f125d363671f692657461b9181fd26f4fc9acdca433f8afee099cb78058806e1303e6b15b8fb022affba94
-  languageName: node
-  linkType: hard
-
-"vfile-location@npm:^3.2.0":
-  version: 3.2.0
-  resolution: "vfile-location@npm:3.2.0"
-  checksum: 4102f03560826baf456ad16ad3a83e745d62380e2f90c5ae9452a4cc093102f9355332f5f18699d660ed0cfecd526416032d6d6ea06e53c45823e23c80691ac0
   languageName: node
   linkType: hard
 

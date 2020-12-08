@@ -247,16 +247,18 @@
           }
           let selectedData = selectedRowsData.map(removeHeadings);
 
+          const quoteString = (string) => '"' + string.replace(/['"]+/g, '') + '"';
+
           // convert JS object to CSV string
           // https://stackoverflow.com/a/31536517/7127932
-          let fields = Object.keys(selectedData[0]);
-          let replacer = (key, value) => value === null ? '' : value; // replace null values with ''
-          var csv = selectedData.map(row => fields.map(fieldName => JSON.stringify(row[fieldName], replacer)).join(','));
-          csv.unshift(fields.join(',')) // add header column
-          let output = "\ufeff" + csv.join('\r\n');
+          const replacer = (key, value) => value === null ? '' : value;  // replace null values with ''
+          let header = Object.keys(selectedData[0]);
+          let output = selectedData.map(row => header.map(fieldName => quoteString(JSON.stringify(row[fieldName], replacer))).join(','));
+          output.unshift(header.join(',')); // add header column
+          output = output.join('\r\n');
 
-          const blob = new Blob([output]); // includes extra columns
-          const fileName = 'export_' + new Date().toLocaleDateString() + '.csv';
+          const blob = new Blob([output]);
+          const fileName = 'export ' + new Date().toLocaleDateString() + '.csv';
           const fileStream = streamSaver.createWriteStream(fileName, {
             size: blob.size,
             // writableStrategy: undefined, // (optional)
@@ -279,9 +281,9 @@
               writer.write(res.value).then(pump));
           pump();
 
-          // abort so it dose not look stuck
+          // abort so it does not look stuck
           window.onunload = () => {
-            writableStream.abort();
+            // writableStream.abort();
             // also possible to call abort on the writer you got from `getWriter()`
             writer.abort();
           }
