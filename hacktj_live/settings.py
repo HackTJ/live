@@ -181,6 +181,8 @@ if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
     ACCOUNT_EMAIL_REQUIRED = True
 
     ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+
+    ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 else:
     ACCOUNT_EMAIL_REQUIRED = False
 
