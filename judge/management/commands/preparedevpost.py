@@ -1,7 +1,36 @@
 from django.core.management.base import BaseCommand
 from django.apps import apps as django_apps
 from csv import DictReader as CsvDictReader
+from django.conf import settings  # for num_criteria
 from django.core import serializers
+
+
+def get_project_model():
+    return django_apps.get_model("judge", "project")
+
+
+def get_num_criteria():
+    return len(settings.LIVE_JUDGE_CRITERIA)
+
+
+def row_to_project(row, model=None, num_criteria=None):
+    model = model or get_project_model()
+    num_criteria = num_criteria or get_num_criteria()
+    prizes = (
+        [row["Opt-in prize"]]
+        if "Opt-in prize" in row
+        else [] + row.get("Desired Prizes", [])
+    )
+    return model(
+        name=row["Submission Title"],
+        # location='',
+        # description=row['Plain Description'],  # no one-line description :(
+        tags=prizes,
+        link=row["Submission Url"],
+        # TODO: don't hard-code these defaults
+        means=[0.0] * num_criteria,
+        variances=[1.0] * num_criteria,
+    )
 
 
 class Command(BaseCommand):
@@ -34,28 +63,17 @@ class Command(BaseCommand):
         indent = options["indent"]
         output = options["output"]
 
-        Project = django_apps.get_model("judge", "project")
+        Project = get_project_model()
+        num_criteria = get_num_criteria()
         projects = []
         for filepath in devpost_files:
             with open(filepath, "rt", newline="") as file:
                 reader = CsvDictReader(file)
                 for row in reader:
-                    prizes = (
-                        [
-                            row["Opt-in prize"],
-                        ]
-                        if "Opt-in prize" in row
-                        else []
-                    ) + row.get("Desired Prizes", [])
-                    projects.append(
-                        Project(
-                            name=row["Submission Title"],
-                            # location='',
-                            # description=row['Plain Description'],  # no one-line description :(
-                            tags=prizes,
-                            link=row["Submission Url"],
-                        )
+                    project = row_to_project(
+                        row, model=Project, num_criteria=num_criteria
                     )
+                    projects.append(project)
 
         self.stdout.ending = None
         progress_output = None
