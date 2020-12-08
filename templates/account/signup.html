@@ -123,6 +123,13 @@
       </div>
       <div class="mb-6">
         {{ form.captcha }}
+        {% if form.captcha.errors %}
+        <ol>
+          {% for error in form.captcha.errors %}
+          <li class="text-red-500 text-xs italic">{{ error|escape }}</li>
+          {% endfor %}
+        </ol>
+        {% endif %}
       </div>
       <div class="flex items-center justify-between">
         {% if redirect_field_value %}
