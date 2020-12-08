@@ -59,6 +59,8 @@ class VolunteerSignupForm(SignupForm):
             student_group, _ = Group.objects.get_or_create(name="student")
             user.groups.add(student_group)
 
-        user.save()
+        # we don't update `groups` here because M2M
+        # fields are committed automatically:
+        user.save(update_fields=['first_name', 'last_name'])
 
         return user
