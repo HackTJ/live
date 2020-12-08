@@ -6,7 +6,7 @@ poetry run python manage.py createsuperuser --noinput  # from env vars
 
 if [ "$DEBUG" == true ]
 then
-  poetry run python manage.py loaddata 'winners-60'
+  poetry run python manage.py loaddata 'projects-60'
 
   poetry run python manage.py collectstatic --noinput --link
 
