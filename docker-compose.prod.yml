@@ -1,10 +1,5 @@
 version: '3.8'
 
-volumes:
-  static:
-  backups:
-  logs:
-
 services:
   django:
     ports:
@@ -13,9 +8,9 @@ services:
     # expose:
     #   - 8000
     volumes:
-      - static:/app/static
-      - backups:/app/backup
-      - logs:/app/logs
+      - ./static:/app/static
+      - ./backups:/app/backup
+      - ./logs:/app/logs
     deploy:
       resources:  # for Gunicorn
         # https://github.com/benoitc/gunicorn/issues/1440#issuecomment-411785926
@@ -31,6 +26,8 @@ services:
   postgres:
     env_file:
       - .env
+    volumes:
+      - ./data:/var/lib/postgresql/data
 
   # https-portal:
   #   image: steveltn/https-portal:1.15.0
