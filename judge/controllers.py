@@ -35,7 +35,7 @@ def init_annotator(annotator):
             # assert not any(hasattr(project, "annotator_current") for project in items)
             annotator.update_current(choice(items))
             annotator.current.save()
-            annotator.save(update_fields=['current'])
+            annotator.save(update_fields=["current"])
         else:
             import logging
 

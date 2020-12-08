@@ -45,7 +45,7 @@ def index(request):
 def welcome(request):
     if request.method == "POST":
         request.user.annotator.read_welcome = True
-        request.user.annotator.save(update_fields=['read_welcome'])
+        request.user.annotator.save(update_fields=["read_welcome"])
         return redirect("judge:begin")
     return render(request, "judge/welcome.html")
 
@@ -64,18 +64,18 @@ def begin(request):
             if request.POST["action"] == "Done":
                 annotator.viewed.add(annotator.current)
                 annotator.current.timesSeen = F("timesSeen") + 1
-                annotator.current.save(update_fields=['timesSeen'])
+                annotator.current.save(update_fields=["timesSeen"])
                 annotator.prev = annotator.current
                 annotator.prev.save()
                 annotator.update_current(choose_next(annotator))
                 annotator.current.save()
-                annotator.save(update_fields=['current', 'prev'])
+                annotator.save(update_fields=["current", "prev"])
                 # request.user.save(update_fields=['annotator'])
             elif request.POST["action"] == "Skip":
                 annotator.current.timesSkipped = F("timesSkipped") + 1
-                annotator.current.save(update_fields=['timesSkipped'])
+                annotator.current.save(update_fields=["timesSkipped"])
                 annotator.current = None
-                annotator.save(update_fields=['current'])
+                annotator.save(update_fields=["current"])
                 return redirect("judge:begin")
     return redirect("judge:vote")
 
@@ -108,7 +108,7 @@ def vote(request):
         ) and annotator.current_id == int(request.POST["current_id"]):
             annotator.viewed.add(annotator.current)
             annotator.current.timesSeen = F("timesSeen") + 1
-            annotator.current.save(update_fields=['timesSeen'])
+            annotator.current.save(update_fields=["timesSeen"])
             for criterion_index, criterion_id in enumerate(
                 settings.LIVE_JUDGE_CRITERIA
             ):
@@ -142,7 +142,7 @@ def vote(request):
                     decision.save()
 
             annotator.prev.numberOfVotes = F("numberOfVotes") + 1
-            annotator.prev.save(update_fields=['numberOfVotes'])
+            annotator.prev.save(update_fields=["numberOfVotes"])
 
         if request.POST["criterion_overall"] == "current":
             # if the current project won overall, shift it to prev
@@ -150,7 +150,7 @@ def vote(request):
             annotator.prev.save()
         annotator.update_current(choose_next(annotator))
         annotator.current.save()
-        annotator.save(update_fields=['current', 'prev'])
+        annotator.save(update_fields=["current", "prev"])
 
         if annotator.current == annotator.prev:
             return render(request, "judge/done.html")
