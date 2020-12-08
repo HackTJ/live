@@ -168,6 +168,7 @@ def scoreboard(request):
             "judge/scoreboard/stats.html",
             {
                 "projects": projects,
+                "criteria": settings.LIVE_JUDGE_CRITERIA,
             },
         )
 

@@ -4,7 +4,7 @@
 <script>
   const headings = [
     {
-      'key': 'id',
+      'key': 'projectId',
       'value': 'ID'
     },
     {
@@ -12,20 +12,20 @@
       'value': 'Name'
     },
     {
-      'key': 'location',
-      'value': 'Location'
-    },
-    {
       'key': 'description',
       'value': 'Description'
     },
     {
-      'key': 'mean',
-      'value': 'Mu'
+      'key': 'tags',
+      'value': 'Tags'
     },
     {
-      'key': 'variance',
-      'value': 'Sigma Squared'
+      'key': 'means',
+      'value': 'Mus'
+    },
+    {
+      'key': 'variances',
+      'value': 'Sigma Squareds'
     },
     {
       'key': 'numberOfVotes',
@@ -60,11 +60,11 @@
 {{ criteria|json_script:"criteria" }}
 
 <script>
-  const criteria = JSON.parse(document.getElementById('criteria').textContent));
-  console.log(criteria);
+  const criteria = JSON.parse(document.getElementById('criteria').textContent);
   const data = JSON.parse("{{ projects|escapejs }}").map(project => {
     let projectProperties = project.fields;
     projectProperties.projectId = project.pk;
+    projectProperties.tags = project.fields.tags !== "[\"\"]" ? JSON.parse(project.fields.tags).join(", "):"None";
     projectProperties.means = JSON.parse(project.fields.means).map(meanStr => parseFloat(meanStr));
     projectProperties.variances = JSON.parse(project.fields.variances).map(varianceStr => parseFloat(varianceStr));
     return projectProperties;
