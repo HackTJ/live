@@ -10,12 +10,12 @@ from psycopg2 import connect as connect_db, OperationalError
 
 
 try:
-    _ = connect_db(
+    connect_db(
         dbname="$POSTGRES_DB",
         user="$POSTGRES_USER",
         password="$POSTGRES_PASSWORD",
         host="postgres",
-    )
+    ).close()
 except OperationalError:
     sys_exit(-1)
 else:
@@ -25,11 +25,11 @@ END
 }
 
 until postgres_ready; do
-  >&2 echo "Postgres is unavailable - sleeping"
+  echo "Postgres is unavailable - sleeping"
   sleep 1
 done
 
->&2 echo "Postgres is up - continuing..."
+echo "Postgres is up - continuing..."
 
 chmod +x $cmd
 exec $cmd
