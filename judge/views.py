@@ -58,6 +58,7 @@ def begin(request):
         if not annotator.current:
             init_annotator(annotator)
         return render(request, "judge/begin.html", {"current": annotator.current})
+
     annotator = request.user.annotator
     if request.method == "GET":
         return render_begin()
