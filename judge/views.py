@@ -54,11 +54,13 @@ def welcome(request):
 @judge_required
 @require_http_methods(["GET", "POST"])
 def begin(request):
-    annotator = request.user.annotator
-    if request.method == "GET":
+    def render_begin():
         if not annotator.current:
             init_annotator(annotator)
-            return render(request, "judge/begin.html", {"current": annotator.current})
+        return render(request, "judge/begin.html", {"current": annotator.current})
+    annotator = request.user.annotator
+    if request.method == "GET":
+        return render_begin()
     elif request.method == "POST":
         if annotator.current_id == int(request.POST["project_id"]):
             if request.POST["action"] == "Done":
@@ -76,7 +78,7 @@ def begin(request):
                 annotator.current.save(update_fields=["timesSkipped"])
                 annotator.current = None
                 annotator.save(update_fields=["current"])
-                return redirect("judge:begin")
+                return render_begin()
     return redirect("judge:vote")
 
 
