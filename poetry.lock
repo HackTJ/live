@@ -285,6 +285,14 @@ twisted = {version = ">=18.7", extras = ["tls"]}
 tests = ["hypothesis (==4.23)", "pytest (>=3.10,<4.0)", "pytest-asyncio (>=0.8,<1.0)"]
 
 [[package]]
+name = "dealer"
+version = "2.1.0"
+description = "Dealer -- SCM (Git, Mercurial) watcher"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
 name = "defusedxml"
 version = "0.6.0"
 description = "XML bomb protection for Python stdlib modules"
@@ -981,7 +989,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "b40373aeb3e55d4ebea8d532d09ed37b5b989b2cbdf133ba24b75aaba85036d5"
+content-hash = "d89c756ee8348fa607c4ff4261cb32e3a7d151febc0bbde35c868e38b20dc04f"
 
 [metadata.files]
 aioredis = [
@@ -1170,6 +1178,10 @@ cryptography = [
 daphne = [
     {file = "daphne-3.0.1-py3-none-any.whl", hash = "sha256:0052c9887600c57054a5867d4b0240159fa009faa3bcf6a1627271d9cdcb005a"},
     {file = "daphne-3.0.1.tar.gz", hash = "sha256:c22b692707f514de9013651ecb687f2abe4f35cf6fe292ece634e9f1737bc7e3"},
+]
+dealer = [
+    {file = "dealer-2.1.0-py2.py3-none-any.whl", hash = "sha256:0956771907702bf84c39513c5343cca1268ee9858a9fe3635303173114347dcf"},
+    {file = "dealer-2.1.0.tar.gz", hash = "sha256:1929ebb09449b576d4488b1322fabca2ba75c82f602e64c9f0b5ad58bff020c4"},
 ]
 defusedxml = [
     {file = "defusedxml-0.6.0-py2.py3-none-any.whl", hash = "sha256:6687150770438374ab581bb7a1b327a847dd9c5749e396102de3fad4e8a3ef93"},

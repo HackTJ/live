@@ -18,8 +18,9 @@ colorama==0.4.4; python_version >= "2.7" and python_full_version < "3.0.0" and s
 constantly==15.1.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 cryptography==3.2.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 daphne==3.0.1; python_version >= "3.6"
+dealer==2.1.0
 defusedxml==0.6.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-dj-database-url==0.5.0
+dj-database-url @ git+https://github.com/jacobian/dj-database-url.git@master
 django-allauth==0.44.0
 django-appconf==1.0.4
 django-compressor==2.4
