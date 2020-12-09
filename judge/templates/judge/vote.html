@@ -33,12 +33,12 @@
     <div>
         <p>Which project is better with respect to {{ criterion_label }}?</p>
         <label class="mr-1">
-          <input class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="criterion_{{ criterion_id }}" type="radio" value="previous"/>
+          <input class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="criterion_{{ criterion_id }}" type="radio" value="previous" required/>
           Previous
         </label>
         <!-- TODO: skip -->
         <label class="ml-1">
-          <input class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="criterion_{{ criterion_id }}" type="radio" value="current"/>
+          <input class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" name="criterion_{{ criterion_id }}" type="radio" value="current" required/>
           Current
         </label>
     </div>
