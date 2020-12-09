@@ -12,9 +12,7 @@
       <h3 class="text-lg text-black px-4">{{ prev.name }}</h3>
       <p class="text-gray-700 px-4">{{ prev.description }}</p>
       <p class="text-gray-700">
-        {% for tag in prev.tags %}
-          <span>{{ tag }}</span>
-        {% endfor %}
+        {{ prev.tags|join:", " }}
       </p>
       <p class="text-gray-700 px-4"><b>Link: </b><a href="{{ prev.link }}" target="_blank" rel="noopener">Devpost</a></p>
     </div>
@@ -23,9 +21,7 @@
       <h3 class="text-lg text-black px-4">{{ current.name }}</h3>
       <p class="text-gray-700 px-4">{{ current.description }}</p>
       <p class="text-gray-700">
-        {% for tag in current.tags %}
-          <span>{{ tag }}</span>
-        {% endfor %}
+        {{ current.tags|join:", " }}
       </p>
       <p class="text-gray-700 px-4"><b>Link: </b><a href="{{ current.link }}" target="_blank" rel="noopener">Devpost</a></p>
     </div>
