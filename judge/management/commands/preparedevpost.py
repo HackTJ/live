@@ -16,20 +16,22 @@ def get_num_criteria():
 def row_to_project(row, model=None, num_criteria=None):
     model = model or get_project_model()
     num_criteria = num_criteria or get_num_criteria()
-    prizes = (
-        [row["Opt-in prize"]]
-        if "Opt-in prize" in row
-        else [] + row.get("Desired Prizes", [])
-    )
+    if "Opt-In Prizes" in row:
+        # this is the preferred format
+        # in the Devpost export, uncheck "Sort the export by opt-in prize"
+        prizes = row["Opt-In Prizes"].split(", ") if row["Opt-In Prizes"] else []
+    elif "Opt-in prize" in row:
+        prizes = [row["Opt-in Prize"]]
     return model(
-        name=row["Submission Title"],
+        name=row["Project Title"],
         # location='',
         # description=row['Plain Description'],  # no one-line description :(
         tags=prizes,
         link=row["Submission Url"],
-        # TODO: don't hard-code these defaults
+        # TODO: don't hard-code defaults for means and variances
         means=[0.0] * num_criteria,
         variances=[1.0] * num_criteria,
+        active=row["Project Status"] != "Submitted (Hidden)",
     )
 
 
