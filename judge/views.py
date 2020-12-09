@@ -92,6 +92,9 @@ def vote(request):
         if annotator.current:
             if annotator.current == annotator.prev:
                 return render(request, "judge/done.html")
+            if not annotator.prev:
+                # prev isn't set; don't make a comparison yet
+                return redirect("judge:begin")
             return render(
                 request,
                 "judge/vote.html",
