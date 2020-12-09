@@ -41,7 +41,7 @@ class Command(BaseCommand):
             secrets.append("")
         if "postgres" not in exclude:
             POSTGRES_PASSWORD = get_random_secret_key()
-            POSTGRES_USER = "live_admin"
+            POSTGRES_USER = "live_postgres"
             POSTGRES_DB = "hacktj_live"
             POSTGRES_INITDB_ARGS = (
                 "--auth-host=scram-sha-256 --auth-local=scram-sha-256 "

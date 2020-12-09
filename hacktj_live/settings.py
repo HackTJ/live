@@ -239,7 +239,7 @@ elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "5432"]).returncode =
         "default": {
             "ENGINE": "django.db.backends.postgresql",
             "NAME": "hacktj_live",
-            "USER": "live_admin",
+            "USER": "live_postgres",
             "PASSWORD": "817m5da7fyleau^108yko2ib!&+*!0ba38gh%g8ps()56)=gsv",
             "HOST": "127.0.0.1",
             "PORT": "5432",
