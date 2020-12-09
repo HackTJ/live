@@ -165,7 +165,7 @@ def vote(request):
 # @login_required
 def scoreboard(request):
     def render_stats():
-        projects = serialize("json", Project.objects.order_by("-mean"))
+        projects = serialize("json", Project.objects.order_by("-means__0"))
         return render(
             request,
             "judge/scoreboard/stats.html",
@@ -178,7 +178,7 @@ def scoreboard(request):
     def render_rankings():
         projects = serialize(
             "json",
-            Project.objects.order_by("-mean"),
+            Project.objects.order_by("-means__0"),
             fields=("name", "description"),
         )
         return render(
