@@ -390,7 +390,7 @@ COMPRESS_STORAGE = "compressor.storage.BrotliCompressorFileStorage"
 
 # HackTJ Live settings
 
-LIVE_ADMIN_USER_APPROVAL = not DEBUG
+LIVE_ADMIN_USER_APPROVAL = frozenset({} if DEBUG else {"user_judge", "user_mentor"})
 
 # this is the minimum number of times each item needs to be seen before
 # switching to more sophisticated item selection strategies.
