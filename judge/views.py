@@ -154,12 +154,13 @@ def vote(request):
             # if the current project won overall, shift it to prev
             annotator.prev = annotator.current
             annotator.prev.save()
-        annotator.update_current(choose_next(annotator))
+        new_current = choose_next(annotator)
+        if not new_current or annotator.prev == new_current:
+            return render(request, "judge/done.html")
+
+        annotator.update_current(new_current)
         annotator.current.save()
         annotator.save(update_fields=["current", "prev"])
-
-        if annotator.current == annotator.prev:
-            return render(request, "judge/done.html")
 
         return redirect("judge:vote")
 
