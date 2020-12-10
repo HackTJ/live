@@ -28,8 +28,6 @@ SECRET_KEY = os.getenv("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "false").upper() == "TRUE"
-if "DIRECTOR_DATABASE_URL" in os.environ:
-    DEBUG = False
 
 in_docker = is_in_docker()
 is_nc_available = is_netcat_available()
@@ -209,6 +207,7 @@ elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode 
 
 
 WSGI_APPLICATION = "hacktj_live.wsgi.application"
+
 ASGI_APPLICATION = "hacktj_live.routing.application"
 
 # Database
