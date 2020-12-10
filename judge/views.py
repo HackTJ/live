@@ -115,6 +115,8 @@ def vote(request):
             annotator.viewed.add(annotator.current)
             annotator.current.timesSeen = F("timesSeen") + 1
             annotator.current.save(update_fields=["timesSeen"])
+            new_decisions = []
+
             for criterion_index, criterion_id in enumerate(
                 settings.LIVE_JUDGE_CRITERIA
             ):
@@ -126,27 +128,26 @@ def vote(request):
                         current_won=False,
                         criterion_index=criterion_index,
                     )
-                    decision = Decision(
+                    new_decisions.append(Decision(
                         annotator=annotator,
                         criterion=criterion_index,
                         winner=annotator.prev,
                         loser=annotator.current,
-                    )
-                    decision.save()
+                    ))
                 elif criterion_winner == "current":
                     perform_vote(
                         annotator,
                         current_won=True,
                         criterion_index=criterion_index,
                     )
-                    decision = Decision(
+                    new_decisions.append(Decision(
                         annotator=annotator,
                         criterion=criterion_index,
                         winner=annotator.current,
                         loser=annotator.prev,
-                    )
-                    decision.save()
+                    ))
 
+            Decision.objects.bulk_create(new_decisions)    
             annotator.prev.numberOfVotes = F("numberOfVotes") + 1
             annotator.prev.save(update_fields=["numberOfVotes"])
 
