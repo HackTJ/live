@@ -398,7 +398,7 @@ LIVE_JUDGE_MIN_VIEWS = 2
 
 # this is the maximum amount of time (in minutes) a judge will have a project
 # to themselves before other judges can also be assigned to the same project.
-LIVE_JUDGE_TIMEOUT = 10.0
+LIVE_JUDGE_TIMEOUT = 5.0
 
 # December 13, 2020 at 5:30 p.m.
 LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=16, minute=30)
