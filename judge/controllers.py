@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from numpy.random import shuffle, random, choice
+from random import shuffle, random, choice
 from django.conf import settings
 from django.utils import timezone
 from judge.models import Project
@@ -46,10 +46,9 @@ def init_annotator(annotator):
 def choose_next(annotator):
     items = preferred_items(annotator)
 
-    shuffle(items)
     if items:
         if random() < crowd_bt.EPSILON:
-            return items[0]
+            return choice(items)
         return crowd_bt.argmax(
             lambda project: crowd_bt.expected_information_gain(
                 float(annotator.alpha),
@@ -72,12 +71,12 @@ def perform_vote(annotator, current_won, criterion_index=0):
         loser = annotator.current
 
     (
-        u_alpha,
-        u_beta,
-        u_winner_mean,
-        u_winner_variance,
-        u_loser_mean,
-        u_loser_variance,
+        annotator.alpha,
+        annotator.beta,
+        winner.means[criterion_index],
+        winner.variances[criterion_index],
+        loser.means[criterion_index],
+        loser.variances[criterion_index],
     ) = crowd_bt.update(
         float(annotator.alpha),
         float(annotator.beta),
@@ -86,9 +85,3 @@ def perform_vote(annotator, current_won, criterion_index=0):
         float(loser.means[criterion_index]),
         float(loser.variances[criterion_index]),
     )
-    annotator.alpha = u_alpha
-    annotator.beta = u_beta
-    winner.means[criterion_index] = u_winner_mean
-    winner.variances[criterion_index] = u_winner_variance
-    loser.means[criterion_index] = u_loser_mean
-    loser.variances[criterion_index] = u_loser_variance
