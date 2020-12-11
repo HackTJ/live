@@ -128,26 +128,30 @@ def vote(request):
                         current_won=False,
                         criterion_index=criterion_index,
                     )
-                    new_decisions.append(Decision(
-                        annotator=annotator,
-                        criterion=criterion_index,
-                        winner=annotator.prev,
-                        loser=annotator.current,
-                    ))
+                    new_decisions.append(
+                        Decision(
+                            annotator=annotator,
+                            criterion=criterion_index,
+                            winner=annotator.prev,
+                            loser=annotator.current,
+                        )
+                    )
                 elif criterion_winner == "current":
                     perform_vote(
                         annotator,
                         current_won=True,
                         criterion_index=criterion_index,
                     )
-                    new_decisions.append(Decision(
-                        annotator=annotator,
-                        criterion=criterion_index,
-                        winner=annotator.current,
-                        loser=annotator.prev,
-                    ))
+                    new_decisions.append(
+                        Decision(
+                            annotator=annotator,
+                            criterion=criterion_index,
+                            winner=annotator.current,
+                            loser=annotator.prev,
+                        )
+                    )
 
-            Decision.objects.bulk_create(new_decisions)    
+            Decision.objects.bulk_create(new_decisions)
             annotator.prev.numberOfVotes = F("numberOfVotes") + 1
             annotator.prev.save(update_fields=["numberOfVotes"])
 
