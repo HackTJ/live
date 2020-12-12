@@ -26,12 +26,13 @@ def row_to_project(row, model=None, num_criteria=None):
         name=row["Project Title"],
         # location='',
         # description=row['Plain Description'],  # no one-line description :(
+        # description=row['Submission Tagline'],
         tags=prizes,
         link=row["Submission Url"],
         # TODO: don't hard-code defaults for means and variances
         means=[0.0] * num_criteria,
         variances=[1.0] * num_criteria,
-        active=row["Project Status"] != "Submitted (Hidden)",
+        active=row["Project Status"] == "Submitted (Gallery/Visible)",
     )
 
 

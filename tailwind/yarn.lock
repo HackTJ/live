@@ -905,9 +905,9 @@ __metadata:
     autoprefixer: ^10.1.0
     cssnano: ^4.1.10
     cssnano-preset-advanced: ^4.0.7
-    postcss: ^8.2.0
+    postcss: ^8.2.1
     postcss-cli: ^8.3.0
-    tailwindcss: ^2.0.1
+    tailwindcss: ^2.0.2
   languageName: unknown
   linkType: soft
 
@@ -2695,14 +2695,14 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.1.6, postcss@npm:^8.2.0":
-  version: 8.2.0
-  resolution: "postcss@npm:8.2.0"
+"postcss@npm:^8.1.6, postcss@npm:^8.2.1":
+  version: 8.2.1
+  resolution: "postcss@npm:8.2.1"
   dependencies:
     colorette: ^1.2.1
     nanoid: ^3.1.20
     source-map: ^0.6.1
-  checksum: 9d1b5b76144fdbf7eb17c4e12acb8302ab56806895ab320e55cd48c564b7df47a0a7655ca019d94e12a9464812c7112a7df6ab086a68f53c7c6af15e986a0c08
+  checksum: aa7ba3d80a4d8e25bc1a3f61461d7f6b60d361fb1301465d0eb973c5f38b347ad0842b02b8cc8801ede46559391d7c640c7313301a829ef9ca77e34be7230854
   languageName: node
   linkType: hard
 
@@ -3159,9 +3159,9 @@ resolve@^1.19.0:
   languageName: node
   linkType: hard
 
-"tailwindcss@npm:^2.0.1":
-  version: 2.0.1
-  resolution: "tailwindcss@npm:2.0.1"
+"tailwindcss@npm:^2.0.2":
+  version: 2.0.2
+  resolution: "tailwindcss@npm:2.0.2"
   dependencies:
     "@fullhuman/postcss-purgecss": ^3.0.0
     bytes: ^3.0.0
@@ -3189,7 +3189,7 @@ resolve@^1.19.0:
   bin:
     tailwind: lib/cli.js
     tailwindcss: lib/cli.js
-  checksum: cdc1e44b35cc8e05ae41f65780ce0e2f24276de1dafa26f0c08cbe9dc7683169ee8f7b71e809de29e0ee072e8596d4f47f84df2d3cb9f4d90ae656171afd4866
+  checksum: c7b874ebd9a5277cc3bbd9b77482baa79a0a26a966174c47b3b703ef168921c64f153cbd824ef724182a95eb1e93297c2fefbeca8a13ce0745865591de515757
   languageName: node
   linkType: hard
 
