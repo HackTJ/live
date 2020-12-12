@@ -172,6 +172,7 @@ def vote(request):
 
 @require_GET
 # @login_required
+@never_cache
 def scoreboard(request):
     def render_stats():
         projects = serialize("json", Project.objects.order_by("-means__0"))
