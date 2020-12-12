@@ -11,6 +11,7 @@ services:
     command: ./compose/django/start.sh
     environment:
       - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - DOCKER=true
     depends_on:
       - postgres
       - redis

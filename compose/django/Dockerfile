@@ -1,6 +1,6 @@
 FROM python:3.9.0-slim-buster
 
-ENV PYTHONUNBUFFERED=1, DOCKER=true
+ENV PYTHONUNBUFFERED=1
 
 # Creates /app in container if it does not already exist
 WORKDIR /app
