@@ -38,14 +38,14 @@ class Annotator(models.Model):
         primary_key=True,
     )
     updated = models.DateTimeField(auto_now=True)
-    current = models.OneToOneField(
+    current = models.ForeignKey(
         Project,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name="%(class)s_current",
     )
-    prev = models.OneToOneField(
+    prev = models.ForeignKey(
         Project,
         null=True,
         blank=True,

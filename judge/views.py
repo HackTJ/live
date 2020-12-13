@@ -165,7 +165,7 @@ def vote(request):
 
         annotator.update_current(new_current)
         annotator.current.save()
-        # annotator.save(update_fields=["current", "prev"])
+        annotator.save(update_fields=["current", "prev"])
 
         return redirect("judge:vote")
 
