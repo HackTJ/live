@@ -22,8 +22,8 @@ RUN \
     "libpq-dev=11.9-0+deb10u1" && \
     DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends "postgresql-client-13" && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
-    python -m pip install --upgrade pip && \
-    python -m pip install poetry && \
+    python -m pip install --upgrade --no-cache-dir pip && \
+    python -m pip install --no-cache-dir poetry && \
     poetry config virtualenvs.create false && \
     poetry install
 
