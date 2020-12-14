@@ -1,4 +1,4 @@
-FROM python:3.9.0-slim-buster
+FROM python:3.9.1-slim-buster
 
 ENV PYTHONUNBUFFERED=1
 
@@ -8,6 +8,7 @@ WORKDIR /app
 # Requirements have to be pulled and installed here, otherwise caching won't work
 COPY ./pyproject.toml ./poetry.lock ./
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN \
     DEBIAN_FRONTEND=noninteractive apt-get -y update && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends curl ca-certificates gnupg && \
