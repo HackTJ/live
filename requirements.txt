@@ -3,7 +3,7 @@ argon2-cffi==20.1.0; python_version >= "3.6"
 asgiref==3.3.1; python_version >= "3.6"
 async-timeout==3.0.1; python_full_version >= "3.5.3" and python_version >= "3.6"
 attrs==20.3.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
-autobahn==20.7.1; python_version >= "3.6"
+autobahn==20.12.1; python_version >= "3.6"
 automat==20.2.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 bcrypt==3.2.0; python_version >= "3.6"
 better-exceptions==0.2.2
