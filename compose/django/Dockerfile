@@ -24,9 +24,10 @@ RUN \
     DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends "postgresql-client-13=13.1-1.pgdg100+1" && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     python -m pip install --upgrade --no-cache-dir pip && \
-    python -m pip install --no-cache-dir poetry && \
+    python -m pip install --no-cache-dir "poetry==1.1.4" && \
     poetry config virtualenvs.create false && \
-    poetry install
+    poetry install && \
+    rm -rf ~/.cache/pypoetry/cache && rm -rf ~/.cache/pypoetry/artifacts
 
 COPY . .
 
