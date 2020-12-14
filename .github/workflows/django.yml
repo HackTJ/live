@@ -46,6 +46,6 @@ jobs:
       run: |
         SECRET_KEY=9 poetry run python manage.py createsecrets --exclude superuser --exclude sendgrid --exclude postgres --output ./.env
         export $(grep -v '^#' .env | xargs)
-        poetry run python manage.py migrate
+        # poetry run python manage.py migrate
         poetry run python -Wa manage.py check --deploy
         poetry run python -Wa manage.py test
