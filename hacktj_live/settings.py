@@ -16,7 +16,12 @@ from datetime import datetime
 from subprocess import run as run_cmd
 import os
 from dj_database_url import parse as parse_db_url
-from utils.environment import is_in_docker, is_netcat_available, get_current_ip
+from utils.environment import (
+    is_in_docker,
+    is_netcat_available,
+    get_current_ip,
+    pg_isready,
+)
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -233,7 +238,9 @@ elif "DATABASE_URL" in os.environ:
             # ssl_require=True,
         ),
     }
-elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "5432"]).returncode == 0:
+elif pg_isready(
+    dbname="hacktj_live", host="127.0.0.1", port="5432", username="live_postgres"
+):
     # TODO: load these from vars, don't hard-code. see the .env.local file
     DATABASES = {
         "default": {
