@@ -10,7 +10,7 @@ services:
       net.core.somaxconn: 2048
     command: ./compose/django/start.sh
     environment:
-      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB}
       - DOCKER=true
     depends_on:
       - postgres
@@ -21,6 +21,13 @@ services:
     image: postgres:13.1-alpine
     restart: always
     shm_size: 256MB
+    environment:
+      # - PGHOST=postgres
+      - PGPORT=${POSTGRES_PORT:-5432}
+      # - PGDATABASE=${POSTGRES_DB}
+      # - PGUSER=${POSTGRES_USER}
+      # - PGPASSWORD=${POSTGRES_PASSWORD}
+      # - PGOPTIONS=${POSTGRES_INITDB_ARGS}
 
   redis:
     build: ./compose/redis

@@ -70,7 +70,7 @@ tests_no_zope = ["coverage[toml] (>=5.0.2)", "hypothesis", "pympler", "pytest (>
 
 [[package]]
 name = "autobahn"
-version = "20.12.1"
+version = "20.12.2"
 description = "WebSocket client & server library, WAMP real-time framework"
 category = "main"
 optional = false
@@ -1011,7 +1011,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "efc38bc73115955bdea61d2898c52dbbc1ece8669e4b8c757d125798a378c94c"
+content-hash = "b290e6b087c189f21bc43d6b680abf2776910c13a6401b2d68c84bd338838f11"
 
 [metadata.files]
 aioredis = [
@@ -1055,8 +1055,8 @@ attrs = [
     {file = "attrs-20.3.0.tar.gz", hash = "sha256:832aa3cde19744e49938b91fea06d69ecb9e649c93ba974535d08ad92164f700"},
 ]
 autobahn = [
-    {file = "autobahn-20.12.1-py2.py3-none-any.whl", hash = "sha256:85c14b4a404146339ffd171e1ea1f65bf71e2f777d810aaa8a36119273869e3d"},
-    {file = "autobahn-20.12.1.tar.gz", hash = "sha256:74ca21d3552825615a65d47ec38d0aa5961a1345f7639f5b0e2abfff40cbfd07"},
+    {file = "autobahn-20.12.2-py2.py3-none-any.whl", hash = "sha256:491238c31f78721eaa9d0593909ab455a4ea68127aadd76ecf67185143f5f298"},
+    {file = "autobahn-20.12.2.tar.gz", hash = "sha256:72b68a1ce1e10e3cbcc3b280aae86d5b2e7a1f409febab1ab91a8a3274113f6e"},
 ]
 automat = [
     {file = "Automat-20.2.0-py2.py3-none-any.whl", hash = "sha256:b6feb6455337df834f6c9962d6ccf771515b7d939bca142b29c20c2376bc6111"},
