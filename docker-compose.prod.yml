@@ -2,6 +2,9 @@ version: '3.8'
 
 services:
   django:
+    build:
+      args:
+        - DEBUG=false
     ports:
       # - '80:8000'
       - '8000:8000'
