@@ -127,7 +127,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "debug_toolbar.middleware.DebugToolbarMiddleware",
-    "utils.middlewares.BetterExceptionsMiddleware",
+    "better_exceptions.integrations.django.BetterExceptionsMiddleware",
 ]
 
 ROOT_URLCONF = "hacktj_live.urls"
@@ -339,10 +339,9 @@ USE_TZ = True
 # Logging
 # https://docs.djangoproject.com/en/3.1/topics/logging/
 
-# TODO: logs to console twice in dev mode
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
+    "disable_existing_loggers": True,
     "handlers": {
         "console": {
             "level": "DEBUG",

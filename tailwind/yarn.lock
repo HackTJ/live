@@ -906,7 +906,7 @@ __metadata:
     cssnano: ^4.1.10
     cssnano-preset-advanced: ^4.0.7
     postcss: ^8.2.1
-    postcss-cli: ^8.3.0
+    postcss-cli: ^8.3.1
     tailwindcss: ^2.0.2
   languageName: unknown
   linkType: soft
@@ -2207,9 +2207,9 @@ fsevents@~2.1.2:
   languageName: node
   linkType: hard
 
-"postcss-cli@npm:^8.3.0":
-  version: 8.3.0
-  resolution: "postcss-cli@npm:8.3.0"
+"postcss-cli@npm:^8.3.1":
+  version: 8.3.1
+  resolution: "postcss-cli@npm:8.3.1"
   dependencies:
     chalk: ^4.0.0
     chokidar: ^3.3.0
@@ -2227,7 +2227,7 @@ fsevents@~2.1.2:
     postcss: ^8.0.0
   bin:
     postcss: bin/postcss
-  checksum: c895d705de2789e2ab34e0265d62bc57e54428b45de134ddd3f45cd7885a1c9a1b9fe6c39a4e2b54ea3124a53866664cfa2d7b2ca80d3ec86008d5c6777164cf
+  checksum: 6b55f76a1df8fa18d032e3bea64e4b1b53fa0d4969b651e7633cf7e3c8cb5c658f1776f3c2e79579b0c6a35108bf56e5da9c07c3bc3d591e427ad9ab8fcce34b
   languageName: node
   linkType: hard
 

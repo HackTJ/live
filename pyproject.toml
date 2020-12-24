@@ -21,7 +21,7 @@ django-compressor = "^2.4"
 django-dbbackup = {git = "https://github.com/django-dbbackup/django-dbbackup.git"}  # PR #361
 django-debug-toolbar = "^3.1.1"
 django-allauth = "^0.44.0"
-better-exceptions = "^0.2.2"
+better-exceptions = "^0.3.2"
 whitenoise = { extras = ["brotli"], version = "^5.2.0" }
 Twisted = {extras = ["tls", "http2"], version = "^20.3.0"}
 django-simple-captcha = "^0.5.13"

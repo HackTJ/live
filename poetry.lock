@@ -126,7 +126,7 @@ typecheck = ["mypy"]
 
 [[package]]
 name = "better-exceptions"
-version = "0.2.3"
+version = "0.3.2"
 description = "Pretty and helpful exceptions, automatically"
 category = "main"
 optional = false
@@ -1060,7 +1060,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "b290e6b087c189f21bc43d6b680abf2776910c13a6401b2d68c84bd338838f11"
+content-hash = "836eb60a4f82d5e4eba851239505c668d7bb8889f9e28a9b351ec0788f64709e"
 
 [metadata.files]
 aioredis = [
@@ -1121,8 +1121,8 @@ bcrypt = [
     {file = "bcrypt-3.2.0.tar.gz", hash = "sha256:5b93c1726e50a93a033c36e5ca7fdcd29a5c7395af50a6892f5d9e7c6cfbfb29"},
 ]
 better-exceptions = [
-    {file = "better_exceptions-0.2.3-py3-none-any.whl", hash = "sha256:28a851a58155cac9e677d632fba64b101151e4c6b3a5c92ecd27ca17e9bbd005"},
-    {file = "better_exceptions-0.2.3.tar.gz", hash = "sha256:28184b6606d080d759ce79c738367254de2ca456eca349dcbab2514e2a865534"},
+    {file = "better_exceptions-0.3.2-py3-none-any.whl", hash = "sha256:b0884e0d724398b2e119853a4f468da5dc56b8dbce6ef33126e7f7bbc339f9d7"},
+    {file = "better_exceptions-0.3.2.tar.gz", hash = "sha256:7d1afd4c1282133dc359339953ddb1f13a51dc8023bb60959ab66668b0dca0c0"},
 ]
 black = [
     {file = "black-20.8b1.tar.gz", hash = "sha256:1c02557aa099101b9d21496f8a914e9ed2222ef70336404eeeac8edba836fbea"},
