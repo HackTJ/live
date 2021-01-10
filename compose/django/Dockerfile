@@ -21,9 +21,8 @@ RUN \
     "g++=4:8.3.0-1" \
     "libffi-dev=3.2.1-9" \
     "make=4.2.1-1.2" \
-    "libopenblas-dev=0.3.5+ds-3" \
-    "libpq-dev=11.9-0+deb10u1" && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends "postgresql-client-13=13.1-1.pgdg100+1" && \
+    "libopenblas-dev=0.3.5+ds-3" && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y update && DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends "postgresql-client-13=13.1-1.pgdg100+1" "libpq-dev=13.1-1.pgdg100+1" && \
     if [[ "$DEBUG" = "true" ]]; then DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends "graphviz=2.40.1-6"; fi && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     python -m pip install --upgrade --no-cache-dir pip && \
