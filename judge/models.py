@@ -35,6 +35,7 @@ class Annotator(models.Model):
     judge = models.OneToOneField(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
+        unique=True,
         primary_key=True,
     )
     updated = models.DateTimeField(auto_now=True)
@@ -76,9 +77,12 @@ class Annotator(models.Model):
 
 
 class Decision(models.Model):
+    # one Decision has one Annotator, but one Annotator has multiple decisions
+    # (Annotator is one, Decision is many)
     annotator = models.ForeignKey(
         Annotator,
         on_delete=models.CASCADE,
+        to_field='judge',
     )
     criterion = models.IntegerField(default=0)
     winner = models.ForeignKey(
