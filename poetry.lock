@@ -204,6 +204,7 @@ python-versions = ">=3.6"
 aioredis = ">=1.0,<2.0"
 asgiref = ">=3.2.10,<4"
 channels = "<4"
+cryptography = {version = ">=1.3.0", optional = true, markers = "extra == \"cryptography\""}
 msgpack = ">=1.0,<2.0"
 
 [package.extras]
@@ -1025,7 +1026,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.7"
-content-hash = "0ac40edcb82988f6e51aca7b14f94535f859c67ab7c6d9aa829eb27b0f33e2d9"
+content-hash = "8bd81cbb7eec845959cb12c06d8a017cb1e13f3c4563ab2b4755558b454aa43c"
 
 [metadata.files]
 aioredis = [

@@ -101,6 +101,7 @@ if in_docker:
             "BACKEND": "channels_redis.core.RedisChannelLayer",
             "CONFIG": {
                 "hosts": [("redis", 6379)],
+                "symmetric_encryption_keys": [SECRET_KEY],
             },
         },
     }
