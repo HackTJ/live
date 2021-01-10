@@ -82,7 +82,7 @@ class Decision(models.Model):
     annotator = models.ForeignKey(
         Annotator,
         on_delete=models.CASCADE,
-        to_field='judge',
+        to_field="judge",
     )
     criterion = models.IntegerField(default=0)
     winner = models.ForeignKey(

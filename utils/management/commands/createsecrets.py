@@ -12,7 +12,7 @@ class Command(BaseCommand):
             action="append",
             default=[],
             help="A group of environment variables to exclude "
-            "(use multiple --exclude to exclude multiple group). "
+            "(use multiple --exclude to exclude multiple groups). "
             "Must be one of: ['secret', 'superuser', 'sendgrid', 'postgres'].",
         )
         parser.add_argument(

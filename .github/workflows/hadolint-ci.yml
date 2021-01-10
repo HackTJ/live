@@ -1,4 +1,4 @@
-name: Hadolint CI
+name: Hadolint
 
 on:
   push:
@@ -9,15 +9,16 @@ on:
     paths:
     - './compose/**/Dockerfile'
     - './.github/workflows/hadolint-ci.yml'
+  workflow_dispatch:
 
 jobs:
   hadolint:
     runs-on: ubuntu-latest
-    
+
     container: hadolint/hadolint
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Run hadolint
         run: hadolint ./compose/**/Dockerfile
