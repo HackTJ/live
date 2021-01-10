@@ -3,6 +3,7 @@ name: Django CI
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
@@ -43,7 +44,9 @@ jobs:
 
     - name: Run Tests
       run: |
-        python -Wa manage.py check --deploy
-        python -Wa manage.py test
+        poetry run python manage.py createsecrets --exclude superuser --exclude sendgrid --exclude postgres --output ./.env
+        export $(grep -v '^#' .env | xargs)
+        poetry run python -Wa manage.py check --deploy
+        poetry run python -Wa manage.py test
       env:
         SECRET_KEY: -meg-45w(y_j*(stnzh=$92*6uo0*_9&%f(4f_8*s@6@z=1^s)
