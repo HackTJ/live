@@ -13,7 +13,7 @@ COPY ./pyproject.toml ./poetry.lock ./
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN \
     DEBIAN_FRONTEND=noninteractive apt-get -y update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends curl ca-certificates gnupg && \
+    DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends "curl=7.64.0-4+deb10u1" "ca-certificates=20200601~deb10u1" "gnupg=2.2.12-1+deb10u1" && \
     curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt buster-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && \
     DEBIAN_FRONTEND=noninteractive apt-get -y install --no-install-recommends \
