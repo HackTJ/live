@@ -13,12 +13,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-      
+
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '14'
-          
+
       - name: Prepare secrets
         # we could use poetry run python manage.py createsecrets -o .env
         # but this would require us to:
@@ -27,12 +27,11 @@ jobs:
         #   3. install dependencies
         # instead, we copy the example debug config file to save CI resources
         run: cp .env.local .env
-        
+
       - name: Build Docker images
         run: docker-compose -f docker-compose.yml -f docker-compose.dev.yml build --parallel
 
       - name: Run Lighthouse CI
         run: |
-          docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
           npm install -g @lhci/cli@0.6.1
           lhci autorun
