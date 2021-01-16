@@ -2,7 +2,7 @@
 
 ## Deployment
 
-![HackTJ 7.5 setup](./self_hosted.png)
+![HackTJ 7.5 setup](./self_hosted.svg)
 
 The image above shows the setup that was used for HackTJ 7.5 HackTJ Live 1.0.0 was deployed for HackTJ 7.5 in a VM using docker-compose and a system-wide (inside the VM) NGINX server. The VM had 8GB RAM and 50GB storage.
 
