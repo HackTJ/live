@@ -28,14 +28,14 @@ with Diagram(
     cloudflare >> nginx >> django
 
 # the resulting SVG contains absolute paths to images that are vendored inside
-# of `diagrams`'s source code so we need to inline SVGs, as suggested by:
+# of `diagrams`'s source code so we need to inline the logos, as suggested by:
 # https://github.com/mingrammer/diagrams/issues/8#issuecomment-633121034
-from scour.scour import scourString as scour_string
-
 filepath = f"{diagram.filename}.{diagram.outformat}"
 
 with open(filepath, "rt") as file:
     generated_image = file.read()
+
+from scour.scour import scourString as scour_string
 
 with open(filepath, "wt") as file:
     file.write(scour_string(generated_image))
