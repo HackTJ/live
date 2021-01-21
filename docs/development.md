@@ -28,6 +28,7 @@ rm -rf data/
 
 ```sh
 poetry install
+poetry run pre-commit install
 ```
 
 #### Database Setup

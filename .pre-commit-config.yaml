@@ -1,0 +1,25 @@
+repos:
+-   repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v3.2.0
+    hooks:
+    -   id: trailing-whitespace
+        exclude: tailwind/.pnp.js
+    -   id: end-of-file-fixer
+        exclude: |
+            (?x)^(
+                tailwind/static/css/tailwind.min.css|
+                tailwind/.pnp.js|
+                tailwind/.yarn/releases/yarn-2.4.0.cjs
+            )$
+    -   id: check-yaml
+    -   id: check-added-large-files
+    -   id: check-ast
+    -   id: check-docstring-first
+    -   id: check-json
+    -   id: check-merge-conflict
+    -   id: check-toml
+    -   id: check-xml
+-   repo: https://github.com/psf/black
+    rev: 20.8b1
+    hooks:
+    -   id: black

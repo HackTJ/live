@@ -10,67 +10,156 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('auth', '0012_alter_user_first_name_max_length'),
+        ("auth", "0012_alter_user_first_name_max_length"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Annotator',
+            name="Annotator",
             fields=[
-                ('judge', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, primary_key=True, serialize=False, to='auth.user')),
-                ('updated', models.DateTimeField(auto_now=True)),
-                ('alpha', models.DecimalField(decimal_places=8, default=10, max_digits=12)),
-                ('beta', models.DecimalField(decimal_places=8, default=1, max_digits=12)),
-                ('read_welcome', models.BooleanField(default=False)),
+                (
+                    "judge",
+                    models.OneToOneField(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        primary_key=True,
+                        serialize=False,
+                        to="auth.user",
+                    ),
+                ),
+                ("updated", models.DateTimeField(auto_now=True)),
+                (
+                    "alpha",
+                    models.DecimalField(decimal_places=8, default=10, max_digits=12),
+                ),
+                (
+                    "beta",
+                    models.DecimalField(decimal_places=8, default=1, max_digits=12),
+                ),
+                ("read_welcome", models.BooleanField(default=False)),
             ],
         ),
         migrations.CreateModel(
-            name='Project',
+            name="Project",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=255)),
-                ('location', models.CharField(max_length=255)),
-                ('description', models.CharField(max_length=255)),
-                ('tags', django.contrib.postgres.fields.ArrayField(base_field=models.CharField(max_length=255), default=list, size=None)),
-                ('link', models.URLField(blank=True)),
-                ('means', django.contrib.postgres.fields.ArrayField(base_field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12), size=4)),
-                ('variances', django.contrib.postgres.fields.ArrayField(base_field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12), size=4)),
-                ('numberOfVotes', models.IntegerField(default=0)),
-                ('timesSeen', models.IntegerField(default=0)),
-                ('timesSkipped', models.IntegerField(default=0)),
-                ('prioritize', models.BooleanField(default=False)),
-                ('active', models.BooleanField(default=True)),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=255)),
+                ("location", models.CharField(max_length=255)),
+                ("description", models.CharField(max_length=255)),
+                (
+                    "tags",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.CharField(max_length=255),
+                        default=list,
+                        size=None,
+                    ),
+                ),
+                ("link", models.URLField(blank=True)),
+                (
+                    "means",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.DecimalField(
+                            decimal_places=8, default=0.0, max_digits=12
+                        ),
+                        size=4,
+                    ),
+                ),
+                (
+                    "variances",
+                    django.contrib.postgres.fields.ArrayField(
+                        base_field=models.DecimalField(
+                            decimal_places=8, default=1.0, max_digits=12
+                        ),
+                        size=4,
+                    ),
+                ),
+                ("numberOfVotes", models.IntegerField(default=0)),
+                ("timesSeen", models.IntegerField(default=0)),
+                ("timesSkipped", models.IntegerField(default=0)),
+                ("prioritize", models.BooleanField(default=False)),
+                ("active", models.BooleanField(default=True)),
             ],
         ),
         migrations.CreateModel(
-            name='Decision',
+            name="Decision",
             fields=[
-                ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('criterion', models.IntegerField(default=0)),
-                ('time', models.DateTimeField(auto_now_add=True)),
-                ('annotator', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='judge.annotator')),
-                ('loser', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='decision_loser', to='judge.project')),
-                ('winner', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='decision_winner', to='judge.project')),
+                (
+                    "id",
+                    models.AutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("criterion", models.IntegerField(default=0)),
+                ("time", models.DateTimeField(auto_now_add=True)),
+                (
+                    "annotator",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        to="judge.annotator",
+                    ),
+                ),
+                (
+                    "loser",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="decision_loser",
+                        to="judge.project",
+                    ),
+                ),
+                (
+                    "winner",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="decision_winner",
+                        to="judge.project",
+                    ),
+                ),
             ],
         ),
         migrations.AddField(
-            model_name='annotator',
-            name='current',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='annotator_current', to='judge.project'),
+            model_name="annotator",
+            name="current",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="annotator_current",
+                to="judge.project",
+            ),
         ),
         migrations.AddField(
-            model_name='annotator',
-            name='ignore',
-            field=models.ManyToManyField(related_name='annotator_ignore', to='judge.Project'),
+            model_name="annotator",
+            name="ignore",
+            field=models.ManyToManyField(
+                related_name="annotator_ignore", to="judge.Project"
+            ),
         ),
         migrations.AddField(
-            model_name='annotator',
-            name='prev',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='annotator_prev', to='judge.project'),
+            model_name="annotator",
+            name="prev",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="annotator_prev",
+                to="judge.project",
+            ),
         ),
         migrations.AddField(
-            model_name='annotator',
-            name='viewed',
-            field=models.ManyToManyField(related_name='annotator_viewed', to='judge.Project'),
+            model_name="annotator",
+            name="viewed",
+            field=models.ManyToManyField(
+                related_name="annotator_viewed", to="judge.Project"
+            ),
         ),
     ]
