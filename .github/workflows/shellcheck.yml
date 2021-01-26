@@ -14,7 +14,7 @@ jobs:
 
       - name: Run ShellCheck
         run: |
-          for f in find . -type f \( -name '*.sh' \); do
+          for f in $(find . -type f \( -name '*.sh' \)); do
             echo $f
             shellcheck $f
           done
