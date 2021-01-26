@@ -13,4 +13,8 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Run ShellCheck
-        run: find . -type f \( -name '*.sh' \) | xargs shellcheck
+        run: |
+          for f in find . -type f \( -name '*.sh' \); do
+            echo $f
+            shellcheck $f
+          done
