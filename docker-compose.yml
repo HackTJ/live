@@ -18,6 +18,8 @@ services:
       - postgres
       - redis
       - memcached
+    volumes:
+      - ./judge:/app/judge
 
   postgres:
     image: postgres:13.1-alpine
