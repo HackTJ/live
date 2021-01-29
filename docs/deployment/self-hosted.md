@@ -71,7 +71,4 @@ If everything is configured correctly, you should be able to access Live!
 This step is optional and only applies if you would like to populate your database with initial data.
 
 1.  If you have a data file in the appropriate format that you'd like to add to Live, upload it to `~/live/judge/fixtures`. You can create a JSON fixture file from a Devpost CSV export using the `poetry run python manage.py preparedevpost` command.
-2.  Ensure that the fixture is copied to the Docker container. (two options)
-    -   Copy the new file to the Django container: `docker cp ~/live/judge/fixtures/my-data $(bash -c "docker container ls | grep -o live_django_.*"):/app/judge/fixtures`)
-    -   Rebuild the Docker containers: `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate --build`
-3.  Populate the database: `docker-compose exec django poetry run python manage.py loaddata 'my-data'`, replacing `my-data` with the name of your data file (sans the file extension).
+2.  Populate the database: `docker-compose exec django poetry run python manage.py loaddata 'my-data'`, replacing `my-data` with the name of your data file (sans the file extension).
