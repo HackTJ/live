@@ -1,4 +1,4 @@
-version: '3.9'
+version: '3.6'
 
 services:
   django:
@@ -19,7 +19,7 @@ services:
       - redis
       - memcached
     volumes:
-      - ./judge:/app/judge
+      - ./judge/fixtures:/app/judge/fixtures
 
   postgres:
     image: postgres:13.1-alpine
