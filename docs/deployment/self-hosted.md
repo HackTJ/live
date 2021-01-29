@@ -21,7 +21,7 @@ Thanks for using HackTJ Live for your event! Here's a quick guide to running Liv
 
 1.  Clone the Live repository and enter the directory: `git clone https://github.com/HackTJ/live ~/live && cd ~/live`
 2.  Prepare the secrets file. (two options)
-    -   `poetry run python manage.py createsecrets`
+    -   `docker-compose exec django poetry run python manage.py createsecrets`
     -   manually edit the template
         1.  copy the template: `cp .env.local .env`
         2.  update the information in `.env` (superuser information, SendGrid API key, Postgres password). You can generate passwords using something like `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
