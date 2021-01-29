@@ -13,7 +13,7 @@ Thanks for using HackTJ Live for your event! Here's a quick guide to running Liv
 #### Prerequisites
 
 -   Nginx (`apt install nginx`)
--   Docker (`apt install docker`)
+-   Docker (`apt install docker.io`)
 -   Docker Compose (`apt install docker-compose`)
 -   Git (`apt install git`)
 
