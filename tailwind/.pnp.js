@@ -38,7 +38,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",
           "packageDependencies": [
             ["@tailwindcss/forms", "npm:0.2.1"],
-            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.3"],
+            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.4"],
             ["cssnano", "npm:4.1.10"],
             ["cssnano-preset-advanced", "npm:4.0.7"],
             ["postcss", "npm:8.2.4"],
@@ -342,10 +342,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["autoprefixer", [
-        ["npm:10.2.3", {
-          "packageLocation": "./.yarn/cache/autoprefixer-npm-10.2.3-065ceb9170-18c9075d7a.zip/node_modules/autoprefixer/",
+        ["npm:10.2.4", {
+          "packageLocation": "./.yarn/cache/autoprefixer-npm-10.2.4-502274fae7-c07fb325ee.zip/node_modules/autoprefixer/",
           "packageDependencies": [
-            ["autoprefixer", "npm:10.2.3"]
+            ["autoprefixer", "npm:10.2.4"]
           ],
           "linkType": "SOFT",
         }],
@@ -354,7 +354,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["autoprefixer", "npm:9.8.6"],
             ["browserslist", "npm:4.16.1"],
-            ["caniuse-lite", "npm:1.0.30001178"],
+            ["caniuse-lite", "npm:1.0.30001185"],
             ["colorette", "npm:1.2.1"],
             ["normalize-range", "npm:0.1.2"],
             ["num2fraction", "npm:1.2.2"],
@@ -363,13 +363,13 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           ],
           "linkType": "HARD",
         }],
-        ["virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.3", {
-          "packageLocation": "./.yarn/$$virtual/autoprefixer-virtual-159f4b566e/0/cache/autoprefixer-npm-10.2.3-065ceb9170-18c9075d7a.zip/node_modules/autoprefixer/",
+        ["virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.4", {
+          "packageLocation": "./.yarn/$$virtual/autoprefixer-virtual-4559de7489/0/cache/autoprefixer-npm-10.2.4-502274fae7-c07fb325ee.zip/node_modules/autoprefixer/",
           "packageDependencies": [
-            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.3"],
+            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.4"],
             ["@types/postcss", null],
             ["browserslist", "npm:4.16.1"],
-            ["caniuse-lite", "npm:1.0.30001178"],
+            ["caniuse-lite", "npm:1.0.30001185"],
             ["colorette", "npm:1.2.1"],
             ["fraction.js", "npm:4.0.13"],
             ["normalize-range", "npm:0.1.2"],
@@ -464,7 +464,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/browserslist-npm-4.16.1-37866cfd90-56f51464c3.zip/node_modules/browserslist/",
           "packageDependencies": [
             ["browserslist", "npm:4.16.1"],
-            ["caniuse-lite", "npm:1.0.30001178"],
+            ["caniuse-lite", "npm:1.0.30001185"],
             ["colorette", "npm:1.2.1"],
             ["electron-to-chromium", "npm:1.3.635"],
             ["escalade", "npm:3.1.1"],
@@ -533,7 +533,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["caniuse-api", "npm:3.0.0"],
             ["browserslist", "npm:4.16.1"],
-            ["caniuse-lite", "npm:1.0.30001178"],
+            ["caniuse-lite", "npm:1.0.30001185"],
             ["lodash.memoize", "npm:4.1.2"],
             ["lodash.uniq", "npm:4.5.0"]
           ],
@@ -541,10 +541,10 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]
       ]],
       ["caniuse-lite", [
-        ["npm:1.0.30001178", {
-          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001178-18b3fd17fc-313a8c784a.zip/node_modules/caniuse-lite/",
+        ["npm:1.0.30001185", {
+          "packageLocation": "./.yarn/cache/caniuse-lite-npm-1.0.30001185-d0474578ac-35a6087bfe.zip/node_modules/caniuse-lite/",
           "packageDependencies": [
-            ["caniuse-lite", "npm:1.0.30001178"]
+            ["caniuse-lite", "npm:1.0.30001185"]
           ],
           "linkType": "HARD",
         }]
@@ -1070,7 +1070,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [
             ["django_tailwind", "workspace:."],
             ["@tailwindcss/forms", "npm:0.2.1"],
-            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.3"],
+            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.4"],
             ["cssnano", "npm:4.1.10"],
             ["cssnano-preset-advanced", "npm:4.0.7"],
             ["postcss", "npm:8.2.4"],
@@ -3648,7 +3648,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@fullhuman/postcss-purgecss", "npm:3.0.0"],
             ["@types/autoprefixer", null],
             ["@types/postcss", null],
-            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.3"],
+            ["autoprefixer", "virtual:97cbd2817eebc88b90e1bc0d977a3643843180cf946144e2a90ca9438e19dadb81f09456f7920a33f265147bfeae54de8266878942e037e152a7bafa96645f6e#npm:10.2.4"],
             ["bytes", "npm:3.1.0"],
             ["chalk", "npm:4.1.0"],
             ["color", "npm:3.1.3"],

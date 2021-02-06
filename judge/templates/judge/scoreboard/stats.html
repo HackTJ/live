@@ -2,52 +2,52 @@
 
 {% block headings %}
 <script>
-  const headings = [
-    {
-      'key': 'projectId',
-      'value': 'ID'
-    },
-    {
-      'key': 'name',
-      'value': 'Name'
-    },
-    {
-      'key': 'description',
-      'value': 'Description'
-    },
-    {
-      'key': 'tags',
-      'value': 'Tags'
-    },
-    {
-      'key': 'means',
-      'value': 'Mus'
-    },
-    {
-      'key': 'variances',
-      'value': 'Sigma Squareds'
-    },
-    {
-      'key': 'numberOfVotes',
-      'value': 'Votes'
-    },
-    {
-      'key': 'timesSeen',
-      'value': 'Seen'
-    },
-    {
-      'key': 'timesSkipped',
-      'value': 'Skipped'
-    },
-    {
-      'key': 'prioritize',
-      'value': 'Prioritize'
-    },
-    {
-      'key': 'active',
-      'value': 'Active'
-    },
-  ];
+    const headings = [
+        {
+            'key': 'projectId',
+            'value': 'ID'
+        },
+        {
+            'key': 'name',
+            'value': 'Name'
+        },
+        {
+            'key': 'description',
+            'value': 'Description'
+        },
+        {
+            'key': 'tags',
+            'value': 'Tags'
+        },
+        {
+            'key': 'means',
+            'value': 'Mus'
+        },
+        {
+            'key': 'variances',
+            'value': 'Sigma Squareds'
+        },
+        {
+            'key': 'numberOfVotes',
+            'value': 'Votes'
+        },
+        {
+            'key': 'timesSeen',
+            'value': 'Seen'
+        },
+        {
+            'key': 'timesSkipped',
+            'value': 'Skipped'
+        },
+        {
+            'key': 'prioritize',
+            'value': 'Prioritize'
+        },
+        {
+            'key': 'active',
+            'value': 'Active'
+        },
+    ];
 </script>
 {% endblock %}
 
@@ -60,15 +60,15 @@
 {{ criteria|json_script:"criteria" }}
 
 <script>
-  const criteria = JSON.parse(document.getElementById('criteria').textContent);
-  const data = JSON.parse("{{ projects|escapejs }}").map(project => {
-    let projectProperties = project.fields;
-    projectProperties.projectId = project.pk;
-    projectProperties.tags = project.fields.tags !== "[\"\"]" ? JSON.parse(project.fields.tags).join(", "):"None";
-    projectProperties.means = JSON.parse(project.fields.means).map(meanStr => parseFloat(meanStr));
-    projectProperties.variances = JSON.parse(project.fields.variances).map(varianceStr => parseFloat(varianceStr));
-    return projectProperties;
-  });
-  // const data = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
+    const criteria = JSON.parse(document.getElementById('criteria').textContent);
+    const data = JSON.parse("{{ projects|escapejs }}").map(project => {
+        let projectProperties = project.fields;
+        projectProperties.projectId = project.pk;
+        projectProperties.tags = project.fields.tags !== "[\"\"]" ? JSON.parse(project.fields.tags).join(", ") : "None";
+        projectProperties.means = JSON.parse(project.fields.means).map(meanStr => parseFloat(meanStr));
+        projectProperties.variances = JSON.parse(project.fields.variances).map(varianceStr => parseFloat(varianceStr));
+        return projectProperties;
+    });
+    // const data = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
 </script>
 {% endblock %}

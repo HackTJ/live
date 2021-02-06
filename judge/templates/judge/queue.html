@@ -2,23 +2,23 @@
 
 {% block headings %}
 <script>
-  const headings = [{
-      'key': 'id',
-      'value': 'Judge ID'
+    const headings = [{
+        'key': 'id',
+        'value': 'Judge ID'
     },
-    {
-      'key': 'fullName',
-      'value': 'Judge Name'
-    },
-    {
-      'key': 'projectName',
-      'value': 'Project Name',
-    },
-    {
-      'key': 'projectDescription',
-      'value': 'Project Description',
-    },
-  ];
+        {
+            'key': 'fullName',
+            'value': 'Judge Name'
+        },
+        {
+            'key': 'projectName',
+            'value': 'Project Name',
+        },
+        {
+            'key': 'projectDescription',
+            'value': 'Project Description',
+        },
+    ];
 </script>
 {% endblock %}
 
@@ -30,25 +30,25 @@
 {% endcomment %}
 
 <script>
-  const queueData = JSON.parse("{{ queue|escapejs }}");
-  // TODO: get{}ModelById could be more efficient by splitting queueData into model types beforehand
-  const getJudgeModelById = (id) => queueData.find(model => model.model === "auth.user" && model.pk === id);
-  const getProjectModelById = (id) => queueData.find(model => model.model === "judge.project" && model.pk === id);
-  console.log('all', queueData);
-  const data = queueData.map(model => {
-    if (model.model === "judge.annotator") {
-      console.log('ann', model);
-      let judge = {};
-      judge.id = model.pk;
-      let judgeModel = getJudgeModelById(model.fields.judge);
-      judge.username = judgeModel.fields.username;
-      judge.fullName = judgeModel.fields.first_name + " " + judgeModel.fields.last_name;
-      let projectModel = getProjectModelById(model.fields.current);
-      judge.projectName = projectModel?.fields.name || "";
-      judge.projectDescription = projectModel?.fields.description || "";
-      return judge;
-    }
-  }).filter(judge => judge !== undefined); // filter because sometimes we don't return a model
-  // const queue = Array.from(JSON.parse(document.getElementById('judge-data').textContent)).map(judge => judge.fields);
+    const queueData = JSON.parse("{{ queue|escapejs }}");
+    // TODO: get{}ModelById could be more efficient by splitting queueData into model types beforehand
+    const getJudgeModelById = (id) => queueData.find(model => model.model === "auth.user" && model.pk === id);
+    const getProjectModelById = (id) => queueData.find(model => model.model === "judge.project" && model.pk === id);
+    console.log('all', queueData);
+    const data = queueData.map(model => {
+        if (model.model === "judge.annotator") {
+            console.log('ann', model);
+            let judge = {};
+            judge.id = model.pk;
+            let judgeModel = getJudgeModelById(model.fields.judge);
+            judge.username = judgeModel.fields.username;
+            judge.fullName = judgeModel.fields.first_name + " " + judgeModel.fields.last_name;
+            let projectModel = getProjectModelById(model.fields.current);
+            judge.projectName = projectModel?.fields.name || "";
+            judge.projectDescription = projectModel?.fields.description || "";
+            return judge;
+        }
+    }).filter(judge => judge !== undefined); // filter because sometimes we don't return a model
+    // const queue = Array.from(JSON.parse(document.getElementById('judge-data').textContent)).map(judge => judge.fields);
 </script>
 {% endblock %}

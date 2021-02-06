@@ -13,6 +13,8 @@ repos:
             )$
     -   id: check-yaml
     -   id: check-added-large-files
+        args:
+        -   --maxkb=50000  # 50 MB
     -   id: check-ast
     -   id: check-docstring-first
     -   id: check-json

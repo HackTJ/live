@@ -2,223 +2,239 @@
 <html lang="en">
 
 <head itemscope>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>{% block head_title %}HackTJ Live{% endblock %}</title>
-  <meta name="description" content="A massively scalable application for realtime hackathon judging and mentoring.">
-  <meta name="keywords" content="hackathon,judging,mentoring">
-  <meta name="author" content="HackTJ Team">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block head_title %}HackTJ Live{% endblock %}</title>
+    <meta name="description" content="A massively scalable application for realtime hackathon judging and mentoring.">
+    <meta name="keywords" content="hackathon,judging,mentoring">
+    <meta name="author" content="HackTJ Team">
 
-  <meta itemprop="release-footprint" content="{{ REVISION }}" />
+    <meta itemprop="release-footprint" content="{{ REVISION }}"/>
 
-  {% load static %}
+    {% load static %}
 
-  <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}">
 
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
 </head>
 
-<body class="leading-normal tracking-normal text-white bg-gradient-to-r from-blue-500 to-green-400 font-sans antialiased flex flex-col min-h-screen" style="font-family: 'Source Sans Pro', sans-serif;">
+<body class="leading-normal tracking-normal text-white bg-gradient-to-r from-blue-500 to-green-400 font-sans antialiased flex flex-col min-h-screen"
+      style="font-family: 'Source Sans Pro', sans-serif;">
 
-  <!--Nav-->
-  <nav id="header" class="fixed w-full z-30 top-0 text-white lg:mt-0 pt-4 border-b">
+<!--Nav-->
+<nav id="header" class="fixed w-full z-30 top-0 text-white lg:mt-0 pt-4 border-b">
     <div class="w-full container mx-auto flex flex-wrap items-center justify-between mb-4">
-      <div class="pl-4 flex items-center">
-        <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
-          <svg viewBox="0 0 20 20" class="h-8 fill-current inline">
-            <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
-            </path>
-          </svg>
-          HackTJ Live
-        </a>
-      </div>
+        <div class="pl-4 flex items-center">
+            <a class="toggleColour text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl" href="/">
+                <svg viewBox="0 0 20 20" class="h-8 fill-current inline">
+                    <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
+                    </path>
+                </svg>
+                HackTJ Live
+            </a>
+        </div>
 
-      <div class="block lg:hidden pr-4">
-        <button id="nav-toggle" class="flex items-center p-1">
-          <svg class="fill-current h-6 w-6 text-white hover:text-gray-900 toggleColour" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
-            <title>Menu</title>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
-        </button>
-      </div>
+        <div class="block lg:hidden pr-4">
+            <button id="nav-toggle" class="flex items-center p-1">
+                <svg class="fill-current h-6 w-6 text-white hover:text-gray-900 toggleColour"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor">
+                    <title>Menu</title>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
 
-      <div class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent p-4 lg:p-0 z-20" id="nav-content">
-        <ul class="lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black">
-          <!--toggleColour-->
-          <li>
-            <a class="inline py-2 px-4 font-bold no-underline" href="/">Home</a>
-          </li>
-          <!-- <li>
-            <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-              href="/mentor">Mentor</a>
-          </li> -->
-          <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'judge:index' %}">Judge</a>
-          </li>
-          <li class="select-none hidden lg:block">|</li>
-          <hr class="w-1/3 lg:hidden" />
-          {% if user.is_authenticated %}
-          <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_logout' %}">Logout</a>
-          </li>
-          {% else %}
-          <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_login' %}">Sign In</a>
-          </li>
-          <li>
-            <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4" href="{% url 'account_signup' %}">Register</a>
-          </li>
-          {% endif %}
-        </ul>
-      </div>
+        <div class="w-full flex-grow lg:flex content-around lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-white lg:bg-transparent p-4 lg:p-0 z-20"
+             id="nav-content">
+            <ul class="lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black">
+                <!--toggleColour-->
+                <li>
+                    <a class="inline py-2 px-4 font-bold no-underline" href="/">Home</a>
+                </li>
+                <!-- <li>
+                  <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                    href="/mentor">Mentor</a>
+                </li> -->
+                <li>
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                       href="{% url 'judge:index' %}">Judge</a>
+                </li>
+                <li class="select-none hidden lg:block">|</li>
+                <hr class="w-1/3 lg:hidden"/>
+                {% if user.is_authenticated %}
+                <li>
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                       href="{% url 'account_logout' %}">Logout</a>
+                </li>
+                {% else %}
+                <li>
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                       href="{% url 'account_login' %}">Sign In</a>
+                </li>
+                <li>
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                       href="{% url 'account_signup' %}">Register</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
     </div>
-  </nav>
-  <hr class="border-b border-gray-100 opacity-25 my-0 py-0 mb-12" />
-  <main class="pt-8 mt-8">
+</nav>
+<hr class="border-b border-gray-100 opacity-25 my-0 py-0 mb-12"/>
+<main class="pt-8 mt-8">
     {% block content %}{% endblock %}
-  </main>
+</main>
 
-  <!--Footer-->
-  <footer class="bg-white bottom-0 w-full mt-auto">
+<!--Footer-->
+<footer class="bg-white bottom-0 w-full mt-auto">
     <div class="container mx-auto px-8">
-      <div class="w-full flex flex-col md:flex-row py-6">
-        <div class="flex-1 mb-6 mr-12">
-          <a class="no-underline hover:no-underline font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 lg:text-4xl" href="/">
-            <svg viewBox="0 0 20 20" class="h-8 inline">
-              <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
-              </path>
-            </svg>
-            HackTJ Live
-          </a>
-        </div>
+        <div class="w-full flex flex-col md:flex-row py-6">
+            <div class="flex-1 mb-6 mr-12">
+                <a class="no-underline hover:no-underline font-bold text-2xl bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-green-400 lg:text-4xl"
+                   href="/">
+                    <svg viewBox="0 0 20 20" class="h-8 inline">
+                        <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z">
+                        </path>
+                    </svg>
+                    HackTJ Live
+                </a>
+            </div>
 
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Links</p>
-          <ul class="mb-6 inline">
-            <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">FAQ</a>
-            </li> -->
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://github.com/HackTJ/live" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Source Code</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://github.com/HackTJ/live/issues" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Help</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="/credits" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Credits</a>
-            </li>
-          </ul>
+            <div class="flex-1">
+                <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Links</p>
+                <ul class="mb-6 inline">
+                    <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                      <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">FAQ</a>
+                    </li> -->
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://github.com/HackTJ/live"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">Source Code</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://github.com/HackTJ/live/issues"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">Help</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="/credits" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Credits</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="flex-1">
+                <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Legal</p>
+                <ul class="mb-6 inline">
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://github.com/HackTJ/live/blob/main/LICENSE"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">License</a>
+                    </li>
+                    <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                      <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Terms and Privacy</a>
+                    </li> -->
+                </ul>
+            </div>
+            <div class="flex-1">
+                <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Social</p>
+                <ul class="mb-6 inline">
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://www.facebook.com/HackTJOfficial"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">Facebook</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://www.linkedin.com/company/hacktj/"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">LinkedIn</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://twitter.com/HackTJOfficial"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">Twitter</a>
+                    </li>
+                    <li class="mt-2 inline-block mr-2 md:block md:mr-0">
+                        <a href="https://www.instagram.com/hacktjofficial/"
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">Instagram</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Legal</p>
-          <ul class="mb-6 inline">
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://github.com/HackTJ/live/blob/master/LICENSE" class="no-underline hover:underline text-gray-800 hover:text-orange-500">License</a>
-            </li>
-            <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Terms and Privacy</a>
-            </li> -->
-          </ul>
-        </div>
-        <div class="flex-1">
-          <p class="uppercase text-gray-500 md:mb-6 pr-4 inline">Social</p>
-          <ul class="mb-6 inline">
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.facebook.com/HackTJOfficial" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Facebook</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.linkedin.com/company/hacktj/" class="no-underline hover:underline text-gray-800 hover:text-orange-500">LinkedIn</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://twitter.com/HackTJOfficial" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Twitter</a>
-            </li>
-            <li class="mt-2 inline-block mr-2 md:block md:mr-0">
-              <a href="https://www.instagram.com/hacktjofficial/" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Instagram</a>
-            </li>
-          </ul>
-        </div>
-      </div>
     </div>
-  </footer>
+</footer>
 
-  {% load compress %}
-  {% compress js %}
-  <script>
+{% load compress %}
+{% compress js %}
+<script>
     var scrollpos = window.scrollY;
     var header = document.getElementById("header");
     var navcontent = document.getElementById("nav-content");
     var brandname = document.getElementById("brandname");
     var toToggle = document.querySelectorAll(".toggleColour");
 
-    document.addEventListener('scroll', function() {
+    document.addEventListener('scroll', function () {
 
-      /*Apply classes for slide in bar*/
-      scrollpos = window.scrollY;
+        /*Apply classes for slide in bar*/
+        scrollpos = window.scrollY;
 
-      if (scrollpos > 10) {
-        header.classList.add("bg-white");
-        //Use to switch toggleColour colours
-        for (var i = 0; i < toToggle.length; i++) {
-          toToggle[i].classList.add("text-gray-800");
-          toToggle[i].classList.remove("text-white");
+        if (scrollpos > 10) {
+            header.classList.add("bg-white");
+            //Use to switch toggleColour colours
+            for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-gray-800");
+                toToggle[i].classList.remove("text-white");
+            }
+            header.classList.add("shadow");
+            navcontent.classList.remove("bg-gray-100");
+            navcontent.classList.add("bg-white");
+        } else {
+            header.classList.remove("bg-white");
+            //Use to switch toggleColour colours
+            for (var i = 0; i < toToggle.length; i++) {
+                toToggle[i].classList.add("text-white");
+                toToggle[i].classList.remove("text-gray-800");
+            }
+            header.classList.remove("shadow");
+            navcontent.classList.remove("bg-white");
+            navcontent.classList.add("bg-gray-100");
         }
-        header.classList.add("shadow");
-        navcontent.classList.remove("bg-gray-100");
-        navcontent.classList.add("bg-white");
-      } else {
-        header.classList.remove("bg-white");
-        //Use to switch toggleColour colours
-        for (var i = 0; i < toToggle.length; i++) {
-          toToggle[i].classList.add("text-white");
-          toToggle[i].classList.remove("text-gray-800");
-        }
-        header.classList.remove("shadow");
-        navcontent.classList.remove("bg-white");
-        navcontent.classList.add("bg-gray-100");
-      }
     });
-  </script>
+</script>
 
-  <script>
+<script>
     /*Toggle dropdown list*/
     /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
 
     var navMenuDiv = document.getElementById("nav-content");
     var navMenu = document.getElementById("nav-toggle");
 
-    document.onclick = function(e) {
-      var target = (e && e.target) || (event && event.srcElement);
-      // Nav Menu
-      if (!checkParent(target, navMenuDiv)) {
-        // click NOT on the menu
-        if (checkParent(target, navMenu)) {
-          // click on the link
-          if (navMenuDiv.classList.contains("hidden")) {
-            navMenuDiv.classList.remove("hidden");
-          } else {
-            navMenuDiv.classList.add("hidden");
-          }
-        } else {
-          // click both outside link and outside menu, hide menu
-          navMenuDiv.classList.add("hidden");
+    document.onclick = function (e) {
+        var target = (e && e.target) || (event && event.srcElement);
+        // Nav Menu
+        if (!checkParent(target, navMenuDiv)) {
+            // click NOT on the menu
+            if (checkParent(target, navMenu)) {
+                // click on the link
+                if (navMenuDiv.classList.contains("hidden")) {
+                    navMenuDiv.classList.remove("hidden");
+                } else {
+                    navMenuDiv.classList.add("hidden");
+                }
+            } else {
+                // click both outside link and outside menu, hide menu
+                navMenuDiv.classList.add("hidden");
+            }
         }
-      }
     }
 
     function checkParent(t, elm) {
-      while (t.parentNode) {
-        if (t == elm) {
-          return true;
+        while (t.parentNode) {
+            if (t == elm) {
+                return true;
+            }
+            t = t.parentNode;
         }
-        t = t.parentNode;
-      }
-      return false;
+        return false;
     }
-  </script>
-  {% endcompress %}
-  <script src="//instant.page/5.1.0" type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw" defer></script>
+</script>
+{% endcompress %}
+<script src="//instant.page/5.1.0" type="module"
+        integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw" defer></script>
 </body>
 
 </html>

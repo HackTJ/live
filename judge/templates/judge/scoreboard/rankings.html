@@ -2,20 +2,20 @@
 
 {% block headings %}
 <script>
-  const headings = [
-    {
-      'key': 'id',
-      'value': 'ID'
-    },
-    {
-      'key': 'name',
-      'value': 'Name'
-    },
-    {
-      'key': 'description',
-      'value': 'Description'
-    },
-  ];
+    const headings = [
+        {
+            'key': 'id',
+            'value': 'ID'
+        },
+        {
+            'key': 'name',
+            'value': 'Name'
+        },
+        {
+            'key': 'description',
+            'value': 'Description'
+        },
+    ];
 </script>
 {% endblock %}
 
@@ -26,11 +26,11 @@
 {{ projects|json_script:"projects-data" }}
 {% endcomment %}
 <script>
-  const data = JSON.parse("{{ projects|escapejs }}").map(project => {
-    let projectProperties = project.fields;
-    projectProperties.projectId = project.pk;
-    return projectProperties;
-  });
-  // const data = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
+    const data = JSON.parse("{{ projects|escapejs }}").map(project => {
+        let projectProperties = project.fields;
+        projectProperties.projectId = project.pk;
+        return projectProperties;
+    });
+    // const data = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
 </script>
 {% endblock %}

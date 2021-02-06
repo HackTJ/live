@@ -4,17 +4,22 @@
 
 {% block content %}
 <div class="w-2/3 content-center justify-center text-center mx-auto space-y-4">
-  <h1 class="text-2xl">{% translate "Welcome to HackTJ Judging!" %}</h1>
-  <p>Thank you for taking time out of your busy schedule to judge our students projects. Before you get started, please read these instructions for using the Live judging system:</p>
-  <ul class="list-disc">
-    <li>{% translate "Our judging system is based off of HackMIT's Gavel and utilizes pairwise comparisons to rank our projects." %}</li>
-    <li>{% translate "Each group gets 3-5 min to present their project." %}</li>
-    <li>{% translate "After each project's presentation, you will have to decide whether you think the previous project was better than the current or vice versa." %}</li>
-    <li>{% blocktranslate %} If it's hard to choose, you can skip that comparison, but <b>please don't skip unless absolutely necessary</b>. {% endblocktranslate %}</li>
-  </ul>
-  <form action="{% url 'judge:welcome' %}" method="POST">
-    {% csrf_token %}
-    <input class="rounded px-4 py-2 text-black cursor-pointer" type="submit" value="{% translate "Begin Judging" %}">
-  </form>
+    <h1 class="text-2xl">{% translate "Welcome to HackTJ Judging!" %}</h1>
+    <p>Thank you for taking time out of your busy schedule to judge our students projects. Before you get started,
+        please read these instructions for using the Live judging system:</p>
+    <ul class="list-disc">
+        <li>{% translate "Our judging system is based off of HackMIT's Gavel and utilizes pairwise comparisons to rank our projects." %}
+        </li>
+        <li>{% translate "Each group gets 3-5 min to present their project." %}</li>
+        <li>{% translate "After each project's presentation, you will have to decide whether you think the previous project was better than the current or vice versa." %}
+        </li>
+        <li>{% blocktranslate %} If it's hard to choose, you can skip that comparison, but <b>please don't skip unless absolutely necessary</b>. {% endblocktranslate %}
+        </li>
+    </ul>
+    <form action="{% url 'judge:welcome' %}" method="POST">
+        {% csrf_token %}
+        <input class="rounded px-4 py-2 text-black cursor-pointer" type="submit" value="{% translate " Begin Judging"
+        %}">
+    </form>
 </div>
 {% endblock %}

@@ -340,12 +340,25 @@ USE_TZ = True
 # Logging
 # https://docs.djangoproject.com/en/3.1/topics/logging/
 
+from better_exceptions.integrations.django import skip_errors_filter
+
 LOGGING = {
     "version": 1,
     "disable_existing_loggers": True,
+    "filters": {
+        "skip_errors": {
+            "()": "django.utils.log.CallbackFilter",
+            "callback": skip_errors_filter,
+        }
+    },
     "handlers": {
         "console": {
             "level": "DEBUG",
+            # without the 'filters' key, Django will log errors twice:
+            # one time from better-exceptions and one time from Django.
+            # with the 'skip_errors' filter, we remove the repeat log
+            # from Django, which is unformatted.
+            "filters": ["skip_errors"],
             "class": "logging.StreamHandler",
         },
         "file": {
