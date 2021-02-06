@@ -28,7 +28,7 @@
                     <input class="my-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                            name="{{ form.first_name.name }}" id="{{ form.first_name.id_for_label }}" type="text"
                            placeholder="{{ form.first_name.label }}"
-                           value="{{ form.first_name.value|stringformat:'s' }}" {% endif %}
+                           {% if form.first_name.value != None %} value="{{ form.first_name.value|stringformat:'s' }}" {% endif %}
                            required="{{ form.first_name.required }}" aria-required="{{ form.first_name.required }}"
                            autocomplete="given-name">
                     {% if form.first_name.errors %}
@@ -45,7 +45,7 @@
                     <span class="text-sm font-bold mb-2">{{ form.last_name.label }}</span>
                     <input class="my-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                            name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}" type="text"
-                           placeholder="{{ form.last_name.label }}" {% if form.last_name.value !=None %}
+                           placeholder="{{ form.last_name.label }}" {% if form.last_name.value != None %}
                            value="{{ form.last_name.value|stringformat:'s' }}" {% endif %}
                            required="{{ form.last_name.required }}" aria-required="{{ form.last_name.required }}"
                            autocomplete="family-name">
@@ -63,7 +63,7 @@
                     <span class="text-sm font-bold mb-2">{{ form.username.label }}</span>
                     <input class="my-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                            name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" type="text"
-                           placeholder="Username" {% if form.username.value !=None %}
+                           placeholder="Username" {% if form.username.value != None %}
                            value="{{ form.username.value|stringformat:'s' }}" {% endif %}
                            required="{{ form.username.required }}" aria-required="{{ form.username.required }}"
                            autocomplete="username">
@@ -82,7 +82,7 @@
                     <input class="my-1 w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
                            name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" type="email"
                            placeholder="Email"
-                           {% if form.email.value !=None %} value="{{ form.email.value|stringformat:'s' }}" {% endif %}
+                           {% if form.email.value != None %} value="{{ form.email.value|stringformat:'s' }}" {% endif %}
                            autocomplete="email">
                     {% if form.email.errors %}
                     <ol>

@@ -57,6 +57,10 @@ def begin(request):
     def render_begin():
         if not annotator.current:
             init_annotator(annotator)
+        if not annotator.current:
+            # annotator.current has not been assigned
+            # because there are no projects in the DB
+            return render(request, "judge/no_projects.html")
         return render(request, "judge/begin.html", {"current": annotator.current})
 
     annotator = request.user.annotator
