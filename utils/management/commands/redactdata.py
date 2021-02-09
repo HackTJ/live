@@ -46,10 +46,6 @@ class Command(BaseCommand):
             output = loads(f.read())
         for model in output[:]:
             if model["model"] == "auth.user":
-                # TODO: new CLI choice for superusers?
-                if model["fields"]["is_superuser"]:
-                    output.remove(model)
-
                 if "name" in options["redact"]:
                     model["fields"]["first_name"] = "REDACTED"
                     model["fields"]["last_name"] = "REDACTED"
