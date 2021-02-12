@@ -1,0 +1,164 @@
+{% load random_strings %}
+{% random_id as timer_suffix %}
+{# create a random string suffix so that multiple timers can be included on the same page #}
+
+{# we use the `escapejs` filter in HTML IDs because we need to use it in JS and the IDs have to match #}
+<div class="bg-white w-48 mx-auto rounded-lg p-2">
+    <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+        <g style="fill: none; stroke: none">
+        <circle
+            cx="25"
+            cy="25"
+            r="20"
+            class="stroke-1"
+            stroke="lightgrey"
+            id="timer-ring-base-{{ timer_suffix|escapejs }}"
+        ></circle>
+
+        {# the `--tw-gradient-from` CSS variable comes from the background gradient on the `body` element #}
+        {# `stroke-dashoffset` is set to 0 so the ring is completely filled at the start #}
+        {# `stroke-dasharray` is the circumference of the circle #}
+        <circle
+            cx="25"
+            cy="25"
+            r="20"
+            class="stroke-2 origin-center transform -rotate-90"
+            stroke="var(--tw-gradient-from)"
+            stroke-dashoffset="0"
+            stroke-dasharray="94.2477796077"
+            stroke-linecap="round"
+            id="timer-ring-fill-{{ timer_suffix|escapejs }}"
+        ></circle>
+
+        {# TODO: use `timeout` variable for initial label value #}
+        {# TODO: `font-size` is hard-coded; use width/height breakpoints to automagically fit the text inside the circle #}
+        <text
+            x="50%"
+            y="50%"
+            dominant-baseline="central"
+            text-anchor="middle"
+            fill="darkgrey"
+            id="timer-label-{{ timer_suffix|escapejs }}"
+            font-size="0.5rem"
+        >
+            0
+        </text>
+        </g>
+    </svg>
+    <button
+        id="timer-button-{{ timer_suffix|escapejs }}"
+        onclick="timerButtonClick{{ timer_suffix }}()"
+        type="button"
+        class="rounded-full py-3 px-6 bg-blue-400"
+    >
+        Start Timer
+    </button>
+</div>
+
+{% load compress %}
+{% compress js %}
+{% comment "This HTML commented has also been commented with Django to avoid sending extra bytes to the client and Django comments can't be multi-line" %}
+<!--
+it would be nice to have these functions global to all timers on a page but
+there's no way to `include` JS only once; to keep the functions global we'd
+need to create a separate template for the JS and include it separately from
+this HTML template.
+-->
+{% endcomment %}
+{# TODO: escapejs filter when defining functions? #}
+<script>
+    const START_TIMER_LABEL = "Start Timer";
+    const PAUSE_TIMER_LABEL = "Pause Timer";
+    const RESUME_TIMER_LABEL = "Resume Timer";
+    const TIMER_DELAY_MS = 100; // milliseconds
+
+    const timerButton{{ timer_suffix }} = document.getElementById("timer-button-{{ timer_suffix|escapejs }}");
+    const timerLabel{{ timer_suffix }} = document.getElementById("timer-label-{{ timer_suffix|escapejs }}");
+    const ringBase{{ timer_suffix }} = document.getElementById("timer-ring-base-{{ timer_suffix|escapejs }}");
+    const ringFill{{ timer_suffix }} = document.getElementById("timer-ring-fill-{{ timer_suffix|escapejs }}");
+
+    // no suffix for `ringRadius` and `ringCircumference` because the radius
+    // isn't a configurable attribute. TODO: maybe we should add a suffix
+    // anyway (for clarity).
+    const ringRadius = ringFill{{ timer_suffix }}.r.baseVal.value;
+    const ringCircumference = 2 * Math.PI * ringRadius;
+    // this should already be set in the HTML but we do this just to be safe:
+    ringFill{{ timer_suffix }}.setAttribute("stroke-dasharray", ringCircumference);
+
+    timerButton{{ timer_suffix }}.innerText = START_TIMER_LABEL;
+
+    function padStringLeft(string, pad, length) {
+        // https://stackoverflow.com/a/3733257/7127932
+        return (new Array(length + 1).join(pad) + string).slice(-length);
+    }
+    function setTimerValue{{ timer_suffix }}(newValue) {
+        // newValue is number of seconds
+        const minutes = Math.floor(newValue / 60);
+        const seconds = Math.floor(newValue - 60 * minutes); // Math.floor(newValue % 60);
+        const milliseconds = Math.floor((newValue - 60 * minutes - seconds) * 1000.);
+        // const label = `${minutes} minutes, ${seconds} seconds, ${milliseconds} milliseconds`;
+        const label = `${padStringLeft(minutes, '0', 2)}:${padStringLeft(seconds, '0', 2)}.${padStringLeft(milliseconds, '0', 3)}`;
+        timerLabel{{ timer_suffix }}.textContent = label;
+
+        const ringPercent = newValue / timerState{{ timer_suffix }}.timeout; // [0, 1]
+        const ringSegmentLength = (1. - ringPercent) * ringCircumference;
+        ringFill{{ timer_suffix }}.setAttribute("stroke-dashoffset", ringSegmentLength);
+    }
+
+    var timerState{{ timer_suffix }} = {
+        timeout: parseInt("{{ timeout }}"), // seconds
+    };
+    setTimerValue{{ timer_suffix }}(timerState{{ timer_suffix }}.timeout);
+
+    function stepTimer{{timer_suffix}}() {
+        // TODO: breaks on resume
+        timerState{{ timer_suffix }}.progress += (Date.now() - timerState{{ timer_suffix }}.lastUpdate) / 1000.
+        timerState{{ timer_suffix }}.lastUpdate = Date.now();
+        if (timerState{{ timer_suffix }}.progress >= timerState{{ timer_suffix }}.timeout) {
+            // countdown timer is over
+            setTimerValue{{ timer_suffix }}(0);
+            clearTimeout(timerState{{ timer_suffix }}.interval);
+            // TODO: change button label
+            timerButton{{ timer_suffix }}.disabled = true;
+            return;
+        }
+        setTimerValue{{ timer_suffix }}(timerState{{ timer_suffix }}.timeout - timerState{{ timer_suffix }}.progress);
+        const deltaTime = (Date.now() - timerState{{ timer_suffix }}.expectedEnd) % TIMER_DELAY_MS; // milliseconds
+        timerState{{ timer_suffix }}.expectedEnd += TIMER_DELAY_MS;
+        timerState{{ timer_suffix }}.interval = setTimeout(stepTimer{{ timer_suffix }}, Math.max(0, TIMER_DELAY_MS - deltaTime));
+    }
+    function startTimer{{ timer_suffix }}() {
+        timerState{{ timer_suffix }}.absoluteStart = Date.now();
+        timerState{{ timer_suffix }}.progress = 0;
+        timerState{{ timer_suffix }}.lastUpdate = timerState{{ timer_suffix }}.absoluteStart;
+        timerState{{ timer_suffix }}.expectedEnd = timerState{{ timer_suffix }}.absoluteStart + TIMER_DELAY_MS;
+        timerButton{{ timer_suffix }}.innerText = PAUSE_TIMER_LABEL;
+        timerState{{ timer_suffix }}.interval = setTimeout(stepTimer{{ timer_suffix }}, TIMER_DELAY_MS);
+    }
+    function pauseTimer{{ timer_suffix }}() {
+        clearTimeout(timerState{{ timer_suffix }}.interval);
+        timerButton{{ timer_suffix }}.innerText = RESUME_TIMER_LABEL;
+    }
+    function resumeTimer{{ timer_suffix }}() {
+        clearTimeout(timerState{{ timer_suffix }}.interval);
+        timerState{{ timer_suffix }}.interval = setTimeout(
+            stepTimer{{ timer_suffix }},
+        );
+        timerState{{ timer_suffix }}.lastUpdate = Date.now();
+        timerButton{{ timer_suffix }}.innerText = PAUSE_TIMER_LABEL;
+    }
+    function timerButtonClick{{ timer_suffix }}() {
+        switch (timerButton{{ timer_suffix }}.innerText) {
+            case START_TIMER_LABEL:
+                startTimer{{ timer_suffix }}();
+                break;
+            case PAUSE_TIMER_LABEL:
+                pauseTimer{{ timer_suffix }}();
+                break
+            case RESUME_TIMER_LABEL:
+                resumeTimer{{ timer_suffix }}();
+                break;
+        }
+    }
+</script>
+{% endcompress %}

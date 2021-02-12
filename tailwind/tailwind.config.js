@@ -1,8 +1,15 @@
 module.exports = {
-  purge: [
-    '../templates/**/*.html',
-    '../**/templates/**/*.html'
-  ],
+  purge: {
+    content: [
+      '../templates/**/*.html',
+      '../**/templates/**/*.html',
+    ],
+    options: {
+      fontFace: true,
+      keyframes: true,
+      // variables: true,
+    },
+  },
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {},

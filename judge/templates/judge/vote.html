@@ -6,6 +6,16 @@
 <div class="w-2/3 content-center justify-center text-center mx-auto space-y-4 mb-6">
     <h1 class="text-2xl text-center">{% translate "Vote" %}</h1>
     <a href="{% url 'judge:index' %}" class="text-indigo-700 hover:underline">Return to Judge Home</a>
+    <div>
+        {# TODO: use timeout in settings #}
+        {# `timeout` is in minutes: #}
+        {% include "timer.html" with timeout=300 %}
+        <p class="mx-auto w-2/3">
+            Please use the above timer for ensuring that a project does not present for
+            too long. You may use more or less time than the timer shows; it is only
+            meant as a utility for judging.
+        </p>
+    </div>
     <div class="flex flex-wrap">
         <div class="bg-blue-200 lg:w-1/3 mx-auto my-3 pb-2 rounded">
             <h2 class="bg-blue-400 text-xl rounded-t px-4">Previous</h2>
