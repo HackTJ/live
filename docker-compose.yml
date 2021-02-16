@@ -22,7 +22,7 @@ services:
       - ./judge/fixtures:/app/judge/fixtures
 
   postgres:
-    image: postgres:13.1-alpine
+    image: postgres:13.2-alpine
     restart: always
     shm_size: 256MB
     environment:

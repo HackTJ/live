@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Running as user `$(whoami)`"
+
 poetry run python manage.py makemigrations --noinput
 poetry run python manage.py migrate --noinput
 poetry run python manage.py createsuperuser --noinput  # from env vars
