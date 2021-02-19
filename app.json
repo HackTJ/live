@@ -1,7 +1,6 @@
 {
     "addons": [
-        "heroku-postgresql:hobby-dev",
-        "heroku-redis:hobby-dev"
+        "heroku-postgresql:hobby-dev"
     ],
     "buildpacks": [
         {
@@ -13,46 +12,23 @@
     ],
     "env": {
       "SECRET_KEY": {
-        "description": "",
+        "description": "A secret key for cryptographic signing.",
         "generator": "secret"
       },
       "DJANGO_SUPERUSER_USERNAME": {
-        "description": "",
+        "description": "The username for the Django superuser.",
         "value": "live_admin"
       },
       "DJANGO_SUPERUSER_PASSWORD": {
-        "description": "",
+        "description": "The password for the Django superuser.",
         "generator": "secret"
       },
       "DJANGO_SUPERUSER_EMAIL": {
-        "description": "",
+        "description": "The email address for the Django superuser.",
         "value": "live@hacktj.org"
       },
       "SENDGRID_API_KEY": {
-        "description": "SG.Api.Key"
-      },
-      "DATABASE_URL": {
-        "description": "`heroku config:get DATABASE_URL`"
-      },
-      "POSTGRES_PASSWORD": {
-        "description": "",
-        "generator": "secret"
-      },
-      "POSTGRES_USER": {
-        "description": "",
-        "value": "live_postgres"
-      },
-      "POSTGRES_DB": {
-        "description": "",
-        "value": "hacktj_live"
-      },
-      "POSTGRES_INITDB_ARGS": {
-        "description": "",
-        "value": "--auth-host=scram-sha-256 --auth-local=scram-sha-256 --data-checksums"
-      },
-      "POSTGRES_HOST_AUTH_METHOD": {
-        "description": "",
-        "value": "scram-sha-256"
+        "description": "Your Sendgrid API key; it likely starts with `SG.`."
       }
     },
     "keywords": [
