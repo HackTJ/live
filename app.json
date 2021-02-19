@@ -1,0 +1,67 @@
+{
+    "addons": [
+        "heroku-postgresql:hobby-dev",
+        "heroku-redis:hobby-dev"
+    ],
+    "buildpacks": [
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-pgbouncer"
+        },
+        {
+          "url": "heroku/python"
+        }
+    ],
+    "env": {
+      "SECRET_KEY": {
+        "description": "",
+        "generator": "secret"
+      },
+      "DJANGO_SUPERUSER_USERNAME": {
+        "description": "",
+        "value": "live_admin"
+      },
+      "DJANGO_SUPERUSER_PASSWORD": {
+        "description": "",
+        "generator": "secret"
+      },
+      "DJANGO_SUPERUSER_EMAIL": {
+        "description": "",
+        "value": "live@hacktj.org"
+      },
+      "SENDGRID_API_KEY": {
+        "description": "SG.Api.Key"
+      },
+      "DATABASE_URL": {
+        "description": "`heroku config:get DATABASE_URL`"
+      },
+      "POSTGRES_PASSWORD": {
+        "description": "",
+        "generator": "secret"
+      },
+      "POSTGRES_USER": {
+        "description": "",
+        "value": "live_postgres"
+      },
+      "POSTGRES_DB": {
+        "description": "",
+        "value": "hacktj_live"
+      },
+      "POSTGRES_INITDB_ARGS": {
+        "description": "",
+        "value": "--auth-host=scram-sha-256 --auth-local=scram-sha-256 --data-checksums"
+      },
+      "POSTGRES_HOST_AUTH_METHOD": {
+        "description": "",
+        "value": "scram-sha-256"
+      }
+    },
+    "keywords": [
+        "python",
+        "django",
+        "tailwind",
+        "allauth",
+        "channels"
+    ],
+    "name": "HackTJ Live",
+    "description": "A massively scalable application for realtime hackathon judging and mentoring."
+}
