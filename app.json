@@ -1,0 +1,43 @@
+{
+    "addons": [
+        "heroku-postgresql:hobby-dev"
+    ],
+    "buildpacks": [
+        {
+          "url": "https://github.com/heroku/heroku-buildpack-pgbouncer"
+        },
+        {
+          "url": "heroku/python"
+        }
+    ],
+    "env": {
+      "SECRET_KEY": {
+        "description": "A secret key for cryptographic signing.",
+        "generator": "secret"
+      },
+      "DJANGO_SUPERUSER_USERNAME": {
+        "description": "The username for the Django superuser.",
+        "value": "live_admin"
+      },
+      "DJANGO_SUPERUSER_PASSWORD": {
+        "description": "The password for the Django superuser.",
+        "generator": "secret"
+      },
+      "DJANGO_SUPERUSER_EMAIL": {
+        "description": "The email address for the Django superuser.",
+        "value": "live@hacktj.org"
+      },
+      "SENDGRID_API_KEY": {
+        "description": "Your Sendgrid API key; it likely starts with `SG.`."
+      }
+    },
+    "keywords": [
+        "python",
+        "django",
+        "tailwind",
+        "allauth",
+        "channels"
+    ],
+    "name": "HackTJ Live",
+    "description": "A massively scalable application for realtime hackathon judging and mentoring."
+}
