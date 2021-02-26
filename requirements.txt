@@ -3,7 +3,7 @@ argon2-cffi==20.1.0; python_version >= "3.6"
 asgiref==3.3.1; python_version >= "3.6"
 async-timeout==3.0.1; python_full_version >= "3.5.3" and python_version >= "3.6"
 attrs==20.3.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
-autobahn==21.2.1; python_version >= "3.6"
+autobahn==21.2.2; python_version >= "3.7"
 automat==20.2.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 bcrypt==3.2.0; python_version >= "3.6"
 better-exceptions==0.3.3
@@ -14,7 +14,7 @@ channels==3.0.3; python_version >= "3.6"
 click==7.1.2; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 colorama==0.4.4; python_version >= "2.7" and python_full_version < "3.0.0" and sys_platform == "win32" or sys_platform == "win32" and python_full_version >= "3.5.0"
 constantly==15.1.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
-cryptography==3.4.5
+cryptography==3.4.6
 daphne==3.0.1; python_version >= "3.6"
 dealer==2.1.0
 defusedxml==0.6.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
@@ -26,7 +26,7 @@ django-dbbackup @ git+https://github.com/django-dbbackup/django-dbbackup.git@mas
 django-debug-toolbar==3.2; python_version >= "3.6"
 django-ranged-response==0.2.0
 django-simple-captcha==0.5.13
-django==3.1.6; python_version >= "3.6"
+django==3.1.7; python_version >= "3.6"
 gunicorn==20.0.4; python_version >= "3.4"
 h11==0.12.0; python_version >= "3.6"
 h2==3.2.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
@@ -34,7 +34,7 @@ hiredis==1.1.0; python_version >= "3.6" and python_full_version < "3.0.0" or pyt
 hpack==3.0.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 httptools==0.1.1; sys_platform != "win32" and sys_platform != "cygwin" and platform_python_implementation != "PyPy"
 hyperframe==5.2.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
-hyperlink==21.0.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
+hyperlink==21.0.0; python_version >= "3.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.7"
 idna==3.1; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 incremental==17.5.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 msgpack==1.0.2; python_version >= "3.6"
@@ -59,16 +59,16 @@ rcssmin==1.0.6
 requests-oauthlib==1.3.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 requests==2.15.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.4.0"
 rjsmin==1.1.0
-scipy==1.6.0; python_version >= "3.7"
+scipy==1.6.1; python_version >= "3.7"
 service-identity==18.1.0; python_version >= "3.6" and python_full_version < "3.0.0" or python_full_version >= "3.5.0" and python_version >= "3.6"
 six==1.15.0; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
 sqlparse==0.4.1; python_version >= "3.6"
 twisted==20.3.0; (python_version >= "2.7" and python_full_version < "3.0.0") or (python_full_version >= "3.5.0")
-txaio==20.12.1; python_version >= "3.6"
+txaio==21.2.1; python_version >= "3.7"
 typing-extensions==3.7.4.3; python_version < "3.8"
-uvicorn==0.13.3
-uvloop==0.15.1; sys_platform != "win32" and sys_platform != "cygwin" and platform_python_implementation != "PyPy"
-watchgod==0.6; python_version >= "3.5"
+uvicorn==0.13.4
+uvloop==0.15.2; sys_platform != "win32" and sys_platform != "cygwin" and platform_python_implementation != "PyPy" and python_version >= "3.7"
+watchgod==0.7; python_version >= "3.5"
 wcwidth==0.2.5; python_version >= "3.6"
 websockets==8.1; python_full_version >= "3.6.1"
 whitenoise==5.2.0; python_version >= "3.5" and python_version < "4"

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Running as user `$(whoami)`"
+echo "Running as user $(whoami)"
 
 poetry run python manage.py makemigrations --noinput
 poetry run python manage.py migrate --noinput

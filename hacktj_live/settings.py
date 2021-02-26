@@ -154,6 +154,8 @@ TEMPLATES = [
 
 # Auth
 
+AUTH_USER_MODEL = "utils.LiveUser" 
+
 LOGIN_REDIRECT_URL = "/"
 
 AUTHENTICATION_BACKENDS = [

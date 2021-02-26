@@ -8,6 +8,10 @@ from django.utils.translation import gettext
 salt_translated = gettext("salt")
 
 
+def get_salt(algorithm, hashed_password):
+    return algorithm.safe_summary(hashed_password)[salt_translated]
+
+
 class Command(BaseCommand):
     help = "Removes private information from a fixture file"
     missing_args_message = (
@@ -55,11 +59,11 @@ class Command(BaseCommand):
                     model["fields"]["email"] = "REDACTED@REDACTED.com"
                 if "password" in options["redact"]:
                     algorithm = identify_hasher(model["fields"]["password"])
-                    salt = algorithm.safe_summary(model["fields"]["password"])[
-                        salt_translated
-                    ]
+                    salt = get_salt(algorithm, model["fields"]["password"])
                     new_password = make_password(
-                        "REDACTED", salt=salt, hasher=algorithm
+                        "REDACTED",
+                        salt=salt,
+                        hasher=algorithm,
                     )
                     model["fields"]["password"] = new_password
             if model["model"] == "account.emailaddress":

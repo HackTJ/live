@@ -1,4 +1,4 @@
-FROM python:3.9.1-slim-buster
+FROM python:3.9.2-slim-buster
 
 ENV \
   # python:
@@ -65,7 +65,7 @@ RUN \
        fi \
 
     # Install `tini`:
-    && curl -o /tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" \
+    && curl -L -o /tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" \
     && chmod +x /tini \
 
     # Clean cache:
