@@ -1,64 +1,50 @@
 from django.core.management.base import BaseCommand
 from django.core.management.utils import get_random_secret_key
+from django.conf import settings
 
 
 class Command(BaseCommand):
-    help = "Outputs a production-ready dotenv file containing secret keys"
+    help = "Updates Docker secrets with production-ready values"
 
-    def add_arguments(self, parser):
-        parser.add_argument(
-            "-e",
-            "--exclude",
-            action="append",
-            default=[],
-            help="A group of environment variables to exclude "
-            "(use multiple --exclude to exclude multiple groups). "
-            "Must be one of: ['secret', 'superuser', 'sendgrid', 'postgres'].",
+    def handle(self, **options):
+        secrets_dir = settings.BASE_DIR / "compose" / "secrets"
+        debug_secrets_dir = secrets_dir / "debug"
+        prod_secrets_dir = secrets_dir / "production"
+
+        secret_key_file = prod_secrets_dir / "secret_key.txt"
+        if not secret_key_file.exists():
+            with secret_key_file.open(mode="wt") as f:
+                f.write(get_random_secret_key())
+
+        django_superuser_username_file = (
+            prod_secrets_dir / "django_superuser_username.txt"
         )
-        parser.add_argument(
-            "-o", "--output", help="Specifies file to which the output is written."
+        if not django_superuser_username_file.exists():
+            with django_superuser_username_file.open(mode="wt") as f:
+                f.write("live_admin")
+        django_superuser_password_file = (
+            prod_secrets_dir / "django_superuser_password.txt"
         )
+        if not django_superuser_password_file.exists():
+            with django_superuser_password_file.open(mode="wt") as f:
+                # TODO: make it clear that users who run this command should check
+                # the ./compose/secrets/production/django_superuser_password.txt
+                # file contents so they know the password.
+                f.write(get_random_secret_key())
+        django_superuser_email_file = prod_secrets_dir / "django_superuser_email.txt"
+        if not django_superuser_email_file.exists():
+            with django_superuser_email_file.open(mode="wt") as f:
+                f.write("sumanth@hacktj.org")
 
-    def handle(self, *args, **options):
-        exclude = options["exclude"]
-
-        secrets = []
-        if "secret" not in exclude:
-            SECRET_KEY = get_random_secret_key()
-            secrets.append(f"SECRET_KEY='{SECRET_KEY}'")
-            secrets.append("")
-        if "superuser" not in exclude:
-            DJANGO_SUPERUSER_USERNAME = "live_admin"
-            DJANGO_SUPERUSER_PASSWORD = "admin-secret"
-            DJANGO_SUPERUSER_EMAIL = "sumanth@hacktj.org"
-            secrets.append(f"DJANGO_SUPERUSER_USERNAME='{DJANGO_SUPERUSER_USERNAME}'")
-            secrets.append(f"DJANGO_SUPERUSER_PASSWORD='{DJANGO_SUPERUSER_PASSWORD}'")
-            secrets.append(f"DJANGO_SUPERUSER_EMAIL='{DJANGO_SUPERUSER_EMAIL}'")
-            secrets.append("")
-        if "sendgrid" not in exclude:
-            SENDGRID_API_KEY = "SG.KEY"
-            secrets.append(f"SENDGRID_API_KEY='{SENDGRID_API_KEY}'")
-            secrets.append("")
-        if "postgres" not in exclude:
-            POSTGRES_PASSWORD = get_random_secret_key()
-            POSTGRES_USER = "live_postgres"
-            POSTGRES_DB = "hacktj_live"
-            POSTGRES_INITDB_ARGS = (
-                "--auth-host=scram-sha-256 --auth-local=scram-sha-256 "
-                "--data-checksums"
-            )
-            POSTGRES_HOST_AUTH_METHOD = "scram-sha-256"
-            secrets.append(f"POSTGRES_PASSWORD='{POSTGRES_PASSWORD}'")
-            secrets.append(f"POSTGRES_USER='{POSTGRES_USER}'")
-            secrets.append(f"POSTGRES_DB='{POSTGRES_DB}'")
-            secrets.append(f"POSTGRES_INITDB_ARGS='{POSTGRES_INITDB_ARGS}'")
-            secrets.append(f"POSTGRES_HOST_AUTH_METHOD='{POSTGRES_HOST_AUTH_METHOD}'")
-            secrets.append("")
-
-        secrets_data = "\n".join(secrets).rstrip()
-
-        if options.get("output"):
-            with open(options["output"], "wt") as output_file:
-                output_file.write(secrets_data)
-        else:
-            self.stdout.write(secrets_data)
+        postgres_password_file = prod_secrets_dir / "postgres_password.txt"
+        if not postgres_password_file.exists():
+            with postgres_password_file.open(mode="wt") as f:
+                f.write(get_random_secret_key())
+        postgres_user_file = prod_secrets_dir / "postgres_user.txt"
+        if not postgres_user_file.exists():
+            with postgres_user_file.open(mode="wt") as f:
+                f.write("live_postgres")
+        postgres_db_file = prod_secrets_dir / "postgres_db.txt"
+        if not postgres_db_file.exists():
+            with postgres_db_file.open(mode="wt") as f:
+                f.write("hacktj_live")
