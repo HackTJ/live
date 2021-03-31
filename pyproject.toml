@@ -6,7 +6,7 @@ authors = ["Sumanth Ratna <sumanth@hacktj.org>", "Pranav Mathur <pranav@hacktj.o
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = "^3.7"
+python = ">=3.7,<3.10"
 Django = {extras = ["argon2", "bcrypt"], version = "^3.1.2"}
 channels = "^3.0.2"
 gunicorn = "^20.0.4"
@@ -30,7 +30,7 @@ prettytable = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
-diagrams = "^0.18.0"
+diagrams = "^0.19.1"
 scour = "^0.38.2"
 pre-commit = "^2.10.1"
 
