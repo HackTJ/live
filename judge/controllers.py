@@ -61,6 +61,7 @@ def choose_next(annotator):
             items,
         )
 
+
 def get_mean_and_variance(project, criterion_index):
     if criterion_index == 0:
         return project.overallMean, project.overallVariance
@@ -72,6 +73,7 @@ def get_mean_and_variance(project, criterion_index):
         return project.designMean, project.designVariance
     elif criterion_index == 4:
         return project.complexityMean, project.complexityVariance
+
 
 def set_mean_and_variance(project, mean, variance, criterion_index):
     if criterion_index == 0:
@@ -92,13 +94,14 @@ def set_mean_and_variance(project, mean, variance, criterion_index):
 
     project.save()
 
+
 def perform_vote(annotator, current_won, criterion_index=0):
     if current_won:
         winner = annotator.current
         loser = annotator.prev
     else:
         winner = annotator.prev
-        loser = annotator.current      
+        loser = annotator.current
 
     winner_mean, winner_variance = get_mean_and_variance(winner, criterion_index)
     loser_mean, loser_variance = get_mean_and_variance(loser, criterion_index)

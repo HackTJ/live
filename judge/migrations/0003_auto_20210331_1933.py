@@ -6,33 +6,33 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('judge', '0002_auto_20210331_1725'),
+        ("judge", "0002_auto_20210331_1725"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='project',
-            name='complexityVariance',
+            model_name="project",
+            name="complexityVariance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='designVariance',
+            model_name="project",
+            name="designVariance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='functionalityVariance',
+            model_name="project",
+            name="functionalityVariance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='innovationVariance',
+            model_name="project",
+            name="innovationVariance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
-            model_name='project',
-            name='overallVariance',
+            model_name="project",
+            name="overallVariance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
     ]

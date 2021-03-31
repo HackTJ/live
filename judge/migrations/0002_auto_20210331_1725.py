@@ -6,66 +6,66 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('judge', '0001_initial'),
+        ("judge", "0001_initial"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='project',
-            name='means',
+            model_name="project",
+            name="means",
         ),
         migrations.RemoveField(
-            model_name='project',
-            name='variances',
+            model_name="project",
+            name="variances",
         ),
         migrations.AddField(
-            model_name='project',
-            name='complexityMean',
+            model_name="project",
+            name="complexityMean",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='complexityVariance',
+            model_name="project",
+            name="complexityVariance",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='designMean',
+            model_name="project",
+            name="designMean",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='designVariance',
+            model_name="project",
+            name="designVariance",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='functionalityMean',
+            model_name="project",
+            name="functionalityMean",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='functionalityVariance',
+            model_name="project",
+            name="functionalityVariance",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='innovationMean',
+            model_name="project",
+            name="innovationMean",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='innovationVariance',
+            model_name="project",
+            name="innovationVariance",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='overallMean',
+            model_name="project",
+            name="overallMean",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
         migrations.AddField(
-            model_name='project',
-            name='overallVariance',
+            model_name="project",
+            name="overallVariance",
             field=models.DecimalField(decimal_places=8, default=0.0, max_digits=12),
         ),
     ]

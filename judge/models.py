@@ -17,16 +17,24 @@ class Project(models.Model):
     overallVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
 
     innovationMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    innovationVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
-    
-    functionalityMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    functionalityVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+    innovationVariance = models.DecimalField(
+        default=1.0, decimal_places=8, max_digits=12
+    )
+
+    functionalityMean = models.DecimalField(
+        default=0.0, decimal_places=8, max_digits=12
+    )
+    functionalityVariance = models.DecimalField(
+        default=1.0, decimal_places=8, max_digits=12
+    )
 
     designMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
     designVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
 
     complexityMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    complexityVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+    complexityVariance = models.DecimalField(
+        default=1.0, decimal_places=8, max_digits=12
+    )
 
     numberOfVotes = models.IntegerField(default=0)
     timesSeen = models.IntegerField(default=0)  # decision made and not skipped
