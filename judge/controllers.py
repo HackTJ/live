@@ -62,40 +62,40 @@ def choose_next(annotator):
         )
 
 
-def get_mean_and_variance(project, criterion_index):
-    if criterion_index == 0:
+def get_mean_and_variance(project, criterion_id):
+    if criterion_id == "overall":
         return project.overallMean, project.overallVariance
-    elif criterion_index == 1:
+    elif criterion_id == "innovation":
         return project.innovationMean, project.innovationVariance
-    elif criterion_index == 2:
+    elif criterion_id == "functionality":
         return project.functionalityMean, project.functionalityVariance
-    elif criterion_index == 3:
+    elif criterion_id == "design":
         return project.designMean, project.designVariance
-    elif criterion_index == 4:
+    elif criterion_id == "complexity":
         return project.complexityMean, project.complexityVariance
 
 
-def set_mean_and_variance(project, mean, variance, criterion_index):
-    if criterion_index == 0:
+def set_mean_and_variance(project, mean, variance, criterion_id):
+    if criterion_id == "overall":
         project.overallMean = mean
         project.overallVariance = variance
-    elif criterion_index == 1:
+    elif criterion_id == "innovation":
         project.innovationMean = mean
         project.innovationVariance = variance
-    elif criterion_index == 2:
+    elif criterion_id == "functionality":
         project.functionalityMean = mean
         project.functionalityVariance = variance
-    elif criterion_index == 3:
+    elif criterion_id == "design":
         project.designMean = mean
         project.designVariance = variance
-    elif criterion_index == 4:
+    elif criterion_id == "complexity":
         project.complexityMean = mean
         project.complexityVariance = variance
 
     project.save()
 
 
-def perform_vote(annotator, current_won, criterion_index=0):
+def perform_vote(annotator, current_won, criterion_id="overall"):
     if current_won:
         winner = annotator.current
         loser = annotator.prev
@@ -103,8 +103,8 @@ def perform_vote(annotator, current_won, criterion_index=0):
         winner = annotator.prev
         loser = annotator.current
 
-    winner_mean, winner_variance = get_mean_and_variance(winner, criterion_index)
-    loser_mean, loser_variance = get_mean_and_variance(loser, criterion_index)
+    winner_mean, winner_variance = get_mean_and_variance(winner, criterion_id)
+    loser_mean, loser_variance = get_mean_and_variance(loser, criterion_id)
 
     (
         annotator.alpha,
@@ -122,5 +122,6 @@ def perform_vote(annotator, current_won, criterion_index=0):
         float(loser_variance),
     )
 
-    set_mean_and_variance(winner, winner_mean, winner_variance, criterion_index)
-    set_mean_and_variance(loser, loser_mean, loser_variance, criterion_index)
+    annotator.save()
+    set_mean_and_variance(winner, winner_mean, winner_variance, criterion_id)
+    set_mean_and_variance(loser, loser_mean, loser_variance, criterion_id)

@@ -97,7 +97,16 @@ class Decision(models.Model):
         on_delete=models.CASCADE,
         to_field="judge",
     )
-    criterion = models.IntegerField(default=0)
+    criterion = models.CharField(
+        default=0,
+        max_length=255,
+        choices=[
+            ("overall", "Overall"),
+            ("innovation", "Innovation"),
+            ("functionality", "Functionality"),
+            ("design", "Design"),
+            ("complexity", "Technical Complexity")
+        ])
     winner = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,
