@@ -7,14 +7,8 @@ from os.path import exists
 print("Loading gunicorn config.")
 
 
-def trace_on_abort():
-    from signal import signal, SIGABRT
-    from traceback import format_stack
-
-    def print_trace(_, frame):
-        print("".join(format_stack(frame)))
-
-    signal(SIGABRT, print_trace)
+def when_ready(server):
+    print("gunicorn is ready.")
 
 
 port = environ.get("PORT", 8000)

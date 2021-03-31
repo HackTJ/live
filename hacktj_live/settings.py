@@ -154,7 +154,7 @@ TEMPLATES = [
 
 # Auth
 
-AUTH_USER_MODEL = "utils.LiveUser" 
+AUTH_USER_MODEL = "utils.LiveUser"
 
 LOGIN_REDIRECT_URL = "/"
 

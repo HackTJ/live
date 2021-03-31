@@ -9,7 +9,7 @@ ENV \
   # pip:
   PIP_NO_CACHE_DIR=1 \
   # poetry:
-  POETRY_VERSION=1.1.4 \
+  POETRY_VERSION=1.1.5 \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
   PATH="$PATH:/root/.poetry/bin" \
@@ -29,7 +29,7 @@ RUN \
     # Install `postgresql-client` and `libpq-dev`:
     apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "curl=7.64.0-4+deb10u1" \
+      "curl=7.64.0-4+deb10u2" \
       "ca-certificates=20200601~deb10u2" \
       "gnupg=2.2.12-1+deb10u1" \
     && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
