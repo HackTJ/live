@@ -13,16 +13,21 @@ class Project(models.Model):
     tags = ArrayField(models.CharField(max_length=255), default=list)
     link = models.URLField(blank=True)
 
-    means = ArrayField(
-        models.DecimalField(default=0.0, decimal_places=8, max_digits=12),
-        # default=lambda: [0.0, ] * num_criteria,
-        size=num_criteria,
-    )
-    variances = ArrayField(
-        models.DecimalField(default=1.0, decimal_places=8, max_digits=12),
-        # default=lambda: [1.0, ] * num_criteria,
-        size=num_criteria,
-    )
+    overallMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    overallVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+
+    innovationMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    innovationVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+    
+    functionalityMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    functionalityVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+
+    designMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    designVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+
+    complexityMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    complexityVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+
     numberOfVotes = models.IntegerField(default=0)
     timesSeen = models.IntegerField(default=0)  # decision made and not skipped
     timesSkipped = models.IntegerField(default=0)

@@ -179,7 +179,7 @@ def vote(request):
 @never_cache
 def scoreboard(request):
     def render_stats():
-        projects = serialize("json", Project.objects.order_by("-means__0"))
+        projects = serialize("json", Project.objects.order_by("-overallMean"))
         return render(
             request,
             "judge/scoreboard/stats.html",
@@ -192,7 +192,7 @@ def scoreboard(request):
     def render_rankings():
         projects = serialize(
             "json",
-            Project.objects.order_by("-means__0"),
+            Project.objects.order_by("-overallMean"),
             fields=("name", "description"),
         )
         return render(

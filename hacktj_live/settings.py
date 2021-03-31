@@ -440,7 +440,8 @@ LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
 # must have an "overall" key (used for assigning judges)
 LIVE_JUDGE_CRITERIA = OrderedDict(
     overall="Overall",
-    design="UI/UX",
-    social_impact="Social Impact",
-    feasibility="Feasibility",
+    innovation="Innovation",
+    functionality="Functionality",
+    design="Design",
+    complexity="Technical Complexity",
 )
