@@ -79,20 +79,23 @@ def set_mean_and_variance(project, mean, variance, criterion_id):
     if criterion_id == "overall":
         project.overallMean = mean
         project.overallVariance = variance
+        project.save(update_fields=["overallMean", "overallVariance"])
     elif criterion_id == "innovation":
         project.innovationMean = mean
         project.innovationVariance = variance
+        project.save(update_fields=["innovationMean", "innovationVariance"])
     elif criterion_id == "functionality":
         project.functionalityMean = mean
         project.functionalityVariance = variance
+        project.save(update_fields=["functionalityMean", "functionalityVariance"])
     elif criterion_id == "design":
         project.designMean = mean
         project.designVariance = variance
+        project.save(update_fields=["designMean", "designVariance"])
     elif criterion_id == "complexity":
         project.complexityMean = mean
         project.complexityVariance = variance
-
-    project.save()
+        project.save(update_fields=["complexityMean", "complexityVariance"])
 
 
 def perform_vote(annotator, current_won, criterion_id="overall"):
