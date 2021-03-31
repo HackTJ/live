@@ -19,5 +19,5 @@ else
   poetry run python -m whitenoise.compress static/assets/ ""  # whitenoise
 
   ulimit -n 2048
-  poetry run gunicorn --config ./compose/django/gunicorn.conf.py 'hacktj_live.asgi:application'
+  poetry run python -m gunicorn --config ./compose/django/gunicorn.conf.py 'hacktj_live.asgi:application' --access-logfile - --error-logfile -
 fi
