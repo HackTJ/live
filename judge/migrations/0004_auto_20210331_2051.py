@@ -6,13 +6,23 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('judge', '0003_auto_20210331_1933'),
+        ("judge", "0003_auto_20210331_1933"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='decision',
-            name='criterion',
-            field=models.CharField(choices=[('overall', 'Overall'), ('innovation', 'Innovation'), ('functionality', 'Functionality'), ('design', 'Design'), ('complexity', 'Technical Complexity')], default=0, max_length=255),
+            model_name="decision",
+            name="criterion",
+            field=models.CharField(
+                choices=[
+                    ("overall", "Overall"),
+                    ("innovation", "Innovation"),
+                    ("functionality", "Functionality"),
+                    ("design", "Design"),
+                    ("complexity", "Technical Complexity"),
+                ],
+                default=0,
+                max_length=255,
+            ),
         ),
     ]

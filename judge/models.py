@@ -105,8 +105,9 @@ class Decision(models.Model):
             ("innovation", "Innovation"),
             ("functionality", "Functionality"),
             ("design", "Design"),
-            ("complexity", "Technical Complexity")
-        ])
+            ("complexity", "Technical Complexity"),
+        ],
+    )
     winner = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,
