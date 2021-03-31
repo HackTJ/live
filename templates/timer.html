@@ -111,7 +111,6 @@ this HTML template.
     setTimerValue{{ timer_suffix }}(timerState{{ timer_suffix }}.timeout);
 
     function stepTimer{{timer_suffix}}() {
-        // TODO: breaks on resume
         timerState{{ timer_suffix }}.progress += (Date.now() - timerState{{ timer_suffix }}.lastUpdate) / 1000.
         timerState{{ timer_suffix }}.lastUpdate = Date.now();
         if (timerState{{ timer_suffix }}.progress >= timerState{{ timer_suffix }}.timeout) {

@@ -9,10 +9,9 @@ repos:
             (?x)^(
                 tailwind/static/css/tailwind.min.css|
                 tailwind/.pnp.js|
-                tailwind/.yarn/releases/yarn-2.4.0.cjs
+                tailwind/\.yarn/.*
             )$
     -   id: check-yaml
-    -   id: pretty-format-yaml
     -   id: check-added-large-files
         args:
         -   --maxkb=50000  # 50 MB
@@ -20,9 +19,9 @@ repos:
     -   id: check-docstring-first
     -   id: check-json
     -   id: pretty-format-json
+        exclude: tailwind/package.json
     -   id: check-merge-conflict
     -   id: check-toml
-    -   id: pretty-format-toml
     -   id: check-xml
 -   repo: https://github.com/psf/black
     rev: 20.8b1

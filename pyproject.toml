@@ -30,7 +30,7 @@ prettytable = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
-diagrams = "^0.18.0"
+diagrams = "^0.19.1"
 scour = "^0.38.2"
 pre-commit = "^2.10.1"
 
