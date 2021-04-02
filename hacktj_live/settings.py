@@ -418,7 +418,7 @@ LIVE_ADMIN_USER_APPROVAL = frozenset({} if DEBUG else {"user_judge", "user_mento
 
 # this is the minimum number of times each item needs to be seen before
 # switching to more sophisticated item selection strategies.
-LIVE_JUDGE_MIN_VIEWS = 2
+LIVE_JUDGE_MIN_VIEWS = 4
 
 # this is the maximum amount of time (in minutes) a judge will have a project
 # to themselves before other judges can also be assigned to the same project.
