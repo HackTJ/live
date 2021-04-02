@@ -53,10 +53,10 @@ def choose_next(annotator):
             lambda project: crowd_bt.expected_information_gain(
                 float(annotator.alpha),
                 float(annotator.beta),
-                float(annotator.prev.overallMean),
-                float(annotator.prev.overallVariance),
-                float(project.overallMean),
-                float(project.overallVariance),
+                float(annotator.prev.overall_mean),
+                float(annotator.prev.overall_variance),
+                float(project.overall_mean),
+                float(project.overall_variance),
             ),
             items,
         )
@@ -64,38 +64,38 @@ def choose_next(annotator):
 
 def get_mean_and_variance(project, criterion_id):
     if criterion_id == "overall":
-        return project.overallMean, project.overallVariance
+        return project.overall_mean, project.overall_variance
     elif criterion_id == "innovation":
-        return project.innovationMean, project.innovationVariance
+        return project.innovation_mean, project.innovation_variance
     elif criterion_id == "functionality":
-        return project.functionalityMean, project.functionalityVariance
+        return project.functionality_mean, project.functionality_variance
     elif criterion_id == "design":
-        return project.designMean, project.designVariance
+        return project.design_mean, project.design_variance
     elif criterion_id == "complexity":
-        return project.complexityMean, project.complexityVariance
+        return project.complexity_mean, project.complexity_variance
 
 
 def set_mean_and_variance(project, mean, variance, criterion_id):
     if criterion_id == "overall":
-        project.overallMean = mean
-        project.overallVariance = variance
-        project.save(update_fields=["overallMean", "overallVariance"])
+        project.overall_mean = mean
+        project.overall_variance = variance
+        project.save(update_fields=["overall_mean", "overall_variance"])
     elif criterion_id == "innovation":
-        project.innovationMean = mean
-        project.innovationVariance = variance
-        project.save(update_fields=["innovationMean", "innovationVariance"])
+        project.innovation_mean = mean
+        project.innovation_variance = variance
+        project.save(update_fields=["innovation_mean", "innovation_variance"])
     elif criterion_id == "functionality":
-        project.functionalityMean = mean
-        project.functionalityVariance = variance
-        project.save(update_fields=["functionalityMean", "functionalityVariance"])
+        project.functionality_mean = mean
+        project.functionality_variance = variance
+        project.save(update_fields=["functionality_mean", "functionality_variance"])
     elif criterion_id == "design":
-        project.designMean = mean
-        project.designVariance = variance
-        project.save(update_fields=["designMean", "designVariance"])
+        project.design_mean = mean
+        project.design_variance = variance
+        project.save(update_fields=["design_mean", "design_variance"])
     elif criterion_id == "complexity":
-        project.complexityMean = mean
-        project.complexityVariance = variance
-        project.save(update_fields=["complexityMean", "complexityVariance"])
+        project.complexity_mean = mean
+        project.complexity_variance = variance
+        project.save(update_fields=["complexity_mean", "complexity_variance"])
 
 
 def perform_vote(annotator, current_won, criterion_id="overall"):

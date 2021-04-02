@@ -12,27 +12,27 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name="project",
-            name="complexityVariance",
+            name="complexity_variance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
             model_name="project",
-            name="designVariance",
+            name="design_variance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
             model_name="project",
-            name="functionalityVariance",
+            name="functionality_variance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
             model_name="project",
-            name="innovationVariance",
+            name="innovation_variance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
         migrations.AlterField(
             model_name="project",
-            name="overallVariance",
+            name="overall_variance",
             field=models.DecimalField(decimal_places=8, default=1.0, max_digits=12),
         ),
     ]

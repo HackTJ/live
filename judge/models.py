@@ -13,26 +13,26 @@ class Project(models.Model):
     tags = ArrayField(models.CharField(max_length=255), default=list)
     link = models.URLField(blank=True)
 
-    overallMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    overallVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+    overall_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    overall_variance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
 
-    innovationMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    innovationVariance = models.DecimalField(
+    innovation_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    innovation_variance = models.DecimalField(
         default=1.0, decimal_places=8, max_digits=12
     )
 
-    functionalityMean = models.DecimalField(
+    functionality_mean = models.DecimalField(
         default=0.0, decimal_places=8, max_digits=12
     )
-    functionalityVariance = models.DecimalField(
+    functionality_variance = models.DecimalField(
         default=1.0, decimal_places=8, max_digits=12
     )
 
-    designMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    designVariance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+    design_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    design_variance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
 
-    complexityMean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
-    complexityVariance = models.DecimalField(
+    complexity_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    complexity_variance = models.DecimalField(
         default=1.0, decimal_places=8, max_digits=12
     )
 
