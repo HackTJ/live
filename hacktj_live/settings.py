@@ -402,6 +402,8 @@ COMPRESS_FILTERS = {
     ],
 }
 
+COMPRESS_CSS_HASHING_METHOD = "content"
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
