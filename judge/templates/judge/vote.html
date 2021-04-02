@@ -6,38 +6,44 @@
 <div class="w-2/3 content-center justify-center text-center mx-auto space-y-4 mb-6">
     <h1 class="text-2xl text-center">{% translate "Vote" %}</h1>
     <a href="{% url 'judge:index' %}" class="text-indigo-700 hover:underline">Return to Judge Home</a>
-    <div>
-        {# TODO: use timeout in settings #}
-        {# `timeout` is in minutes: #}
-        {% include "timer.html" with timeout=300 %}
-        <p class="mx-auto w-2/3">
-            Please use the above timer for ensuring that a project does not present for
-            too long. You may use more or less time than the timer shows; it is only
-            meant as a utility for judging.
-        </p>
-    </div>
-    <div class="flex flex-wrap">
-        <div class="bg-blue-200 lg:w-1/3 mx-auto my-3 pb-2 rounded">
-            <h2 class="bg-blue-400 text-xl rounded-t px-4">Previous</h2>
-            <h3 class="text-lg text-black px-4">{{ prev.name }}</h3>
-            <p class="text-gray-700 px-4">{{ prev.description }}</p>
-            <p class="text-gray-700">
-                {{ prev.tags|join:", " }}
-            </p>
-            <p class="text-gray-700 px-4"><b>Link: </b><a href="{{ prev.link }}" target="_blank"
-                                                          rel="noopener">Devpost</a></p>
+    {% include "judge/presentation_timer.html" %}
+    <div class="mx-5 pt-8 grid place-content-center">
+        <div
+            class="bg-gradient-to-r from-blue-400 to-indigo-500 rounded-2xl text-white p-8 text-center h-72 max-w-sm mx-auto">
+            <h1 class="text-3xl mb-3">Compare</h1>
+            <p class="text-lg">Listen to the current project's presentation and compare it to that of the previous
+                project. </p>
         </div>
-        <div class="bg-blue-200 lg:w-1/3 mx-auto my-3 pb-2 rounded">
-            <h2 class="bg-blue-400 text-xl rounded-t px-4">Current</h2>
-            <h3 class="text-lg text-black px-4">{{ current.name }}</h3>
-            <p class="text-gray-700 px-4">{{ current.description }}</p>
-            <p class="text-gray-700">
-                {{ current.tags|join:", " }}
-            </p>
-            <p class="text-gray-700 px-4"><b>Link: </b><a href="{{ current.link }}" target="_blank" rel="noopener">Devpost</a>
-            </p>
+        <div class="flex flex-row space-x-16">
+            <div
+                class="flex-1 bg-white py-8 px-10 text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-16 max-w-xs text-blue-600">
+                <h2 class="font-semibold text-2xl mb-6 text-blue-500">Previous</h2>
+                <p class="text-xl mt-1">{{ prev.name }}</p>
+                <p class="mt-1">{{ prev.description }}</p>
+                <div class="flex flex-row flex-wrap mb-12">
+                    {% for tag in prev.tags %}
+                    <span class="flex border rounded-full w-24 py-1 justify-center mx-auto mt-2">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                <a class="mt-0 rounded-md bg-gradient-to-r from-blue-400 to-indigo-500 text-xl text-white pt-3 pb-4 px-8 inline"
+                    href="{{ prev.link }}" target="_blank" rel="noopener">Devpost</a>
+            </div>
+            <div
+                class="flex-1 bg-white py-8 px-10 text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-16 max-w-xs mx-auto text-blue-600">
+                <h2 class="font-semibold text-2xl mb-6 text-blue-500">Current</h2>
+                <p class="text-xl mt-1">{{ current.name }}</p>
+                <p class="mt-1">{{ current.description }}</p>
+                <div class="flex flex-row flex-wrap mb-12">
+                    {% for tag in current.tags %}
+                    <span class="flex border rounded-full w-24 py-1 justify-center mx-auto mt-2">{{ tag }}</span>
+                    {% endfor %}
+                </div>
+                <a class="mt-0 rounded-md bg-gradient-to-r from-blue-400 to-indigo-500 text-xl text-white pt-3 pb-4 px-8 inline"
+                    href="{{ current.link }}" target="_blank" rel="noopener">Devpost</a>
+            </div>
         </div>
     </div>
+
     <form action="{% url 'judge:vote' %}" method="POST" class="space-x-4 space-y-4 sm:space-x-0">
         {% csrf_token %}
 
@@ -45,14 +51,16 @@
         <div>
             <p>Which project is better with respect to <b>{{ criterion_label }}</b>?</p>
             <label class="mr-1">
-                <input class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                       name="criterion_{{ criterion_id }}" type="radio" value="previous" required/>
+                <input
+                    class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    name="criterion_{{ criterion_id }}" type="radio" value="previous" required>
                 Previous
             </label>
             <!-- TODO: skip -->
             <label class="ml-1">
-                <input class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                       name="criterion_{{ criterion_id }}" type="radio" value="current" required/>
+                <input
+                    class="border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
+                    name="criterion_{{ criterion_id }}" type="radio" value="current" required>
                 Current
             </label>
         </div>
@@ -61,8 +69,9 @@
         <input type="hidden" name="prev_id" value="{{ prev.id }}">
         <input type="hidden" name="current_id" value="{{ current.id }}">
 
-        <input class="mx-auto justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors text-gray-800 hover:bg-gray-600 hover:border-gray-600 hover:text-white"
-               type="submit" value="Submit Vote"/>
+        <input
+            class="mx-auto justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors text-gray-800 hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+            type="submit" value="Submit Vote" />
     </form>
 </div>
 {% endblock content %}
