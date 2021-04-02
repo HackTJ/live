@@ -13,16 +13,29 @@ class Project(models.Model):
     tags = ArrayField(models.CharField(max_length=255), default=list)
     link = models.URLField(blank=True)
 
-    means = ArrayField(
-        models.DecimalField(default=0.0, decimal_places=8, max_digits=12),
-        # default=lambda: [0.0, ] * num_criteria,
-        size=num_criteria,
+    overall_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    overall_variance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+
+    innovation_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    innovation_variance = models.DecimalField(
+        default=1.0, decimal_places=8, max_digits=12
     )
-    variances = ArrayField(
-        models.DecimalField(default=1.0, decimal_places=8, max_digits=12),
-        # default=lambda: [1.0, ] * num_criteria,
-        size=num_criteria,
+
+    functionality_mean = models.DecimalField(
+        default=0.0, decimal_places=8, max_digits=12
     )
+    functionality_variance = models.DecimalField(
+        default=1.0, decimal_places=8, max_digits=12
+    )
+
+    design_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    design_variance = models.DecimalField(default=1.0, decimal_places=8, max_digits=12)
+
+    complexity_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)
+    complexity_variance = models.DecimalField(
+        default=1.0, decimal_places=8, max_digits=12
+    )
+
     numberOfVotes = models.IntegerField(default=0)
     timesSeen = models.IntegerField(default=0)  # decision made and not skipped
     timesSkipped = models.IntegerField(default=0)
@@ -84,7 +97,17 @@ class Decision(models.Model):
         on_delete=models.CASCADE,
         to_field="judge",
     )
-    criterion = models.IntegerField(default=0)
+    criterion = models.CharField(
+        default=0,
+        max_length=255,
+        choices=[
+            ("overall", "Overall"),
+            ("innovation", "Innovation"),
+            ("functionality", "Functionality"),
+            ("design", "Design"),
+            ("complexity", "Technical Complexity"),
+        ],
+    )
     winner = models.ForeignKey(
         Project,
         on_delete=models.CASCADE,

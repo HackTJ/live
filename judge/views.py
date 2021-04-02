@@ -121,21 +121,19 @@ def vote(request):
             annotator.current.save(update_fields=["timesSeen"])
             new_decisions = []
 
-            for criterion_index, criterion_id in enumerate(
-                settings.LIVE_JUDGE_CRITERIA
-            ):
+            for criterion_id in settings.LIVE_JUDGE_CRITERIA:
                 criterion_winner = request.POST[f"criterion_{criterion_id}"]
                 # assert isinstance(criterion_winner, str)
                 if criterion_winner == "previous":
                     perform_vote(
                         annotator,
                         current_won=False,
-                        criterion_index=criterion_index,
+                        criterion_id=criterion_id,
                     )
                     new_decisions.append(
                         Decision(
                             annotator=annotator,
-                            criterion=criterion_index,
+                            criterion=criterion_id,
                             winner=annotator.prev,
                             loser=annotator.current,
                         )
@@ -144,12 +142,12 @@ def vote(request):
                     perform_vote(
                         annotator,
                         current_won=True,
-                        criterion_index=criterion_index,
+                        criterion_id=criterion_id,
                     )
                     new_decisions.append(
                         Decision(
                             annotator=annotator,
-                            criterion=criterion_index,
+                            criterion=criterion_id,
                             winner=annotator.current,
                             loser=annotator.prev,
                         )
@@ -179,7 +177,7 @@ def vote(request):
 @never_cache
 def scoreboard(request):
     def render_stats():
-        projects = serialize("json", Project.objects.order_by("-means__0"))
+        projects = serialize("json", Project.objects.order_by("-overall_mean"))
         return render(
             request,
             "judge/scoreboard/stats.html",
@@ -192,7 +190,7 @@ def scoreboard(request):
     def render_rankings():
         projects = serialize(
             "json",
-            Project.objects.order_by("-means__0"),
+            Project.objects.order_by("-overall_mean"),
             fields=("name", "description"),
         )
         return render(

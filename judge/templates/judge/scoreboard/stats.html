@@ -1,7 +1,9 @@
 {% extends "spreadsheet.html" %}
 
 {% block headings %}
+{{ criteria|json_script:"criteria" }}
 <script>
+    const criteria = JSON.parse(document.getElementById('criteria').textContent);
     const headings = [
         {
             'key': 'projectId',
@@ -19,14 +21,14 @@
             'key': 'tags',
             'value': 'Tags'
         },
-        {
-            'key': 'means',
-            'value': 'Mus'
-        },
-        {
-            'key': 'variances',
-            'value': 'Sigma Squareds'
-        },
+        ...Object.keys(criteria).map(key => {
+            return { key: `${key}_mean`, value: `${criteria[key]} Mean` };
+          },
+        ),
+        ...Object.keys(criteria).map(key => {
+            return { key: `${key}_variance`, value: `${criteria[key]} Variance` };
+          },
+        ),
         {
             'key': 'numberOfVotes',
             'value': 'Votes'
@@ -57,16 +59,18 @@
 {% comment "TODO: this is safer than |escapejs" %}
 {{ projects|json_script:"projects-data" }}
 {% endcomment %}
-{{ criteria|json_script:"criteria" }}
 
 <script>
-    const criteria = JSON.parse(document.getElementById('criteria').textContent);
     const data = JSON.parse("{{ projects|escapejs }}").map(project => {
         let projectProperties = project.fields;
         projectProperties.projectId = project.pk;
         projectProperties.tags = project.fields.tags !== "[\"\"]" ? JSON.parse(project.fields.tags).join(", ") : "None";
-        projectProperties.means = JSON.parse(project.fields.means).map(meanStr => parseFloat(meanStr));
-        projectProperties.variances = JSON.parse(project.fields.variances).map(varianceStr => parseFloat(varianceStr));
+        for (const criterionId in criteria) {
+          const meanKey = `${criterionId}_mean`;
+          const varianceKey = `${criterionId}_variance`;
+          projectProperties[meanKey] = parseFloat(project.fields[meanKey]);
+          projectProperties[varianceKey] = parseFloat(project.fields[varianceKey]);
+        }
         return projectProperties;
     });
     // const data = Array.from(JSON.parse(document.getElementById('projects-data').textContent)).map(project => project.fields);
