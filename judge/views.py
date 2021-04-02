@@ -285,3 +285,10 @@ def queue(request):
             ),
         },
     )
+
+
+@require_GET
+def rubric(request):
+    # we make this route publicly viewable because anyone can look
+    # at  the Live source code to see what our judging criteria are.
+    return render(request, "judge/rubric.html")

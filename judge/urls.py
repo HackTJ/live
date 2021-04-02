@@ -10,4 +10,5 @@ urlpatterns = [
     path("vote", views.vote, name="vote"),
     path("scoreboard", views.scoreboard, name="scoreboard"),
     path("queue", views.queue, name="queue"),
+    path("rubric", views.rubric, name="rubric"),
 ]

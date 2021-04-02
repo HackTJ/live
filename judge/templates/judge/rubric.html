@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block content %}
+<div class="w-2/3 content-center justify-center text-center mx-auto space-y-4">
+    <h1 class="text-2xl">{% translate "HackTJ Judging Rubric" %}</h1>
+    <table class="w-full table-fixed">
+      <tr>
+        <th>Innovation</th>
+        <th>Functionality</th>
+        <th>Design</th>
+        <th>Technical Complexity</th>
+      </tr>
+      <tr class="text-center">
+        <td>Does the hack introduce a new approach or perspective, technical, analytical, or visual? </td>
+        <td>Does the hack function as intended? Is it robust and easy to interact with? </td>
+        <td>Is the hack aesthetically pleasing? Does the design of the hack elevate its message? </td>
+        <td>Does the hack demonstrate good understanding of the technologies used? Did the hackers challenge themselves? </td>
+      </tr>
+    </table>
+</div>
+{% endblock %}
