@@ -15,7 +15,7 @@
         </li>
         <li>{% blocktranslate %} If it's hard to choose, you can skip that comparison, but <b>please don't skip unless absolutely necessary</b>. {% endblocktranslate %}
         </li>
-        <li>{% blocktranslate %} You can view descriptions of the judging criteria <a href="{% url 'judge:rubric' %}" target="_blank" rel="noopener">here</a>. {% endblocktranslate %}</li>
+        <li>{% translate "You can view descriptions of the judging criteria" %} <a href="{% url 'judge:rubric' %}" target="_blank" rel="noopener">{% translate "here" %}</a>{% translate "." %}</li>
     </ul>
     <form action="{% url 'judge:welcome' %}" method="POST">
         {% csrf_token %}

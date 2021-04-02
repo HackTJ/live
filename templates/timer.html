@@ -55,14 +55,16 @@
     </button>
 </div>
 
-{% load compress %}
-{% compress js %}
 {% comment "This HTML commented has also been commented with Django to avoid sending extra bytes to the client and Django comments can't be multi-line" %}
 <!--
 it would be nice to have these functions global to all timers on a page but
 there's no way to `include` JS only once; to keep the functions global we'd
 need to create a separate template for the JS and include it separately from
 this HTML template.
+-->
+<!--
+this JS can't be `compress`ed because of the dynamic random suffix. since we
+want to stick to offline compression, we don't compress this `script`.
 -->
 {% endcomment %}
 {# TODO: escapejs filter when defining functions? #}
@@ -160,4 +162,3 @@ this HTML template.
         }
     }
 </script>
-{% endcompress %}
