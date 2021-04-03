@@ -51,14 +51,14 @@
             <ul class="lg:flex justify-end flex-1 items-center lg:space-x-3 mx-auto text-black">
                 <!--toggleColour-->
                 <li>
-                    <a class="inline py-2 px-4 font-bold no-underline" href="/">Home</a>
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4 {% if not request.resolver_match.app_name %}font-bold{% endif %}" href="/">Home</a>
                 </li>
                 <!-- <li>
-                  <a class="inline text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
-                    href="/mentor">Mentor</a>
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4 {% if request.resolver_match.app_name == 'mentor' %}font-bold{% endif %}"
+                       href="/mentor">Mentor</a>
                 </li> -->
                 <li>
-                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+                    <a class="inline no-underline hover:text-gray-800 hover:text-underline py-2 px-4 {% if request.resolver_match.app_name == 'judge' %}font-bold{% endif %}"
                        href="{% url 'judge:index' %}">Judge</a>
                 </li>
                 <li class="select-none hidden lg:block">|</li>
@@ -126,7 +126,7 @@
                 <ul class="mb-6 inline">
                     <li class="mt-2 inline-block mr-2 md:block md:mr-0">
                         <a href="https://github.com/HackTJ/live/blob/main/LICENSE"
-                           class="no-underline hover:underline text-gray-800 hover:text-orange-500">License</a>
+                           class="no-underline hover:underline text-gray-800 hover:text-orange-500" target="_blank" rel="noopener">License</a>
                     </li>
                     <!-- <li class="mt-2 inline-block mr-2 md:block md:mr-0">
                       <a href="#" class="no-underline hover:underline text-gray-800 hover:text-orange-500">Terms and Privacy</a>
