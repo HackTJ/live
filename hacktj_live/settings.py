@@ -168,23 +168,17 @@ DEFAULT_FROM_EMAIL = "live@hacktj.org"
 if DEBUG:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
-    EMAIL_HOST = "smtp.sendgrid.net"
-
-    EMAIL_HOST_PASSWORD = os.getenv("SENDGRID_API_KEY")
-
-    EMAIL_HOST_USER = "apikey"
-
-    EMAIL_PORT = 587
+    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 
     EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
 
-    EMAIL_USE_TLS = True
+    SENDGRID_ECHO_TO_STDOUT = True
 
 ACCOUNT_ADAPTER = "utils.adapters.LiveAccountAdapter"
 
-if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
+if EMAIL_BACKEND != "django.core.mail.backends.console.EmailBackend":
     ACCOUNT_EMAIL_REQUIRED = True
 
     ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -422,7 +416,10 @@ LIVE_JUDGE_MIN_VIEWS = 4
 
 # this is the maximum amount of time (in minutes) a judge will have a project
 # to themselves before other judges can also be assigned to the same project.
+# TODO: do we need this? we look at Project.annotator to see if projects are available
 LIVE_JUDGE_TIMEOUT = 5.0
+
+# TODO: use start and end time to decide whether judge can vote?
 
 # December 13, 2020 at 5:30 p.m.
 LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=16, minute=30)

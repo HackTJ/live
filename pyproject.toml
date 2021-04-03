@@ -27,6 +27,7 @@ Twisted = {extras = ["tls", "http2"], version = "^20.3.0"}
 django-simple-captcha = "^0.5.13"
 dealer = "^2.1.0"
 prettytable = "^2.0.0"
+django-sendgrid-v5 = "^0.9.1"
 
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
