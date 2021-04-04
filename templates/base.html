@@ -13,8 +13,10 @@
     <meta itemprop="release-footprint" content="{{ REVISION }}"/>
 
     {% load static %}
-
-    <link rel="stylesheet" href="{% static 'css/tailwind.min.css' %}">
+    {% load compress %}
+    {% compress css %}
+    <link rel="stylesheet" type="text/css" charset="utf-8" href="{% static 'css/tailwind.min.css' %}">
+    {% endcompress %}
 
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet">
 
