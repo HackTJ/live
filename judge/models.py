@@ -2,6 +2,7 @@ from datetime import datetime
 from django.db import models
 from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
+from django.utils.translation import gettext_lazy
 
 num_criteria = len(settings.LIVE_JUDGE_CRITERIA)
 
@@ -97,16 +98,18 @@ class Decision(models.Model):
         on_delete=models.CASCADE,
         to_field="judge",
     )
+
+    class Criterion(models.TextChoices):
+        OVERALL = "overall", gettext_lazy("Overall")
+        INNOVATION = "innovation", gettext_lazy("Innovation")
+        FUNCTIONALITY = "functionality", gettext_lazy("Functionality")
+        DESIGN = "design", gettext_lazy("Design")
+        COMPLEXITY = "complexity", gettext_lazy("Technical Complexity")
+
     criterion = models.CharField(
-        default=0,
-        max_length=255,
-        choices=[
-            ("overall", "Overall"),
-            ("innovation", "Innovation"),
-            ("functionality", "Functionality"),
-            ("design", "Design"),
-            ("complexity", "Technical Complexity"),
-        ],
+        max_length=max(len(value) for value in Criterion.values),
+        choices=Criterion.choices,
+        default=Criterion.OVERALL,
     )
     winner = models.ForeignKey(
         Project,
