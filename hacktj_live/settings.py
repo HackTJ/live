@@ -195,15 +195,21 @@ ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
 if in_docker:
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
             "LOCATION": "memcached:11211",
+            "OPTIONS": {
+                "use_pooling": True,
+            },
         }
     }
 elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
             "LOCATION": "127.0.0.1:11211",
+            "OPTIONS": {
+                "use_pooling": True,
+            },
         }
     }
 
