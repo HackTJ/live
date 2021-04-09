@@ -421,12 +421,12 @@ LIVE_JUDGE_TIMEOUT = 5.0
 
 # TODO: use start and end time to decide whether judge can vote?
 
-# December 13, 2020 at 5:30 p.m.
-LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=16, minute=30)
+# April 11, 2021 at 4:30 p.m.
+LIVE_JUDGE_START_TIME = datetime(year=2021, month=4, day=11, hour=16, minute=30)
 # LIVE_JUDGE_START_TIME = None
 
-# December 13, 2020 at 7:30 p.m.
-LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
+# April 11, 2021 at 7:30 p.m.
+LIVE_JUDGE_END_TIME = datetime(year=2021, month=4, day=11, hour=19, minute=30)
 # LIVE_JUDGE_END_TIME = None
 
 # key is criterion ID, value is human-readable label
