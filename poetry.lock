@@ -578,7 +578,7 @@ idna = ">=2.5"
 
 [[package]]
 name = "identify"
-version = "2.2.2"
+version = "2.2.3"
 description = "File identification library for Python"
 category = "dev"
 optional = false
@@ -1526,8 +1526,8 @@ hyperlink = [
     {file = "hyperlink-21.0.0.tar.gz", hash = "sha256:427af957daa58bc909471c6c40f74c5450fa123dd093fc53efd2e91d2705a56b"},
 ]
 identify = [
-    {file = "identify-2.2.2-py2.py3-none-any.whl", hash = "sha256:c7c0f590526008911ccc5ceee6ed7b085cbc92f7b6591d0ee5913a130ad64034"},
-    {file = "identify-2.2.2.tar.gz", hash = "sha256:43cb1965e84cdd247e875dec6d13332ef5be355ddc16776396d98089b9053d87"},
+    {file = "identify-2.2.3-py2.py3-none-any.whl", hash = "sha256:398cb92a7599da0b433c65301a1b62b9b1f4bb8248719b84736af6c0b22289d6"},
+    {file = "identify-2.2.3.tar.gz", hash = "sha256:4537474817e0bbb8cea3e5b7504b7de6d44e3f169a90846cbc6adb0fc8294502"},
 ]
 idna = [
     {file = "idna-3.1-py3-none-any.whl", hash = "sha256:5205d03e7bcbb919cc9c19885f9920d622ca52448306f2377daede5cf3faac16"},
