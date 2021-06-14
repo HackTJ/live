@@ -30,7 +30,7 @@ django-sendgrid-v5 = "^0.9.1"
 pymemcache = "^3.4.1"
 
 [tool.poetry.dev-dependencies]
-black = "^21.5b1"
+black = "^21.6b0"
 diagrams = "^0.19.1"
 scour = "^0.38.2"
 pre-commit = "^2.10.1"
