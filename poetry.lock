@@ -339,7 +339,7 @@ resolved_reference = "1937ed9e61d273163353c8546825dd529ce8546c"
 
 [[package]]
 name = "django"
-version = "3.2"
+version = "3.2.4"
 description = "A high-level Python Web framework that encourages rapid development and clean, pragmatic design."
 category = "main"
 optional = false
@@ -1213,7 +1213,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "4ef6b16a26234248e351f0a3770943bf53cc20ef883faa5ebc65a60f6b39ac02"
+content-hash = "016b6a299d8fd294aad1cdac7e3d7c59fc05d02b48815c8f448b7a7b256a437b"
 
 [metadata.files]
 aioredis = [
@@ -1431,8 +1431,8 @@ distlib = [
 ]
 dj-database-url = []
 django = [
-    {file = "Django-3.2-py3-none-any.whl", hash = "sha256:0604e84c4fb698a5e53e5857b5aea945b2f19a18f25f10b8748dbdf935788927"},
-    {file = "Django-3.2.tar.gz", hash = "sha256:21f0f9643722675976004eb683c55d33c05486f94506672df3d6a141546f389d"},
+    {file = "Django-3.2.4-py3-none-any.whl", hash = "sha256:ea735cbbbb3b2fba6d4da4784a0043d84c67c92f1fdf15ad6db69900e792c10f"},
+    {file = "Django-3.2.4.tar.gz", hash = "sha256:66c9d8db8cc6fe938a28b7887c1596e42d522e27618562517cc8929eb7e7f296"},
 ]
 django-allauth = [
     {file = "django-allauth-0.44.0.tar.gz", hash = "sha256:e51af457466022f52154d74c8523ac69375120fad2acce6e239635d85e610b25"},
