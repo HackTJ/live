@@ -3,12 +3,17 @@ repos:
     rev: v4.0.1
     hooks:
     -   id: trailing-whitespace
-        exclude: tailwind/.pnp.js
+        exclude: |
+            (?x)^(
+                tailwind/static/css/tailwind.min.css|
+                tailwind/.pnp.cjs|
+                tailwind/\.yarn/.*
+            )$
     -   id: end-of-file-fixer
         exclude: |
             (?x)^(
                 tailwind/static/css/tailwind.min.css|
-                tailwind/.pnp.js|
+                tailwind/.pnp.cjs|
                 tailwind/\.yarn/.*
             )$
     -   id: check-yaml
