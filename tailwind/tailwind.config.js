@@ -15,15 +15,6 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {
-      cursor: ['responsive', 'disabled'],
-      backgroundColor: ['responsive', 'hover', 'focus', 'disabled'],
-      fontWeight: ['responsive', 'hover', 'focus', 'disabled'],
-      textColor: ['responsive', 'hover', 'focus', 'disabled'],
-      transitionProperty: ['responsive', 'motion-safe', 'motion-reduce'],
-    },
-  },
   plugins: [
     require('@tailwindcss/forms'),
   ],
