@@ -140,7 +140,7 @@ colorama = {version = "*", markers = "sys_platform == \"win32\""}
 
 [[package]]
 name = "black"
-version = "21.8b0"
+version = "21.9b0"
 description = "The uncompromising code formatter."
 category = "dev"
 optional = false
@@ -208,7 +208,7 @@ tests = ["pytest", "pytest-django", "pytest-asyncio", "async-generator", "async-
 
 [[package]]
 name = "channels-redis"
-version = "3.3.0"
+version = "3.3.1"
 description = "Redis-backed ASGI channel layer implementation"
 category = "main"
 optional = false
@@ -1226,7 +1226,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.7,<3.10"
-content-hash = "b75739a9fd53c5dff67e957487b966bb068ad838fbc1507e439ba846b9557c06"
+content-hash = "53cc5c08be9c4fff043ad1cf1e89c163d495eb63e2e60c0fcaaeab3590d79a6e"
 
 [metadata.files]
 aioredis = [
@@ -1296,8 +1296,8 @@ better-exceptions = [
     {file = "better_exceptions-0.3.3.tar.gz", hash = "sha256:e4e6bc18444d5f04e6e894b10381e5e921d3d544240418162c7db57e9eb3453b"},
 ]
 black = [
-    {file = "black-21.8b0-py3-none-any.whl", hash = "sha256:2a0f9a8c2b2a60dbcf1ccb058842fb22bdbbcb2f32c6cc02d9578f90b92ce8b7"},
-    {file = "black-21.8b0.tar.gz", hash = "sha256:570608d28aa3af1792b98c4a337dbac6367877b47b12b88ab42095cfc1a627c2"},
+    {file = "black-21.9b0-py3-none-any.whl", hash = "sha256:380f1b5da05e5a1429225676655dddb96f5ae8c75bdf91e53d798871b902a115"},
+    {file = "black-21.9b0.tar.gz", hash = "sha256:7de4cfc7eb6b710de325712d40125689101d21d25283eed7e9998722cf10eb91"},
 ]
 brotli = [
     {file = "Brotli-1.0.9-cp27-cp27m-macosx_10_9_x86_64.whl", hash = "sha256:268fe94547ba25b58ebc724680609c8ee3e5a843202e9a381f6f9c5e8bdb5c70"},
@@ -1393,8 +1393,8 @@ channels = [
     {file = "channels-3.0.3.tar.gz", hash = "sha256:056b72e51080a517a0f33a0a30003e03833b551d75394d6636c885d4edb8188f"},
 ]
 channels-redis = [
-    {file = "channels_redis-3.3.0-py3-none-any.whl", hash = "sha256:1abd5820ff1ed4ac627f8a219ad389e4c87e52e47a230929a7a474e95dd2c6c2"},
-    {file = "channels_redis-3.3.0.tar.gz", hash = "sha256:0a18ce279c15ba79b7985bb12b2d6dd0ac8a14e4ad6952681f4422a4cc4a5ea9"},
+    {file = "channels_redis-3.3.1-py3-none-any.whl", hash = "sha256:fbb24a7a57a6cc0ebe5aa121cdf841eabf845cf47dd5c1059224ef4d64aeaeac"},
+    {file = "channels_redis-3.3.1.tar.gz", hash = "sha256:899dc6433f5416cf8ad74505baaf2acb5461efac3cad40751a41119e3f68421b"},
 ]
 click = [
     {file = "click-7.1.2-py2.py3-none-any.whl", hash = "sha256:dacca89f4bfadd5de3d7489b7c8a566eee0d3676333fbb50030263894c38c0dc"},
