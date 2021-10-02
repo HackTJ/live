@@ -18,7 +18,7 @@ scipy = "^1.5.3"
 dj-database-url = {git = "https://github.com/jacobian/dj-database-url.git"}  # commit 8b48e4bd40e28816a5f0ccc65a1a09e7a474de89
 django-compressor = "^2.4"
 django-dbbackup = {git = "https://github.com/django-dbbackup/django-dbbackup.git"}  # PR #361
-django-debug-toolbar = "^3.1.1"
+django-debug-toolbar = "^3.2.1"
 django-allauth = "^0.44.0"
 better-exceptions = "^0.3.2"
 whitenoise = {extras = ["brotli"], version = "^5.2.0"}
