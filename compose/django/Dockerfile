@@ -1,4 +1,4 @@
-FROM python:3.9.2-slim-buster
+FROM python:3.9.7-slim-bullseye
 
 ENV \
   # python:
@@ -9,7 +9,7 @@ ENV \
   # pip:
   PIP_NO_CACHE_DIR=1 \
   # poetry:
-  POETRY_VERSION=1.1.5 \
+  POETRY_VERSION=1.1.11 \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
   PATH="$PATH:/root/.poetry/bin" \
@@ -29,33 +29,33 @@ RUN \
     # Install `postgresql-client` and `libpq-dev`:
     apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "curl=7.64.0-4+deb10u2" \
-      "ca-certificates=20200601~deb10u2" \
-      "gnupg=2.2.12-1+deb10u1" \
+      "curl=7.74.0-1.3+b1" \
+      "ca-certificates=20210119" \
+      "gnupg=2.2.27-2" \
     && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt buster-pgdg main 13" > /etc/apt/sources.list.d/pgdg.list' \
+    && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg 13" > /etc/apt/sources.list.d/pgdg.list' \
     && apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "postgresql-client-13=13.2-1.pgdg100+1" \
-      "libpq-dev=13.2-1.pgdg100+1" \
+      "postgresql-client-13=13.4-0+deb11u1" \
+      "libpq-dev=13.4-4.pgdg110+1" \
 
     # Install dependencies of dependencies:
     && apt-get install --no-install-recommends -y \
-      "git=1:2.20.1-2+deb10u3" \
-      "g++=4:8.3.0-1" \
-      "libffi-dev=3.2.1-9" \
-      "make=4.2.1-1.2" \
-      "libopenblas-dev=0.3.5+ds-3" \
+      "git=1:2.30.2-1" \
+      "g++=4:10.2.1-1" \
+      "libffi-dev=3.3-6" \
+      "make=4.3-4.1" \
+      "libopenblas-dev=0.3.13+ds-3" \
 
     # Install dependencies of development dependencies:
     && if [[ "$DEBUG" = "true" ]]; then \
          apt-get install --no-install-recommends -y \
-           "graphviz=2.40.1-6" \
+           "graphviz=2.42.2-5" \
          ; \
        fi \
 
     # Install Poetry and project dependencies:
-    && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/$POETRY_VERSION/get-poetry.py | python - \
+    && curl -sSL "https://raw.githubusercontent.com/python-poetry/poetry/$POETRY_VERSION/get-poetry.py" | python - \
     && poetry config virtualenvs.create false \
     && poetry run python -m pip install --upgrade --no-cache-dir pip wheel \
     && if [[ "$DEBUG" = "true" ]]; then \
