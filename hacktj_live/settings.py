@@ -412,6 +412,12 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 COMPRESS_STORAGE = "compressor.storage.BrotliCompressorFileStorage"
 
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
 # HackTJ Live settings
 
 LIVE_ADMIN_USER_APPROVAL = frozenset({} if DEBUG else {"user_judge", "user_mentor"})
