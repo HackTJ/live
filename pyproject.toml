@@ -6,7 +6,7 @@ authors = ["Sumanth Ratna <sumanth@hacktj.org>", "Pranav Mathur <pranav@hacktj.o
 license = "MIT"
 
 [tool.poetry.dependencies]
-python = ">=3.7,<3.10"
+python = ">=3.7,<4.0"
 Django = {extras = ["argon2", "bcrypt"], version = "^3.1.2"}
 channels = "^3.0.2"
 gunicorn = "^20.0.4"

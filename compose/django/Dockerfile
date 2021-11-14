@@ -1,4 +1,4 @@
-FROM python:3.9.7-slim-bullseye
+FROM python:3.9.8-slim-bullseye
 
 ENV \
   # python:
@@ -36,8 +36,8 @@ RUN \
     && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg 13" > /etc/apt/sources.list.d/pgdg.list' \
     && apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "postgresql-client-13=13.4-0+deb11u1" \
-      "libpq-dev=13.4-4.pgdg110+1" \
+      "postgresql-client-13=13.5-0+deb11u1" \
+      "libpq-dev=13.5-1.pgdg110+1" \
 
     # Install dependencies of dependencies:
     && apt-get install --no-install-recommends -y \
