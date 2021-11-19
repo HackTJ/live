@@ -1,4 +1,4 @@
-FROM python:3.9.8-slim-bullseye
+FROM python:3.9.9-slim-bullseye
 
 ENV \
   # python:
@@ -12,9 +12,7 @@ ENV \
   POETRY_VERSION=1.1.11 \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
-  PATH="$PATH:/root/.poetry/bin" \
-  # tini:
-  TINI_VERSION=v0.19.0
+  PATH="$PATH:/root/.poetry/bin"
 
 ARG DEBUG
 
@@ -65,8 +63,7 @@ RUN \
        fi \
 
     # Install `tini`:
-    && curl -L -o /tini "https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini" \
-    && chmod +x /tini \
+    && apt-get install --no-install-recommends -y tini \
 
     # Clean cache:
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
@@ -82,4 +79,4 @@ RUN \
     sed -i 's/\r//' ./compose/django/start.sh      && chmod +x ./compose/django/start.sh
 
 EXPOSE 8000
-ENTRYPOINT ["/tini", "--", "./compose/django/entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "./compose/django/entrypoint.sh"]
