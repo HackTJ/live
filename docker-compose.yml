@@ -22,7 +22,7 @@ services:
       - ./judge/fixtures:/app/judge/fixtures
 
   postgres:
-    image: postgres:13.5-alpine3.14
+    image: postgres:13.5-alpine3.15
     restart: always
     shm_size: 256MB
     environment:
@@ -40,5 +40,5 @@ services:
       net.core.somaxconn: '511'
 
   memcached:
-    image: memcached:1.6.12-alpine3.14
+    image: memcached:1.6.12-alpine3.15
     restart: always

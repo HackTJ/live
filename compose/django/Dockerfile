@@ -1,4 +1,4 @@
-FROM python:3.9.9-slim-bullseye
+FROM python:3.10.1-slim-bullseye
 
 ENV \
   # python:
@@ -9,7 +9,7 @@ ENV \
   # pip:
   PIP_NO_CACHE_DIR=1 \
   # poetry:
-  POETRY_VERSION=1.1.11 \
+  POETRY_VERSION=1.1.12 \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
   PATH="$PATH:/root/.poetry/bin"
@@ -39,6 +39,7 @@ RUN \
 
     # Install dependencies of dependencies:
     && apt-get install --no-install-recommends -y \
+      "gfortran=4:10.2.1-1" \
       "git=1:2.30.2-1" \
       "g++=4:10.2.1-1" \
       "libffi-dev=3.3-6" \
@@ -53,7 +54,7 @@ RUN \
        fi \
 
     # Install Poetry and project dependencies:
-    && curl -sSL "https://raw.githubusercontent.com/python-poetry/poetry/$POETRY_VERSION/get-poetry.py" | python - \
+    && python3 -m pip install "poetry==$POETRY_VERSION" \
     && poetry config virtualenvs.create false \
     && poetry run python -m pip install --upgrade --no-cache-dir pip wheel \
     && if [[ "$DEBUG" = "true" ]]; then \
