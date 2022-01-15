@@ -27,7 +27,7 @@ RUN \
     # Install `postgresql-client` and `libpq-dev`:
     apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "curl=7.74.0-1.3+b1" \
+      "curl=7.74.0-1.3+deb11u1" \
       "ca-certificates=20210119" \
       "gnupg=2.2.27-2" \
     && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
