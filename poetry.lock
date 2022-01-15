@@ -507,6 +507,17 @@ six = ">=1.2.0"
 test = ["testfixtures"]
 
 [[package]]
+name = "django-taggit"
+version = "2.0.0"
+description = "django-taggit is a reusable Django application for simple tagging."
+category = "main"
+optional = false
+python-versions = ">=3.6"
+
+[package.dependencies]
+Django = ">=2.2"
+
+[[package]]
 name = "filelock"
 version = "3.4.2"
 description = "A platform independent file lock."
@@ -1243,7 +1254,7 @@ testing = ["coverage (>=5.0.3)", "zope.event", "zope.testing"]
 [metadata]
 lock-version = "1.1"
 python-versions = ">=3.8,<4.0"
-content-hash = "adb2246b097021d8325cc72720a6ef64b2933a15cf40a6894ea07ddcb593ca40"
+content-hash = "761f145025bb7202b5c054203ea305745f7f28a53d827e08c345e3554106c009"
 
 [metadata.files]
 aioredis = [
@@ -1538,6 +1549,10 @@ django-sendgrid-v5 = [
 django-simple-captcha = [
     {file = "django-simple-captcha-0.5.14.zip", hash = "sha256:84b5c188e6ae50e9ecec5e5d734c5bc4d2a50fbbca7f59d2c12da9a3bbee5051"},
     {file = "django_simple_captcha-0.5.14-py3.7.egg", hash = "sha256:1bb2c842bde3ae0e23ce3c84b2f07f608b660c8d18201b0812571bccf38cf867"},
+]
+django-taggit = [
+    {file = "django-taggit-2.0.0.tar.gz", hash = "sha256:a23ca776ee2709b455c3a95625be1e4b891ddf1ffb4173153c41806de4038d72"},
+    {file = "django_taggit-2.0.0-py3-none-any.whl", hash = "sha256:72d8f3b8e452e64d5c230b89e802d9aedc378882206ebb871d7ad1fbd0369c2b"},
 ]
 filelock = [
     {file = "filelock-3.4.2-py3-none-any.whl", hash = "sha256:cf0fc6a2f8d26bd900f19bf33915ca70ba4dd8c56903eeb14e1e7a2fd7590146"},
