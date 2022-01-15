@@ -12,7 +12,7 @@ ENV \
   POETRY_VERSION=1.1.12 \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
-  PATH="$PATH:/root/.poetry/bin"
+  PATH="$PATH:/root/.local/bin"
 
 ARG DEBUG
 
@@ -54,7 +54,7 @@ RUN \
        fi \
 
     # Install Poetry and project dependencies:
-    && python3 -m pip install "poetry==$POETRY_VERSION" \
+    && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - \
     && poetry config virtualenvs.create false \
     && poetry run python -m pip install --upgrade --no-cache-dir pip wheel \
     && if [[ "$DEBUG" = "true" ]]; then \
