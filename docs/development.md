@@ -12,7 +12,7 @@ cd live/
 This is slower to build but much easier to use/configure. We recommend developing in Docker Compose so that environments are consistent.
 
 ```sh
-docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
+./start_live dev
 ```
 
 When you need to wipe all data:

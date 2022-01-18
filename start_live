@@ -9,7 +9,7 @@ if [ "$1" == "dev" ]; then
 elif [ "$1" == "prod" ]; then
   docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate --build
 else
-  echo -e "Usage: ./start_containers ${BLUE}<environment>${NORMAL}"
+  echo -e "Usage: ./start_live ${BLUE}<environment>${NORMAL}"
   echo
   echo -e "${BOLD}dev${NORMAL}"
   echo -e "  ${BLUE}dev${NORMAL}\t\tLaunches a development instance of HackTJ Live."
