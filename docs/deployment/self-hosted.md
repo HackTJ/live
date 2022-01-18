@@ -25,7 +25,7 @@ Thanks for using HackTJ Live for your event! Here's a quick guide to running Liv
     -   manually edit the template
         1.  copy the template: `cp .env.local .env`
         2.  update the information in `.env` (superuser information, SendGrid API key, Postgres password). You can generate passwords using something like `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
-3.  Spin up the instance: `docker-compose -f docker-compose.yml -f docker-compose.prod.yml up` and grab a cup of coffee or something as the system initializes. Once that's all started, the next step is to set up the webserver.
+3.  Spin up the instance: `./start_live prod` and grab a cup of coffee or something as the system initializes. Once that's all started, the next step is to set up the webserver.
 
 ##### Nginx Setup
 
