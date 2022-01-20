@@ -1,4 +1,4 @@
-FROM python:3.10.1-slim-bullseye
+FROM python:3.10.2-slim-bullseye
 
 ENV \
   # python:
@@ -31,11 +31,11 @@ RUN \
       "ca-certificates=20210119" \
       "gnupg=2.2.27-2" \
     && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
-    && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg 13" > /etc/apt/sources.list.d/pgdg.list' \
+    && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
     && apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "postgresql-client-13=13.5-0+deb11u1" \
-      "libpq-dev=13.5-1.pgdg110+1" \
+      "postgresql-client-14=14.1-1.pgdg110+1" \
+      "libpq-dev=14.1-1.pgdg110+1" \
 
     # Install dependencies of dependencies:
     && apt-get install --no-install-recommends -y \
@@ -54,7 +54,7 @@ RUN \
        fi \
 
     # Install Poetry and project dependencies:
-    && curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/install-poetry.py | python - \
+    && curl -sSL https://install.python-poetry.org | python3 - \
     && poetry config virtualenvs.create false \
     && poetry run python -m pip install --upgrade --no-cache-dir pip wheel \
     && if [[ "$DEBUG" = "true" ]]; then \
