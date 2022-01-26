@@ -63,9 +63,6 @@ RUN \
          poetry install --no-dev; \
        fi \
 
-    # Install `tini`:
-    && apt-get install --no-install-recommends -y tini \
-
     # Clean cache:
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && apt-get clean -y && rm -rf /var/lib/apt/lists/* \
@@ -80,4 +77,4 @@ RUN \
     sed -i 's/\r//' ./compose/django/start.sh      && chmod +x ./compose/django/start.sh
 
 EXPOSE 8000
-ENTRYPOINT ["/usr/bin/tini", "--", "./compose/django/entrypoint.sh"]
+ENTRYPOINT ["./compose/django/entrypoint.sh"]

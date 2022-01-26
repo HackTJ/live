@@ -7,6 +7,7 @@ services:
       dockerfile: ./compose/django/Dockerfile
       # args:
       #   - DEBUG=${DEBUG}
+    init: true
     restart: always
     sysctls:
       net.core.somaxconn: 2048
