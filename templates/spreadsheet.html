@@ -48,7 +48,7 @@
     </style>
     {% endcompress %}
 
-    <div class="container mx-auto py-6 px-4 mb-4" x-data="datatable()" x-cloak>
+    <div class="container mx-auto py-6 px-4 mb-4" x-data="datatable" x-cloak>
         <h1 class="text-3xl py-4 border-b mb-10 text-white">Live Rankings</h1>
 
         <div class="bg-blue-200 my-8 left-0 bottom-0 right-0 z-40 w-full shadow rounded">
@@ -97,7 +97,7 @@
                             </svg>
                         </button>
 
-                        <div x-show="open" @click.away="open = false"
+                        <div x-show="open" @click.outside="open = false"
                              class="z-40 absolute top-0 right-0 w-40 bg-white rounded-lg shadow-lg mt-12 -mr-1 block py-1 overflow-hidden">
                             <template x-for="heading in headings">
                                 <label class="flex justify-start items-center text-truncate hover:bg-gray-100 px-4 py-2">
@@ -129,12 +129,12 @@
                     </th>
                     <template x-for="heading in headings">
                         <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center"
-                            x-text="heading.value" :x-ref="heading.key" :heading="heading.key"></th>
+                            x-text="heading.value" :id="'heading-' + heading.key" :heading="heading.key"></th>
                     </template>
                 </tr>
                 </thead>
                 <tbody>
-                <template x-for="row in data" :key="row">
+                <template x-for="row in data" :key="row.projectId">
                     <tr class="text-gray-700">
                         <td class="border-dashed border-t border-gray-200 px-3">
                             <label class="text-blue-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
@@ -143,7 +143,7 @@
                                        :name="row.id" @click="getRowDetail($event, row.id)">
                             </label>
                         </td>
-                        <template x-for="heading in headings" :key="heading">
+                        <template x-for="heading in headings" :key="heading.key">
                             <!-- <span>
                               <td x-show="typeof row[heading.key] === 'boolean'" class="border-dashed border-t border-gray-200" :heading="heading.key">
                                 <svg class="w-6 h-6 mx-auto" x-show="row[heading.key]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -186,14 +186,14 @@
 
     {% compress js %}
     <script>
-        function datatable() {
+        document.addEventListener('alpine:init', () => {
             let getHeadingIdfromLabel = label => headings.find(heading => heading.value.toUpperCase() === label.toUpperCase())?.key;
             let getHeadingFromKey = key => headings.find(heading => heading.key.toUpperCase() === key.toUpperCase());
 
             // the first element of the output is '', because of the checkbox column:
             let getSelectedColumns = () => Array.from(document.querySelectorAll('th:not(.hidden)')).map(thDomElement => thDomElement.innerText);
 
-            return {
+            Alpine.data('datatable', () => ({
                 headings: headings,
                 data: data,
                 selectedRows: [],
@@ -202,7 +202,7 @@
 
                 toggleColumn(key) {
                     let rows = document.querySelectorAll('[heading="' + key + '"]');
-                    if (this.$refs[key].classList.contains('hidden')) {
+                    if (document.getElementById("heading-" + key).classList.contains('hidden')) {
                         rows.forEach(row => {
                             row.classList.remove('hidden');
                         });
@@ -308,11 +308,10 @@
                         writer.abort();
                     }
                 }
-            }
-        }
+            }))
+        })
     </script>
     {% endcompress %}
 </section>
-<script type="module" src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine.min.js" defer></script>
-<script nomodule src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.8.2/dist/alpine-ie11.min.js" defer></script>
+<script type="module" src="//unpkg.com/alpinejs@3.8.1" defer></script>
 {% endblock %}
