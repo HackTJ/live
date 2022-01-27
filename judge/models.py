@@ -1,7 +1,7 @@
 from datetime import datetime
 from django.db import models
 from django.conf import settings
-from django.contrib.postgres.fields import ArrayField
+from taggit.managers import TaggableManager
 from django.utils.translation import gettext_lazy
 
 num_criteria = len(settings.LIVE_JUDGE_CRITERIA)
@@ -11,7 +11,7 @@ class Project(models.Model):
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
     description = models.CharField(max_length=255)
-    tags = ArrayField(models.CharField(max_length=255), default=list)
+    tags = TaggableManager()
     link = models.URLField(blank=True)
 
     overall_mean = models.DecimalField(default=0.0, decimal_places=8, max_digits=12)

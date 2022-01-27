@@ -81,6 +81,7 @@ INSTALLED_APPS = [
     "dbbackup",  # django-dbbackup
     "debug_toolbar",
     "captcha",
+    "taggit",
     "allauth",
     "allauth.account",
     "allauth.socialaccount",

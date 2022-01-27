@@ -28,6 +28,7 @@ dealer = "^2.1.0"
 prettytable = "^2.0.0"
 django-sendgrid-v5 = "^1.1.1"
 pymemcache = "^3.4.1"
+django-taggit = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 black = "^21.12b0"
