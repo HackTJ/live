@@ -6,7 +6,9 @@ from .models import Project, Decision, Annotator
 admin.site.register(Annotator)
 admin.site.register(Decision)
 
+
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'description')
+    list_display = ("name", "description")
+
 
 admin.site.register(Project, ProjectAdmin)
