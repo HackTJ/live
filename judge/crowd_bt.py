@@ -124,7 +124,7 @@ def _updated_annotator(
         c_1 * (alpha + 2) * (alpha + 1) * alpha + c_2 * (alpha + 1) * alpha * beta
     ) / (c * (alpha + beta + 2) * (alpha + beta + 1) * (alpha + beta))
 
-    variance = expt_sq - expt ** 2
+    variance = expt_sq - expt**2
     updated_alpha = ((expt - expt_sq) * expt) / variance
     updated_beta = (expt - expt_sq) * (1 - expt) / variance
 
