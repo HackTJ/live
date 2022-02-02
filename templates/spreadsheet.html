@@ -118,9 +118,9 @@
         <div class="overflow-x-auto bg-white rounded-lg shadow overflow-y-auto relative">
             <table id="scoreboard-table"
                    class="border-collapse table-auto w-full whitespace-no-wrap bg-white table-striped relative">
-                <thead class="sticky top-0">
-                <tr class="text-left">
-                    <th class="sticky top-0 py-2 px-3 sticky top-0 border-b border-gray-200 bg-gray-100">
+                <thead>
+                <tr class="text-left bg-gray-200 border-b border-gray-300">
+                    <th class="py-2 px-3">
                         <label class="text-blue-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
                             <input id="selectAllCheckbox" type="checkbox"
                                    class="form-checkbox focus:outline-none focus:shadow-outline"
@@ -128,14 +128,14 @@
                         </label>
                     </th>
                     <template x-for="heading in headings">
-                        <th class="sticky top-0 bg-gray-100 sticky top-0 border-b border-gray-200 px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center"
+                        <th class="px-6 py-2 text-gray-600 font-bold tracking-wider uppercase text-xs text-center"
                             x-text="heading.value" :id="'heading-' + heading.key" :heading="heading.key"></th>
                     </template>
                 </tr>
                 </thead>
                 <tbody>
                 <template x-for="row in data" :key="row.projectId">
-                    <tr class="text-gray-700">
+                    <tr class="text-gray-700 odd:bg-gray-100">
                         <td class="border-dashed border-t border-gray-200 px-3">
                             <label class="text-blue-500 inline-flex justify-between items-center hover:bg-gray-200 px-2 py-2 rounded-lg cursor-pointer">
                                 <input type="checkbox"
