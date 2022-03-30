@@ -24,7 +24,7 @@ services:
       - ./utils/fixtures:/app/utils/fixtures
 
   postgres:
-    image: postgres:14.1-alpine3.15
+    image: postgres:14.2-alpine3.15
     restart: always
     shm_size: 256MB
     environment:
@@ -42,5 +42,5 @@ services:
       net.core.somaxconn: '511'
 
   memcached:
-    image: memcached:1.6.12-alpine3.15
+    image: memcached:1.6.14-alpine3.15
     restart: always

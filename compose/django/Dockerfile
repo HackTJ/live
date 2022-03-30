@@ -1,4 +1,4 @@
-FROM python:3.10.2-slim-bullseye
+FROM python:3.10.4-slim-bullseye
 
 ENV \
   # python:
@@ -9,7 +9,7 @@ ENV \
   # pip:
   PIP_NO_CACHE_DIR=1 \
   # poetry:
-  POETRY_VERSION=1.1.12 \
+  POETRY_VERSION=1.1.13 \
   POETRY_NO_INTERACTION=1 \
   POETRY_VIRTUALENVS_CREATE=false \
   PATH="$PATH:/root/.local/bin"
@@ -29,13 +29,13 @@ RUN \
     && apt-get install --no-install-recommends -y \
       "curl=7.74.0-1.3+deb11u1" \
       "ca-certificates=20210119" \
-      "gnupg=2.2.27-2" \
+      "gnupg=2.2.27-2+deb11u1" \
     && curl https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
     && sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt bullseye-pgdg main" > /etc/apt/sources.list.d/pgdg.list' \
     && apt-get -y update \
     && apt-get install --no-install-recommends -y \
-      "postgresql-client-14=14.1-1.pgdg110+1" \
-      "libpq-dev=14.1-1.pgdg110+1" \
+      "postgresql-client-14=14.2-1.pgdg110+1" \
+      "libpq-dev=14.2-1.pgdg110+1" \
 
     # Install dependencies of dependencies:
     && apt-get install --no-install-recommends -y \

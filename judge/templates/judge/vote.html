@@ -20,6 +20,7 @@
                 <h2 class="font-semibold text-2xl mb-6 text-blue-500">Previous</h2>
                 <p class="text-xl mt-1">{{ prev.name }}</p>
                 <p class="mt-1">{{ prev.description }}</p>
+                <p class="mt-1">Location: {{ current.location }}</p>
                 <div class="flex flex-row flex-wrap mb-12">
                     {% for tag in prev.tags %}
                     <span class="flex border rounded-full w-24 py-1 justify-center mx-auto mt-2">{{ tag }}</span>
@@ -33,6 +34,7 @@
                 <h2 class="font-semibold text-2xl mb-6 text-blue-500">Current</h2>
                 <p class="text-xl mt-1">{{ current.name }}</p>
                 <p class="mt-1">{{ current.description }}</p>
+                <p class="mt-1">Location: {{ current.location }}</p>
                 <div class="flex flex-row flex-wrap mb-12">
                     {% for tag in current.tags %}
                     <span class="flex border rounded-full w-24 py-1 justify-center mx-auto mt-2">{{ tag }}</span>

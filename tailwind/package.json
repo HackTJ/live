@@ -8,13 +8,13 @@
   "author": "Sumanth Ratna <sumanth@hacktj.org>",
   "license": "MIT",
   "dependencies": {
-    "@tailwindcss/forms": "^0.4.0",
-    "autoprefixer": "^10.4.2",
-    "cssnano": "^5.0.16",
-    "cssnano-preset-advanced": "^5.1.11",
-    "postcss": "^8.4.6",
+    "@tailwindcss/forms": "^0.5.0",
+    "autoprefixer": "^10.4.4",
+    "cssnano": "^5.1.5",
+    "cssnano-preset-advanced": "^5.3.1",
+    "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
-    "tailwindcss": "^3.0.18"
+    "tailwindcss": "^3.0.23"
   },
-  "packageManager": "yarn@3.1.1"
+  "packageManager": "yarn@3.2.0"
 }
