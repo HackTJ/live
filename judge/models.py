@@ -4,8 +4,6 @@ from django.conf import settings
 from django.contrib.postgres.fields import ArrayField
 from django.utils.translation import gettext_lazy
 
-num_criteria = len(settings.LIVE_JUDGE_CRITERIA)
-
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
@@ -84,10 +82,13 @@ class Annotator(models.Model):
 
     def update_current(self, new_current):
         if new_current:  # comparison was not skipped
-            # the project jas been assigned, so cancel the prioritization:
+            # the project has been assigned, so cancel the prioritization:
             new_current.prioritized = False
             self.current = new_current
             self.ignore.add(new_current)
+
+    def __str__(self):
+        return f"{self.judge.get_username()} ({self.pk})"
 
 
 class Decision(models.Model):

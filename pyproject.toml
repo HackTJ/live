@@ -19,9 +19,9 @@ dj-database-url = {git = "https://github.com/jacobian/dj-database-url.git"}  # c
 django-compressor = "^3.0"
 django-dbbackup = {git = "https://github.com/django-dbbackup/django-dbbackup.git"}  # PR #361
 django-debug-toolbar = "^3.1.1"
-django-allauth = "^0.47.0"
+django-allauth = "^0.50.0"
 better-exceptions = "^0.3.2"
-whitenoise = {extras = ["brotli"], version = "^5.2.0"}
+whitenoise = {extras = ["brotli"], version = "^6.0.0"}
 Twisted = {extras = ["tls", "http2"], version = "^21.7.0"}
 django-simple-captcha = "^0.5.13"
 dealer = "^2.1.0"
