@@ -17,13 +17,13 @@
         <div class="flex flex-row space-x-16">
             <div
                 class="flex-1 bg-white py-8 px-10 text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-16 max-w-xs text-blue-600">
-                <h2 class="font-semibold text-2xl mb-6 text-blue-500">Previous</h2>
+                <h2 class="font-semibold text-2xl mb-3 text-blue-500">Previous</h2>
                 <p class="text-xl mt-1">{{ prev.name }}</p>
                 <p class="mt-1">{{ prev.description }}</p>
                 <p class="mt-1">Location: {{ current.location }}</p>
-                <div class="flex flex-row flex-wrap mb-12">
+                <div class="grid grid-cols-1 mt-2 mb-12" style="row-gap: 0.5rem">
                     {% for tag in prev.tags %}
-                    <span class="flex border rounded-full w-24 py-1 justify-center mx-auto mt-2">{{ tag }}</span>
+                    <span class="flex border rounded-full py-2 px-3 justify-center mx-auto w-full">{{ tag }}</span>
                     {% endfor %}
                 </div>
                 <a class="mt-0 rounded-md bg-gradient-to-r from-blue-400 to-indigo-500 text-xl text-white pt-3 pb-4 px-8 inline"
@@ -31,13 +31,13 @@
             </div>
             <div
                 class="flex-1 bg-white py-8 px-10 text-center rounded-md shadow-lg transform -translate-y-20 sm:-translate-y-16 max-w-xs mx-auto text-blue-600">
-                <h2 class="font-semibold text-2xl mb-6 text-blue-500">Current</h2>
+                <h2 class="font-semibold text-2xl mb-3 text-blue-500">Current</h2>
                 <p class="text-xl mt-1">{{ current.name }}</p>
                 <p class="mt-1">{{ current.description }}</p>
                 <p class="mt-1">Location: {{ current.location }}</p>
-                <div class="flex flex-row flex-wrap mb-12">
+                <div class="grid grid-cols-1 mt-2 mb-12" style="row-gap: 0.5rem">
                     {% for tag in current.tags %}
-                    <span class="flex border rounded-full w-24 py-1 justify-center mx-auto mt-2">{{ tag }}</span>
+                    <span class="flex border rounded-full py-2 px-3 justify-center mx-auto w-full">{{ tag }}</span>
                     {% endfor %}
                 </div>
                 <a class="mt-0 rounded-md bg-gradient-to-r from-blue-400 to-indigo-500 text-xl text-white pt-3 pb-4 px-8 inline"
@@ -72,7 +72,7 @@
         <input type="hidden" name="current_id" value="{{ current.id }}">
 
         <input
-            class="mx-auto justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors text-gray-800 hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+            class="mx-auto justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors text-white hover:bg-gray-600 hover:border-gray-600"
             type="submit" value="Submit Vote" />
     </form>
 </div>
