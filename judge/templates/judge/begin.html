@@ -34,10 +34,10 @@
         class="text-black flex flex-col sm:flex-row justify-center items-center sm:items-baseline flex-wrap space-x-4 space-y-4 sm:space-x-0">
         {% csrf_token %}
         <input
-            class="mx-auto sm:mx-0 sm:rounded-r-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+            class="mx-auto sm:mx-0 sm:rounded-r-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors bg-transparent text-white hover:text-black hover:bg-white hover:border-white"
             name="action" type="submit" value="Done">
         <input
-            class="mx-auto sm:mx-0 sm:rounded-l-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors hover:bg-gray-600 hover:border-gray-600 hover:text-white"
+            class="mx-auto sm:mx-0 sm:rounded-l-none flex justify-center px-4 py-2 rounded cursor-pointer border duration-200 ease-in-out transition-colors bg-transparent text-white hover:text-black hover:bg-white hover:border-white"
             name="action" type="submit" value="Skip">
         <input type="hidden" name="project_id" value="{{ current.id }}">
     </form>
