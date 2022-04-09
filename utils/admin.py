@@ -13,6 +13,7 @@ set_active.short_description = "Mark selected users as active"
 
 class LiveUserAdmin(UserAdmin):
     actions = [set_active]
+    list_display = ['is_active']
 
 
 # admin.site.unregister(User)
