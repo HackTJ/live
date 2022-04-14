@@ -74,9 +74,9 @@ def begin(request):
                 annotator.current.save(update_fields=["timesSeen"])
                 annotator.prev = annotator.current
                 annotator.prev.save()
+                annotator.save(update_fields=["prev"])
                 annotator.update_current(choose_next(annotator))
                 annotator.current.save()
-                annotator.save(update_fields=["current", "prev"])
                 # request.user.save(update_fields=['annotator'])
             elif request.POST["action"] == "Skip":
                 annotator.current.timesSkipped = F("timesSkipped") + 1
@@ -161,13 +161,14 @@ def vote(request):
             # if the current project won overall, shift it to prev
             annotator.prev = annotator.current
             annotator.prev.save()
+        annotator.save(update_fields=["prev"])
+
         new_current = choose_next(annotator)
         if not new_current or annotator.prev == new_current:
             return render(request, "judge/done.html")
 
         annotator.update_current(new_current)
         annotator.current.save()
-        annotator.save(update_fields=["current", "prev"])
 
         return redirect("judge:vote")
 

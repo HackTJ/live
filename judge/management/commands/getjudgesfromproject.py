@@ -7,6 +7,7 @@ class Command(BaseCommand):
     help = "Retrieves the list of judges that have viewed a project"
 
     def add_arguments(self, parser):
+        self.parser = parser
         parser.add_argument(
             "--pk",
             type=str,
@@ -19,12 +20,18 @@ class Command(BaseCommand):
         )
 
     def handle(self, *args, **options):
-        Project = django_apps.get_model("judge", "project")
         fields = {}
         if options["pk"] is not None:
             fields["pk"] = options["pk"]
         if options["link"] is not None:
             fields["link"] = options["link"]
+        if len(fields) == 0:
+            self.parser.error(
+                "At least one argument must be passed to identify the project."
+            )
+
+        Project = django_apps.get_model("judge", "project")
+
         try:
             project = Project.objects.prefetch_related("annotator_viewed__judge").get(
                 **fields

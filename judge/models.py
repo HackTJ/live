@@ -42,6 +42,9 @@ class Project(models.Model):
     prioritize = models.BooleanField(default=False)
     active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return f"{self.name} ({self.pk})"
+
 
 class Annotator(models.Model):
     judge = models.OneToOneField(
@@ -85,6 +88,7 @@ class Annotator(models.Model):
             # the project has been assigned, so cancel the prioritization:
             new_current.prioritized = False
             self.current = new_current
+            self.save(update_fields=["current"])
             self.ignore.add(new_current)
 
     def __str__(self):
