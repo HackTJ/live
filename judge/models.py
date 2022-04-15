@@ -7,8 +7,8 @@ from django.utils.translation import gettext_lazy
 
 class Project(models.Model):
     name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
-    description = models.CharField(max_length=255)
+    location = models.CharField(max_length=255, blank=True)
+    description = models.CharField(max_length=255, blank=True)
     tags = ArrayField(models.CharField(max_length=255), default=list)
     link = models.URLField(blank=True)
 
