@@ -7,6 +7,7 @@ services:
       dockerfile: ./compose/django/Dockerfile
       # args:
       #   - DEBUG=${DEBUG}
+    init: true
     restart: always
     sysctls:
       net.core.somaxconn: 2048
@@ -43,7 +44,8 @@ services:
       - sendgrid_api_key
 
   postgres:
-    image: postgres:13.2-alpine
+    image: postgres:14.2-alpine3.15
+    command: postgres -c 'max_connections=200'
     restart: always
     shm_size: 256MB
     environment:
@@ -71,7 +73,7 @@ services:
       net.core.somaxconn: '511'
 
   memcached:
-    image: memcached:1.6.9-alpine
+    image: memcached:1.6.14-alpine3.15
     restart: always
 
 secrets:

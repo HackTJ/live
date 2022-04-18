@@ -4,7 +4,9 @@
 
 ![HackTJ 7.5 setup](./self_hosted.svg)
 
-The image above shows the setup that was used for HackTJ 7.5 HackTJ Live 1.0.0 was deployed for HackTJ 7.5 in a VM using docker-compose and a system-wide (inside the VM) NGINX server. The VM had 8GB RAM and 50GB storage.
+The image above shows the setup that was used for HackTJ 7.5
+
+HackTJ Live 1.0.0 was deployed for HackTJ 7.5 in a VM using Docker Compose V2 and a system-wide (inside the VM) NGINX server. The VM had 8GB RAM and 50GB storage.
 
 ### Self-hosted
 
@@ -14,7 +16,7 @@ Thanks for using HackTJ Live for your event! Here's a quick guide to running Liv
 
 -   Nginx (`apt install nginx`)
 -   Docker (`apt install docker.io`)
--   Docker Compose (`apt install docker-compose`)
+-   Docker Compose (https://docs.docker.com/compose/cli-command/#install-on-linux)
 -   Git (`apt install git`)
 
 #### Setup
@@ -71,4 +73,4 @@ If everything is configured correctly, you should be able to access Live!
 This step is optional and only applies if you would like to populate your database with initial data.
 
 1.  If you have a data file in the appropriate format that you'd like to add to Live, upload it to `~/live/judge/fixtures`. You can create a JSON fixture file from a Devpost CSV export using the `poetry run python manage.py preparedevpost` command.
-2.  Populate the database: `docker-compose exec django poetry run python manage.py loaddata 'my-data'`, replacing `my-data` with the name of your data file (sans the file extension).
+2.  Populate the database: `docker compose exec django poetry run python manage.py loaddata 'my-data'`, replacing `my-data` with the name of your data file (sans the file extension).

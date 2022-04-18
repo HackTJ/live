@@ -170,7 +170,7 @@ DEFAULT_FROM_EMAIL = "live@hacktj.org"
 if DEBUG:
     EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 else:
-    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
     EMAIL_HOST = "smtp.sendgrid.net"
 
@@ -182,11 +182,11 @@ else:
 
     EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
 
-    EMAIL_USE_TLS = True
+    SENDGRID_ECHO_TO_STDOUT = True
 
 ACCOUNT_ADAPTER = "utils.adapters.LiveAccountAdapter"
 
-if EMAIL_BACKEND == "django.core.mail.backends.smtp.EmailBackend":
+if EMAIL_BACKEND != "django.core.mail.backends.console.EmailBackend":
     ACCOUNT_EMAIL_REQUIRED = True
 
     ACCOUNT_EMAIL_VERIFICATION = "mandatory"
@@ -203,15 +203,21 @@ ACCOUNT_FORMS = {"signup": "hacktj_live.forms.VolunteerSignupForm"}
 if in_docker:
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
             "LOCATION": "memcached:11211",
+            "OPTIONS": {
+                "use_pooling": True,
+            },
         }
     }
 elif is_nc_available and run_cmd(["nc", "-z", "127.0.0.1", "11211"]).returncode == 0:
     CACHES = {
         "default": {
-            "BACKEND": "django.core.cache.backends.memcached.MemcachedCache",
+            "BACKEND": "django.core.cache.backends.memcached.PyMemcacheCache",
             "LOCATION": "127.0.0.1:11211",
+            "OPTIONS": {
+                "use_pooling": True,
+            },
         }
     }
 
@@ -296,11 +302,12 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 PASSWORD_HASHERS = [
+    "django.contrib.auth.hashers.ScryptPasswordHasher",
     "django.contrib.auth.hashers.Argon2PasswordHasher",
-    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
-    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
     "django.contrib.auth.hashers.BCryptPasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2PasswordHasher",
+    "django.contrib.auth.hashers.PBKDF2SHA1PasswordHasher",
 ]
 
 
@@ -405,6 +412,8 @@ COMPRESS_FILTERS = {
     ],
 }
 
+COMPRESS_CSS_HASHING_METHOD = "content"
+
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -413,24 +422,33 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 COMPRESS_STORAGE = "compressor.storage.BrotliCompressorFileStorage"
 
 
+# Default primary key field type
+# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
+
+DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
 # HackTJ Live settings
 
 LIVE_ADMIN_USER_APPROVAL = frozenset({} if DEBUG else {"user_judge", "user_mentor"})
 
 # this is the minimum number of times each item needs to be seen before
 # switching to more sophisticated item selection strategies.
-LIVE_JUDGE_MIN_VIEWS = 2
+LIVE_JUDGE_MIN_VIEWS = 4
 
 # this is the maximum amount of time (in minutes) a judge will have a project
 # to themselves before other judges can also be assigned to the same project.
+# TODO: do we need this? we look at Project.annotator to see if projects are available
 LIVE_JUDGE_TIMEOUT = 5.0
 
-# December 13, 2020 at 5:30 p.m.
-LIVE_JUDGE_START_TIME = datetime(year=2020, month=12, day=13, hour=16, minute=30)
+# TODO: use start and end time to decide whether judge can vote?
+
+# April 11, 2021 at 4:30 p.m.
+LIVE_JUDGE_START_TIME = datetime(year=2021, month=4, day=11, hour=16, minute=30)
 # LIVE_JUDGE_START_TIME = None
 
-# December 13, 2020 at 7:30 p.m.
-LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
+# April 11, 2021 at 7:30 p.m.
+LIVE_JUDGE_END_TIME = datetime(year=2021, month=4, day=11, hour=19, minute=30)
 # LIVE_JUDGE_END_TIME = None
 
 # key is criterion ID, value is human-readable label
@@ -443,7 +461,8 @@ LIVE_JUDGE_END_TIME = datetime(year=2020, month=12, day=13, hour=19, minute=30)
 # must have an "overall" key (used for assigning judges)
 LIVE_JUDGE_CRITERIA = OrderedDict(
     overall="Overall",
-    design="UI/UX",
-    social_impact="Social Impact",
-    feasibility="Feasibility",
+    innovation="Innovation",
+    functionality="Functionality",
+    design="Design",
+    complexity="Technical Complexity",
 )

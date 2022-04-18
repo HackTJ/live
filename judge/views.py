@@ -74,9 +74,9 @@ def begin(request):
                 annotator.current.save(update_fields=["timesSeen"])
                 annotator.prev = annotator.current
                 annotator.prev.save()
+                annotator.save(update_fields=["prev"])
                 annotator.update_current(choose_next(annotator))
                 annotator.current.save()
-                annotator.save(update_fields=["current", "prev"])
                 # request.user.save(update_fields=['annotator'])
             elif request.POST["action"] == "Skip":
                 annotator.current.timesSkipped = F("timesSkipped") + 1
@@ -121,21 +121,19 @@ def vote(request):
             annotator.current.save(update_fields=["timesSeen"])
             new_decisions = []
 
-            for criterion_index, criterion_id in enumerate(
-                settings.LIVE_JUDGE_CRITERIA
-            ):
+            for criterion_id in settings.LIVE_JUDGE_CRITERIA:
                 criterion_winner = request.POST[f"criterion_{criterion_id}"]
                 # assert isinstance(criterion_winner, str)
                 if criterion_winner == "previous":
                     perform_vote(
                         annotator,
                         current_won=False,
-                        criterion_index=criterion_index,
+                        criterion_id=criterion_id,
                     )
                     new_decisions.append(
                         Decision(
                             annotator=annotator,
-                            criterion=criterion_index,
+                            criterion=criterion_id,
                             winner=annotator.prev,
                             loser=annotator.current,
                         )
@@ -144,12 +142,12 @@ def vote(request):
                     perform_vote(
                         annotator,
                         current_won=True,
-                        criterion_index=criterion_index,
+                        criterion_id=criterion_id,
                     )
                     new_decisions.append(
                         Decision(
                             annotator=annotator,
-                            criterion=criterion_index,
+                            criterion=criterion_id,
                             winner=annotator.current,
                             loser=annotator.prev,
                         )
@@ -163,13 +161,14 @@ def vote(request):
             # if the current project won overall, shift it to prev
             annotator.prev = annotator.current
             annotator.prev.save()
+        annotator.save(update_fields=["prev"])
+
         new_current = choose_next(annotator)
         if not new_current or annotator.prev == new_current:
             return render(request, "judge/done.html")
 
         annotator.update_current(new_current)
         annotator.current.save()
-        annotator.save(update_fields=["current", "prev"])
 
         return redirect("judge:vote")
 
@@ -179,7 +178,7 @@ def vote(request):
 @never_cache
 def scoreboard(request):
     def render_stats():
-        projects = serialize("json", Project.objects.order_by("-means__0"))
+        projects = serialize("json", Project.objects.order_by("-overall_mean"))
         return render(
             request,
             "judge/scoreboard/stats.html",
@@ -192,7 +191,7 @@ def scoreboard(request):
     def render_rankings():
         projects = serialize(
             "json",
-            Project.objects.order_by("-means__0"),
+            Project.objects.order_by("-overall_mean"),
             fields=("name", "description"),
         )
         return render(
@@ -287,3 +286,10 @@ def queue(request):
             ),
         },
     )
+
+
+@require_GET
+def rubric(request):
+    # we make this route publicly viewable because anyone can look
+    # at  the Live source code to see what our judging criteria are.
+    return render(request, "judge/rubric.html")

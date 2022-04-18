@@ -9,19 +9,21 @@ def get_project_model():
     return django_apps.get_model("judge", "project")
 
 
-def get_num_criteria():
-    return len(settings.LIVE_JUDGE_CRITERIA)
-
-
-def row_to_project(row, model=None, num_criteria=None):
+def row_to_project(row, model=None):
     model = model or get_project_model()
-    num_criteria = num_criteria or get_num_criteria()
     if "Opt-In Prizes" in row:
         # this is the preferred format
         # in the Devpost export, uncheck "Sort the export by opt-in prize"
         prizes = row["Opt-In Prizes"].split(", ") if row["Opt-In Prizes"] else []
     elif "Opt-in prize" in row:
         prizes = [row["Opt-in Prize"]]
+
+    means = dict.fromkeys(
+        (f"{criterion}_mean" for criterion in settings.LIVE_JUDGE_CRITERIA), 0.0
+    )
+    variances = dict.fromkeys(
+        (f"{criterion}_variance" for criterion in settings.LIVE_JUDGE_CRITERIA), 1.0
+    )
     return model(
         name=row["Project Title"],
         # location='',
@@ -29,9 +31,8 @@ def row_to_project(row, model=None, num_criteria=None):
         # description=row['Submission Tagline'],
         tags=prizes,
         link=row["Submission Url"],
-        # TODO: don't hard-code defaults for means and variances
-        means=[0.0] * num_criteria,
-        variances=[1.0] * num_criteria,
+        **means,
+        **variances,
         active=row["Project Status"] == "Submitted (Gallery/Visible)",
     )
 
@@ -67,15 +68,12 @@ class Command(BaseCommand):
         output = options["output"]
 
         Project = get_project_model()
-        num_criteria = get_num_criteria()
         projects = []
         for filepath in devpost_files:
             with open(filepath, "rt", newline="") as file:
                 reader = CsvDictReader(file)
                 for row in reader:
-                    project = row_to_project(
-                        row, model=Project, num_criteria=num_criteria
-                    )
+                    project = row_to_project(row, model=Project)
                     projects.append(project)
 
         self.stdout.ending = None

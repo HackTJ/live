@@ -15,10 +15,11 @@
         </li>
         <li>{% blocktranslate %} If it's hard to choose, you can skip that comparison, but <b>please don't skip unless absolutely necessary</b>. {% endblocktranslate %}
         </li>
+        <li>{% translate "You can view descriptions of the judging criteria" %} <a href="{% url 'judge:rubric' %}" target="_blank" rel="noopener">{% translate "here" %}</a>{% translate "." %}</li>
     </ul>
     <form action="{% url 'judge:welcome' %}" method="POST">
         {% csrf_token %}
-        <input class="rounded px-4 py-2 text-black cursor-pointer" type="submit" value="{% translate 'Begin Judging' %}">
+        <input class="rounded-full py-3 px-6 bg-white text-black hover:bg-gray-100 cursor-pointer" type="submit" value="{% translate 'Begin Judging' %}">
     </form>
 </div>
 {% endblock %}

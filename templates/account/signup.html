@@ -11,7 +11,7 @@
     <p>{% blocktranslate %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktranslate %}
     </p>
 
-    <div class="w-full">
+    <div class="w-full mt-2">
         <form class="text-gray-700 bg-white shadow-md rounded-lg px-8 pt-6 pb-8 mb-4"
               action="{% url 'account_signup' %}" method="post">
             {% csrf_token %}

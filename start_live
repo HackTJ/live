@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+BLUE=$(printf '\033[36m')
+BOLD=$(printf '\033[1m')
+NORMAL=$(printf '\033[m')
+
+if [ "$1" == "dev" ]; then
+  docker compose --env-file .env.local -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate --build
+elif [ "$1" == "prod" ]; then
+  docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate --build
+else
+  echo -e "Usage: ./start_live ${BLUE}<environment>${NORMAL}"
+  echo
+  echo -e "${BOLD}dev${NORMAL}"
+  echo -e "  ${BLUE}dev${NORMAL}\t\tLaunches a development instance of HackTJ Live."
+  echo
+  echo -e "${BOLD}prod${NORMAL}"
+  echo -e "  ${BLUE}prod${NORMAL}\t\tLaunches a production instance of HackTJ Live."
+
+  if [[ $1 == *"help"* ]] || [ "$1" == "" ]; then  # catches "--help", "-h", and "help"
+    exit 0
+  else
+    exit 1
+  fi
+fi

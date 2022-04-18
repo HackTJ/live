@@ -3,7 +3,7 @@
 {# create a random string suffix so that multiple timers can be included on the same page #}
 
 {# we use the `escapejs` filter in HTML IDs because we need to use it in JS and the IDs have to match #}
-<div class="bg-white w-48 mx-auto rounded-lg p-2">
+<div class="bg-white w-48 mx-auto rounded-lg p-4">
     <svg viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
         <g style="fill: none; stroke: none">
         <circle
@@ -49,20 +49,22 @@
         id="timer-button-{{ timer_suffix|escapejs }}"
         onclick="timerButtonClick{{ timer_suffix }}()"
         type="button"
-        class="rounded-full py-3 px-6 bg-blue-400"
+        class="rounded-full py-3 px-6 bg-blue-500 hover:bg-blue-400"
     >
         Start Timer
     </button>
 </div>
 
-{% load compress %}
-{% compress js %}
 {% comment "This HTML commented has also been commented with Django to avoid sending extra bytes to the client and Django comments can't be multi-line" %}
 <!--
 it would be nice to have these functions global to all timers on a page but
 there's no way to `include` JS only once; to keep the functions global we'd
 need to create a separate template for the JS and include it separately from
 this HTML template.
+-->
+<!--
+this JS can't be `compress`ed because of the dynamic random suffix. since we
+want to stick to offline compression, we don't compress this `script`.
 -->
 {% endcomment %}
 {# TODO: escapejs filter when defining functions? #}
@@ -111,7 +113,6 @@ this HTML template.
     setTimerValue{{ timer_suffix }}(timerState{{ timer_suffix }}.timeout);
 
     function stepTimer{{timer_suffix}}() {
-        // TODO: breaks on resume
         timerState{{ timer_suffix }}.progress += (Date.now() - timerState{{ timer_suffix }}.lastUpdate) / 1000.
         timerState{{ timer_suffix }}.lastUpdate = Date.now();
         if (timerState{{ timer_suffix }}.progress >= timerState{{ timer_suffix }}.timeout) {
@@ -161,4 +162,3 @@ this HTML template.
         }
     }
 </script>
-{% endcompress %}
