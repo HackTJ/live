@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, **options):
         secrets_dir = settings.BASE_DIR / "compose" / "secrets"
-        debug_secrets_dir = secrets_dir / "debug"
+        # development_secrets_dir = secrets_dir / "development"
         prod_secrets_dir = secrets_dir / "production"
 
         secret_key_file = prod_secrets_dir / "secret_key.txt"

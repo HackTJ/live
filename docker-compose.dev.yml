@@ -15,18 +15,18 @@ services:
 
 secrets:
   secret_key:
-    file: ./compose/secrets/debug/secret_key.txt
+    file: ./compose/secrets/development/secret_key.txt
   django_superuser_username:
-    file: ./compose/secrets/debug/django_superuser_username.txt
+    file: ./compose/secrets/development/django_superuser_username.txt
   django_superuser_password:
-    file: ./compose/secrets/debug/django_superuser_password.txt
+    file: ./compose/secrets/development/django_superuser_password.txt
   django_superuser_email:
-    file: ./compose/secrets/debug/django_superuser_email.txt
+    file: ./compose/secrets/development/django_superuser_email.txt
   postgres_user:
-    file: ./compose/secrets/debug/postgres_user.txt
+    file: ./compose/secrets/development/postgres_user.txt
   postgres_password:
-    file: ./compose/secrets/debug/postgres_password.txt
+    file: ./compose/secrets/development/postgres_password.txt
   postgres_db:
-    file: ./compose/secrets/debug/postgres_db.txt
+    file: ./compose/secrets/development/postgres_db.txt
   sendgrid_api_key:
-    file: ./compose/secrets/debug/sendgrid_api_key.txt
+    file: ./compose/secrets/development/sendgrid_api_key.txt
