@@ -16,7 +16,7 @@ def preferred_items(annotator):
     prioritized_projects = available_projects.filter(prioritize=True)
     items = prioritized_projects if prioritized_projects else available_projects
 
-    nonbusy = available_projects.filter(
+    nonbusy = items.filter(
         annotator_current__updated__gte=timezone.make_aware(datetime.utcnow())
         + timedelta(minutes=settings.LIVE_JUDGE_TIMEOUT)
     )
