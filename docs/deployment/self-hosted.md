@@ -22,11 +22,11 @@ Thanks for using HackTJ Live for your event! Here's a quick guide to running Liv
 #### Setup
 
 1.  Clone the Live repository and enter the directory: `git clone https://github.com/HackTJ/live ~/live && cd ~/live`
-2.  Prepare the secrets file. (two options)
+2.  Prepare the secrets files. (two options)
     -   `docker compose exec django poetry run python manage.py createsecrets`
-    -   manually edit the template
-        1.  copy the template: `cp .env.local .env`
-        2.  update the information in `.env` (superuser information, SendGrid API key, Postgres password). You can generate passwords using something like `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
+    -   manually create the files
+        1.  copy the template: `cp ./compose/secrets/development/*.txt ./compose/secrets/production`
+        2.  update the secrets. All files in the [`./compose/secrets`](./compose/secrets) directory are configurable. You can generate secrets using something like `cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 64 | head -n 1`
 3.  Spin up the instance: `./start_live prod` and grab a cup of coffee or something as the system initializes. Once that's all started, the next step is to set up the webserver.
 
 ##### Nginx Setup

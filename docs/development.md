@@ -34,15 +34,15 @@ poetry run pre-commit install
 #### Database Setup
 
 ```sh
-export POSTGRES_USER=$(awk -F "\'" '/POSTGRES_USER/ { print $2; }' .env.local)
+export POSTGRES_USER="$(cat ./compose/secrets/development/postgres_user.txt)"
 dropdb "$POSTGRES_USER"
-export POSTGRES_PASSWORD=$(awk -F "\'" '/POSTGRES_PASSWORD/ { print $2; }' .env.local)
+export POSTGRES_PASSWORD="$(cat ./compose/secrets/development/postgres_password.txt)"
 pg_ctl --pgdata=/usr/local/var/postgres initdb -U "$POSTGRES_USER" -P $POSTGRES_PASSWORD
 pg_ctl --pgdata=/usr/local/var/postgres start
 createdb "$POSTGRES_USER"
 psql "$POSTGRES_USER" --file=./docs/setup.sql
 
-export SECRET_KEY=$(awk -F "\'" '/SECRET_KEY/ { print $2; }' .env.local)
+export SECRET_KEY="$(cat ./compose/secrets/development/secret_key.txt)"
 poetry run python manage.py migrate
 
 unset POSTGRES_USER
@@ -52,7 +52,6 @@ unset SECRET_KEY
 
 ### Making Changes
 
--   If you update the [.env.local](./.env.local) file, make sure you surround all values with single quotes. If you rename the file, make sure to update this document with the correct name.
 -   If you have direct commit/push access, be careful. Create PRs for big changes or any changes that might require testing, e.g., CI configuration updates.
 -   ["Squash and merge"](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/about-pull-request-merges#squash-and-merge-your-pull-request-commits) all PRs.
--   If you make any changes to the front-end/templates, make sure to run `pushd tailwind/ && NODE_ENV=production yarn build && popd`.
+-   If you make any changes to the front-end (the Django templates), make sure to run `pushd tailwind/ && NODE_ENV=production yarn run build && popd`.

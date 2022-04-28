@@ -5,9 +5,9 @@ BOLD=$(printf '\033[1m')
 NORMAL=$(printf '\033[m')
 
 if [ "$1" == "dev" ]; then
-  docker compose --env-file .env.local -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate --build
+  docker compose -f docker-compose.yml -f docker-compose.dev.yml up --force-recreate --build
 elif [ "$1" == "prod" ]; then
-  docker compose --env-file .env -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate --build
+  docker compose -f docker-compose.yml -f docker-compose.prod.yml up --force-recreate --build
 else
   echo -e "Usage: ./start_live ${BLUE}<environment>${NORMAL}"
   echo

@@ -84,3 +84,12 @@ def pg_isready(dbname=None, host=None, port=None, username=None):
             return False
         else:
             return True
+
+
+def load_secret(label, default=None):
+    env = getenv(label, default)
+    if env is not None and env.startswith("/run/secrets/"):
+        with open(env) as secret_file:
+            return secret_file.read()
+    else:
+        return env

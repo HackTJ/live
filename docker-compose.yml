@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.9'
 
 services:
   django:
@@ -13,15 +13,34 @@ services:
       net.core.somaxconn: 2048
     command: ./compose/django/start.sh
     environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB}
+      - SECRET_KEY=/run/secrets/secret_key
+      - DJANGO_SUPERUSER_USERNAME=/run/secrets/django_superuser_username
+      - DJANGO_SUPERUSER_PASSWORD=/run/secrets/django_superuser_password
+      - DJANGO_SUPERUSER_EMAIL=/run/secrets/django_superuser_email
+      - POSTGRES_USER=/run/secrets/postgres_user
+      - POSTGRES_PASSWORD=/run/secrets/postgres_password
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=/run/secrets/postgres_db
+      - SENDGRID_API_KEY=/run/secrets/sendgrid_api_key
       - DOCKER=true
+      # - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 --auth-local=scram-sha-256 --data-checksums
+      # - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
     depends_on:
       - postgres
       - redis
       - memcached
     volumes:
-      - ./judge/fixtures:/app/judge/fixtures
       - ./utils/fixtures:/app/utils/fixtures
+      - ./judge/fixtures:/app/judge/fixtures
+    secrets:
+      - secret_key
+      - django_superuser_username
+      - django_superuser_password
+      - django_superuser_email
+      - postgres_user
+      - postgres_password
+      - postgres_db
+      - sendgrid_api_key
 
   postgres:
     image: postgres:14.2-alpine3.15
@@ -29,12 +48,22 @@ services:
     restart: always
     shm_size: 256MB
     environment:
-      # - PGHOST=postgres
+      - POSTGRES_USER_FILE=/run/secrets/postgres_user
+      - POSTGRES_PASSWORD_FILE=/run/secrets/postgres_password
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB_FILE=/run/secrets/postgres_db
       - PGPORT=${POSTGRES_PORT:-5432}
+      # - PGHOST=postgres
       # - PGDATABASE=${POSTGRES_DB}
       # - PGUSER=${POSTGRES_USER}
       # - PGPASSWORD=${POSTGRES_PASSWORD}
       # - PGOPTIONS=${POSTGRES_INITDB_ARGS}
+      - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 --auth-local=scram-sha-256 --data-checksums
+      - POSTGRES_HOST_AUTH_METHOD=scram-sha-256
+    secrets:
+      - postgres_user
+      - postgres_password
+      - postgres_db
 
   redis:
     build: ./compose/redis
@@ -45,3 +74,23 @@ services:
   memcached:
     image: memcached:1.6.14-alpine3.15
     restart: always
+
+secrets:
+  # just to keep `docker compose` from complaining about
+  # `Service "postgres" uses an undefined secret`
+  secret_key:
+    external: true
+  django_superuser_username:
+    external: true
+  django_superuser_password:
+    external: true
+  django_superuser_email:
+    external: true
+  postgres_user:
+    external: true
+  postgres_password:
+    external: true
+  postgres_db:
+    external: true
+  sendgrid_api_key:
+    external: true
