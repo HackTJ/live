@@ -1,19 +1,16 @@
-version: '3.6'
+version: '3.9'
 
 services:
   django:
     build:
       args:
         - DEBUG=false
-    ports:
-      # - '80:8000'
-      - '8000:8000'
-    # expose:
-    #   - 8000
     volumes:
       - ./static:/app/static
       - ./backups:/app/backup
       - ./logs:/app/logs
+    ports:
+      - "8000:8000"
     deploy:
       resources:  # for Gunicorn
         # https://github.com/benoitc/gunicorn/issues/1440#issuecomment-411785926

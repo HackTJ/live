@@ -23,6 +23,7 @@ print(quote_plus(" ".join(argv[1:])))
 END
 }
 
+DATABASE_URL="postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB}"
 ENCODED_DATABASE_URL=$(urlencode "$DATABASE_URL")
 
 until pg_isready --dbname="$ENCODED_DATABASE_URL" --host="postgres" --username="$POSTGRES_USER"; do

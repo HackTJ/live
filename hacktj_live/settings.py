@@ -241,6 +241,24 @@ if "DIRECTOR_DATABASE_URL" in os.environ:
             # "OPTIONS": {"sslmode": "require"},
         },
     }
+elif (
+    "POSTGRES_USER" in os.environ
+    and "POSTGRES_PASSWORD" in os.environ
+    and "POSTGRES_PORT" in os.environ
+    and "POSTGRES_DB" in os.environ
+):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": load_secret("POSTGRES_DB"),
+            "USER": load_secret("POSTGRES_USER"),
+            "PASSWORD": load_secret("POSTGRES_PASSWORD"),
+            "HOST": "postgres",
+            "PORT": load_secret("POSTGRES_PORT"),
+            "CONN_MAX_AGE": 600,
+            # "OPTIONS": {"sslmode": "require"},
+        },
+    }
 elif "DATABASE_URL" in os.environ:
     DATABASES = {
         "default": parse_db_url(

@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3.9'
 
 services:
   django:
@@ -21,7 +21,6 @@ services:
       - POSTGRES_PASSWORD=/run/secrets/postgres_password
       - POSTGRES_PORT=5432
       - POSTGRES_DB=/run/secrets/postgres_db
-      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:${POSTGRES_PORT:-5432}/${POSTGRES_DB}
       - SENDGRID_API_KEY=/run/secrets/sendgrid_api_key
       - DOCKER=true
       # - POSTGRES_INITDB_ARGS=--auth-host=scram-sha-256 --auth-local=scram-sha-256 --data-checksums
@@ -77,7 +76,7 @@ services:
     restart: always
 
 secrets:
-  # just to keep `docker-compose` from complaining about
+  # just to keep `docker compose` from complaining about
   # `Service "postgres" uses an undefined secret`
   secret_key:
     external: true
