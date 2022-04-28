@@ -8,7 +8,18 @@ class Command(BaseCommand):
 
     def handle(self, **options):
         secrets_dir = settings.BASE_DIR / "compose" / "secrets"
-        # development_secrets_dir = secrets_dir / "development"
+
+        if (settings.BASE_DIR / ".env").exists():
+            from sys import stderr, exit
+
+            # Deleting `.env` is not actually necessary for this
+            # command, but it is necessary for Docker Compose secrets:
+            print(
+                "Detected `.env` file. Please delete this file and then re-run this command.",
+                file=stderr,
+            )
+            exit(1)
+
         prod_secrets_dir = secrets_dir / "production"
 
         secret_key_file = prod_secrets_dir / "secret_key.txt"
