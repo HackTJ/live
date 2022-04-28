@@ -43,8 +43,17 @@ jobs:
 
     - name: Run Tests
       run: |
-        SECRET_KEY=9 poetry run python manage.py createsecrets --exclude superuser --exclude sendgrid --exclude postgres --output ./.env
-        export $(grep -v '^#' .env | xargs)
+        poetry run python manage.py createsecrets
+
+        export SECRET_KEY="$(cat ./compose/secrets/development/secret_key.txt)"
+        export DJANGO_SUPERUSER_USERNAME="$(cat ./compose/secrets/development/django_superuser_username.txt)"
+        export DJANGO_SUPERUSER_PASSWORD="$(cat ./compose/secrets/development/django_superuser_password.txt)"
+        export DJANGO_SUPERUSER_EMAIL="$(cat ./compose/secrets/development/django_superuser_email.txt)"
+        export SENDGRID_API_KEY="$(cat ./compose/secrets/development/sendgrid_api_key.txt)"
+        export POSTGRES_PASSWORD="$(cat ./compose/secrets/development/postgres_password.txt)"
+        export POSTGRES_USER="$(cat ./compose/secrets/development/postgres_user.txt)"
+        export POSTGRES_DB="$(cat ./compose/secrets/development/postgres_db.txt)"
+
         poetry run python manage.py migrate
         poetry run python -Wa manage.py check --deploy
         poetry run python -Wa manage.py test
