@@ -270,7 +270,7 @@ elif "DATABASE_URL" in os.environ:
 elif pg_isready(
     dbname="hacktj_live", host="127.0.0.1", port="5432", username="live_postgres"
 ):
-    # TODO: load these from vars, don't hard-code. see the .env.local file
+    # TODO: load these from vars, don't hard-code. see the `./compose/secrets/development/` directory
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
