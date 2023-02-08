@@ -19,7 +19,7 @@ charset-normalizer==2.0.12; python_full_version >= "3.6.0" and python_version >=
 click==8.1.2; python_version >= "3.7"
 colorama==0.4.4; python_version >= "3.7" and python_full_version < "3.0.0" and sys_platform == "win32" and platform_system == "Windows" or sys_platform == "win32" and python_version >= "3.7" and python_full_version >= "3.5.0" and platform_system == "Windows"
 constantly==15.1.0; python_full_version >= "3.6.7" and python_version >= "3.6"
-cryptography==36.0.2
+cryptography==39.0.1
 daphne==3.0.2; python_version >= "3.7"
 dealer==2.1.0
 defusedxml==0.7.1; python_version >= "2.7" and python_full_version < "3.0.0" or python_full_version >= "3.5.0"
