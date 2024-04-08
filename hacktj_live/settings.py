@@ -10,7 +10,6 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
-
 from collections import OrderedDict
 from datetime import datetime
 from subprocess import run as run_cmd
