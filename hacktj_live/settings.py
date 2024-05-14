@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 from collections import OrderedDict
 from datetime import datetime
 from subprocess import run as run_cmd
+from pathlib import Path
 import os
 from dj_database_url import parse as parse_db_url
 from utils.environment import (
@@ -20,15 +21,16 @@ from utils.environment import (
     is_netcat_available,
     get_current_ip,
     pg_isready,
+    load_secret,
 )
 
-# Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# Build paths inside the project like this: BASE_DIR / 'subdir'.
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
-SECRET_KEY = os.getenv("SECRET_KEY", "")
+SECRET_KEY = load_secret("SECRET_KEY", "")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG", "false").upper() == "TRUE"
@@ -132,7 +134,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = "hacktj_live.urls"
 
-TEMPLATE_DIR = os.path.join(BASE_DIR, "templates")
+TEMPLATE_DIR = BASE_DIR / "templates"
 
 TEMPLATES = [
     {
@@ -169,7 +171,13 @@ if DEBUG:
 else:
     EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
 
-    SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+    EMAIL_HOST = "smtp.sendgrid.net"
+
+    EMAIL_HOST_PASSWORD = load_secret("SENDGRID_API_KEY")
+
+    EMAIL_HOST_USER = "apikey"
+
+    EMAIL_PORT = 587
 
     EMAIL_SUBJECT_PREFIX = "[HackTJ Live] "
 
@@ -232,10 +240,28 @@ if "DIRECTOR_DATABASE_URL" in os.environ:
             # "OPTIONS": {"sslmode": "require"},
         },
     }
+elif (
+    "POSTGRES_USER" in os.environ
+    and "POSTGRES_PASSWORD" in os.environ
+    and "POSTGRES_PORT" in os.environ
+    and "POSTGRES_DB" in os.environ
+):
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.postgresql",
+            "NAME": load_secret("POSTGRES_DB"),
+            "USER": load_secret("POSTGRES_USER"),
+            "PASSWORD": load_secret("POSTGRES_PASSWORD"),
+            "HOST": "postgres",
+            "PORT": load_secret("POSTGRES_PORT"),
+            "CONN_MAX_AGE": 600,
+            # "OPTIONS": {"sslmode": "require"},
+        },
+    }
 elif "DATABASE_URL" in os.environ:
     DATABASES = {
         "default": parse_db_url(
-            os.environ["DATABASE_URL"],
+            load_secret("DATABASE_URL"),
             conn_max_age=600,
             # ssl_require=True,
         ),
@@ -243,7 +269,7 @@ elif "DATABASE_URL" in os.environ:
 elif pg_isready(
     dbname="hacktj_live", host="127.0.0.1", port="5432", username="live_postgres"
 ):
-    # TODO: load these from vars, don't hard-code. see the .env.local file
+    # TODO: load these from vars, don't hard-code. see the `./compose/secrets/development/` directory
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.postgresql",
@@ -260,14 +286,14 @@ else:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "NAME": BASE_DIR / "db.sqlite3",
         }
     }
 
 
 DBBACKUP_STORAGE = "django.core.files.storage.FileSystemStorage"
 
-DBBACKUP_STORAGE_OPTIONS = {"location": os.path.join(BASE_DIR, "backup")}
+DBBACKUP_STORAGE_OPTIONS = {"location": BASE_DIR / "backup"}
 
 DBBACKUP_CONNECTOR_MAPPING = {
     "django.db.backends.postgresql": "dbbackup.db.postgresql.PgDumpBinaryConnector",
@@ -366,9 +392,10 @@ LOGGING = {
         "file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": os.path.join(
-                BASE_DIR, "logs", "debug" if DEBUG else "production", "django.log"
-            ),
+            "filename": BASE_DIR
+            / "logs"
+            / ("debug" if DEBUG else "production")
+            / "django.log",
         },
     },
     "root": {
@@ -380,7 +407,7 @@ LOGGING = {
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = BASE_DIR / "static"
 
 STATIC_URL = "/static/"
 
