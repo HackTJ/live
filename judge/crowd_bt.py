@@ -36,13 +36,13 @@ def divergence_beta(alpha_1, beta_1, alpha_2, beta_2):
 
 
 def update(alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser):
-    (updated_alpha, updated_beta, _) = _updated_annotator(
+    updated_alpha, updated_beta, _ = _updated_annotator(
         alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser
     )
-    (updated_mu_winner, updated_mu_loser) = _updated_mus(
+    updated_mu_winner, updated_mu_loser = _updated_mus(
         alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser
     )
-    (updated_sigma_sq_winner, updated_sigma_sq_loser) = _updated_sigma_sqs(
+    updated_sigma_sq_winner, updated_sigma_sq_loser = _updated_sigma_sqs(
         alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser
     )
     return (
@@ -56,19 +56,19 @@ def update(alpha, beta, mu_winner, sigma_sq_winner, mu_loser, sigma_sq_loser):
 
 
 def expected_information_gain(alpha, beta, mu_a, sigma_sq_a, mu_b, sigma_sq_b):
-    (alpha_1, beta_1, c) = _updated_annotator(
+    alpha_1, beta_1, c = _updated_annotator(
         alpha, beta, mu_a, sigma_sq_a, mu_b, sigma_sq_b
     )
-    (mu_a_1, mu_b_1) = _updated_mus(alpha, beta, mu_a, sigma_sq_a, mu_b, sigma_sq_b)
-    (sigma_sq_a_1, sigma_sq_b_1) = _updated_sigma_sqs(
+    mu_a_1, mu_b_1 = _updated_mus(alpha, beta, mu_a, sigma_sq_a, mu_b, sigma_sq_b)
+    sigma_sq_a_1, sigma_sq_b_1 = _updated_sigma_sqs(
         alpha, beta, mu_a, sigma_sq_a, mu_b, sigma_sq_b
     )
     prob_a_ranked_above = c
-    (alpha_2, beta_2, _) = _updated_annotator(
+    alpha_2, beta_2, _ = _updated_annotator(
         alpha, beta, mu_b, sigma_sq_b, mu_a, sigma_sq_a
     )
-    (mu_b_2, mu_a_2) = _updated_mus(alpha, beta, mu_b, sigma_sq_b, mu_a, sigma_sq_a)
-    (sigma_sq_b_2, sigma_sq_a_2) = _updated_sigma_sqs(
+    mu_b_2, mu_a_2 = _updated_mus(alpha, beta, mu_b, sigma_sq_b, mu_a, sigma_sq_a)
+    sigma_sq_b_2, sigma_sq_a_2 = _updated_sigma_sqs(
         alpha, beta, mu_b, sigma_sq_b, mu_a, sigma_sq_a
     )
 

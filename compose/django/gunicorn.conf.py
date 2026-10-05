@@ -3,7 +3,6 @@ from multiprocessing import cpu_count
 from shutil import which
 from os.path import exists
 
-
 print("Loading gunicorn config.")
 
 
